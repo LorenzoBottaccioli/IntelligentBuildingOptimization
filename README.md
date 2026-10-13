@@ -1,4 +1,4 @@
-# Smart Building Educational Platform
+# Intelligent Building Optimization
 
 A virtual lab where EnergyPlus stands in for a real building. You optimise a design, choose the sensors and actuators of the
 model, and then build the digital chain of a smart building yourself (device gateway, MQTT/database integration, data analysis
