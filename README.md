@@ -9,12 +9,28 @@ native control.
 
 ## Getting started
 
+**You need**
+
+- Docker Desktop with Compose v2 (tested with Compose 2.30 on Windows 10, with 7.6 GB of memory given to Docker; the minimum was not measured).
+- About 11 GB of disk for the images, and internet during the first build (Docker Hub, `ghcr.io`, GitHub, the micromamba and PyTorch-CPU
+  package servers, and `registry.npmmirror.com` for the frontend).
+- Python 3 (standard library only) to download one weather file.
+- These ports free on the host: 80, 1883, 3000, 5000, 8080, 8086, 8123, 8443, 8889 and 8892.
+
 ```bash
-cp .env.example .env      # required: Compose reads credentials from here
-docker compose up --build
+cp .env.example .env                        # required: Compose reads the InfluxDB and Grafana credentials from here (edit them)
+python tests/tutorials/fetch_iwec.py        # the Turin weather file of the demo and the tutorials: not in git, see NOTICE.md
+docker compose build jupyter_image_builder  # the students' Jupyter image: `up` never builds it (it has no registry, only this tag)
+docker compose up --build -d
 ```
 
-Then open <http://localhost>.
+Then open <http://localhost>. The first time, the platform opens the **Demo** session by itself (see below).
+Skip the third command and `up` stops with `pull access denied for jupyter`.
+
+Measured on a clean copy of the repository (12 CPUs, build cache not used, base images already pulled): the four images build in
+about 9 minutes at most (Jupyter 4, backend 2, eptofmu 2, frontend 1; two of them overlapped with another build, so these are upper bounds); the 12 containers are up in 10 seconds, the backend answers after about
+a minute, and openHAB is healthy after about five minutes on its first start. The first pull of the base images (Home Assistant alone is 3.5 GB) is
+not in these figures. In that test the demo's Play ran 7 simulated days in 31 seconds (*scaled*, 0.02 s per step) and wrote 7,349 points to InfluxDB.
 
 | Service | URL | Purpose |
 | --- | --- | --- |
@@ -26,7 +42,8 @@ Then open <http://localhost>.
 | MQTT broker (`mosquitto`) | `localhost:1883` | Messages between the students' scripts |
 | InfluxDB | <http://localhost:8086> | Time-series storage (1.x) |
 | Grafana | <http://localhost:3000> | Dashboards (also in the UI: BMS > Dashboards) |
-| openHAB | <http://localhost:8080> | HMI (also in the UI: BMS > HMI) |
+| openHAB | <http://localhost:8080> | HMI (also in the UI: BMS > Operator panel) |
+| Home Assistant | <http://localhost:8123> | Second HMI, the same points as openHAB (also in the UI: BMS > Operator panel) |
 | `energyplus`, `eptofmu` | (no port) | Idle sidecars driven by the backend with `docker exec` |
 
 ## Folder layout
@@ -70,7 +87,7 @@ BMS > Control room; nothing starts by itself.
    building, read logs; set the simulated period; export the FMU (writes the FMUs and
    `parameters.py` to `Field/`; says when the FMU is out of date with your choices); run the model in
    EnergyPlus alone over that period, up to a year, which stores everything the FMU would carry in the
-   `direct_building` InfluxDB database without any FMU or student code), *HMI* (openHAB main UI) and
+   `direct_building` InfluxDB database without any FMU or student code), *Operator panel* (openHAB and Home Assistant) and
    *Dashboards* (Grafana, datasource "InfluxDB Direct" for that run).
 
 The student-facing description of the Workspace is in
