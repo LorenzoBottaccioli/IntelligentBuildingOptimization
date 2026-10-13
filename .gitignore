@@ -68,3 +68,6 @@ Smart_Building_Educational_Platform_source_code_documentation.pdf
 tests/**/*.mem
 tests/**/*.err
 tests/integrity/results/*.log
+
+# Course notebook kept locally only (the generated tutorials/ are in git; tests/tutorials/make_tutorials.py needs this file to regenerate them)
+course_notebooks_bdopt/Besos_overview.ipynb
