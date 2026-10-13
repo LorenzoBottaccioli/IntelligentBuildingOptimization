@@ -1,0 +1,996 @@
+{
+  "dashboard": {
+    "id": 4,
+    "panels": [
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "PEA767B3DDC7793D7"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "green",
+              "mode": "fixed"
+            },
+            "decimals": 0,
+            "unit": "suffix: kWh"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 4,
+          "x": 0,
+          "y": 0
+        },
+        "id": 1,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ]
+          }
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "PEA767B3DDC7793D7"
+            },
+            "query": "SELECT last(\"value\") FROM \"points\" WHERE \"point\" = 'heating_kwh' AND $timeFilter",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "time_series"
+          }
+        ],
+        "title": "Heating energy, baseline",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "P3C427C6903D4C228"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "yellow",
+              "mode": "fixed"
+            },
+            "decimals": 0,
+            "unit": "suffix: kWh"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 4,
+          "x": 4,
+          "y": 0
+        },
+        "id": 2,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ]
+          }
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "P3C427C6903D4C228"
+            },
+            "query": "SELECT last(\"value\") FROM \"points\" WHERE \"point\" = 'heating_kwh' AND $timeFilter",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "time_series"
+          }
+        ],
+        "title": "Heating energy, controlled",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "PEA767B3DDC7793D7"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "green",
+              "mode": "fixed"
+            },
+            "decimals": 0,
+            "unit": "suffix: kWh"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 4,
+          "x": 8,
+          "y": 0
+        },
+        "id": 3,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ]
+          }
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "PEA767B3DDC7793D7"
+            },
+            "query": "SELECT last(\"value\") FROM \"points\" WHERE \"point\" = 'electricity_kwh' AND $timeFilter",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "time_series"
+          }
+        ],
+        "title": "Electricity energy, baseline",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "P3C427C6903D4C228"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "yellow",
+              "mode": "fixed"
+            },
+            "decimals": 0,
+            "unit": "suffix: kWh"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 4,
+          "x": 12,
+          "y": 0
+        },
+        "id": 4,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ]
+          }
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "P3C427C6903D4C228"
+            },
+            "query": "SELECT last(\"value\") FROM \"points\" WHERE \"point\" = 'electricity_kwh' AND $timeFilter",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "time_series"
+          }
+        ],
+        "title": "Electricity energy, controlled",
+        "type": "stat"
+      },
+      {
+        "gridPos": {
+          "h": 4,
+          "w": 8,
+          "x": 16,
+          "y": 0
+        },
+        "id": 5,
+        "options": {
+          "content": "Energy is the value reached **at the end of the selected period** (cumulated since the start of each run). A run that stops earlier shows what it had reached.",
+          "mode": "markdown"
+        },
+        "title": "Reading the numbers",
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "datasource",
+          "uid": "-- Mixed --"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "custom": {
+              "fillOpacity": 0,
+              "lineWidth": 2,
+              "showPoints": "never",
+              "spanNulls": true
+            },
+            "unit": "celsius"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "west"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "blue",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "south"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "orange",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "east"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "green",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "north"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "purple",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "outdoor"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "dark-gray",
+                    "mode": "fixed"
+                  }
+                },
+                {
+                  "id": "custom.lineStyle",
+                  "value": {
+                    "dash": [
+                      8,
+                      8
+                    ],
+                    "fill": "dash"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 4
+        },
+        "id": 6,
+        "interval": "10m",
+        "options": {
+          "legend": {
+            "displayMode": "list",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "multi"
+          }
+        },
+        "targets": [
+          {
+            "alias": "west",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "P3C427C6903D4C228"
+            },
+            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'temperature_west' AND $timeFilter GROUP BY time($__interval) fill(previous)",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "time_series"
+          },
+          {
+            "alias": "south",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "P3C427C6903D4C228"
+            },
+            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'temperature_south' AND $timeFilter GROUP BY time($__interval) fill(previous)",
+            "rawQuery": true,
+            "refId": "B",
+            "resultFormat": "time_series"
+          },
+          {
+            "alias": "east",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "P3C427C6903D4C228"
+            },
+            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'temperature_east' AND $timeFilter GROUP BY time($__interval) fill(previous)",
+            "rawQuery": true,
+            "refId": "C",
+            "resultFormat": "time_series"
+          },
+          {
+            "alias": "north",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "P3C427C6903D4C228"
+            },
+            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'temperature_north' AND $timeFilter GROUP BY time($__interval) fill(previous)",
+            "rawQuery": true,
+            "refId": "D",
+            "resultFormat": "time_series"
+          },
+          {
+            "alias": "outdoor",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "P3C427C6903D4C228"
+            },
+            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'outdoor_temperature' AND $timeFilter GROUP BY time($__interval) fill(previous)",
+            "rawQuery": true,
+            "refId": "E",
+            "resultFormat": "time_series"
+          }
+        ],
+        "title": "Zone temperatures, controlled run",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "datasource",
+          "uid": "-- Mixed --"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "custom": {
+              "fillOpacity": 0,
+              "lineWidth": 2,
+              "showPoints": "never",
+              "spanNulls": true
+            },
+            "unit": "celsius"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "controlled"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "yellow",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "baseline"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "green",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "outdoor"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "dark-gray",
+                    "mode": "fixed"
+                  }
+                },
+                {
+                  "id": "custom.lineStyle",
+                  "value": {
+                    "dash": [
+                      8,
+                      8
+                    ],
+                    "fill": "dash"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 4
+        },
+        "id": 7,
+        "interval": "10m",
+        "options": {
+          "legend": {
+            "displayMode": "list",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "multi"
+          }
+        },
+        "targets": [
+          {
+            "alias": "controlled",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "P3C427C6903D4C228"
+            },
+            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'temperature_west' AND $timeFilter GROUP BY time($__interval) fill(previous)",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "time_series"
+          },
+          {
+            "alias": "baseline",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "PEA767B3DDC7793D7"
+            },
+            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'temperature_west' AND $timeFilter GROUP BY time($__interval) fill(previous)",
+            "rawQuery": true,
+            "refId": "B",
+            "resultFormat": "time_series"
+          },
+          {
+            "alias": "outdoor",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "P3C427C6903D4C228"
+            },
+            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'outdoor_temperature' AND $timeFilter GROUP BY time($__interval) fill(previous)",
+            "rawQuery": true,
+            "refId": "C",
+            "resultFormat": "time_series"
+          }
+        ],
+        "title": "West zone: controlled against baseline",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "datasource",
+          "uid": "-- Mixed --"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "custom": {
+              "fillOpacity": 0,
+              "lineWidth": 2,
+              "showPoints": "never",
+              "spanNulls": true
+            },
+            "max": 32,
+            "min": 8,
+            "unit": "celsius"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "west"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "blue",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "south"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "orange",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "east"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "green",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "north"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "purple",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 12
+        },
+        "id": 8,
+        "interval": "10m",
+        "options": {
+          "legend": {
+            "displayMode": "list",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "multi"
+          }
+        },
+        "targets": [
+          {
+            "alias": "west",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "P3C427C6903D4C228"
+            },
+            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'setpoint_west' AND $timeFilter GROUP BY time($__interval) fill(previous)",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "time_series"
+          },
+          {
+            "alias": "south",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "P3C427C6903D4C228"
+            },
+            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'setpoint_south' AND $timeFilter GROUP BY time($__interval) fill(previous)",
+            "rawQuery": true,
+            "refId": "B",
+            "resultFormat": "time_series"
+          },
+          {
+            "alias": "east",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "P3C427C6903D4C228"
+            },
+            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'setpoint_east' AND $timeFilter GROUP BY time($__interval) fill(previous)",
+            "rawQuery": true,
+            "refId": "C",
+            "resultFormat": "time_series"
+          },
+          {
+            "alias": "north",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "P3C427C6903D4C228"
+            },
+            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'setpoint_north' AND $timeFilter GROUP BY time($__interval) fill(previous)",
+            "rawQuery": true,
+            "refId": "D",
+            "resultFormat": "time_series"
+          }
+        ],
+        "title": "Heating setpoints applied by the controller",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "datasource",
+          "uid": "-- Mixed --"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "custom": {
+              "fillOpacity": 0,
+              "lineWidth": 2,
+              "showPoints": "never",
+              "spanNulls": true
+            },
+            "unit": "kwatt"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "controlled"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "yellow",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "baseline"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "green",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 12
+        },
+        "id": 9,
+        "interval": "10m",
+        "options": {
+          "legend": {
+            "displayMode": "list",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "multi"
+          }
+        },
+        "targets": [
+          {
+            "alias": "controlled",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "P3C427C6903D4C228"
+            },
+            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'heating_kw' AND $timeFilter GROUP BY time($__interval) fill(previous)",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "time_series"
+          },
+          {
+            "alias": "baseline",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "PEA767B3DDC7793D7"
+            },
+            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'heating_kw' AND $timeFilter GROUP BY time($__interval) fill(previous)",
+            "rawQuery": true,
+            "refId": "B",
+            "resultFormat": "time_series"
+          }
+        ],
+        "title": "Heating power",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "datasource",
+          "uid": "-- Mixed --"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "custom": {
+              "fillOpacity": 0,
+              "lineWidth": 2,
+              "showPoints": "never",
+              "spanNulls": true
+            },
+            "unit": "kwatt"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "controlled"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "yellow",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "baseline"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "green",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 20
+        },
+        "id": 10,
+        "interval": "10m",
+        "options": {
+          "legend": {
+            "displayMode": "list",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "multi"
+          }
+        },
+        "targets": [
+          {
+            "alias": "controlled",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "P3C427C6903D4C228"
+            },
+            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'electricity_kw' AND $timeFilter GROUP BY time($__interval) fill(previous)",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "time_series"
+          },
+          {
+            "alias": "baseline",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "PEA767B3DDC7793D7"
+            },
+            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'electricity_kw' AND $timeFilter GROUP BY time($__interval) fill(previous)",
+            "rawQuery": true,
+            "refId": "B",
+            "resultFormat": "time_series"
+          }
+        ],
+        "title": "Electricity power",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "datasource",
+          "uid": "-- Mixed --"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "custom": {
+              "fillOpacity": 0,
+              "lineWidth": 2,
+              "showPoints": "never",
+              "spanNulls": true
+            },
+            "unit": "celsius"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "temperature"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "blue",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "direct solar"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "orange",
+                    "mode": "fixed"
+                  }
+                },
+                {
+                  "id": "unit",
+                  "value": "watt"
+                },
+                {
+                  "id": "custom.axisPlacement",
+                  "value": "right"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "wind"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "gray",
+                    "mode": "fixed"
+                  }
+                },
+                {
+                  "id": "unit",
+                  "value": "velocityms"
+                },
+                {
+                  "id": "custom.axisPlacement",
+                  "value": "hidden"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 20
+        },
+        "id": 11,
+        "interval": "10m",
+        "options": {
+          "legend": {
+            "displayMode": "list",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "multi"
+          }
+        },
+        "targets": [
+          {
+            "alias": "temperature",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "P3C427C6903D4C228"
+            },
+            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'outdoor_temperature' AND $timeFilter GROUP BY time($__interval) fill(previous)",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "time_series"
+          },
+          {
+            "alias": "direct solar",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "P3C427C6903D4C228"
+            },
+            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'solar_direct' AND $timeFilter GROUP BY time($__interval) fill(previous)",
+            "rawQuery": true,
+            "refId": "B",
+            "resultFormat": "time_series"
+          },
+          {
+            "alias": "wind",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "P3C427C6903D4C228"
+            },
+            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'wind_speed' AND $timeFilter GROUP BY time($__interval) fill(previous)",
+            "rawQuery": true,
+            "refId": "C",
+            "resultFormat": "time_series"
+          }
+        ],
+        "title": "Outdoor weather",
+        "type": "timeseries"
+      }
+    ],
+    "refresh": "",
+    "schemaVersion": 39,
+    "tags": [
+      "demo"
+    ],
+    "time": {
+      "from": "2026-01-01T00:00:00.000Z",
+      "to": "2026-01-08T00:00:00.000Z"
+    },
+    "timezone": "utc",
+    "title": "Demo building",
+    "uid": "demo-building",
+    "version": 2
+  },
+  "folderUid": ""
+}

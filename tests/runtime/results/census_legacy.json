@@ -1,0 +1,396 @@
+{
+ "python": "3.9.23",
+ "roots": [
+  "Workspace/ai",
+  "Workspace/iot",
+  "Workspace/devices",
+  "gateway",
+  "conda-environment/fmi_mlc"
+ ],
+ "parse_errors": [],
+ "modules": {
+  "config": {
+   "ok": false,
+   "error": "ModuleNotFoundError: No module named 'config'",
+   "used_by_run_scope": [],
+   "used_by_extra": [
+    "Simulation examples/Test 5 Winter Heating PMV/Base Simulation Test 1.ipynb",
+    "Simulation examples/Test 5 Winter Heating PMV/RL simulation Test 1.ipynb",
+    "Simulation examples/Test 5 Winter Heating PMV/Training SAC Test 1.ipynb",
+    "Simulation examples/Test 6 Summer Cooling PMV/Base Sim Test 2.ipynb"
+   ]
+  },
+  "config.parameter": {
+   "ok": false,
+   "error": "ModuleNotFoundError: No module named 'config'",
+   "used_by_run_scope": [],
+   "used_by_extra": [
+    "Simulation examples/Test 5 Winter Heating PMV/Base Simulation Test 1.ipynb",
+    "Simulation examples/Test 5 Winter Heating PMV/RL simulation Test 1.ipynb",
+    "Simulation examples/Test 5 Winter Heating PMV/Training SAC Test 1.ipynb",
+    "Simulation examples/Test 6 Summer Cooling PMV/Base Sim Test 2.ipynb"
+   ]
+  },
+  "fmi_mlc": {
+   "ok": true,
+   "version": "1.0.0",
+   "used_by_run_scope": [
+    "Workspace/ai/AgentTraining.ipynb"
+   ],
+   "used_by_extra": [
+    "Simulation examples/Test 1 Summer Cooling Data exchange/Test1.ipynb",
+    "Simulation examples/Test 2 Winter Heating Data Exchange/Test2.ipynb",
+    "Simulation examples/Test 3 Winter Heating Openhab/Test7.ipynb",
+    "Simulation examples/Test 4 Summer Cooling Openhab/Test6.ipynb"
+   ]
+  },
+  "fmi_mlc.eplus_health": {
+   "ok": true,
+   "version": null,
+   "note": "attribute of fmi_mlc",
+   "used_by_run_scope": [
+    "gateway/building.py"
+   ],
+   "used_by_extra": []
+  },
+  "fmi_mlc.eplus_health.check_slave": {
+   "ok": true,
+   "version": null,
+   "note": "attribute of fmi_mlc.eplus_health",
+   "used_by_run_scope": [
+    "gateway/building.py"
+   ],
+   "used_by_extra": []
+  },
+  "fmi_mlc.eplus_health.watch_frozen": {
+   "ok": true,
+   "version": null,
+   "note": "attribute of fmi_mlc.eplus_health",
+   "used_by_run_scope": [
+    "gateway/building.py"
+   ],
+   "used_by_extra": []
+  },
+  "fmi_mlc.fmi_gym": {
+   "ok": true,
+   "version": "1.0.0",
+   "used_by_run_scope": [
+    "Workspace/ai/AgentTraining.ipynb"
+   ],
+   "used_by_extra": [
+    "Simulation examples/Test 1 Summer Cooling Data exchange/Test1.ipynb",
+    "Simulation examples/Test 2 Winter Heating Data Exchange/Test2.ipynb",
+    "Simulation examples/Test 3 Winter Heating Openhab/Test7.ipynb",
+    "Simulation examples/Test 4 Summer Cooling Openhab/Test6.ipynb"
+   ]
+  },
+  "fmi_mlc.fmi_gym_parameter": {
+   "ok": true,
+   "version": "1.0.0",
+   "used_by_run_scope": [
+    "conda-environment/fmi_mlc/fmi_gym.py"
+   ],
+   "used_by_extra": []
+  },
+  "fmi_mlc.fmi_gym_parameter.get_default_parameter": {
+   "ok": true,
+   "version": null,
+   "note": "attribute of fmi_mlc.fmi_gym_parameter",
+   "used_by_run_scope": [
+    "conda-environment/fmi_mlc/fmi_gym.py"
+   ],
+   "used_by_extra": []
+  },
+  "gym": {
+   "ok": true,
+   "version": "0.26.2",
+   "used_by_run_scope": [
+    "Workspace/ai/AgentTraining.ipynb",
+    "conda-environment/fmi_mlc/fmi_gym.py"
+   ],
+   "used_by_extra": [
+    "Simulation examples/Test 5 Winter Heating PMV/Training SAC Test 1.ipynb",
+    "Simulation examples/Test 6 Summer Cooling PMV/SAC Training Test 2.ipynb",
+    "Simulation examples/Test 7 Shading Control/SimulationNotebook.ipynb"
+   ]
+  },
+  "gymnasium": {
+   "ok": true,
+   "version": "1.0.0",
+   "used_by_run_scope": [
+    "Workspace/ai/AgentTraining.ipynb"
+   ],
+   "used_by_extra": []
+  },
+  "matplotlib.pyplot": {
+   "ok": true,
+   "version": "3.9.4",
+   "used_by_run_scope": [
+    "Workspace/ai/forecasting.ipynb",
+    "Workspace/iot/energy_signature.ipynb"
+   ],
+   "used_by_extra": [
+    "Simulation examples/Test 5 Winter Heating PMV/Training SAC Test 1.ipynb",
+    "Simulation examples/Test 6 Summer Cooling PMV/SAC Training Test 2.ipynb",
+    "Simulation examples/Test 7 Shading Control/SimulationNotebook.ipynb",
+    "reference/notebooks/ai/forecasting.ipynb"
+   ]
+  },
+  "mqtt_publisher": {
+   "ok": true,
+   "version": null,
+   "used_by_run_scope": [],
+   "used_by_extra": [
+    "Simulation examples/Test 1 Summer Cooling Data exchange/Test1.ipynb",
+    "Simulation examples/Test 2 Winter Heating Data Exchange/Test2.ipynb",
+    "Simulation examples/Test 3 Winter Heating Openhab/Test7.ipynb",
+    "Simulation examples/Test 4 Summer Cooling Openhab/Test6.ipynb"
+   ]
+  },
+  "mqtt_publisher.MQTTPublisher": {
+   "ok": true,
+   "version": null,
+   "note": "attribute of mqtt_publisher",
+   "used_by_run_scope": [],
+   "used_by_extra": [
+    "Simulation examples/Test 1 Summer Cooling Data exchange/Test1.ipynb",
+    "Simulation examples/Test 2 Winter Heating Data Exchange/Test2.ipynb",
+    "Simulation examples/Test 3 Winter Heating Openhab/Test7.ipynb",
+    "Simulation examples/Test 4 Summer Cooling Openhab/Test6.ipynb"
+   ]
+  },
+  "numpy": {
+   "ok": true,
+   "version": "1.26.4",
+   "used_by_run_scope": [
+    "Workspace/ai/AgentTraining.ipynb",
+    "Workspace/ai/forecasting.ipynb",
+    "Workspace/iot/data_access.ipynb",
+    "Workspace/iot/energy_signature.ipynb",
+    "conda-environment/fmi_mlc/fmi_gym.py"
+   ],
+   "used_by_extra": [
+    "Simulation examples/Test 1 Summer Cooling Data exchange/config.py",
+    "Simulation examples/Test 2 Winter Heating Data Exchange/config.py",
+    "Simulation examples/Test 3 Winter Heating Openhab/Test7.ipynb",
+    "Simulation examples/Test 3 Winter Heating Openhab/config.py"
+   ]
+  },
+  "paho.mqtt.client": {
+   "ok": true,
+   "version": null,
+   "used_by_run_scope": [
+    "conda-environment/fmi_mlc/mqtt_publisher.py",
+    "gateway/building.py",
+    "gateway/emergency_gateway.py",
+    "gateway/supervisor.py"
+   ],
+   "used_by_extra": [
+    "Simulation examples/Test 3 Winter Heating Openhab/Test7.ipynb",
+    "Simulation examples/Test 4 Summer Cooling Openhab/Test6.ipynb",
+    "Simulation examples/Test 5 Winter Heating PMV/Controller Test 1.ipynb",
+    "Simulation examples/Test 5 Winter Heating PMV/RL simulation Test 1.ipynb"
+   ]
+  },
+  "pandas": {
+   "ok": true,
+   "version": "2.3.2",
+   "used_by_run_scope": [
+    "Workspace/ai/forecasting.ipynb",
+    "Workspace/iot/data_access.ipynb",
+    "Workspace/iot/energy_signature.ipynb",
+    "conda-environment/fmi_mlc/fmi_gym.py"
+   ],
+   "used_by_extra": [
+    "reference/notebooks/ai/forecasting.ipynb",
+    "reference/notebooks/iot/data_access.ipynb",
+    "reference/notebooks/iot/energy_signature.ipynb"
+   ]
+  },
+  "pyfmi": {
+   "ok": true,
+   "version": "2.18.0",
+   "used_by_run_scope": [
+    "conda-environment/fmi_mlc/fmi_gym.py",
+    "gateway/building.py"
+   ],
+   "used_by_extra": []
+  },
+  "pyfmi.load_fmu": {
+   "ok": true,
+   "version": null,
+   "note": "attribute of pyfmi",
+   "used_by_run_scope": [
+    "conda-environment/fmi_mlc/fmi_gym.py",
+    "gateway/building.py"
+   ],
+   "used_by_extra": []
+  },
+  "sklearn.ensemble": {
+   "ok": true,
+   "version": "1.6.1",
+   "used_by_run_scope": [],
+   "used_by_extra": [
+    "reference/notebooks/ai/forecasting.ipynb"
+   ]
+  },
+  "sklearn.ensemble.GradientBoostingRegressor": {
+   "ok": true,
+   "version": null,
+   "note": "attribute of sklearn.ensemble",
+   "used_by_run_scope": [],
+   "used_by_extra": [
+    "reference/notebooks/ai/forecasting.ipynb"
+   ]
+  },
+  "sklearn.linear_model": {
+   "ok": true,
+   "version": "1.6.1",
+   "used_by_run_scope": [],
+   "used_by_extra": [
+    "reference/notebooks/ai/forecasting.ipynb"
+   ]
+  },
+  "sklearn.linear_model.Ridge": {
+   "ok": true,
+   "version": null,
+   "note": "attribute of sklearn.linear_model",
+   "used_by_run_scope": [],
+   "used_by_extra": [
+    "reference/notebooks/ai/forecasting.ipynb"
+   ]
+  },
+  "sklearn.metrics": {
+   "ok": true,
+   "version": "1.6.1",
+   "used_by_run_scope": [],
+   "used_by_extra": [
+    "reference/notebooks/ai/forecasting.ipynb"
+   ]
+  },
+  "sklearn.metrics.mean_absolute_error": {
+   "ok": true,
+   "version": null,
+   "note": "attribute of sklearn.metrics",
+   "used_by_run_scope": [],
+   "used_by_extra": [
+    "reference/notebooks/ai/forecasting.ipynb"
+   ]
+  },
+  "sklearn.metrics.mean_squared_error": {
+   "ok": true,
+   "version": null,
+   "note": "attribute of sklearn.metrics",
+   "used_by_run_scope": [],
+   "used_by_extra": [
+    "reference/notebooks/ai/forecasting.ipynb"
+   ]
+  },
+  "stable_baselines3": {
+   "ok": true,
+   "version": "2.4.1",
+   "used_by_run_scope": [
+    "Workspace/ai/AgentTraining.ipynb"
+   ],
+   "used_by_extra": [
+    "Simulation examples/Test 5 Winter Heating PMV/Controller Test 1.ipynb",
+    "Simulation examples/Test 5 Winter Heating PMV/Training SAC Test 1.ipynb",
+    "Simulation examples/Test 6 Summer Cooling PMV/Controller Test 2.ipynb",
+    "Simulation examples/Test 6 Summer Cooling PMV/SAC Training Test 2.ipynb"
+   ]
+  },
+  "stable_baselines3.DQN": {
+   "ok": true,
+   "version": null,
+   "note": "attribute of stable_baselines3",
+   "used_by_run_scope": [],
+   "used_by_extra": [
+    "Simulation examples/Test 7 Shading Control/Controller.ipynb",
+    "Simulation examples/Test 7 Shading Control/SimulationNotebook.ipynb"
+   ]
+  },
+  "stable_baselines3.PPO": {
+   "ok": true,
+   "version": null,
+   "note": "attribute of stable_baselines3",
+   "used_by_run_scope": [
+    "Workspace/ai/AgentTraining.ipynb"
+   ],
+   "used_by_extra": []
+  },
+  "stable_baselines3.SAC": {
+   "ok": true,
+   "version": null,
+   "note": "attribute of stable_baselines3",
+   "used_by_run_scope": [],
+   "used_by_extra": [
+    "Simulation examples/Test 5 Winter Heating PMV/Controller Test 1.ipynb",
+    "Simulation examples/Test 5 Winter Heating PMV/Training SAC Test 1.ipynb",
+    "Simulation examples/Test 6 Summer Cooling PMV/Controller Test 2.ipynb",
+    "Simulation examples/Test 6 Summer Cooling PMV/SAC Training Test 2.ipynb"
+   ]
+  },
+  "stable_baselines3.common.callbacks": {
+   "ok": true,
+   "version": "2.4.1",
+   "used_by_run_scope": [],
+   "used_by_extra": [
+    "Simulation examples/Test 5 Winter Heating PMV/Training SAC Test 1.ipynb",
+    "Simulation examples/Test 6 Summer Cooling PMV/SAC Training Test 2.ipynb",
+    "Simulation examples/Test 7 Shading Control/SimulationNotebook.ipynb"
+   ]
+  },
+  "stable_baselines3.common.callbacks.BaseCallback": {
+   "ok": true,
+   "version": null,
+   "note": "attribute of stable_baselines3.common.callbacks",
+   "used_by_run_scope": [],
+   "used_by_extra": [
+    "Simulation examples/Test 5 Winter Heating PMV/Training SAC Test 1.ipynb",
+    "Simulation examples/Test 6 Summer Cooling PMV/SAC Training Test 2.ipynb",
+    "Simulation examples/Test 7 Shading Control/SimulationNotebook.ipynb"
+   ]
+  },
+  "stable_baselines3.common.vec_env": {
+   "ok": true,
+   "version": "2.4.1",
+   "used_by_run_scope": [],
+   "used_by_extra": [
+    "Simulation examples/Test 5 Winter Heating PMV/Training SAC Test 1.ipynb",
+    "Simulation examples/Test 6 Summer Cooling PMV/SAC Training Test 2.ipynb",
+    "Simulation examples/Test 7 Shading Control/SimulationNotebook.ipynb"
+   ]
+  },
+  "stable_baselines3.common.vec_env.DummyVecEnv": {
+   "ok": true,
+   "version": null,
+   "note": "attribute of stable_baselines3.common.vec_env",
+   "used_by_run_scope": [],
+   "used_by_extra": [
+    "Simulation examples/Test 5 Winter Heating PMV/Training SAC Test 1.ipynb",
+    "Simulation examples/Test 6 Summer Cooling PMV/SAC Training Test 2.ipynb",
+    "Simulation examples/Test 7 Shading Control/SimulationNotebook.ipynb"
+   ]
+  },
+  "stable_baselines3.common.vec_env.VecNormalize": {
+   "ok": true,
+   "version": null,
+   "note": "attribute of stable_baselines3.common.vec_env",
+   "used_by_run_scope": [],
+   "used_by_extra": [
+    "Simulation examples/Test 5 Winter Heating PMV/Training SAC Test 1.ipynb",
+    "Simulation examples/Test 6 Summer Cooling PMV/SAC Training Test 2.ipynb"
+   ]
+  },
+  "yaml": {
+   "ok": true,
+   "version": "6.0.2",
+   "used_by_run_scope": [
+    "gateway/emergency_gateway.py"
+   ],
+   "used_by_extra": [
+    "reference/controller.py"
+   ]
+  }
+ }
+}

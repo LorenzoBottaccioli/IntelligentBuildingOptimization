@@ -1,0 +1,55 @@
+--- a/docker-compose.yml
++++ b/docker-compose.yml
+@@ -1,7 +1,7 @@
+ version: '3.8'
+ 
+-# Shared by every Jupyter service: they run the same image and differ only in
+-# which notebook directory they mount.
++# Shared by the Jupyter services. The image here is the legacy one (jupyter_surrogate in the BESOS fallback);
++# bms_services and controller set their own image (jupyter:smartbuilding-runtime, image A).
+ x-jupyter: &jupyter
+   image: jupyter:smartbuilding
+   environment:
+@@ -22,6 +22,18 @@
+     image: jupyter:smartbuilding
+ 
+   ### --------------------------
++  ### IMAGE A: runtime (bms_services, controller)
++  ### --------------------------
++  # pyfmi + EnergyPlus 9.6 + stable-baselines3 on CPU torch; no BESOS, Harlow, TensorFlow. Build-only (profile):
++  #   docker compose build runtime_image_builder
++  runtime_image_builder:
++    profiles: ["build"]
++    build:
++      context: ./conda-environment
++      dockerfile: Dockerfile.runtime
++    image: jupyter:smartbuilding-runtime
++
++  ### --------------------------
+   ### IMAGE B: bdopt (surrogate)
+   ### --------------------------
+   # Build-only: the profile keeps it out of `up`, and naming it explicitly enables it:
+@@ -62,6 +74,7 @@
+     restart: unless-stopped
+     <<: *jupyter
+     container_name: bms_services
++    image: jupyter:smartbuilding-runtime
+     entrypoint: ["/opt/conda/envs/conda_environment/bin/python", "/opt/gateway/supervisor.py"]
+     environment:
+       - LD_LIBRARY_PATH=/opt/conda/envs/conda_environment/lib
+@@ -90,6 +103,7 @@
+     restart: unless-stopped
+     <<: *jupyter
+     container_name: controller
++    image: jupyter:smartbuilding-runtime
+     ports:
+       - "8892:8888"
+     environment:
+@@ -109,7 +123,6 @@
+       - ./backend/uploads:/home/jovyan/uploads:ro
+       - energyplus_data:/usr/local/EnergyPlus-9-6-0-4b123cf80f-Linux-Ubuntu20.04-x86_64:ro
+     depends_on:
+-      - jupyter_env_builder
+       - mosquitto
+       - energyplus
+ 

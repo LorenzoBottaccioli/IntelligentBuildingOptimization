@@ -1,0 +1,25 @@
+{
+  "meta": {
+    "fileName": "20261012T120206Z.meta",
+    "size": 6127
+  },
+  "limited": false,
+  "files": [
+    {
+      "database": "controlled_building",
+      "policy": "autogen",
+      "shardID": 286,
+      "fileName": "20261012T120206Z.s286.tar.gz",
+      "size": 19968,
+      "lastModified": 0
+    },
+    {
+      "database": "controlled_building",
+      "policy": "autogen",
+      "shardID": 287,
+      "fileName": "20261012T120206Z.s287.tar.gz",
+      "size": 17408,
+      "lastModified": 0
+    }
+  ]
+}

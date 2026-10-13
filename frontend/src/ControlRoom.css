@@ -1,0 +1,81 @@
+.gw { display: flex; flex-direction: column; gap: var(--space-4); max-width: 960px; padding: var(--space-4) var(--space-5) var(--space-6); }
+.gw-head h1 { margin: 0; font-size: 1.25rem; }
+.gw-head p { margin: 2px 0 0; }
+.gw-card { padding: var(--space-4); border: 1px solid var(--color-border); border-radius: var(--radius); background: var(--color-surface); }
+.gw-card h2 { margin: 0 0 var(--space-3); font-size: 1rem; }
+.gw-controls { display: flex; flex-wrap: wrap; align-items: flex-start; gap: var(--space-3); }
+.gw-mode { display: flex; flex-direction: column; gap: var(--space-1); font-size: 0.9rem; margin-left: var(--space-3); }
+.gw-steps { display: flex; align-items: center; gap: var(--space-2); color: var(--color-muted); }
+.gw-steps input { width: 5rem; padding: 3px var(--space-2); }
+.gw-btn { padding: 6px var(--space-4); border-radius: var(--radius); font-size: 0.9rem; }
+.gw-btn--primary, .gw-btn--primary:hover:not(:disabled) { background: #003366; color: #fff; border: 1px solid #003366; }
+.gw-btn--primary:hover:not(:disabled) { background: #00264d; }
+.gw-btn--secondary, .gw-btn--secondary:hover:not(:disabled) { background: #fff; color: #003366; border: 1px solid #003366; }
+.gw-btn--secondary:hover:not(:disabled) { background: #eef3f8; }
+.gw-btn--link, .gw-btn--link:hover:not(:disabled) { border: none; background: none; padding: 0; color: var(--color-text); font-weight: 600; }
+.gw-status { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4); font-size: 0.9rem; }
+.gw-badge { padding: 2px 10px; border-radius: 999px; font-size: 0.8rem; font-weight: 600; background: #e5e7eb; color: #374151; }
+.gw-badge--starting, .gw-badge--running { background: #dbeafe; color: #1d4ed8; }
+.gw-badge--finished { background: #d1fae5; color: var(--color-success); }
+.gw-badge--fault, .gw-badge--crashed, .gw-badge--config_error { background: #fee2e2; color: var(--color-danger); }
+.gw-bar { height: 6px; margin-top: var(--space-3); background: #e5e7eb; border-radius: 3px; overflow: hidden; }
+.gw-bar__fill { height: 100%; background: #003366; transition: width 0.3s; }
+.gw-alert { margin: var(--space-3) 0 0; padding: var(--space-2) var(--space-3); border-radius: var(--radius); font-size: 0.875rem; }
+.gw-alert--error { background: #fee2e2; color: #991b1b; }
+.gw-alert--warn { background: #fef3c7; color: #92400e; }
+.gw-msg { margin: var(--space-3) 0 0; font-size: 0.875rem; }
+.gw-note { margin: 0; font-size: 0.85rem; color: var(--color-muted); }
+.gw-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+.gw-table th { text-align: left; font-weight: 600; color: var(--color-muted); padding: 4px var(--space-2); border-bottom: 1px solid var(--color-border); }
+.gw-table td { padding: 4px var(--space-2); border-bottom: 1px solid var(--color-surface-alt); }
+.gw-table .gw-num { text-align: right; font-variant-numeric: tabular-nums; }
+.gw-table .gw-id { font-family: var(--font-mono); }
+.gw-table .gw-unit { color: var(--color-muted); }
+.gw-sub td { background: var(--color-surface-alt); font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.03em; color: var(--color-muted); }
+.gw-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; background: #9ca3af; }
+.gw-dot--good { background: #16a34a; }
+.gw-dot--stale { background: #f59e0b; }
+.gw-dot--fault { background: #dc2626; }
+.gw-pill { padding: 1px 8px; border-radius: 999px; font-size: 0.75rem; font-weight: 600; background: #e5e7eb; color: #374151; }
+.gw-pill--operator { background: #fef3c7; color: #92400e; }
+.gw-pill--controller { background: #ccfbf1; color: #0f766e; }
+.gw-log { list-style: none; margin: var(--space-3) 0 0; padding: 0; max-height: 280px; overflow: auto; font-family: var(--font-mono); font-size: 0.75rem; }
+.gw-log li { padding: 1px 0; }
+.gw-log__ts { color: var(--color-muted); }
+.gw-log--error { color: var(--color-danger); }
+.gw-log--warning, .gw-log--warn { color: #92400e; }
+
+.gw-h3 { margin: var(--space-4) 0 0; font-size: 0.9rem; }
+.gw-loop { margin: var(--space-3) 0 0; padding: var(--space-3); background: var(--color-surface-alt); border-radius: var(--radius); font-family: var(--font-mono); font-size: 0.78rem; overflow-x: auto; white-space: pre; }
+.gw-loop__note { color: var(--color-muted); }
+.gw-trace li { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.gw-trace--tick { color: #1d4ed8; font-weight: 600; }
+.gw-trace--ack { color: #0f766e; font-weight: 600; }
+.gw-trace--cmd { color: #0f766e; }
+.gw-trace--active { color: #92400e; }
+.gw-bms__row { padding: var(--space-3) 0; border-top: 1px solid var(--color-surface-alt); font-size: 0.875rem; display: grid; gap: var(--space-1); }
+.gw-bms__head code, .gw-chip { font-family: var(--font-mono); font-size: 0.8rem; }
+.gw-chip { display: inline-block; margin: 0 6px 2px 0; padding: 0 6px; border-radius: 4px; background: var(--color-surface-alt); }
+.gw-good { color: var(--color-success); }
+.gw-bad { color: var(--color-danger); }
+
+.gw-muted {
+  color: var(--color-muted);
+  font-size: 0.85em;
+}
+
+.gw-badge--stopped, .gw-badge--idle { background: #e5e7eb; color: #374151; }
+.gw-badge--connected { background: #d1fae5; color: var(--color-success); }
+.gw-badge--disconnected { background: #fee2e2; color: var(--color-danger); }
+.gw-actions { display: flex; gap: var(--space-2); }
+.gw-actions .gw-btn { padding: 2px var(--space-3); font-size: 0.8rem; }
+.gw-table td.gw-name { font-family: var(--font-mono); }
+.gw-tail { margin: 0; padding: var(--space-2) var(--space-3); background: var(--color-surface-alt); border-radius: var(--radius); font-family: var(--font-mono); font-size: 0.75rem; max-height: 260px; overflow: auto; white-space: pre-wrap; }
+.gw-radios { display: flex; flex-wrap: wrap; gap: var(--space-5); margin-bottom: var(--space-3); font-size: 0.9rem; }
+.gw-radios > div { display: flex; flex-direction: column; gap: var(--space-1); }
+.gw-radios h3 { margin: 0; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.03em; color: var(--color-muted); }
+
+/* the weather years of the annual run */
+.gw-years { list-style: none; margin: 0 0 var(--space-3); padding: 0; display: flex; flex-direction: column; gap: 4px; }
+.gw-years label { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px; cursor: pointer; }
+.gw-years code { overflow-wrap: anywhere; }

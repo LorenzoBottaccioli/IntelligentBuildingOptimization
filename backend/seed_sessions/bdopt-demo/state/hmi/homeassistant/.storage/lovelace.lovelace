@@ -1,0 +1,1253 @@
+{
+  "version": 1,
+  "minor_version": 1,
+  "key": "lovelace.lovelace",
+  "data": {
+    "config": {
+      "title": "Demo building",
+      "views": [
+        {
+          "type": "sections",
+          "title": "Overview",
+          "path": "overview",
+          "icon": "mdi:home-analytics",
+          "max_columns": 2,
+          "badges": [
+            {
+              "type": "entity",
+              "entity": "sensor.simulated_time",
+              "show_name": false
+            },
+            {
+              "type": "entity",
+              "entity": "sensor.run_in_progress",
+              "show_name": false
+            },
+            {
+              "type": "entity",
+              "entity": "sensor.outdoor_temperature",
+              "show_name": false
+            },
+            {
+              "type": "entity",
+              "entity": "sensor.outdoor_humidity",
+              "show_name": false
+            }
+          ],
+          "sections": [
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading": "Controlled run",
+                  "heading_style": "title",
+                  "icon": "mdi:robot-outline",
+                  "badges": [
+                    {
+                      "type": "entity",
+                      "entity": "sensor.heating_power_controlled"
+                    },
+                    {
+                      "type": "entity",
+                      "entity": "sensor.electricity_power_controlled"
+                    }
+                  ]
+                },
+                {
+                  "type": "picture-elements",
+                  "image": "/local/floorplan/plan.svg",
+                  "elements": [
+                    {
+                      "type": "conditional",
+                      "conditions": [
+                        {
+                          "entity": "sensor.west_comfort_controlled",
+                          "state": "cold"
+                        }
+                      ],
+                      "elements": [
+                        {
+                          "type": "image",
+                          "image": "/local/floorplan/west_cold.svg",
+                          "style": {
+                            "left": "50%",
+                            "top": "50%",
+                            "width": "100%",
+                            "pointer-events": "none"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "conditional",
+                      "conditions": [
+                        {
+                          "entity": "sensor.west_comfort_controlled",
+                          "state": "ok"
+                        }
+                      ],
+                      "elements": [
+                        {
+                          "type": "image",
+                          "image": "/local/floorplan/west_ok.svg",
+                          "style": {
+                            "left": "50%",
+                            "top": "50%",
+                            "width": "100%",
+                            "pointer-events": "none"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "conditional",
+                      "conditions": [
+                        {
+                          "entity": "sensor.west_comfort_controlled",
+                          "state": "warm"
+                        }
+                      ],
+                      "elements": [
+                        {
+                          "type": "image",
+                          "image": "/local/floorplan/west_warm.svg",
+                          "style": {
+                            "left": "50%",
+                            "top": "50%",
+                            "width": "100%",
+                            "pointer-events": "none"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "conditional",
+                      "conditions": [
+                        {
+                          "entity": "sensor.south_comfort_controlled",
+                          "state": "cold"
+                        }
+                      ],
+                      "elements": [
+                        {
+                          "type": "image",
+                          "image": "/local/floorplan/south_cold.svg",
+                          "style": {
+                            "left": "50%",
+                            "top": "50%",
+                            "width": "100%",
+                            "pointer-events": "none"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "conditional",
+                      "conditions": [
+                        {
+                          "entity": "sensor.south_comfort_controlled",
+                          "state": "ok"
+                        }
+                      ],
+                      "elements": [
+                        {
+                          "type": "image",
+                          "image": "/local/floorplan/south_ok.svg",
+                          "style": {
+                            "left": "50%",
+                            "top": "50%",
+                            "width": "100%",
+                            "pointer-events": "none"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "conditional",
+                      "conditions": [
+                        {
+                          "entity": "sensor.south_comfort_controlled",
+                          "state": "warm"
+                        }
+                      ],
+                      "elements": [
+                        {
+                          "type": "image",
+                          "image": "/local/floorplan/south_warm.svg",
+                          "style": {
+                            "left": "50%",
+                            "top": "50%",
+                            "width": "100%",
+                            "pointer-events": "none"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "conditional",
+                      "conditions": [
+                        {
+                          "entity": "sensor.east_comfort_controlled",
+                          "state": "cold"
+                        }
+                      ],
+                      "elements": [
+                        {
+                          "type": "image",
+                          "image": "/local/floorplan/east_cold.svg",
+                          "style": {
+                            "left": "50%",
+                            "top": "50%",
+                            "width": "100%",
+                            "pointer-events": "none"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "conditional",
+                      "conditions": [
+                        {
+                          "entity": "sensor.east_comfort_controlled",
+                          "state": "ok"
+                        }
+                      ],
+                      "elements": [
+                        {
+                          "type": "image",
+                          "image": "/local/floorplan/east_ok.svg",
+                          "style": {
+                            "left": "50%",
+                            "top": "50%",
+                            "width": "100%",
+                            "pointer-events": "none"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "conditional",
+                      "conditions": [
+                        {
+                          "entity": "sensor.east_comfort_controlled",
+                          "state": "warm"
+                        }
+                      ],
+                      "elements": [
+                        {
+                          "type": "image",
+                          "image": "/local/floorplan/east_warm.svg",
+                          "style": {
+                            "left": "50%",
+                            "top": "50%",
+                            "width": "100%",
+                            "pointer-events": "none"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "conditional",
+                      "conditions": [
+                        {
+                          "entity": "sensor.north_comfort_controlled",
+                          "state": "cold"
+                        }
+                      ],
+                      "elements": [
+                        {
+                          "type": "image",
+                          "image": "/local/floorplan/north_cold.svg",
+                          "style": {
+                            "left": "50%",
+                            "top": "50%",
+                            "width": "100%",
+                            "pointer-events": "none"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "conditional",
+                      "conditions": [
+                        {
+                          "entity": "sensor.north_comfort_controlled",
+                          "state": "ok"
+                        }
+                      ],
+                      "elements": [
+                        {
+                          "type": "image",
+                          "image": "/local/floorplan/north_ok.svg",
+                          "style": {
+                            "left": "50%",
+                            "top": "50%",
+                            "width": "100%",
+                            "pointer-events": "none"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "conditional",
+                      "conditions": [
+                        {
+                          "entity": "sensor.north_comfort_controlled",
+                          "state": "warm"
+                        }
+                      ],
+                      "elements": [
+                        {
+                          "type": "image",
+                          "image": "/local/floorplan/north_warm.svg",
+                          "style": {
+                            "left": "50%",
+                            "top": "50%",
+                            "width": "100%",
+                            "pointer-events": "none"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "state-label",
+                      "entity": "sensor.west_temperature_controlled",
+                      "prefix": "West  ",
+                      "style": {
+                        "left": "20.24%",
+                        "top": "46.0%",
+                        "color": "#1d2733",
+                        "font-size": "17px",
+                        "font-weight": "700"
+                      }
+                    },
+                    {
+                      "type": "state-label",
+                      "entity": "sensor.west_setpoint",
+                      "prefix": "set ",
+                      "style": {
+                        "left": "20.24%",
+                        "top": "53.0%",
+                        "color": "#3b4a59",
+                        "font-size": "11px"
+                      }
+                    },
+                    {
+                      "type": "state-label",
+                      "entity": "sensor.south_temperature_controlled",
+                      "prefix": "South  ",
+                      "style": {
+                        "left": "50.0%",
+                        "top": "75.8%",
+                        "color": "#1d2733",
+                        "font-size": "17px",
+                        "font-weight": "700"
+                      }
+                    },
+                    {
+                      "type": "state-label",
+                      "entity": "sensor.south_setpoint",
+                      "prefix": "set ",
+                      "style": {
+                        "left": "50.0%",
+                        "top": "82.8%",
+                        "color": "#3b4a59",
+                        "font-size": "11px"
+                      }
+                    },
+                    {
+                      "type": "state-label",
+                      "entity": "sensor.east_temperature_controlled",
+                      "prefix": "East  ",
+                      "style": {
+                        "left": "79.76%",
+                        "top": "46.0%",
+                        "color": "#1d2733",
+                        "font-size": "17px",
+                        "font-weight": "700"
+                      }
+                    },
+                    {
+                      "type": "state-label",
+                      "entity": "sensor.east_setpoint",
+                      "prefix": "set ",
+                      "style": {
+                        "left": "79.76%",
+                        "top": "53.0%",
+                        "color": "#3b4a59",
+                        "font-size": "11px"
+                      }
+                    },
+                    {
+                      "type": "state-label",
+                      "entity": "sensor.north_temperature_controlled",
+                      "prefix": "North  ",
+                      "style": {
+                        "left": "50.0%",
+                        "top": "16.2%",
+                        "color": "#1d2733",
+                        "font-size": "17px",
+                        "font-weight": "700"
+                      }
+                    },
+                    {
+                      "type": "state-label",
+                      "entity": "sensor.north_setpoint",
+                      "prefix": "set ",
+                      "style": {
+                        "left": "50.0%",
+                        "top": "23.2%",
+                        "color": "#3b4a59",
+                        "font-size": "11px"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading": "Baseline run",
+                  "heading_style": "title",
+                  "icon": "mdi:thermostat-box",
+                  "badges": [
+                    {
+                      "type": "entity",
+                      "entity": "sensor.heating_power_baseline"
+                    },
+                    {
+                      "type": "entity",
+                      "entity": "sensor.electricity_power_baseline"
+                    }
+                  ]
+                },
+                {
+                  "type": "picture-elements",
+                  "image": "/local/floorplan/plan.svg",
+                  "elements": [
+                    {
+                      "type": "conditional",
+                      "conditions": [
+                        {
+                          "entity": "sensor.west_comfort_baseline",
+                          "state": "cold"
+                        }
+                      ],
+                      "elements": [
+                        {
+                          "type": "image",
+                          "image": "/local/floorplan/west_cold.svg",
+                          "style": {
+                            "left": "50%",
+                            "top": "50%",
+                            "width": "100%",
+                            "pointer-events": "none"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "conditional",
+                      "conditions": [
+                        {
+                          "entity": "sensor.west_comfort_baseline",
+                          "state": "ok"
+                        }
+                      ],
+                      "elements": [
+                        {
+                          "type": "image",
+                          "image": "/local/floorplan/west_ok.svg",
+                          "style": {
+                            "left": "50%",
+                            "top": "50%",
+                            "width": "100%",
+                            "pointer-events": "none"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "conditional",
+                      "conditions": [
+                        {
+                          "entity": "sensor.west_comfort_baseline",
+                          "state": "warm"
+                        }
+                      ],
+                      "elements": [
+                        {
+                          "type": "image",
+                          "image": "/local/floorplan/west_warm.svg",
+                          "style": {
+                            "left": "50%",
+                            "top": "50%",
+                            "width": "100%",
+                            "pointer-events": "none"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "conditional",
+                      "conditions": [
+                        {
+                          "entity": "sensor.south_comfort_baseline",
+                          "state": "cold"
+                        }
+                      ],
+                      "elements": [
+                        {
+                          "type": "image",
+                          "image": "/local/floorplan/south_cold.svg",
+                          "style": {
+                            "left": "50%",
+                            "top": "50%",
+                            "width": "100%",
+                            "pointer-events": "none"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "conditional",
+                      "conditions": [
+                        {
+                          "entity": "sensor.south_comfort_baseline",
+                          "state": "ok"
+                        }
+                      ],
+                      "elements": [
+                        {
+                          "type": "image",
+                          "image": "/local/floorplan/south_ok.svg",
+                          "style": {
+                            "left": "50%",
+                            "top": "50%",
+                            "width": "100%",
+                            "pointer-events": "none"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "conditional",
+                      "conditions": [
+                        {
+                          "entity": "sensor.south_comfort_baseline",
+                          "state": "warm"
+                        }
+                      ],
+                      "elements": [
+                        {
+                          "type": "image",
+                          "image": "/local/floorplan/south_warm.svg",
+                          "style": {
+                            "left": "50%",
+                            "top": "50%",
+                            "width": "100%",
+                            "pointer-events": "none"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "conditional",
+                      "conditions": [
+                        {
+                          "entity": "sensor.east_comfort_baseline",
+                          "state": "cold"
+                        }
+                      ],
+                      "elements": [
+                        {
+                          "type": "image",
+                          "image": "/local/floorplan/east_cold.svg",
+                          "style": {
+                            "left": "50%",
+                            "top": "50%",
+                            "width": "100%",
+                            "pointer-events": "none"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "conditional",
+                      "conditions": [
+                        {
+                          "entity": "sensor.east_comfort_baseline",
+                          "state": "ok"
+                        }
+                      ],
+                      "elements": [
+                        {
+                          "type": "image",
+                          "image": "/local/floorplan/east_ok.svg",
+                          "style": {
+                            "left": "50%",
+                            "top": "50%",
+                            "width": "100%",
+                            "pointer-events": "none"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "conditional",
+                      "conditions": [
+                        {
+                          "entity": "sensor.east_comfort_baseline",
+                          "state": "warm"
+                        }
+                      ],
+                      "elements": [
+                        {
+                          "type": "image",
+                          "image": "/local/floorplan/east_warm.svg",
+                          "style": {
+                            "left": "50%",
+                            "top": "50%",
+                            "width": "100%",
+                            "pointer-events": "none"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "conditional",
+                      "conditions": [
+                        {
+                          "entity": "sensor.north_comfort_baseline",
+                          "state": "cold"
+                        }
+                      ],
+                      "elements": [
+                        {
+                          "type": "image",
+                          "image": "/local/floorplan/north_cold.svg",
+                          "style": {
+                            "left": "50%",
+                            "top": "50%",
+                            "width": "100%",
+                            "pointer-events": "none"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "conditional",
+                      "conditions": [
+                        {
+                          "entity": "sensor.north_comfort_baseline",
+                          "state": "ok"
+                        }
+                      ],
+                      "elements": [
+                        {
+                          "type": "image",
+                          "image": "/local/floorplan/north_ok.svg",
+                          "style": {
+                            "left": "50%",
+                            "top": "50%",
+                            "width": "100%",
+                            "pointer-events": "none"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "conditional",
+                      "conditions": [
+                        {
+                          "entity": "sensor.north_comfort_baseline",
+                          "state": "warm"
+                        }
+                      ],
+                      "elements": [
+                        {
+                          "type": "image",
+                          "image": "/local/floorplan/north_warm.svg",
+                          "style": {
+                            "left": "50%",
+                            "top": "50%",
+                            "width": "100%",
+                            "pointer-events": "none"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "state-label",
+                      "entity": "sensor.west_temperature_baseline",
+                      "prefix": "West  ",
+                      "style": {
+                        "left": "20.24%",
+                        "top": "46.0%",
+                        "color": "#1d2733",
+                        "font-size": "17px",
+                        "font-weight": "700"
+                      }
+                    },
+                    {
+                      "type": "state-label",
+                      "entity": "sensor.south_temperature_baseline",
+                      "prefix": "South  ",
+                      "style": {
+                        "left": "50.0%",
+                        "top": "75.8%",
+                        "color": "#1d2733",
+                        "font-size": "17px",
+                        "font-weight": "700"
+                      }
+                    },
+                    {
+                      "type": "state-label",
+                      "entity": "sensor.east_temperature_baseline",
+                      "prefix": "East  ",
+                      "style": {
+                        "left": "79.76%",
+                        "top": "46.0%",
+                        "color": "#1d2733",
+                        "font-size": "17px",
+                        "font-weight": "700"
+                      }
+                    },
+                    {
+                      "type": "state-label",
+                      "entity": "sensor.north_temperature_baseline",
+                      "prefix": "North  ",
+                      "style": {
+                        "left": "50.0%",
+                        "top": "16.2%",
+                        "color": "#1d2733",
+                        "font-size": "17px",
+                        "font-weight": "700"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading": "Now",
+                  "heading_style": "title",
+                  "icon": "mdi:clock-outline"
+                },
+                {
+                  "type": "tile",
+                  "entity": "sensor.simulated_time",
+                  "name": "Simulated time"
+                },
+                {
+                  "type": "tile",
+                  "entity": "sensor.run_in_progress",
+                  "name": "Run in progress"
+                },
+                {
+                  "type": "heading",
+                  "heading": "Outdoor",
+                  "heading_style": "title",
+                  "icon": "mdi:weather-partly-cloudy"
+                },
+                {
+                  "type": "tile",
+                  "entity": "sensor.outdoor_temperature",
+                  "vertical": false
+                },
+                {
+                  "type": "tile",
+                  "entity": "sensor.outdoor_humidity",
+                  "vertical": false
+                },
+                {
+                  "type": "tile",
+                  "entity": "sensor.wind_speed",
+                  "vertical": false
+                },
+                {
+                  "type": "tile",
+                  "entity": "sensor.direct_solar",
+                  "vertical": false
+                },
+                {
+                  "type": "heading",
+                  "heading": "Result",
+                  "heading_style": "title",
+                  "icon": "mdi:leaf"
+                },
+                {
+                  "type": "markdown",
+                  "content": "{% set c = states('sensor.heating_energy_controlled') | float(0) %}{% set b = states('sensor.heating_energy_baseline') | float(0) %}## {{ ((1 - c / b) * 100) | round(1) if b > 0 else '-' }} %\nheating energy saved by the controller, last run of each ({{ c | round(0) }} against {{ b | round(0) }} kWh)",
+                  "grid_options": {
+                    "columns": "full",
+                    "rows": 3
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "sections",
+          "title": "Rooms",
+          "path": "rooms",
+          "icon": "mdi:floor-plan",
+          "max_columns": 4,
+          "sections": [
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading": "West zone",
+                  "heading_style": "title",
+                  "icon": "mdi:home-thermometer-outline",
+                  "badges": [
+                    {
+                      "type": "entity",
+                      "entity": "sensor.west_comfort_controlled"
+                    }
+                  ]
+                },
+                {
+                  "type": "tile",
+                  "entity": "climate.west_thermostat",
+                  "name": "Thermostat",
+                  "features": [
+                    {
+                      "type": "target-temperature"
+                    }
+                  ],
+                  "grid_options": {
+                    "columns": "full"
+                  }
+                },
+                {
+                  "type": "sensor",
+                  "entity": "sensor.west_temperature_controlled",
+                  "name": "Controlled",
+                  "graph": "line",
+                  "detail": 2,
+                  "hours_to_show": 6,
+                  "grid_options": {
+                    "columns": "full"
+                  }
+                },
+                {
+                  "type": "sensor",
+                  "entity": "sensor.west_temperature_baseline",
+                  "name": "Baseline",
+                  "graph": "line",
+                  "detail": 2,
+                  "hours_to_show": 6,
+                  "grid_options": {
+                    "columns": "full"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading": "South zone",
+                  "heading_style": "title",
+                  "icon": "mdi:home-thermometer-outline",
+                  "badges": [
+                    {
+                      "type": "entity",
+                      "entity": "sensor.south_comfort_controlled"
+                    }
+                  ]
+                },
+                {
+                  "type": "tile",
+                  "entity": "climate.south_thermostat",
+                  "name": "Thermostat",
+                  "features": [
+                    {
+                      "type": "target-temperature"
+                    }
+                  ],
+                  "grid_options": {
+                    "columns": "full"
+                  }
+                },
+                {
+                  "type": "sensor",
+                  "entity": "sensor.south_temperature_controlled",
+                  "name": "Controlled",
+                  "graph": "line",
+                  "detail": 2,
+                  "hours_to_show": 6,
+                  "grid_options": {
+                    "columns": "full"
+                  }
+                },
+                {
+                  "type": "sensor",
+                  "entity": "sensor.south_temperature_baseline",
+                  "name": "Baseline",
+                  "graph": "line",
+                  "detail": 2,
+                  "hours_to_show": 6,
+                  "grid_options": {
+                    "columns": "full"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading": "East zone",
+                  "heading_style": "title",
+                  "icon": "mdi:home-thermometer-outline",
+                  "badges": [
+                    {
+                      "type": "entity",
+                      "entity": "sensor.east_comfort_controlled"
+                    }
+                  ]
+                },
+                {
+                  "type": "tile",
+                  "entity": "climate.east_thermostat",
+                  "name": "Thermostat",
+                  "features": [
+                    {
+                      "type": "target-temperature"
+                    }
+                  ],
+                  "grid_options": {
+                    "columns": "full"
+                  }
+                },
+                {
+                  "type": "sensor",
+                  "entity": "sensor.east_temperature_controlled",
+                  "name": "Controlled",
+                  "graph": "line",
+                  "detail": 2,
+                  "hours_to_show": 6,
+                  "grid_options": {
+                    "columns": "full"
+                  }
+                },
+                {
+                  "type": "sensor",
+                  "entity": "sensor.east_temperature_baseline",
+                  "name": "Baseline",
+                  "graph": "line",
+                  "detail": 2,
+                  "hours_to_show": 6,
+                  "grid_options": {
+                    "columns": "full"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading": "North zone",
+                  "heading_style": "title",
+                  "icon": "mdi:home-thermometer-outline",
+                  "badges": [
+                    {
+                      "type": "entity",
+                      "entity": "sensor.north_comfort_controlled"
+                    }
+                  ]
+                },
+                {
+                  "type": "tile",
+                  "entity": "climate.north_thermostat",
+                  "name": "Thermostat",
+                  "features": [
+                    {
+                      "type": "target-temperature"
+                    }
+                  ],
+                  "grid_options": {
+                    "columns": "full"
+                  }
+                },
+                {
+                  "type": "sensor",
+                  "entity": "sensor.north_temperature_controlled",
+                  "name": "Controlled",
+                  "graph": "line",
+                  "detail": 2,
+                  "hours_to_show": 6,
+                  "grid_options": {
+                    "columns": "full"
+                  }
+                },
+                {
+                  "type": "sensor",
+                  "entity": "sensor.north_temperature_baseline",
+                  "name": "Baseline",
+                  "graph": "line",
+                  "detail": 2,
+                  "hours_to_show": 6,
+                  "grid_options": {
+                    "columns": "full"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "sections",
+          "title": "Energy",
+          "path": "energy",
+          "icon": "mdi:lightning-bolt",
+          "max_columns": 3,
+          "sections": [
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading": "Heating power",
+                  "heading_style": "title",
+                  "icon": "mdi:radiator"
+                },
+                {
+                  "type": "gauge",
+                  "entity": "sensor.heating_power_controlled",
+                  "name": "Controlled",
+                  "min": 0,
+                  "max": 200,
+                  "needle": true,
+                  "segments": [
+                    {
+                      "from": 0,
+                      "color": "#5fb878"
+                    },
+                    {
+                      "from": 100.0,
+                      "color": "#f0a04b"
+                    },
+                    {
+                      "from": 160.0,
+                      "color": "#e05d5d"
+                    }
+                  ]
+                },
+                {
+                  "type": "gauge",
+                  "entity": "sensor.heating_power_baseline",
+                  "name": "Baseline",
+                  "min": 0,
+                  "max": 200,
+                  "needle": true,
+                  "segments": [
+                    {
+                      "from": 0,
+                      "color": "#5fb878"
+                    },
+                    {
+                      "from": 100.0,
+                      "color": "#f0a04b"
+                    },
+                    {
+                      "from": 160.0,
+                      "color": "#e05d5d"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading": "Electricity power",
+                  "heading_style": "title",
+                  "icon": "mdi:flash"
+                },
+                {
+                  "type": "gauge",
+                  "entity": "sensor.electricity_power_controlled",
+                  "name": "Controlled",
+                  "min": 0,
+                  "max": 50,
+                  "needle": true,
+                  "segments": [
+                    {
+                      "from": 0,
+                      "color": "#5fb878"
+                    },
+                    {
+                      "from": 25.0,
+                      "color": "#f0a04b"
+                    },
+                    {
+                      "from": 40.0,
+                      "color": "#e05d5d"
+                    }
+                  ]
+                },
+                {
+                  "type": "gauge",
+                  "entity": "sensor.electricity_power_baseline",
+                  "name": "Baseline",
+                  "min": 0,
+                  "max": 50,
+                  "needle": true,
+                  "segments": [
+                    {
+                      "from": 0,
+                      "color": "#5fb878"
+                    },
+                    {
+                      "from": 25.0,
+                      "color": "#f0a04b"
+                    },
+                    {
+                      "from": 40.0,
+                      "color": "#e05d5d"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading": "Energy of the run",
+                  "heading_style": "title",
+                  "icon": "mdi:sigma"
+                },
+                {
+                  "type": "markdown",
+                  "content": "{% set c = states('sensor.heating_energy_controlled') | float(0) %}{% set b = states('sensor.heating_energy_baseline') | float(0) %}## {{ ((1 - c / b) * 100) | round(1) if b > 0 else '-' }} %\nheating energy saved by the controller, last run of each ({{ c | round(0) }} against {{ b | round(0) }} kWh)",
+                  "grid_options": {
+                    "columns": "full",
+                    "rows": 3
+                  }
+                },
+                {
+                  "type": "tile",
+                  "entity": "sensor.heating_energy_controlled",
+                  "name": "Heating, controlled"
+                },
+                {
+                  "type": "tile",
+                  "entity": "sensor.heating_energy_baseline",
+                  "name": "Heating, baseline"
+                },
+                {
+                  "type": "tile",
+                  "entity": "sensor.electricity_energy_controlled",
+                  "name": "Electricity, controlled"
+                },
+                {
+                  "type": "tile",
+                  "entity": "sensor.electricity_energy_baseline",
+                  "name": "Electricity, baseline"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "History",
+          "path": "history",
+          "icon": "mdi:chart-line",
+          "cards": [
+            {
+              "type": "markdown",
+              "content": "Last 6 hours of **real** time: the history is stamped when a value arrives, not with the simulated date. Run the building in *scaled* mode to get curves."
+            },
+            {
+              "type": "history-graph",
+              "title": "Zone temperatures, controlled run",
+              "hours_to_show": 6,
+              "show_names": true,
+              "entities": [
+                "sensor.west_temperature_controlled",
+                "sensor.south_temperature_controlled",
+                "sensor.east_temperature_controlled",
+                "sensor.north_temperature_controlled",
+                "sensor.outdoor_temperature"
+              ]
+            },
+            {
+              "type": "history-graph",
+              "title": "Heating setpoints applied",
+              "hours_to_show": 6,
+              "show_names": true,
+              "entities": [
+                "sensor.west_setpoint",
+                "sensor.south_setpoint",
+                "sensor.east_setpoint",
+                "sensor.north_setpoint"
+              ]
+            },
+            {
+              "type": "history-graph",
+              "title": "Controlled against baseline, west",
+              "hours_to_show": 6,
+              "show_names": true,
+              "entities": [
+                "sensor.west_temperature_controlled",
+                "sensor.west_temperature_baseline",
+                "sensor.outdoor_temperature"
+              ]
+            },
+            {
+              "type": "history-graph",
+              "title": "Heating power",
+              "hours_to_show": 6,
+              "show_names": true,
+              "entities": [
+                "sensor.heating_power_controlled",
+                "sensor.heating_power_baseline"
+              ]
+            },
+            {
+              "type": "history-graph",
+              "title": "Electricity power",
+              "hours_to_show": 6,
+              "show_names": true,
+              "entities": [
+                "sensor.electricity_power_controlled",
+                "sensor.electricity_power_baseline"
+              ]
+            },
+            {
+              "type": "button",
+              "name": "Open the History panel with the zone temperatures",
+              "icon": "mdi:chart-line",
+              "tap_action": {
+                "action": "navigate",
+                "navigation_path": "/history?entity_id=sensor.west_temperature_controlled,sensor.south_temperature_controlled,sensor.east_temperature_controlled,sensor.north_temperature_controlled,sensor.outdoor_temperature"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

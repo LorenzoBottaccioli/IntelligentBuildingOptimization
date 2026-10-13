@@ -1,0 +1,642 @@
+{
+  "overview": {
+    "class": "org.openhab.core.ui.components.RootUIComponent",
+    "value": {
+      "uid": "overview",
+      "tags": [],
+      "props": {
+        "parameters": [],
+        "parameterGroups": []
+      },
+      "timestamp": "Oct 11, 2026, 1:30:00 PM",
+      "component": "oh-layout-page",
+      "config": {
+        "label": "Overview",
+        "layoutType": "responsive"
+      },
+      "slots": {
+        "default": [],
+        "masonry": [
+          {
+            "component": "oh-masonry",
+            "config": {},
+            "slots": {
+              "default": [
+                {
+                  "component": "oh-label-card",
+                  "config": {
+                    "title": "Simulated time",
+                    "label": "=items.Sim_Clock.state.replace(\"T\", \"  \")",
+                    "background": "#eef2f6",
+                    "icon": "f7:clock",
+                    "iconSize": 34,
+                    "fontSize": "22px",
+                    "fontWeight": "700",
+                    "vertical": true,
+                    "action": "none"
+                  }
+                },
+                {
+                  "component": "oh-label-card",
+                  "config": {
+                    "title": "Run in progress",
+                    "label": "=items.Run_Now.state",
+                    "background": "#eef2f6",
+                    "icon": "f7:play_circle",
+                    "iconSize": 34,
+                    "fontSize": "24px",
+                    "fontWeight": "700",
+                    "vertical": true,
+                    "action": "none"
+                  }
+                },
+                {
+                  "component": "oh-label-card",
+                  "config": {
+                    "title": "=\" West zone - set \" + items.Setpoint_West.displayState",
+                    "label": "=items.Temp_West_Controlled.displayState",
+                    "background": "=(items.Temp_West_Controlled.numericState < 18 ? '#4f8fd6' : (items.Temp_West_Controlled.numericState > 24 ? '#f0a04b' : '#5fb878'))",
+                    "icon": "f7:thermometer",
+                    "iconSize": 34,
+                    "fontSize": "34px",
+                    "fontWeight": "700",
+                    "vertical": true,
+                    "action": "none"
+                  }
+                },
+                {
+                  "component": "oh-label-card",
+                  "config": {
+                    "title": "=\" South zone - set \" + items.Setpoint_South.displayState",
+                    "label": "=items.Temp_South_Controlled.displayState",
+                    "background": "=(items.Temp_South_Controlled.numericState < 18 ? '#4f8fd6' : (items.Temp_South_Controlled.numericState > 24 ? '#f0a04b' : '#5fb878'))",
+                    "icon": "f7:thermometer",
+                    "iconSize": 34,
+                    "fontSize": "34px",
+                    "fontWeight": "700",
+                    "vertical": true,
+                    "action": "none"
+                  }
+                },
+                {
+                  "component": "oh-label-card",
+                  "config": {
+                    "title": "=\" East zone - set \" + items.Setpoint_East.displayState",
+                    "label": "=items.Temp_East_Controlled.displayState",
+                    "background": "=(items.Temp_East_Controlled.numericState < 18 ? '#4f8fd6' : (items.Temp_East_Controlled.numericState > 24 ? '#f0a04b' : '#5fb878'))",
+                    "icon": "f7:thermometer",
+                    "iconSize": 34,
+                    "fontSize": "34px",
+                    "fontWeight": "700",
+                    "vertical": true,
+                    "action": "none"
+                  }
+                },
+                {
+                  "component": "oh-label-card",
+                  "config": {
+                    "title": "=\" North zone - set \" + items.Setpoint_North.displayState",
+                    "label": "=items.Temp_North_Controlled.displayState",
+                    "background": "=(items.Temp_North_Controlled.numericState < 18 ? '#4f8fd6' : (items.Temp_North_Controlled.numericState > 24 ? '#f0a04b' : '#5fb878'))",
+                    "icon": "f7:thermometer",
+                    "iconSize": 34,
+                    "fontSize": "34px",
+                    "fontWeight": "700",
+                    "vertical": true,
+                    "action": "none"
+                  }
+                },
+                {
+                  "component": "oh-label-card",
+                  "config": {
+                    "title": "Outdoor",
+                    "label": "=items.Outdoor_Temperature.displayState",
+                    "background": "#dfeaf6",
+                    "icon": "f7:cloud_sun",
+                    "iconSize": 34,
+                    "fontSize": "30px",
+                    "fontWeight": "700",
+                    "vertical": true,
+                    "action": "none"
+                  }
+                },
+                {
+                  "component": "oh-label-card",
+                  "config": {
+                    "title": "Humidity and wind",
+                    "label": "=items.Outdoor_Humidity.displayState + \"   \" + items.Wind_Speed.displayState",
+                    "background": "#dfeaf6",
+                    "icon": "f7:wind",
+                    "iconSize": 34,
+                    "fontSize": "22px",
+                    "fontWeight": "700",
+                    "vertical": true,
+                    "action": "none"
+                  }
+                },
+                {
+                  "component": "oh-label-card",
+                  "config": {
+                    "title": "Direct solar radiation",
+                    "label": "=items.Solar_Direct.displayState",
+                    "background": "#fbf1d9",
+                    "icon": "f7:sun_max",
+                    "iconSize": 34,
+                    "fontSize": "26px",
+                    "fontWeight": "700",
+                    "vertical": true,
+                    "action": "none"
+                  }
+                },
+                {
+                  "component": "oh-label-card",
+                  "config": {
+                    "title": "Heating energy, controlled",
+                    "label": "=items.Heating_kWh_Controlled.displayState",
+                    "background": "#eef2f6",
+                    "icon": "f7:flame",
+                    "iconSize": 34,
+                    "fontSize": "24px",
+                    "fontWeight": "700",
+                    "vertical": true,
+                    "action": "none"
+                  }
+                },
+                {
+                  "component": "oh-label-card",
+                  "config": {
+                    "title": "Heating energy, baseline",
+                    "label": "=items.Heating_kWh_Baseline.displayState",
+                    "background": "#eef2f6",
+                    "icon": "f7:flame",
+                    "iconSize": 34,
+                    "fontSize": "24px",
+                    "fontWeight": "700",
+                    "vertical": true,
+                    "action": "none"
+                  }
+                },
+                {
+                  "component": "oh-label-card",
+                  "config": {
+                    "title": "Heating energy saved by the controller",
+                    "label": "=(items.Heating_kWh_Baseline.numericState > 0 ? Math.round(1000 * (1 - items.Heating_kWh_Controlled.numericState / items.Heating_kWh_Baseline.numericState)) / 10 + \" %\" : \"-\")",
+                    "background": "=(items.Heating_kWh_Baseline.numericState > 0 && (1 - items.Heating_kWh_Controlled.numericState / items.Heating_kWh_Baseline.numericState) > 0 ? \"#cfe9d4\" : \"#f6dcd0\")",
+                    "icon": "f7:leaf",
+                    "iconSize": 34,
+                    "fontSize": "30px",
+                    "fontWeight": "700",
+                    "vertical": true,
+                    "action": "none"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "floorplan": {
+    "class": "org.openhab.core.ui.components.RootUIComponent",
+    "value": {
+      "uid": "floorplan",
+      "tags": [],
+      "props": {
+        "parameters": [],
+        "parameterGroups": []
+      },
+      "timestamp": "Oct 11, 2026, 1:30:00 PM",
+      "component": "oh-plan-page",
+      "config": {
+        "label": "Floor plan",
+        "imageUrl": "/static/floorplan/plan.svg",
+        "imageWidth": 900,
+        "imageHeight": 900,
+        "noZoomOrDrag": true,
+        "sidebar": true,
+        "order": "100",
+        "icon": "f7:map"
+      },
+      "slots": {
+        "default": [
+          {
+            "component": "oh-plan-marker",
+            "config": {
+              "coords": "490.5,182.2",
+              "useTooltipAsLabel": true,
+              "tooltipPermanent": true,
+              "tooltip": "=\"West  \" + items.Temp_West_Controlled.displayState",
+              "tooltipStyle": {
+                "display": "inline-block",
+                "position": "relative",
+                "left": "20px",
+                "transform": "translateX(-50%)",
+                "background-color": "=(items.Temp_West_Controlled.numericState < 18 ? '#4f8fd6' : (items.Temp_West_Controlled.numericState > 24 ? '#f0a04b' : '#5fb878'))",
+                "color": "#1d2733",
+                "padding": "3px 10px",
+                "border-radius": "10px",
+                "font-weight": "700",
+                "font-size": "16px"
+              }
+            }
+          },
+          {
+            "component": "oh-plan-marker",
+            "config": {
+              "coords": "436.5,182.2",
+              "useTooltipAsLabel": true,
+              "tooltipPermanent": true,
+              "tooltip": "=\"set \" + items.Setpoint_West.displayState",
+              "tooltipStyle": {
+                "display": "inline-block",
+                "position": "relative",
+                "left": "20px",
+                "transform": "translateX(-50%)",
+                "color": "#3b4a59",
+                "font-size": "12px"
+              }
+            }
+          },
+          {
+            "component": "oh-plan-marker",
+            "config": {
+              "coords": "396.0,182.2",
+              "useTooltipAsLabel": true,
+              "tooltipPermanent": true,
+              "tooltip": "=\"baseline \" + items.Temp_West_Baseline.displayState",
+              "tooltipStyle": {
+                "display": "inline-block",
+                "position": "relative",
+                "left": "20px",
+                "transform": "translateX(-50%)",
+                "color": "#7a8793",
+                "font-size": "12px"
+              }
+            }
+          },
+          {
+            "component": "oh-plan-marker",
+            "config": {
+              "coords": "222.7,450.0",
+              "useTooltipAsLabel": true,
+              "tooltipPermanent": true,
+              "tooltip": "=\"South  \" + items.Temp_South_Controlled.displayState",
+              "tooltipStyle": {
+                "display": "inline-block",
+                "position": "relative",
+                "left": "20px",
+                "transform": "translateX(-50%)",
+                "background-color": "=(items.Temp_South_Controlled.numericState < 18 ? '#4f8fd6' : (items.Temp_South_Controlled.numericState > 24 ? '#f0a04b' : '#5fb878'))",
+                "color": "#1d2733",
+                "padding": "3px 10px",
+                "border-radius": "10px",
+                "font-weight": "700",
+                "font-size": "16px"
+              }
+            }
+          },
+          {
+            "component": "oh-plan-marker",
+            "config": {
+              "coords": "168.7,450.0",
+              "useTooltipAsLabel": true,
+              "tooltipPermanent": true,
+              "tooltip": "=\"set \" + items.Setpoint_South.displayState",
+              "tooltipStyle": {
+                "display": "inline-block",
+                "position": "relative",
+                "left": "20px",
+                "transform": "translateX(-50%)",
+                "color": "#3b4a59",
+                "font-size": "12px"
+              }
+            }
+          },
+          {
+            "component": "oh-plan-marker",
+            "config": {
+              "coords": "128.2,450.0",
+              "useTooltipAsLabel": true,
+              "tooltipPermanent": true,
+              "tooltip": "=\"baseline \" + items.Temp_South_Baseline.displayState",
+              "tooltipStyle": {
+                "display": "inline-block",
+                "position": "relative",
+                "left": "20px",
+                "transform": "translateX(-50%)",
+                "color": "#7a8793",
+                "font-size": "12px"
+              }
+            }
+          },
+          {
+            "component": "oh-plan-marker",
+            "config": {
+              "coords": "490.5,717.8",
+              "useTooltipAsLabel": true,
+              "tooltipPermanent": true,
+              "tooltip": "=\"East  \" + items.Temp_East_Controlled.displayState",
+              "tooltipStyle": {
+                "display": "inline-block",
+                "position": "relative",
+                "left": "20px",
+                "transform": "translateX(-50%)",
+                "background-color": "=(items.Temp_East_Controlled.numericState < 18 ? '#4f8fd6' : (items.Temp_East_Controlled.numericState > 24 ? '#f0a04b' : '#5fb878'))",
+                "color": "#1d2733",
+                "padding": "3px 10px",
+                "border-radius": "10px",
+                "font-weight": "700",
+                "font-size": "16px"
+              }
+            }
+          },
+          {
+            "component": "oh-plan-marker",
+            "config": {
+              "coords": "436.5,717.8",
+              "useTooltipAsLabel": true,
+              "tooltipPermanent": true,
+              "tooltip": "=\"set \" + items.Setpoint_East.displayState",
+              "tooltipStyle": {
+                "display": "inline-block",
+                "position": "relative",
+                "left": "20px",
+                "transform": "translateX(-50%)",
+                "color": "#3b4a59",
+                "font-size": "12px"
+              }
+            }
+          },
+          {
+            "component": "oh-plan-marker",
+            "config": {
+              "coords": "396.0,717.8",
+              "useTooltipAsLabel": true,
+              "tooltipPermanent": true,
+              "tooltip": "=\"baseline \" + items.Temp_East_Baseline.displayState",
+              "tooltipStyle": {
+                "display": "inline-block",
+                "position": "relative",
+                "left": "20px",
+                "transform": "translateX(-50%)",
+                "color": "#7a8793",
+                "font-size": "12px"
+              }
+            }
+          },
+          {
+            "component": "oh-plan-marker",
+            "config": {
+              "coords": "758.3,450.0",
+              "useTooltipAsLabel": true,
+              "tooltipPermanent": true,
+              "tooltip": "=\"North  \" + items.Temp_North_Controlled.displayState",
+              "tooltipStyle": {
+                "display": "inline-block",
+                "position": "relative",
+                "left": "20px",
+                "transform": "translateX(-50%)",
+                "background-color": "=(items.Temp_North_Controlled.numericState < 18 ? '#4f8fd6' : (items.Temp_North_Controlled.numericState > 24 ? '#f0a04b' : '#5fb878'))",
+                "color": "#1d2733",
+                "padding": "3px 10px",
+                "border-radius": "10px",
+                "font-weight": "700",
+                "font-size": "16px"
+              }
+            }
+          },
+          {
+            "component": "oh-plan-marker",
+            "config": {
+              "coords": "704.3,450.0",
+              "useTooltipAsLabel": true,
+              "tooltipPermanent": true,
+              "tooltip": "=\"set \" + items.Setpoint_North.displayState",
+              "tooltipStyle": {
+                "display": "inline-block",
+                "position": "relative",
+                "left": "20px",
+                "transform": "translateX(-50%)",
+                "color": "#3b4a59",
+                "font-size": "12px"
+              }
+            }
+          },
+          {
+            "component": "oh-plan-marker",
+            "config": {
+              "coords": "663.8,450.0",
+              "useTooltipAsLabel": true,
+              "tooltipPermanent": true,
+              "tooltip": "=\"baseline \" + items.Temp_North_Baseline.displayState",
+              "tooltipStyle": {
+                "display": "inline-block",
+                "position": "relative",
+                "left": "20px",
+                "transform": "translateX(-50%)",
+                "color": "#7a8793",
+                "font-size": "12px"
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "controls": {
+    "class": "org.openhab.core.ui.components.RootUIComponent",
+    "value": {
+      "uid": "controls",
+      "tags": [],
+      "props": {
+        "parameters": [],
+        "parameterGroups": []
+      },
+      "timestamp": "Oct 11, 2026, 1:30:00 PM",
+      "component": "oh-layout-page",
+      "config": {
+        "label": "Controls and energy",
+        "layoutType": "responsive",
+        "sidebar": true,
+        "order": "110",
+        "icon": "f7:slider_horizontal_3"
+      },
+      "slots": {
+        "default": [],
+        "masonry": [
+          {
+            "component": "oh-masonry",
+            "config": {},
+            "slots": {
+              "default": [
+                {
+                  "component": "oh-label-card",
+                  "config": {
+                    "title": "Simulated time",
+                    "item": "Sim_Clock",
+                    "icon": "f7:clock",
+                    "action": "none"
+                  }
+                },
+                {
+                  "component": "oh-label-card",
+                  "config": {
+                    "title": "Run in progress",
+                    "item": "Run_Now",
+                    "icon": "f7:play_circle",
+                    "action": "none"
+                  }
+                },
+                {
+                  "component": "oh-gauge-card",
+                  "config": {
+                    "title": "West zone, controlled",
+                    "item": "Temp_West_Controlled",
+                    "type": "semicircle",
+                    "min": 8,
+                    "max": 26,
+                    "unit": "°C",
+                    "valueFontSize": 26
+                  }
+                },
+                {
+                  "component": "oh-slider-card",
+                  "config": {
+                    "title": "West heating setpoint (the controller overwrites it every step)",
+                    "item": "Setpoint_West",
+                    "min": 10,
+                    "max": 30,
+                    "step": 1,
+                    "unit": "°C",
+                    "scale": true,
+                    "scaleSteps": 4
+                  }
+                },
+                {
+                  "component": "oh-gauge-card",
+                  "config": {
+                    "title": "South zone, controlled",
+                    "item": "Temp_South_Controlled",
+                    "type": "semicircle",
+                    "min": 8,
+                    "max": 26,
+                    "unit": "°C",
+                    "valueFontSize": 26
+                  }
+                },
+                {
+                  "component": "oh-slider-card",
+                  "config": {
+                    "title": "South heating setpoint (the controller overwrites it every step)",
+                    "item": "Setpoint_South",
+                    "min": 10,
+                    "max": 30,
+                    "step": 1,
+                    "unit": "°C",
+                    "scale": true,
+                    "scaleSteps": 4
+                  }
+                },
+                {
+                  "component": "oh-gauge-card",
+                  "config": {
+                    "title": "East zone, controlled",
+                    "item": "Temp_East_Controlled",
+                    "type": "semicircle",
+                    "min": 8,
+                    "max": 26,
+                    "unit": "°C",
+                    "valueFontSize": 26
+                  }
+                },
+                {
+                  "component": "oh-slider-card",
+                  "config": {
+                    "title": "East heating setpoint (the controller overwrites it every step)",
+                    "item": "Setpoint_East",
+                    "min": 10,
+                    "max": 30,
+                    "step": 1,
+                    "unit": "°C",
+                    "scale": true,
+                    "scaleSteps": 4
+                  }
+                },
+                {
+                  "component": "oh-gauge-card",
+                  "config": {
+                    "title": "North zone, controlled",
+                    "item": "Temp_North_Controlled",
+                    "type": "semicircle",
+                    "min": 8,
+                    "max": 26,
+                    "unit": "°C",
+                    "valueFontSize": 26
+                  }
+                },
+                {
+                  "component": "oh-slider-card",
+                  "config": {
+                    "title": "North heating setpoint (the controller overwrites it every step)",
+                    "item": "Setpoint_North",
+                    "min": 10,
+                    "max": 30,
+                    "step": 1,
+                    "unit": "°C",
+                    "scale": true,
+                    "scaleSteps": 4
+                  }
+                },
+                {
+                  "component": "oh-gauge-card",
+                  "config": {
+                    "title": "Outdoor temperature",
+                    "item": "Outdoor_Temperature",
+                    "type": "semicircle",
+                    "min": -10,
+                    "max": 40,
+                    "valueFontSize": 26
+                  }
+                },
+                {
+                  "component": "oh-gauge-card",
+                  "config": {
+                    "title": "Heating power, controlled",
+                    "item": "Heating_kW_Controlled",
+                    "type": "semicircle",
+                    "min": 0,
+                    "max": 20,
+                    "valueFontSize": 26
+                  }
+                },
+                {
+                  "component": "oh-gauge-card",
+                  "config": {
+                    "title": "Heating power, baseline",
+                    "item": "Heating_kW_Baseline",
+                    "type": "semicircle",
+                    "min": 0,
+                    "max": 20,
+                    "valueFontSize": 26
+                  }
+                },
+                {
+                  "component": "oh-gauge-card",
+                  "config": {
+                    "title": "Electricity power, controlled",
+                    "item": "Electricity_kW_Controlled",
+                    "type": "semicircle",
+                    "min": 0,
+                    "max": 20,
+                    "valueFontSize": 26
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

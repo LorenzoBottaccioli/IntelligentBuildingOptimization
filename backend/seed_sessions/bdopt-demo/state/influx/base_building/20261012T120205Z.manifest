@@ -1,0 +1,89 @@
+{
+  "meta": {
+    "fileName": "20261012T120205Z.meta",
+    "size": 6127
+  },
+  "limited": false,
+  "files": [
+    {
+      "database": "base_building",
+      "policy": "autogen",
+      "shardID": 284,
+      "fileName": "20261012T120205Z.s284.tar.gz",
+      "size": 18944,
+      "lastModified": 0
+    },
+    {
+      "database": "base_building",
+      "policy": "autogen",
+      "shardID": 285,
+      "fileName": "20261012T120205Z.s285.tar.gz",
+      "size": 23040,
+      "lastModified": 0
+    },
+    {
+      "database": "base_building",
+      "policy": "autogen",
+      "shardID": 500,
+      "fileName": "20261012T120205Z.s500.tar.gz",
+      "size": 1024,
+      "lastModified": 0
+    },
+    {
+      "database": "base_building",
+      "policy": "autogen",
+      "shardID": 501,
+      "fileName": "20261012T120205Z.s501.tar.gz",
+      "size": 1024,
+      "lastModified": 0
+    },
+    {
+      "database": "base_building",
+      "policy": "autogen",
+      "shardID": 502,
+      "fileName": "20261012T120205Z.s502.tar.gz",
+      "size": 1024,
+      "lastModified": 0
+    },
+    {
+      "database": "base_building",
+      "policy": "autogen",
+      "shardID": 503,
+      "fileName": "20261012T120205Z.s503.tar.gz",
+      "size": 1024,
+      "lastModified": 0
+    },
+    {
+      "database": "base_building",
+      "policy": "autogen",
+      "shardID": 504,
+      "fileName": "20261012T120205Z.s504.tar.gz",
+      "size": 1024,
+      "lastModified": 0
+    },
+    {
+      "database": "base_building",
+      "policy": "autogen",
+      "shardID": 505,
+      "fileName": "20261012T120205Z.s505.tar.gz",
+      "size": 1024,
+      "lastModified": 0
+    },
+    {
+      "database": "base_building",
+      "policy": "autogen",
+      "shardID": 506,
+      "fileName": "20261012T120205Z.s506.tar.gz",
+      "size": 1024,
+      "lastModified": 0
+    },
+    {
+      "database": "base_building",
+      "policy": "autogen",
+      "shardID": 507,
+      "fileName": "20261012T120205Z.s507.tar.gz",
+      "size": 3072,
+      "lastModified": 0
+    }
+  ]
+}

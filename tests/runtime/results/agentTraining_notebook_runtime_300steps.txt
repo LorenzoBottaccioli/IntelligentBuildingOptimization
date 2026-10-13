@@ -1,0 +1,101 @@
+============================== OUTPUTS (tail of each code cell)
+--- cell 1
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+Users of this version of Gym should be able to simply replace 'import gym' with 'import gymnasium as gym' in the vast majority of cases.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+/opt/conda/envs/conda_environment/lib/python3.9/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+  from .autonotebook import tqdm as notebook_tqdm
+FMU: /home/jovyan/field/lab_optimal.fmu | exists: True
+
+--- cell 3
+{'fmu_step_size': 600, 'fmu_start_time': 0, 'fmu_warmup_time': None, 'fmu_final_time': 604800, 'action_names': ['KITCHEN_Heating_Setpoint_FMU'], 'action_min': array([12.]), 'action_max': array([24.]), 'observation_names': [], 'reward_names': ['Electricity_Facility', 'Zone_Mean_Air_Temperature_KITCHEN']}
+steps per episode: 1008 -> episodes in the budget: 0.3
+
+--- cell 5
+observation order: ['Zone_Mean_Air_Temperature_KITCHEN'] | hidden: ['Electricity_Facility']
+
+--- cell 7
+
+--- cell 9
+            | 19           |
+|    iterations           | 2            |
+|    time_elapsed         | 26           |
+|    total_timesteps      | 512          |
+| train/                  |              |
+|    approx_kl            | 0.0015501415 |
+|    clip_fraction        | 0.000781     |
+|    clip_range           | 0.2          |
+|    entropy_loss         | -1.42        |
+|    explained_variance   | 1.87e-05     |
+|    learning_rate        | 0.0003       |
+|    loss                 | 14.9         |
+|    n_updates            | 10           |
+|    policy_gradient_loss | -0.000493    |
+|    std                  | 1.01         |
+|    value_loss           | 38.4         |
+------------------------------------------
+saved /home/jovyan/notebooks/ai/models/my_agent.zip
+Writing tabular output file results using tab format.
+Writing tabular output file results using HTML format.
+ ReadVarsESO program starting.
+ ReadVars Run Time=00hr 00min  0.31sec
+ ReadVarsESO program completed successfully.
+ ReadVarsESO program starting.
+ ReadVars Run Time=00hr 00min  0.12sec
+ ReadVarsESO program completed successfully.
+EnergyPlus Run Time=00hr 00min 36.35sec
+[INFO][Slave] [ok][FMU status:OK] fmiTerminateSlave: fmiFreeInstanceSlave must be called to free the FMU instance.
+
+[INFO][Slave] [ok][FMU status:OK] fmiFreeSlaveInstance: The function fmiFreeSlaveInstance of instance Slave is executed.
+
+EnergyPlus Completed Successfully.
+[INFO][Slave] [ok][FMU status:OK] freeInstanceResources: Slave will be freed.
+
+
+--- cell 11
+ up
+Performing Zone Sizing Simulation
+...for Sizing Period: #2 WINTER DESIGN DAY
+Adjusting Air System Sizing
+Adjusting Standard 62.1 Ventilation Sizing
+Initializing Simulation
+Reporting Surfaces
+Beginning Primary Simulation
+Initializing New Environment Parameters
+Warming up {1}
+Instantiating FunctionalMockupUnitExport interface
+ExternalInterface initializes.
+Number of outputs in ExternalInterface = 2
+Number of inputs  in ExternalInterface = 1
+Calculating Detailed Daylighting Factors, Start Date=01/01
+Warming up {2}
+Warming up {3}
+Warming up {4}
+Warming up {5}
+Warming up {6}
+Warming up {7}
+Warming up {8}
+Starting Simulation at 01/01/2017 for YEAR_SIMULATION
+ExternalInterface starts first data exchange.
+Writing tabular output file results using tab format.
+Writing tabular output file results using HTML format.
+ ReadVarsESO program starting.
+ ReadVars Run Time=00hr 00min  0.27sec
+ ReadVarsESO program completed successfully.
+ ReadVarsESO program starting.
+ ReadVars Run Time=00hr 00min  0.10sec
+ ReadVarsESO program completed successfully.
+EnergyPlus Run Time=00hr 01min 12.15sec
+trained agent          : return = -314.38 over 1008 steps
+[INFO][Slave] [ok][FMU status:OK] fmiTerminateSlave: fmiFreeInstanceSlave must be called to free the FMU instance.
+
+[INFO][Slave] [ok][FMU status:OK] fmiFreeSlaveInstance: The function fmiFreeSlaveInstance of instance Slave is executed.
+
+EnergyPlus Completed Successfully.
+[INFO][Slave] [ok][FMU status:OK] freeInstanceResources: Slave will be freed.
+
+
+==============================
+{"wall_s": 252.7, "children_cpu_user_s": 187.0, "children_cpu_sys_s": 30.0, "children_maxrss_mb": 331.5, "cgroup_peak_bytes": {"/sys/fs/cgroup/memory/memory.max_usage_in_bytes": 689831936}, "failed_cells": []}
+exit=0

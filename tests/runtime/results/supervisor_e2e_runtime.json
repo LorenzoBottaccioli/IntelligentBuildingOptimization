@@ -1,0 +1,60 @@
+{
+ "1_status_published": true,
+ "1_services_seen": [
+  "ai/controller.py",
+  "iot/subscriber.py"
+ ],
+ "1_building_status": {
+  "state": "stopped",
+  "emergency": false,
+  "emergency_flag": false
+ },
+ "2_controller_template": {
+  "finished": true,
+  "state": "finished",
+  "exit_code": 0,
+  "log_tail": [
+   "TODO: the controller is not written yet (ai/controller.py).",
+   "[supervisor 2026-10-08 22:46:29] finished (exit code 0)"
+  ]
+ },
+ "3_building": {
+  "ok": true,
+  "state": "finished",
+  "exit_code": 0,
+  "emergency": true,
+  "wall_s": 18.9,
+  "messages_from_building": 1692,
+  "distinct_topics": 5,
+  "example_topics": [
+   "building/baseline/electricity_facility/value",
+   "building/baseline/sim/log",
+   "building/baseline/sim/status",
+   "building/baseline/sim/tick",
+   "building/baseline/zone_mean_air_temperature_kitchen/value"
+  ],
+  "log_tail": [
+   "",
+   "{'state': 'finished', 'sim_time': '2026-01-08T00:00:00', 'step': 1008, 'steps_total': 1008, 'mode': 'fast', 'message': '1008 steps completed', 'controller': None}",
+   "[supervisor 2026-10-08 22:46:49] exited with code 0"
+  ]
+ },
+ "4_subscriber_after_stop": "stopped",
+ "4_supervisor_exit_code_on_SIGTERM": 0,
+ "supervisor_stdout_tail": [
+  "[supervisor] ai/controller.py: started (pid 14)",
+  "[supervisor] ai/controller.py: finished (exit code 0)",
+  "[supervisor] building: starting /opt/gateway/emergency_gateway.py --once --run baseline --mode fast --step-seconds 0.0 (emergency=True)",
+  "[supervisor] building: started (pid 15)",
+  "[supervisor] building: exited with code 0",
+  "[supervisor] iot/subscriber.py: started (pid 52)",
+  "[supervisor] iot/subscriber.py: finished (exit code 0)",
+  "[supervisor] disconnected from the broker"
+ ],
+ "logs_dir": [
+  "ai_controller.py.log",
+  "emergency_gateway.log",
+  "iot_subscriber.py.log"
+ ]
+}
+exit=0

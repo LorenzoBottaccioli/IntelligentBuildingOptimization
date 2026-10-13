@@ -1,0 +1,4 @@
+# Home Assistant state (database, users, logs) and the files that belong to a session (mqtt.yaml, dashboards): not in git
+*
+!.gitignore
+!configuration.yaml

@@ -1,0 +1,319 @@
+{
+  "model": "lab_optimal.idf",
+  "variables": [
+    {
+      "name": "External walls thickness EPS Expanded Polystyrene (Heavyweight)_.1",
+      "className": "Material",
+      "field": "Thickness",
+      "targets": [
+        "EPS Expanded Polystyrene (Heavyweight)_.1"
+      ],
+      "label": "Thickness of EPS Expanded Polystyrene (Heavyweight)_.1 (external walls)",
+      "unit": "m",
+      "source": {
+        "kind": "layer",
+        "element": "external_wall",
+        "elementLabel": "External walls",
+        "layer": "EPS Expanded Polystyrene (Heavyweight)_.1"
+      },
+      "type": "range",
+      "min": 0.1,
+      "max": 0.2
+    },
+    {
+      "name": "Windows construction Block1B:Kitchen_Wall_5_0_0_0_0_0_Win",
+      "type": "category",
+      "options": [
+        "triple_glazing",
+        "double_glazing",
+        "single_glazing"
+      ],
+      "className": "FenestrationSurface:Detailed",
+      "field": "Construction_Name",
+      "targets": [
+        {
+          "object": "Block1B:Kitchen_Wall_5_0_0_0_0_0_Win",
+          "field": "Construction_Name",
+          "className": "FenestrationSurface:Detailed"
+        }
+      ],
+      "label": "Windows \u00b7 window construction",
+      "unit": "",
+      "source": {
+        "kind": "construction",
+        "element": "window",
+        "elementLabel": "Windows",
+        "perWindow": true,
+        "baseName": "Windows construction"
+      },
+      "encoding": {
+        "triple_glazing": 1,
+        "double_glazing": 2,
+        "single_glazing": 3
+      }
+    },
+    {
+      "name": "Windows construction Block1B:Bathroom1_Wall_6_0_0_0_0_0_Win",
+      "type": "category",
+      "options": [
+        "triple_glazing",
+        "double_glazing",
+        "single_glazing"
+      ],
+      "className": "FenestrationSurface:Detailed",
+      "field": "Construction_Name",
+      "targets": [
+        {
+          "object": "Block1B:Bathroom1_Wall_6_0_0_0_0_0_Win",
+          "field": "Construction_Name",
+          "className": "FenestrationSurface:Detailed"
+        }
+      ],
+      "label": "Windows \u00b7 window construction",
+      "unit": "",
+      "source": {
+        "kind": "construction",
+        "element": "window",
+        "elementLabel": "Windows",
+        "perWindow": true,
+        "baseName": "Windows construction"
+      },
+      "encoding": {
+        "triple_glazing": 1,
+        "double_glazing": 2,
+        "single_glazing": 3
+      }
+    },
+    {
+      "name": "Windows construction Block1B:Room1_Wall_2_0_0_0_0_0_Win",
+      "type": "category",
+      "options": [
+        "triple_glazing",
+        "double_glazing",
+        "single_glazing"
+      ],
+      "className": "FenestrationSurface:Detailed",
+      "field": "Construction_Name",
+      "targets": [
+        {
+          "object": "Block1B:Room1_Wall_2_0_0_0_0_0_Win",
+          "field": "Construction_Name",
+          "className": "FenestrationSurface:Detailed"
+        }
+      ],
+      "label": "Windows \u00b7 window construction",
+      "unit": "",
+      "source": {
+        "kind": "construction",
+        "element": "window",
+        "elementLabel": "Windows",
+        "perWindow": true,
+        "baseName": "Windows construction"
+      },
+      "encoding": {
+        "triple_glazing": 1,
+        "double_glazing": 2,
+        "single_glazing": 3
+      }
+    },
+    {
+      "name": "Windows construction Block1B:Room1_Wall_6_0_0_0_0_0_Win",
+      "type": "category",
+      "options": [
+        "triple_glazing",
+        "double_glazing",
+        "single_glazing"
+      ],
+      "className": "FenestrationSurface:Detailed",
+      "field": "Construction_Name",
+      "targets": [
+        {
+          "object": "Block1B:Room1_Wall_6_0_0_0_0_0_Win",
+          "field": "Construction_Name",
+          "className": "FenestrationSurface:Detailed"
+        }
+      ],
+      "label": "Windows \u00b7 window construction",
+      "unit": "",
+      "source": {
+        "kind": "construction",
+        "element": "window",
+        "elementLabel": "Windows",
+        "perWindow": true,
+        "baseName": "Windows construction"
+      },
+      "encoding": {
+        "triple_glazing": 1,
+        "double_glazing": 2,
+        "single_glazing": 3
+      }
+    },
+    {
+      "name": "Windows construction Block1B:Bathroom_Wall_2_0_0_0_0_0_Win",
+      "type": "category",
+      "options": [
+        "triple_glazing",
+        "double_glazing",
+        "single_glazing"
+      ],
+      "className": "FenestrationSurface:Detailed",
+      "field": "Construction_Name",
+      "targets": [
+        {
+          "object": "Block1B:Bathroom_Wall_2_0_0_0_0_0_Win",
+          "field": "Construction_Name",
+          "className": "FenestrationSurface:Detailed"
+        }
+      ],
+      "label": "Windows \u00b7 window construction",
+      "unit": "",
+      "source": {
+        "kind": "construction",
+        "element": "window",
+        "elementLabel": "Windows",
+        "perWindow": true,
+        "baseName": "Windows construction"
+      },
+      "encoding": {
+        "triple_glazing": 1,
+        "double_glazing": 2,
+        "single_glazing": 3
+      }
+    },
+    {
+      "name": "Windows construction Block1B:Livingroom_Wall_4_0_0_0_0_1_Win",
+      "type": "category",
+      "options": [
+        "triple_glazing",
+        "double_glazing",
+        "single_glazing"
+      ],
+      "className": "FenestrationSurface:Detailed",
+      "field": "Construction_Name",
+      "targets": [
+        {
+          "object": "Block1B:Livingroom_Wall_4_0_0_0_0_1_Win",
+          "field": "Construction_Name",
+          "className": "FenestrationSurface:Detailed"
+        }
+      ],
+      "label": "Windows \u00b7 window construction",
+      "unit": "",
+      "source": {
+        "kind": "construction",
+        "element": "window",
+        "elementLabel": "Windows",
+        "perWindow": true,
+        "baseName": "Windows construction"
+      },
+      "encoding": {
+        "triple_glazing": 1,
+        "double_glazing": 2,
+        "single_glazing": 3
+      }
+    },
+    {
+      "name": "Windows construction Block1B:Livingroom_Wall_4_0_0_1_0_0_Win",
+      "type": "category",
+      "options": [
+        "triple_glazing",
+        "double_glazing",
+        "single_glazing"
+      ],
+      "className": "FenestrationSurface:Detailed",
+      "field": "Construction_Name",
+      "targets": [
+        {
+          "object": "Block1B:Livingroom_Wall_4_0_0_1_0_0_Win",
+          "field": "Construction_Name",
+          "className": "FenestrationSurface:Detailed"
+        }
+      ],
+      "label": "Windows \u00b7 window construction",
+      "unit": "",
+      "source": {
+        "kind": "construction",
+        "element": "window",
+        "elementLabel": "Windows",
+        "perWindow": true,
+        "baseName": "Windows construction"
+      },
+      "encoding": {
+        "triple_glazing": 1,
+        "double_glazing": 2,
+        "single_glazing": 3
+      }
+    },
+    {
+      "name": "Windows construction Block1B:Room_Wall_2_0_0_0_0_0_Win",
+      "type": "category",
+      "options": [
+        "triple_glazing",
+        "double_glazing",
+        "single_glazing"
+      ],
+      "className": "FenestrationSurface:Detailed",
+      "field": "Construction_Name",
+      "targets": [
+        {
+          "object": "Block1B:Room_Wall_2_0_0_0_0_0_Win",
+          "field": "Construction_Name",
+          "className": "FenestrationSurface:Detailed"
+        }
+      ],
+      "label": "Windows \u00b7 window construction",
+      "unit": "",
+      "source": {
+        "kind": "construction",
+        "element": "window",
+        "elementLabel": "Windows",
+        "perWindow": true,
+        "baseName": "Windows construction"
+      },
+      "encoding": {
+        "triple_glazing": 1,
+        "double_glazing": 2,
+        "single_glazing": 3
+      }
+    },
+    {
+      "name": "Windows construction Block1B:Room_Wall_3_0_0_0_0_0_Win",
+      "type": "category",
+      "options": [
+        "triple_glazing",
+        "double_glazing",
+        "single_glazing"
+      ],
+      "className": "FenestrationSurface:Detailed",
+      "field": "Construction_Name",
+      "targets": [
+        {
+          "object": "Block1B:Room_Wall_3_0_0_0_0_0_Win",
+          "field": "Construction_Name",
+          "className": "FenestrationSurface:Detailed"
+        }
+      ],
+      "label": "Windows \u00b7 window construction",
+      "unit": "",
+      "source": {
+        "kind": "construction",
+        "element": "window",
+        "elementLabel": "Windows",
+        "perWindow": true,
+        "baseName": "Windows construction"
+      },
+      "encoding": {
+        "triple_glazing": 1,
+        "double_glazing": 2,
+        "single_glazing": 3
+      }
+    }
+  ],
+  "objectives": [
+    {
+      "name": "Electricity:Facility",
+      "direction": "minimize"
+    }
+  ],
+  "notes": ""
+}

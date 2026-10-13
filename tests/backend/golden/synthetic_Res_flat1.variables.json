@@ -1,0 +1,41 @@
+{
+  "model": "Res_flat1.idf",
+  "variables": [
+    {
+      "kind": "construction",
+      "type": "category",
+      "element": "window",
+      "elementLabel": "Windows",
+      "name": "Windows construction",
+      "options": [
+        "Dbl LoE (e2=.1) Clr 6mm/13mm Arg - 1001",
+        "Sgl Clr 6mm - 1002",
+        "Trp LoE (e2=e5=.1) Clr 3mm/13mm Arg - 1003"
+      ]
+    },
+    {
+      "kind": "field",
+      "group": "Internal Gains",
+      "type": "range",
+      "className": "Lights",
+      "field": "Watts_per_Zone_Floor_Area",
+      "name": "Lights W per m2",
+      "min": 8,
+      "max": 12
+    }
+  ],
+  "objectives": [
+    {
+      "name": "Electricity:Facility",
+      "direction": "minimize"
+    },
+    {
+      "name": "DistrictHeating:Facility",
+      "direction": "minimize"
+    },
+    {
+      "name": "DistrictCooling:Facility",
+      "direction": "minimize"
+    }
+  ]
+}

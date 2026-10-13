@@ -1,0 +1,17 @@
+version: {'version': '2.18.2'}
+default kernel: python3 | kernelspecs: {'python3': 'Python 3 (ipykernel)', 'conda_environment': 'Python 3.9 (E+96, SB3)'}
+/tree: 200 | Content-Security-Policy: frame-ancestors *
+kernel conda_environment started: fc18ed40 starting
+  state after 6 s: starting
+  proc 11 /opt/conda/envs/conda_environment/bin/python /opt/conda/envs/conda_env | PATH = /usr/local/EnergyPlus-9-6-0:/opt/conda/envs/conda_environment/bin:/EnergyPlus-9.6.0-4b123cf80f-Linux-Ubuntu20.04-x86_64:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin | LD_LIBRARY_PATH = /opt/conda/envs/conda_environment/lib
+  proc 33 /opt/conda/envs/conda_environment/bin/python -m ipykernel_launcher -f  | PATH = /usr/local/EnergyPlus-9-6-0:/opt/conda/envs/conda_environment/bin:/EnergyPlus-9.6.0-4b123cf80f-Linux-Ubuntu20.04-x86_64:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin | LD_LIBRARY_PATH = /opt/conda/envs/conda_environment/lib
+kernel python3 started: 662add5a starting
+  state after 6 s: starting
+  proc 11 /opt/conda/envs/conda_environment/bin/python /opt/conda/envs/conda_env | PATH = /usr/local/EnergyPlus-9-6-0:/opt/conda/envs/conda_environment/bin:/EnergyPlus-9.6.0-4b123cf80f-Linux-Ubuntu20.04-x86_64:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin | LD_LIBRARY_PATH = /opt/conda/envs/conda_environment/lib
+  proc 48 /opt/conda/envs/conda_environment/bin/python -m ipykernel_launcher -f  | PATH = /usr/local/EnergyPlus-9-6-0:/opt/conda/envs/conda_environment/bin:/EnergyPlus-9.6.0-4b123cf80f-Linux-Ubuntu20.04-x86_64:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin | LD_LIBRARY_PATH = /opt/conda/envs/conda_environment/lib
+--- jupyter.log tail
+[I 2026-10-08 22:55:19.126 ServerApp] Kernel started: fc18ed40-41fc-49ba-85ec-3817b8c5289f
+[I 2026-10-08 22:55:25.144 ServerApp] Kernel shutdown: fc18ed40-41fc-49ba-85ec-3817b8c5289f
+[I 2026-10-08 22:55:25.496 ServerApp] Kernel started: 662add5a-d6a9-49f5-b91d-98e9d9439ef9
+[I 2026-10-08 22:55:31.678 ServerApp] Kernel shutdown: 662add5a-d6a9-49f5-b91d-98e9d9439ef9
+exit=0

@@ -1,0 +1,24 @@
+# Home Assistant of the demo building.
+# It talks to the same broker as openHAB and shows the same demo points: the two temperatures and the two heating setpoints
+# (topics demo/... written by Workspace/devices/gateway.py and Workspace/ai/controller.py).
+homeassistant:
+  name: Demo building
+  unit_system: metric
+  time_zone: Europe/Rome
+  language: en
+  country: IT
+  auth_providers:
+    # Same as the rest of the platform (no login on Jupyter, Grafana viewer, openHAB): every request that reaches it through the machine or the Docker network is let in as the demo owner.
+    - type: trusted_networks
+      trusted_networks: [127.0.0.1, "::1", 172.16.0.0/12]
+      allow_bypass_login: true
+    - type: homeassistant
+
+default_config:
+
+http:
+  use_x_frame_options: false     # the platform shows Home Assistant inside a page
+
+# The MQTT entities of the session (what is in the demo, empty in a new project). The platform writes this file with the
+# session; add your own entities here, or in Settings > Devices & services > MQTT.
+mqtt: !include mqtt.yaml

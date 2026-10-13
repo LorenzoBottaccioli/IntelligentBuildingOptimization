@@ -1,0 +1,111 @@
+.roleswitch {
+  display: inline-flex;
+  border: 1px solid #003366;
+  border-radius: var(--radius);
+  overflow: hidden;
+  vertical-align: middle;
+}
+
+.roleswitch button {
+  padding: 4px var(--space-3);
+  border: none;
+  background: #fff;
+  color: #003366;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.roleswitch button + button {
+  border-left: 1px solid #003366;
+}
+
+.roleswitch button:hover:not(:disabled):not(.is-on) {
+  background: #e8eef5;
+  color: #003366;
+  border-color: #003366;
+}
+
+.roleswitch button.is-on {
+  background: #003366;
+  color: #fff;
+  font-weight: 600;
+  cursor: default;
+}
+
+.roleswitch button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+/* No role yet: the export would leave it out of both lists. */
+.roleswitch.is-unset {
+  border-color: var(--color-danger);
+}
+
+.roleswitch.is-unset button + button {
+  border-left-color: var(--color-danger);
+}
+
+.roleswitch--compact button {
+  padding: 1px var(--space-2);
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+
+/* Outputs list of the External interface: one row per output, the name on the
+   left, the role switch and the remove button on the right. */
+.me .me-chips--rows {
+  flex-direction: column;
+  align-items: stretch;
+  min-width: 0;
+}
+
+.me .me-chips--rows .roleswitch {
+  flex-shrink: 0;
+}
+
+.me .me-chips--rows .me-chip {
+  display: flex;
+  box-sizing: border-box;
+  max-width: 100%;
+  min-width: 0;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding: 3px 4px 3px 10px;
+  border-radius: var(--radius);
+}
+
+.me .me-chips--rows .me-chip code {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* The chip's own button reset must not flatten the switch. */
+.me .me-chip .roleswitch button {
+  padding: 1px var(--space-2);
+  background: #fff;
+  color: #003366;
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+
+.me .me-chip .roleswitch button + button {
+  border-left: 1px solid #003366;
+}
+
+.me .me-chip .roleswitch.is-unset button + button {
+  border-left-color: var(--color-danger);
+}
+
+.me .me-chip .roleswitch button.is-on {
+  background: #003366;
+  color: #fff;
+}
+
+.me .me-chip .roleswitch button:hover:not(.is-on) {
+  background: #e8eef5;
+  color: #003366;
+}

@@ -1,0 +1,70 @@
+# Secrets -- .env.example is the committed template
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Node
+node_modules/
+frontend/dist/
+
+# Flask session store
+backend/flask_session/
+
+# Per-session working files
+backend/uploads/
+backend/originals/
+backend/user_files/
+backend/simulation_outputs/
+
+# Runtime service state
+influxdb1/data/
+mosquitto/data/
+mosquitto/log/
+openhab/userdata/
+openhab/addons/
+
+# Notebook checkpoints
+.ipynb_checkpoints/
+
+# Saved sessions (workspace snapshots, InfluxDB backups, Grafana dashboards)
+backend/sessions/
+
+# Students' runtime: service logs, the teacher's emergency flag, the FMU export
+Workspace/logs/
+Workspace/.emergency
+Field/*
+!Field/.gitkeep
+
+# Local backups and tool state
+backup_before_demo_2026-09-28/
+.claude/
+
+# bdopt migration: run output of the students notebooks and notebook backups made when the engine changes
+backend/surrogate_notebooks/outputdir/
+backend/surrogate_notebooks/*_backup*.ipynb
+
+# The tutorials of the demo session as the students work on them (the source is tutorials/, the seed is backend/seed_sessions/)
+backend/surrogate_notebooks/tutorials/
+
+# Weather files that may not be redistributed: ASHRAE IWEC (distribution to third parties needs ASHRAE's permission) and
+# Meteonorm output (transfer to third parties needs a written agreement with Meteotest). See NOTICE.md and docs/licence_audit.md.
+# Get the IWEC file with tests/tutorials/fetch_iwec.py; the platform also downloads weather files at run time.
+*IWEC*.epw
+*-hour.epw
+
+# Material kept on the author's disk but not published: the old example folders (Meteonorm weather files inside), the
+# 29 Sep demo files and the first author's documentation PDF (redistribution not cleared).
+Simulation examples/
+Surrogate modeling examples/
+demo_files_*/
+Smart_Building_Educational_Platform_source_code_documentation.pdf
+
+# Output of test runs (the seed's eplusout.err under backend/seed_sessions/ is data and stays)
+tests/**/*.mem
+tests/**/*.err
+tests/integrity/results/*.log

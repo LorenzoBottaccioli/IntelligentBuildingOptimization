@@ -1,0 +1,624 @@
+[WARNING][Slave] [warning][FMU status:Warning] fmiInitializeSlave: The StopTimeDefined parameter is set to 0. This is not valid. EnergyPlus FMU requires a stop time and will use the stop time 604800.000000 which is provided.
+
+[INFO][Slave] [ok][FMU status:OK] fmiInitializeSlave: The sockfd is 55.
+
+[INFO][Slave] [ok][FMU status:OK] fmiInitializeSlave: The port number is 39957.
+
+[INFO][Slave] [ok][FMU status:OK] fmiInitializeSlave: This hostname is rtbox.
+
+[INFO][Slave] [ok][FMU status:OK] fmiInitializeSlave: TCPServer Server waiting for clients on port: 39957.
+
+[INFO][Slave] [ok][FMU status:OK] fmiInitializeSlave: The number of input variables is 1.
+
+[INFO][Slave] [ok][FMU status:OK] fmiInitializeSlave: The number of output variables is 2.
+
+[INFO][Slave] [ok][FMU status:OK] Get input file from resource folder ///tmp/JModelica.org/jm_tmpqtk7b7x_//resources//.
+
+[INFO][Slave] [ok][FMU status:OK] Searching for following pattern .idf
+
+[INFO][Slave] [ok][FMU status:OK] Read directory and search for *.idf, *.epw, or *.idd file.
+
+[INFO][Slave] [ok][FMU status:OK] Read directory and search for *.idf, *.epw, or *.idd file.
+
+[INFO][Slave] [ok][FMU status:OK] Read directory and search for *.idf, *.epw, or *.idd file.
+
+[INFO][Slave] [ok][FMU status:OK] Read directory and search for *.idf, *.epw, or *.idd file.
+
+[INFO][Slave] [ok][FMU status:OK] Found matching file lab_optReading input and weather file for preprocessor program.
+The IDF version of the input file ///tmp/JModelica.org/jm_tmpqtk7b7x_//resources//lab_optimal.idf starts with 9
+Successfully finish reading weather file.
+This is the Begin Month: 1
+Time (0) set is smaller than minimun allowed (1 day). Day will be set to 1.
+This is the Day of the Begin Month: 1
+This is the End Month: 1
+This is the Day of the End Month: 7
+Day of week was left blank in input file.
+This is the New Day of Week:  
+Running EPMacro...
+ExpandObjects Started.
+No expanded file generated.
+ExpandObjects Finished. Time:     0.021
+EnergyPlus Starting
+EnergyPlus, Version 9.6.0-4b123cf80f, YMD=2026.10.10 12:59
+Initializing Response Factors
+Calculating CTFs for "GROUNDFLOOR"
+Calculating CTFs for "ROOF"
+Calculating CTFs for "PARTITION"
+Calculating CTFs for "PARTITION_REV"
+Calculating CTFs for "INSIDEDOOR"
+Calculating CTFs for "EXTERNALWALLBO.287"
+Calculating CTFs for "EXTERNALWALLBO.287"
+Calculating CTFs for "EXTERNALWALLBO.287"
+Initializing Window Optical Properties
+Initializing Solar Calculations
+Allocate Solar Module Arrays
+Initializing Zone and Enclosure Report Variables
+Initializing Surface (Shading) Report Variables
+Computing Interior Solar Absorption Factors
+Determining Shadowing Combinations
+Computing Window Shade Absorption Factors
+Proceeding with Initializing Solar Calculations
+Initializing Surfaces
+Initializing Outdoor environment for Surfaces
+Setting up Surface Reporting Variables
+Initializing Temperature and Flux Histories
+Initializing Window Shading
+Computing Interior Absorption Factors
+Computing Interior Diffuse Solar Absorption Factors
+Initializing Solar Heat Gains
+Initializing Internal Heat Gains
+Initializing Interior Solar Distribution
+Initializing Interior Convection Coefficients
+Gathering Information for Predefined Reporting
+Completed Initializing Surface Heat Balance
+Calculate Outside Surface Heat Balance
+Calculate Inside Surface Heat Balance
+Calculate Air Heat Balance
+Initializing HVAC
+Warming up
+Calculating Detailed Daylighting Factors, Start Date=07/15
+Warming up
+Warming up
+Warming up
+Warming up
+Warming up
+Warming up
+Performing Zone Sizing Simulation
+...for Sizing Period: #1 SUMMER DESIGN DAY LUG
+Warming up
+Calculating Detailed Daylighting Factors, Start Date=01/15
+Warming up
+Warming up
+Warming up
+Warming up
+Warming up
+Performing Zone Sizing Simulation
+...for Sizing Period: #2 WINTER DESIGN DAY
+Adjusting Air System Sizing
+Adjusting Standard 62.1 Ventilation Sizing
+Initializing Simulation
+Reporting Surfaces
+Beginning Primary Simulation
+Initializing New Environment Parameters
+Warming up {1}
+Instantiating FunctionalMockupUnitExport interface
+ExternalInterface initializes.
+Number of outputs in ExternalInterface = 2
+Number of inputs  in ExternalInterface = 1
+Calculating Detailed Daylighting Factors, Start Date=01/01
+Warming up {2}
+Warming up {3}
+Warming up {4}
+Warming up {5}
+Warming up {6}
+Warming up {7}
+Warming up {8}
+Starting Simulation at 01/01/2017 for YEAR_SIMULATION
+ExternalInterface starts first data exchange.
+imal.idf.
+
+[INFO][Slave] [ok][FMU status:OK] done searching pattern .idf
+
+[INFO][Slave] [ok][FMU status:OK] Get input file from resource folder ///tmp/JModelica.org/jm_tmpqtk7b7x_//resources//.
+
+[INFO][Slave] [ok][FMU status:OK] Searching for following pattern .epw
+
+[INFO][Slave] [ok][FMU status:OK] Read directory and search for *.idf, *.epw, or *.idd file.
+
+[INFO][Slave] [ok][FMU status:OK] Read directory and search for *.idf, *.epw, or *.idd file.
+
+[INFO][Slave] [ok][FMU status:OK] Read directory and search for *.idf, *.epw, or *.idd file.
+
+[INFO][Slave] [ok][FMU status:OK] Read directory and search for *.idf, *.epw, or *.idd file.
+
+[INFO][Slave] [ok][FMU status:OK] Read directory and search for *.idf, *.epw, or *.idd file.
+
+[INFO][Slave] [ok][FMU status:OK] Found matching file weather.epw.
+
+[INFO][Slave] [ok][FMU status:OK] done searching pattern .epw
+
+[INFO][Slave] [ok][FMU status:OK] Get input file from resource folder ///tmp/JModelica.org/jm_tmpqtk7b7x_//resources//.
+
+[INFO][Slave] [ok][FMU status:OK] Searching for following pattern .idd
+
+[INFO][Slave] [ok][FMU status:OK] Read directory and search for *.idf, *.epw, or *.idd file.
+
+[INFO][Slave] [ok][FMU status:OK] Read directory and search for *.idf, *.epw, or *.idd file.
+
+[INFO][Slave] [ok][FMU status:OK] Found matching file Energy+.idd.
+
+[INFO][Slave] [ok][FMU status:OK] done searching pattern .idd
+
+[INFO][Slave] [ok][FMU status:OK] This version uses the **energyplus** command line interface to  call the EnergyPlus executable. **RunEPlus.bat** and **runenergyplus** , which were used in earlier versions, were deprecated as of August 2015.
+Could not find platform independent libraries <prefix>
+Could not find platform dependent libraries <exec_prefix>
+Consider setting $PYTHONHOME to <prefix>[:<exec_prefix>]
+[INFO][Slave] [ok][FMU status:OK] fmiInitializeSlave: The connection has been accepted.
+
+[INFO][Slave] [ok][FMU status:OK] fmiInitializeSlave: Slave Slave is initialized.
+
+Writing tabular output file results using tab format.
+Writing tabular output file results using HTML format.
+[INFO][Slave] [ok][FMU status:OK] fmiTerminateSlave: fmiFreeInstanceSlave must be called to free the FMU instance.
+
+[INFO][Slave] [ok][FMU status:OK] fmiFreeSlaveInstance: The function fmiFreeSlaveInstance of instance Slave is executed.
+
+EnergyPlus Completed Successfully.
+[INFO][Slave] [ok][FMU status:OK] freeInstanceResources: Slave will be freed.
+
+ ReadVarsESO program starting.
+ ReadVars Run Time=00hr 00min  0.07sec
+ ReadVarsESO program completed successfully.
+ ReadVarsESO program starting.
+ ReadVars Run Time=00hr 00min  0.02sec
+ ReadVarsESO program completed successfully.
+EnergyPlus Run Time=00hr 00min  3.90sec
+Reading input and weather file for preprocessor program.
+The IDF version of the input file ///tmp/JModelica.org/jm_tmptsenk250//resources//lab_optimal.idf starts with 9
+Successfully finish reading weather file.
+This is the Begin Month: 1
+Time (0) set is smaller than minimun allowed (1 day). Day will be set to 1.
+This is the Day of the Begin Month: 1
+This is the End Month: 1
+This is the Day of the End Month: 7
+Day of week was left blank in input file.
+This is the New Day of Week:  
+Running EPMacro...
+ExpandObjects Started.
+No expanded file generated.
+ExpandObjects Finished. Time:     0.016
+EnergyPlus Starting
+EnergyPlus, Version 9.6.0-4b123cf80f, YMD=2026.10.10 12:59
+Initializing Response Factors
+Calculating CTFs for "GROUNDFLOOR"
+Calculating CTFs for "ROOF"
+Calculating CTFs for "PARTITION"
+Calculating CTFs for "PARTITION_REV"
+Calculating CTFs for "INSIDEDOOR"
+Calculating CTFs for "EXTERNALWALLBO.287"
+Calculating CTFs for "EXTERNALWALLBO.287"
+Calculating CTFs for "EXTERNALWALLBO.287"
+Initializing Window Optical Properties
+Initializing Solar C[WARNING][Slave] [warning][FMU status:Warning] fmiInitializeSlave: The StopTimeDefined parameter is set to 0. This is not valid. EnergyPlus FMU requires a stop time and will use the stop time 604800.000000 which is provided.
+
+[INFO][Slave] [ok][FMU status:OK] fmiInitializeSlave: The sockfd is 55.
+
+[INFO][Slave] [ok][FMU status:OK] fmiInitializeSlave: The port number is 53937.
+
+alculations
+Allocate Solar Module Arrays
+Initializing Zone and Enclosure Report Variables
+Initializing Surface (Shading) Report Variables
+Computing Interior Solar Absorption Factors
+Determining Shadowing Combinations
+Computing Window Shade Absorption Factors
+Proceeding with Initializing Solar Calculations
+Initializing Surfaces
+Initializing Outdoor environment for Surfaces
+Setting up Surface Reporting Variables
+Initializing Temperature and Flux Histories
+Initializing Window Shading
+Computing Interior Absorption Factors
+Computing Interior Diffuse Solar Absorption Factors
+Initializing Solar Heat Gains
+Initializing Internal Heat Gains
+Initializing Interior Solar Distribution
+Initializing Interior Convection Coefficients
+Gathering Information for Predefined Reporting
+Completed Initializing Surface Heat Balance
+Calculate Outside Surface Heat Balance
+Calculate Inside Surface Heat Balance
+Calculate Air Heat Balance
+Initializing HVAC
+Warming up
+Calculating Detailed Daylighting Factors, Start Date=07/15
+Warming up
+Warming up
+Warming up
+Warming up
+Warming up
+Warming up
+Performing Zone Sizing Simulation
+...for Sizing Period: #1 SUMMER DESIGN DAY LUG
+Warming up
+Calculating Detailed Daylighting Factors, Start Date=01/15
+Warming up
+Warming up
+Warming up
+Warming up
+Warming up
+Performing Zone Sizing Simulation
+...for Sizing Period: #2 WINTER DESIGN DAY
+Adjusting Air System Sizing
+Adjusting Standard 62.1 Ventilation Sizing
+Initializing Simulation
+Reporting Surfaces
+Beginning Primary Simulation
+Initializing New Environment Parameters
+Warming up {1}
+Instantiating FunctionalMockupUnitExport interface
+ExternalInterface initializes.
+Number of outputs in ExternalInterface = 2
+Number of inputs  in ExternalInterface = 1
+Calculating Detailed Daylighting Factors, Start Date=01/01
+Warming up {2}
+Warming up {3}
+Warming up {4}
+Warming up {5}
+Warming up {6}
+Warming up {7}
+Warming up {8}
+Starting Simulation at 01/01/2017 for YEAR_SIMULATION
+ExternalInterface starts first data exchange.
+[INFO][Slave] [ok][FMU status:OK] fmiInitializeSlave: This hostname is rtbox.
+
+[INFO][Slave] [ok][FMU status:OK] fmiInitializeSlave: TCPServer Server waiting for clients on port: 53937.
+
+[INFO][Slave] [ok][FMU status:OK] fmiInitializeSlave: The number of input variables is 1.
+
+[INFO][Slave] [ok][FMU status:OK] fmiInitializeSlave: The number of output variables is 2.
+
+[INFO][Slave] [ok][FMU status:OK] Get input file from resource folder ///tmp/JModelica.org/jm_tmptsenk250//resources//.
+
+[INFO][Slave] [ok][FMU status:OK] Searching for following pattern .idf
+
+[INFO][Slave] [ok][FMU status:OK] Read directory and search for *.idf, *.epw, or *.idd file.
+
+[INFO][Slave] [ok][FMU status:OK] Read directory and search for *.idf, *.epw, or *.idd file.
+
+[INFO][Slave] [ok][FMU status:OK] Read directory and search for *.idf, *.epw, or *.idd file.
+
+[INFO][Slave] [ok][FMU status:OK] Read directory and search for *.idf, *.epw, or *.idd file.
+
+[INFO][Slave] [ok][FMU status:OK] Found matching file lab_optimal.idf.
+
+[INFO][Slave] [ok][FMU status:OK] done searching pattern .idf
+
+[INFO][Slave] [ok][FMU status:OK] Get input file from resource folder ///tmp/JModelica.org/jm_tmptsenk250//resources//.
+
+[INFO][Slave] [ok][FMU status:OK] Searching for following pattern .epw
+
+[INFO][Slave] [ok][FMU status:OK] Read directory and search for *.idf, *.epw, or *.idd file.
+
+[INFO][Slave] [ok][FMU status:OK] Read directory and search for *.idf, *.epw, or *.idd file.
+
+[INFO][Slave] [ok][FMU status:OK] Read directory and search for *.idf, *.epw, or *.idd file.
+
+[INFO][Slave] [ok][FMU status:OK] Read directory and search for *.idf, *.epw, or *.idd file.
+
+[INFO][Slave] [ok][FMU status:OK] Read directory and search for *.idf, *.epw, or *.idd file.
+
+[INFO][Slave] [ok][FMU status:OK] Found matching file weather.epw.
+
+[INFO][Slave] [ok][FMU status:OK] done searching pattern .epw
+
+[INFO][Slave] [ok][FMU status:OK] Get input file from resource folder ///tmp/JModelica.org/jm_tmptsenk250//resources//.
+
+[INFO][Slave] [ok][FMU status:OK] Searching for following pattern .idd
+
+[INFO][Slave] [ok][FMU status:OK] Read directory and search for *.idf, *.epw, or *.idd file.
+
+[INFO][Slave] [ok][FMU status:OK] Read directory and search for *.idf, *.epw, or *.idd file.
+
+[INFO][Slave] [ok][FMU status:OK] Found matching file Energy+.idd.
+
+[INFO][Slave] [ok][FMU status:OK] done searching pattern .idd
+
+[INFO][Slave] [ok][FMU status:OK] This version uses the **energyplus** command line interface to  call the EnergyPlus executable. **RunEPlus.bat** and **runenergyplus** , which were used in earlier versions, were deprecated as of August 2015.
+Could not find platform independent libraries <prefix>
+Could not find platform dependent libraries <exec_prefix>
+Consider setting $PYTHONHOME to <prefix>[:<exec_prefix>]
+[INFO][Slave] [ok][FMU status:OK] fmiInitializeSlave: The connection has been accepted.
+
+[INFO][Slave] [ok][FMU status:OK] fmiInitializeSlave: Slave Slave is initialized.
+
+Writing tabular output file results using tab format.
+Writing tabular output file results using HTML format.
+ ReadVarsESO program starting.
+ ReadVars Run Time=00hr 00min  0.07sec
+ ReadVarsESO program completed successfully.
+ ReadVarsESO program starting.
+ ReadVars Run Time=00hr 00min  0.02sec
+ ReadVarsESO program completed successfully.
+EnergyPlus Run Time=00hr 00min  3.97sec
+[INFO][Slave] [ok][FMU status:OK] fmiTerminateSlave: fmiFreeInstanceSlave must be called to free the FMU instance.
+
+[INFO][Slave] [ok][FMU status:OK] fmiFreeSlaveInstance: The function fmiFreeSlaveInstance of instance Slave is executed.
+
+EnergyPlus Completed Successfully.
+[INFO][Slave] [ok][FMU status:OK] freeInstanceResources: Slave will be freed.
+
+Reading input and weather file for preprocessor program.
+The IDF version of the input file ///tmp/JModelica.org/jm_tmpvy4_5c5v//resources//lab_optimal.idf starts with 9
+Successfully finish reading weather file.
+This is the Begin Month: 1
+Time (0) set is smaller than minimun allowed (1 day). Day will be set to 1.
+This is the Day of the Begin Month: 1
+This is the End Month: 1
+This is the Day of the End Month: 7
+Day of week was left blank in input file.
+This is the New Day of Week:  
+Running EPMacro...
+ExpandObjects Started.
+No expanded file generated.
+ExpandObjects Finished. Time:     0.016
+EnergyPlus Starting
+EnergyPlus, Version 9.6.0-4b123cf80f, YMD=2026.10.10 12:59
+Initializing Response Factors
+Calculating CTFs for "GROUNDFLOOR"
+Calculating CTFs for "ROOF"
+Calculating CTFs for "PARTITION"
+Calculating CTFs for "PARTITION_REV"
+Calculating CTFs for "INSIDEDOOR"
+Calculating CTFs for "EXTERNALWALLBO.287"
+Calculating CTFs for "EXTERNALWALLBO.287"
+Calculating CTFs for "EXTERNALWALLBO.287"
+Initializing Window Optical Properties
+Initializing Solar C[WARNING][Slave] [warning][FMU status:Warning] fmiInitializeSlave: The StopTimeDefined parameter is set to 0. This is not valid. EnergyPlus FMU requires a stop time and will use the stop time 604800.000000 which is provided.
+
+[INFO][Slave] [ok][FMU status:OK] fmiInitializeSlave: The sockfd is 55.
+
+[INFO][Slave] [ok][FMU status:OK] fmiInitializeSlave: The port number is 54315.
+
+[INFO][Slave] [ok][FMU status:OK] fmiInitializeSlave: This hostname is rtbox.
+
+[INFO][Slave] [ok][FMU status:OK] fmiInitializeSlave: TCPServer Server waiting for clients on port: 54315.
+
+[INFO][Slave] [ok][FMU status:OK] fmiInitializeSlave: The number of input variables is 1.
+
+[INFO][Slave] [ok][FMU status:OK] fmiInitializeSlave: The number of output variables is 2.
+
+[INFO][Slave] [ok][FMU status:OK] Get input file from resource folder ///tmp/JModelica.org/jm_tmpvy4_5c5v//resources//.
+
+[INFO][Slave] [ok][FMU status:OK] Searching for following pattern .idf
+
+[INFO][Slave] [ok][FMU status:OK] Read directory and search for *.idf, *.epw, or *.idd file.
+
+[INFO][Slave] [ok][FMU status:OK] Read directory and search for *.idf, *.epw, or *.idd file.
+
+[INFO][Slave] [ok][FMU status:OK] Read directory and search for *.idf, *.epw, or *.idd file.
+
+[INFO][Slave] [ok][FMU status:OK] Read directory and search for *.idf, *.epw, or *.idd file.
+
+[INFO][Slave] [ok][FMU status:OK] Found matching file lab_optalculations
+Allocate Solar Module Arrays
+Initializing Zone and Enclosure Report Variables
+Initializing Surface (Shading) Report Variables
+Computing Interior Solar Absorption Factors
+Determining Shadowing Combinations
+Computing Window Shade Absorption Factors
+Proceeding with Initializing Solar Calculations
+Initializing Surfaces
+Initializing Outdoor environment for Surfaces
+Setting up Surface Reporting Variables
+Initializing Temperature and Flux Histories
+Initializing Window Shading
+Computing Interior Absorption Factors
+Computing Interior Diffuse Solar Absorption Factors
+Initializing Solar Heat Gains
+Initializing Internal Heat Gains
+Initializing Interior Solar Distribution
+Initializing Interior Convection Coefficients
+Gathering Information for Predefined Reporting
+Completed Initializing Surface Heat Balance
+Calculate Outside Surface Heat Balance
+Calculate Inside Surface Heat Balance
+Calculate Air Heat Balance
+Initializing HVAC
+Warming up
+Calculating Detailed Daylighting Factors, Start Daimal.idf.
+
+[INFO][Slave] [ok][FMU status:OK] done searching pattern .idf
+
+[INFO][Slave] [ok][FMU status:OK] Get input file from resource folder ///tmp/JModelica.org/jm_tmpvy4_5c5v//resources//.
+
+[INFO][Slave] [ok][FMU status:OK] Searching for following pattern .epw
+
+[INFO][Slave] [ok][FMU status:OK] Read directory and search for *.idf, *.epw, or *.idd file.
+
+[INFO][Slave] [ok][FMU status:OK] Read directory and search for *.idf, *.epw, or *.idd file.
+
+[INFO][Slave] [ok][FMU status:OK] Read directory and search for *.idf, *.epw, or *.idd file.
+
+[INFO][Slave] [ok][FMU status:OK] Read directory and search for *.idf, *.epw, or *.idd file.
+
+[INFO][Slave] [ok][FMU status:OK] Read directory and search for *.idf, *.epw, or *.idd file.
+
+[INFO][Slave] [ok][FMU status:OK] Found matching file weather.epw.
+
+[INFO][Slave] [ok][FMU status:OK] done searching pattern .epw
+
+[INFO][Slave] [ok][FMU status:OK] Get input file from resource folder ///tmp/JModelica.org/jm_tmpvy4_5c5v//resources//.
+
+[INFO][Slavte=07/15
+Warming up
+Warming up
+Warming up
+Warming up
+Warming up
+Warming up
+Performing Zone Sizing Simulation
+...for Sizing Period: #1 SUMMER DESIGN DAY LUG
+Warming up
+Calculating Detailed Daylighting Factors, Start Date=01/15
+Warming up
+Warming up
+Warming up
+Warming up
+Warming up
+Performing Zone Sizing Simulation
+...for Sizing Period: #2 WINTER DESIGN DAY
+Adjusting Air System Sizing
+Adjusting Standard 62.1 Ventilation Sizing
+Initializing Simulation
+Reporting Surfaces
+Beginning Primary Simulation
+Initializing New Environment Parameters
+Warming up {1}
+Instantiating FunctionalMockupUnitExport interface
+ExternalInterface initializes.
+Number of outputs in ExternalInterface = 2
+Number of inputs  in ExternalInterface = 1
+Calculating Detailed Daylighting Factors, Start Date=01/01
+Warming up {2}
+Warming up {3}
+Warming up {4}
+Warming up {5}
+Warming up {6}
+Warming up {7}
+Warming up {8}
+Starting Simulation at 01/01/2017 for YEAR_SIMULATION
+ExternalInterface starts first data exchange.
+e] [ok][FMU status:OK] Searching for following pattern .idd
+
+[INFO][Slave] [ok][FMU status:OK] Read directory and search for *.idf, *.epw, or *.idd file.
+
+[INFO][Slave] [ok][FMU status:OK] Read directory and search for *.idf, *.epw, or *.idd file.
+
+[INFO][Slave] [ok][FMU status:OK] Found matching file Energy+.idd.
+
+[INFO][Slave] [ok][FMU status:OK] done searching pattern .idd
+
+[INFO][Slave] [ok][FMU status:OK] This version uses the **energyplus** command line interface to  call the EnergyPlus executable. **RunEPlus.bat** and **runenergyplus** , which were used in earlier versions, were deprecated as of August 2015.
+Could not find platform independent libraries <prefix>
+Could not find platform dependent libraries <exec_prefix>
+Consider setting $PYTHONHOME to <prefix>[:<exec_prefix>]
+[INFO][Slave] [ok][FMU status:OK] fmiInitializeSlave: The connection has been accepted.
+
+[INFO][Slave] [ok][FMU status:OK] fmiInitializeSlave: Slave Slave is initialized.
+
+[INFO][Slave] [ok][FMU status:OK] fmiTerminateSlave: fmiFreeInstanceSlave must be called to free the FMU instance.
+
+[INFO][Slave] [ok][FMU status:OK] fmiFreeSlaveInstance: The function fmiFreeSlaveInstance of instance Slave is executed.
+
+EnergyPlus Completed Successfully.
+[INFO][Slave] [ok][FMU status:OK] freeInstanceResources: Slave will be freed.
+
+Writing tabular output file results using tab format.
+Writing tabular output file results using HTML format.
+ ReadVarsESO program starting.
+ ReadVars Run Time=00hr 00min  0.07sec
+ ReadVarsESO program completed successfully.
+ ReadVarsESO program starting.
+ ReadVars Run Time=00hr 00min  0.02sec
+ ReadVarsESO program completed successfully.
+EnergyPlus Run Time=00hr 00min  4.36sec
+============================== OUTPUTS (tail of each code cell)
+--- cell 1
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+Users of this version of Gym should be able to simply replace 'import gym' with 'import gymnasium as gym' in the vast majority of cases.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+FMU: /home/jovyan/field/lab_optimal.fmu | exists: True
+
+--- cell 3
+{'fmu_step_size': 600, 'fmu_start_time': 0, 'fmu_warmup_time': None, 'fmu_final_time': 604800, 'action_names': ['KITCHEN_Heating_Setpoint_FMU'], 'action_min': array([12.]), 'action_max': array([24.]), 'observation_names': [], 'reward_names': ['Electricity_Facility', 'Zone_Mean_Air_Temperature_KITCHEN']}
+steps per episode: 1008 -> episodes in the budget: 0.3
+
+--- cell 5
+observation order: ['Zone_Mean_Air_Temperature_KITCHEN'] | hidden: ['Electricity_Facility']
+
+--- cell 7
+
+--- cell 9
+            | 140          |
+|    iterations           | 2            |
+|    time_elapsed         | 3            |
+|    total_timesteps      | 512          |
+| train/                  |              |
+|    approx_kl            | 0.0015501415 |
+|    clip_fraction        | 0.000781     |
+|    clip_range           | 0.2          |
+|    entropy_loss         | -1.42        |
+|    explained_variance   | 1.87e-05     |
+|    learning_rate        | 0.0003       |
+|    loss                 | 14.9         |
+|    n_updates            | 10           |
+|    policy_gradient_loss | -0.000493    |
+|    std                  | 1.01         |
+|    value_loss           | 38.4         |
+------------------------------------------
+saved /home/jovyan/notebooks/ai/models/my_agent.zip
+Writing tabular output file results using tab format.
+Writing tabular output file results using HTML format.
+ ReadVarsESO program starting.
+ ReadVars Run Time=00hr 00min  0.07sec
+ ReadVarsESO program completed successfully.
+ ReadVarsESO program starting.
+ ReadVars Run Time=00hr 00min  0.02sec
+ ReadVarsESO program completed successfully.
+EnergyPlus Run Time=00hr 00min  3.90sec
+[INFO][Slave] [ok][FMU status:OK] fmiTerminateSlave: fmiFreeInstanceSlave must be called to free the FMU instance.
+
+[INFO][Slave] [ok][FMU status:OK] fmiFreeSlaveInstance: The function fmiFreeSlaveInstance of instance Slave is executed.
+
+EnergyPlus Completed Successfully.
+[INFO][Slave] [ok][FMU status:OK] freeInstanceResources: Slave will be freed.
+
+
+--- cell 11
+ up
+Performing Zone Sizing Simulation
+...for Sizing Period: #2 WINTER DESIGN DAY
+Adjusting Air System Sizing
+Adjusting Standard 62.1 Ventilation Sizing
+Initializing Simulation
+Reporting Surfaces
+Beginning Primary Simulation
+Initializing New Environment Parameters
+Warming up {1}
+Instantiating FunctionalMockupUnitExport interface
+ExternalInterface initializes.
+Number of outputs in ExternalInterface = 2
+Number of inputs  in ExternalInterface = 1
+Calculating Detailed Daylighting Factors, Start Date=01/01
+Warming up {2}
+Warming up {3}
+Warming up {4}
+Warming up {5}
+Warming up {6}
+Warming up {7}
+Warming up {8}
+Starting Simulation at 01/01/2017 for YEAR_SIMULATION
+ExternalInterface starts first data exchange.
+Writing tabular output file results using tab format.
+Writing tabular output file results using HTML format.
+ ReadVarsESO program starting.
+ ReadVars Run Time=00hr 00min  0.07sec
+ ReadVarsESO program completed successfully.
+ ReadVarsESO program starting.
+ ReadVars Run Time=00hr 00min  0.02sec
+ ReadVarsESO program completed successfully.
+EnergyPlus Run Time=00hr 00min  4.36sec
+trained agent          : return = -314.38 over 1008 steps
+[INFO][Slave] [ok][FMU status:OK] fmiTerminateSlave: fmiFreeInstanceSlave must be called to free the FMU instance.
+
+[INFO][Slave] [ok][FMU status:OK] fmiFreeSlaveInstance: The function fmiFreeSlaveInstance of instance Slave is executed.
+
+EnergyPlus Completed Successfully.
+[INFO][Slave] [ok][FMU status:OK] freeInstanceResources: Slave will be freed.
+
+
+==============================
+{"wall_s": 19.4, "children_cpu_user_s": 18.7, "children_cpu_sys_s": 1.2, "children_maxrss_mb": 348.8, "cgroup_peak_bytes": {"/sys/fs/cgroup/memory/memory.max_usage_in_bytes": 649945088}, "failed_cells": []}
+exit=0

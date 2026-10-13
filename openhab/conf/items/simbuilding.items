@@ -1,0 +1,40 @@
+// Semantic model: Building > Rooms > HVAC equipment > points, and the Outdoor location with its weather station.
+Group gDemo "Demo building" <house> ["Building"]
+Group gWest "West zone" <office> (gDemo) ["Room"]
+Group eWest "West zone heating" (gWest) ["HVAC"]
+Group gSouth "South zone" <office> (gDemo) ["Room"]
+Group eSouth "South zone heating" (gSouth) ["HVAC"]
+Group gEast "East zone" <office> (gDemo) ["Room"]
+Group eEast "East zone heating" (gEast) ["HVAC"]
+Group gNorth "North zone" <office> (gDemo) ["Room"]
+Group eNorth "North zone heating" (gNorth) ["HVAC"]
+Group gOutdoor "Outdoor" <sun> (gDemo) ["Outdoor"]
+Group eWeather "Weather" (gOutdoor) ["WeatherService"]
+
+Number Temp_West_Controlled "West temperature, controlled [%.1f °C]" <temperature> (eWest) ["Measurement", "Temperature"] { channel="mqtt:topic:demoBroker:demoBuilding:temp_west_controlled" }
+Number Temp_West_Baseline "West temperature, baseline [%.1f °C]" <temperature> (eWest) ["Measurement", "Temperature"] { channel="mqtt:topic:demoBroker:demoBuilding:temp_west_baseline" }
+Number Setpoint_West "West heating setpoint [%.0f °C]" <heating> (eWest) ["Setpoint", "Temperature"] { channel="mqtt:topic:demoBroker:demoBuilding:sp_west" }
+Number Temp_South_Controlled "South temperature, controlled [%.1f °C]" <temperature> (eSouth) ["Measurement", "Temperature"] { channel="mqtt:topic:demoBroker:demoBuilding:temp_south_controlled" }
+Number Temp_South_Baseline "South temperature, baseline [%.1f °C]" <temperature> (eSouth) ["Measurement", "Temperature"] { channel="mqtt:topic:demoBroker:demoBuilding:temp_south_baseline" }
+Number Setpoint_South "South heating setpoint [%.0f °C]" <heating> (eSouth) ["Setpoint", "Temperature"] { channel="mqtt:topic:demoBroker:demoBuilding:sp_south" }
+Number Temp_East_Controlled "East temperature, controlled [%.1f °C]" <temperature> (eEast) ["Measurement", "Temperature"] { channel="mqtt:topic:demoBroker:demoBuilding:temp_east_controlled" }
+Number Temp_East_Baseline "East temperature, baseline [%.1f °C]" <temperature> (eEast) ["Measurement", "Temperature"] { channel="mqtt:topic:demoBroker:demoBuilding:temp_east_baseline" }
+Number Setpoint_East "East heating setpoint [%.0f °C]" <heating> (eEast) ["Setpoint", "Temperature"] { channel="mqtt:topic:demoBroker:demoBuilding:sp_east" }
+Number Temp_North_Controlled "North temperature, controlled [%.1f °C]" <temperature> (eNorth) ["Measurement", "Temperature"] { channel="mqtt:topic:demoBroker:demoBuilding:temp_north_controlled" }
+Number Temp_North_Baseline "North temperature, baseline [%.1f °C]" <temperature> (eNorth) ["Measurement", "Temperature"] { channel="mqtt:topic:demoBroker:demoBuilding:temp_north_baseline" }
+Number Setpoint_North "North heating setpoint [%.0f °C]" <heating> (eNorth) ["Setpoint", "Temperature"] { channel="mqtt:topic:demoBroker:demoBuilding:sp_north" }
+Number Outdoor_Temperature "Outdoor temperature [%.1f °C]" (eWeather) ["Measurement", "Temperature"] { channel="mqtt:topic:demoBroker:demoBuilding:outdoor_temperature" }
+Number Outdoor_Humidity "Outdoor humidity [%.0f %%]" (eWeather) ["Measurement", "Humidity"] { channel="mqtt:topic:demoBroker:demoBuilding:outdoor_humidity" }
+Number Wind_Speed "Wind speed [%.1f m/s]" (eWeather) ["Measurement", "Wind"] { channel="mqtt:topic:demoBroker:demoBuilding:wind_speed" }
+Number Solar_Direct "Direct solar radiation [%.0f W/m²]" (eWeather) ["Measurement", "Irradiance"] { channel="mqtt:topic:demoBroker:demoBuilding:solar_direct" }
+String Sim_Clock "Simulated time [%s]" <time> (gDemo) { channel="mqtt:topic:demoBroker:demoBuilding:clock" }
+String Run_Now "Run in progress [%s]" (gDemo) { channel="mqtt:topic:demoBroker:demoBuilding:run" }
+
+Number Electricity_kW_Controlled "Electricity power, controlled [%.2f kW]" <energy> (gDemo) ["Measurement", "Energy"] { channel="mqtt:topic:demoBroker:demoBuilding:electricity_kw_controlled" }
+Number Heating_kW_Controlled "Heating power, controlled [%.2f kW]" <energy> (gDemo) ["Measurement", "Energy"] { channel="mqtt:topic:demoBroker:demoBuilding:heating_kw_controlled" }
+Number Electricity_kWh_Controlled "Electricity energy, controlled [%.1f kWh]" <energy> (gDemo) ["Measurement", "Energy"] { channel="mqtt:topic:demoBroker:demoBuilding:electricity_kwh_controlled" }
+Number Heating_kWh_Controlled "Heating energy, controlled [%.1f kWh]" <energy> (gDemo) ["Measurement", "Energy"] { channel="mqtt:topic:demoBroker:demoBuilding:heating_kwh_controlled" }
+Number Electricity_kW_Baseline "Electricity power, baseline [%.2f kW]" <energy> (gDemo) ["Measurement", "Energy"] { channel="mqtt:topic:demoBroker:demoBuilding:electricity_kw_baseline" }
+Number Heating_kW_Baseline "Heating power, baseline [%.2f kW]" <energy> (gDemo) ["Measurement", "Energy"] { channel="mqtt:topic:demoBroker:demoBuilding:heating_kw_baseline" }
+Number Electricity_kWh_Baseline "Electricity energy, baseline [%.1f kWh]" <energy> (gDemo) ["Measurement", "Energy"] { channel="mqtt:topic:demoBroker:demoBuilding:electricity_kwh_baseline" }
+Number Heating_kWh_Baseline "Heating energy, baseline [%.1f kWh]" <energy> (gDemo) ["Measurement", "Energy"] { channel="mqtt:topic:demoBroker:demoBuilding:heating_kwh_baseline" }

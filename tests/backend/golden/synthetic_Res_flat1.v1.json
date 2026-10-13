@@ -1,0 +1,155 @@
+{
+  "model": "Res_flat1.idf",
+  "variables": [
+    {
+      "name": "Windows construction",
+      "type": "category",
+      "options": [
+        "Dbl LoE (e2=.1) Clr 6mm/13mm Arg - 1001",
+        "Sgl Clr 6mm - 1002",
+        "Trp LoE (e2=e5=.1) Clr 3mm/13mm Arg - 1003"
+      ],
+      "className": "FenestrationSurface:Detailed",
+      "field": "Construction_Name",
+      "targets": [
+        {
+          "object": "StairXnoHVAC:Zona1_Wall_2_1_0_0_0_0_Win",
+          "field": "Construction_Name",
+          "className": "FenestrationSurface:Detailed"
+        },
+        {
+          "object": "StairXnoHVAC:Zona1_Wall_3_0_0_0_0_0_Win",
+          "field": "Construction_Name",
+          "className": "FenestrationSurface:Detailed"
+        },
+        {
+          "object": "StairXnoHVAC:Zona1_Wall_4_3_0_0_0_0_Win",
+          "field": "Construction_Name",
+          "className": "FenestrationSurface:Detailed"
+        },
+        {
+          "object": "Blocco1:Zona3_Wall_5_0_0_0_0_0_Win",
+          "field": "Construction_Name",
+          "className": "FenestrationSurface:Detailed"
+        },
+        {
+          "object": "Blocco1:Zona3_Wall_6_0_0_0_0_0_Win",
+          "field": "Construction_Name",
+          "className": "FenestrationSurface:Detailed"
+        },
+        {
+          "object": "Blocco1:Zona6_Wall_7_0_0_0_0_0_Win",
+          "field": "Construction_Name",
+          "className": "FenestrationSurface:Detailed"
+        },
+        {
+          "object": "Blocco1:Zona7_Wall_3_0_0_0_0_0_Win",
+          "field": "Construction_Name",
+          "className": "FenestrationSurface:Detailed"
+        },
+        {
+          "object": "Blocco1:Zona1_Wall_4_0_0_0_0_0_Win",
+          "field": "Construction_Name",
+          "className": "FenestrationSurface:Detailed"
+        },
+        {
+          "object": "Blocco1:Zona2_Wall_3_0_0_0_0_0_Win",
+          "field": "Construction_Name",
+          "className": "FenestrationSurface:Detailed"
+        },
+        {
+          "object": "Blocco1:Zona2_Wall_4_0_0_0_0_0_Win",
+          "field": "Construction_Name",
+          "className": "FenestrationSurface:Detailed"
+        },
+        {
+          "object": "Blocco1:Zona4_Wall_3_0_0_0_0_0_Win",
+          "field": "Construction_Name",
+          "className": "FenestrationSurface:Detailed"
+        }
+      ],
+      "label": null,
+      "unit": "",
+      "source": {
+        "kind": "construction",
+        "element": "window",
+        "elementLabel": "Windows"
+      },
+      "shading": [
+        {
+          "control": "11001",
+          "material": "20002"
+        },
+        {
+          "control": "11002",
+          "material": "20002"
+        },
+        {
+          "control": "11003",
+          "material": "20002"
+        },
+        {
+          "control": "21001",
+          "material": "20002"
+        },
+        {
+          "control": "31001",
+          "material": "20002"
+        },
+        {
+          "control": "41001",
+          "material": "20002"
+        },
+        {
+          "control": "51001",
+          "material": "20002"
+        },
+        {
+          "control": "61001",
+          "material": "20002"
+        },
+        {
+          "control": "71001",
+          "material": "20002"
+        }
+      ],
+      "encoding": {
+        "Dbl LoE (e2=.1) Clr 6mm/13mm Arg - 1001": 1,
+        "Sgl Clr 6mm - 1002": 2,
+        "Trp LoE (e2=e5=.1) Clr 3mm/13mm Arg - 1003": 3
+      }
+    },
+    {
+      "name": "Lights W per m2",
+      "className": "Lights",
+      "field": "Watts_per_Zone_Floor_Area",
+      "targets": [
+        "*"
+      ],
+      "label": "Watts per Zone Floor Area",
+      "unit": "W/m2",
+      "source": {
+        "kind": "field",
+        "group": "Internal Gains"
+      },
+      "type": "range",
+      "min": 8.0,
+      "max": 12.0
+    }
+  ],
+  "objectives": [
+    {
+      "name": "Electricity:Facility",
+      "direction": "minimize"
+    },
+    {
+      "name": "DistrictHeating:Facility",
+      "direction": "minimize"
+    },
+    {
+      "name": "DistrictCooling:Facility",
+      "direction": "minimize"
+    }
+  ],
+  "notes": ""
+}

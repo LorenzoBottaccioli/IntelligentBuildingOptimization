@@ -1,0 +1,200 @@
+{
+  "dashboard": {
+    "id": 3,
+    "panels": [
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "PEA767B3DDC7793D7"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "decimals": 1,
+            "unit": "celsius"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 6,
+          "x": 0,
+          "y": 0
+        },
+        "id": 1,
+        "options": {
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          }
+        },
+        "targets": [
+          {
+            "alias": "value",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "PEA767B3DDC7793D7"
+            },
+            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'temperature_west' AND $timeFilter GROUP BY time($__interval) fill(null)",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "time_series"
+          }
+        ],
+        "title": "Mean temperature, baseline",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "P3C427C6903D4C228"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "decimals": 1,
+            "unit": "celsius"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 5,
+          "w": 6,
+          "x": 6,
+          "y": 0
+        },
+        "id": 2,
+        "options": {
+          "reduceOptions": {
+            "calcs": [
+              "mean"
+            ],
+            "fields": "",
+            "values": false
+          }
+        },
+        "targets": [
+          {
+            "alias": "value",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "P3C427C6903D4C228"
+            },
+            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'temperature_west' AND $timeFilter GROUP BY time($__interval) fill(null)",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "time_series"
+          }
+        ],
+        "title": "Mean temperature, controlled",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "datasource",
+          "uid": "-- Mixed --"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "unit": "celsius"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 24,
+          "x": 0,
+          "y": 5
+        },
+        "id": 3,
+        "targets": [
+          {
+            "alias": "baseline",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "PEA767B3DDC7793D7"
+            },
+            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'temperature_west' AND $timeFilter GROUP BY time($__interval) fill(null)",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "time_series"
+          },
+          {
+            "alias": "controlled",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "P3C427C6903D4C228"
+            },
+            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'temperature_west' AND $timeFilter GROUP BY time($__interval) fill(null)",
+            "rawQuery": true,
+            "refId": "B",
+            "resultFormat": "time_series"
+          }
+        ],
+        "title": "West zone air temperature",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "P3C427C6903D4C228"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "custom": {
+              "drawStyle": "line",
+              "lineInterpolation": "stepAfter"
+            },
+            "unit": "celsius"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 15
+        },
+        "id": 4,
+        "targets": [
+          {
+            "alias": "west",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "P3C427C6903D4C228"
+            },
+            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'setpoint_west' AND $timeFilter GROUP BY time($__interval) fill(null)",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "time_series"
+          },
+          {
+            "alias": "south",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "P3C427C6903D4C228"
+            },
+            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'setpoint_south' AND $timeFilter GROUP BY time($__interval) fill(null)",
+            "rawQuery": true,
+            "refId": "B",
+            "resultFormat": "time_series"
+          }
+        ],
+        "title": "Heating setpoints written by the controller",
+        "type": "timeseries"
+      }
+    ],
+    "refresh": "",
+    "schemaVersion": 39,
+    "time": {
+      "from": "2026-01-01T00:00:00.000Z",
+      "to": "2026-01-08T00:00:00.000Z"
+    },
+    "timezone": "utc",
+    "title": "Demo building - west zone temperature",
+    "uid": "demo-temperature",
+    "version": 1
+  },
+  "folderUid": ""
+}

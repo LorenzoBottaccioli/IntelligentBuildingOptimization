@@ -1,0 +1,16 @@
+E1_RES1.idf                          objects  1297 ->  1297 | classes  72 | class diffs 0 | fields  16279 | objects with field diffs 0
+lab_optimal_mutated.idf              objects   529 ->   529 | classes  80 | class diffs 0 | fields   6489 | objects with field diffs 0
+orig__lab_optimal.idf                objects   519 ->   519 | classes  77 | class diffs 0 | fields   6456 | objects with field diffs 0
+sim_t1__edited_Pa8_RES5.idf          objects   990 ->   990 | classes  71 | class diffs 0 | fields  14772 | objects with field diffs 0
+sim_t2__Pa3_RES4.idf                 objects   790 ->   790 | classes  70 | class diffs 0 | fields  11779 | objects with field diffs 0
+sim_t3__lab_building.idf             objects   541 ->   541 | classes  80 | class diffs 0 | fields   6544 | objects with field diffs 0
+sim_t5__res_multifloor_IDF.idf       objects   930 ->   930 | classes  74 | class diffs 0 | fields  15580 | objects with field diffs 0
+sim_t6__Res_flat1.idf                objects   426 ->   426 | classes  68 | class diffs 0 | fields   6194 | objects with field diffs 0
+sim_t7__Office_IDF.idf               objects   522 ->   522 | classes  74 | class diffs 0 | fields   7266 | objects with field diffs 0
+surr_t1__Office_IDF.idf              objects   513 ->   513 | classes  69 | class diffs 0 | fields   7246 | objects with field diffs 0
+surr_t2__Office_IDF_2_win.idf        objects   574 ->   574 | classes  71 | class diffs 0 | fields   7500 | objects with field diffs 0
+surr_t3__Res_flat1.idf               objects   502 ->   502 | classes  69 | class diffs 0 | fields   6420 | objects with field diffs 0
+surr_t4__Res-Flat2_IDF.idf           objects   387 ->   387 | classes  69 | class diffs 0 | fields   4595 | objects with field diffs 0
+surr_t5__res-multifloor_IDF.idf      objects  1002 ->  1002 | classes  69 | class diffs 0 | fields  15772 | objects with field diffs 0
+surr_t6__lab_building.idf            objects   517 ->   517 | classes  77 | class diffs 0 | fields   6452 | objects with field diffs 0
+surr_t7__office.idf                  objects   459 ->   459 | classes  67 | class diffs 0 | fields   6755 | objects with field diffs 0

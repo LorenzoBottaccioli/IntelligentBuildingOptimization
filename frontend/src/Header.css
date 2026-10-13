@@ -1,0 +1,196 @@
+/* The app root is one viewport: the blue sidebar on the left, full height, and
+   the main column (model bar + pages) beside it. */
+html,
+body {
+    margin: 0;
+    overflow: hidden;
+}
+
+.app-root {
+    height: 100vh;
+    display: flex;
+}
+
+.app-main {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.app-pages {
+    flex: 1;
+    min-height: 0;
+    position: relative;
+}
+
+.sidebar {
+    width: 280px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    background: #003366;
+    color: #fff;
+    z-index: 1000;
+    transition: width 0.15s;
+    /* Short screens: the whole sidebar scrolls rather than squeezing the menu. */
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.sidebar.is-collapsed {
+    width: 60px;
+}
+
+.sidebar__brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+    padding: var(--space-4) var(--space-4) var(--space-3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.sidebar.is-collapsed .sidebar__brand {
+    align-items: center;
+    padding: var(--space-3) var(--space-1);
+}
+
+.sidebar__logo {
+    height: 64px;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.sidebar.is-collapsed .sidebar__logo {
+    height: 36px;
+}
+
+.sidebar__title {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: 0.005em;
+}
+
+.sidebar__session {
+    padding: var(--space-3) var(--space-3) var(--space-3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.sidebar.is-collapsed .sidebar__session {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: var(--space-2) 0;
+}
+
+.sidebar.is-collapsed .sessiontools {
+    margin-top: 0;
+}
+
+/* Folded sidebar: one icon per control, which unfolds it. */
+.sidebar__icon {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 36px;
+    border: none;
+    border-radius: var(--radius);
+    background: none;
+    color: rgba(255, 255, 255, 0.85);
+    cursor: pointer;
+}
+
+.sidebar__icon:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.sidebar__collapse {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    margin: var(--space-2);
+    padding: var(--space-2);
+    border: none;
+    border-radius: var(--radius);
+    background: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.sidebar__credits {
+    text-decoration: none;
+}
+
+.sidebar__collapse:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.sidebar__burger {
+    display: none;
+}
+
+/* Phones: the sidebar becomes a drawer over the page. */
+@media (max-width: 720px) {
+    .sidebar,
+    .sidebar.is-collapsed {
+        position: fixed;
+        inset: 0 auto 0 0;
+        width: 290px;
+        transform: translateX(-100%);
+        transition: transform 0.2s;
+        z-index: 1200;
+    }
+
+    .sidebar.is-open {
+        transform: none;
+        box-shadow: 4px 0 16px rgba(0, 0, 0, 0.3);
+    }
+
+    .sidebar__collapse {
+        display: none;
+    }
+
+    .sidebar__burger {
+        display: flex;
+        position: fixed;
+        top: 8px;
+        left: 8px;
+        z-index: 1300;
+        padding: 6px;
+        border: none;
+        border-radius: var(--radius);
+        background: #003366;
+        color: #fff;
+    }
+
+    .app-main {
+        padding-top: 44px;
+    }
+}
+
+/* theme.css colours every hovered button brand orange; on the blue sidebar the
+   controls stay white. The session panel (white) keeps the global rule. */
+.sidebar .sessionmenu__toggle:hover:not(:disabled),
+.sidebar .sidemenu__section:hover:not(:disabled),
+.sidebar .sessiontools__btn:hover:not(:disabled),
+.sidebar .sidebar__icon:hover:not(:disabled),
+.sidebar .sidebar__collapse:hover:not(:disabled),
+.sidebar .sidemodel__upload:hover:not(:disabled) {
+    color: #fff;
+}
+
+.sidebar .sidemodel__upload:hover:not(:disabled) {
+    background: #e8eef5;
+    color: #003366;
+}
+
+.sidebar .sessionmenu__toggle:hover:not(:disabled) {
+    border-color: rgba(255, 255, 255, 0.6);
+}

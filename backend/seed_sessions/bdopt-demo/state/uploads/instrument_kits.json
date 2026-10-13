@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Comfort and energy of the demo",
+    "description": "What the demo controller reads and writes: zone temperature and humidity, outdoor weather, whole-building energy, and the setpoints of every zone.",
+    "entries": [
+      {
+        "tab": "sensors",
+        "title": "Zone Mean Air Temperature",
+        "where": "scope",
+        "role": "observation",
+        "variants": [
+          "Zone Mean Air Temperature"
+        ]
+      },
+      {
+        "tab": "sensors",
+        "title": "Zone Air Relative Humidity",
+        "where": "scope",
+        "role": "observation",
+        "variants": [
+          "Zone Air Relative Humidity"
+        ]
+      },
+      {
+        "tab": "sensors",
+        "title": "Site Outdoor Air Drybulb Temperature",
+        "where": [
+          "Environment"
+        ],
+        "role": "observation",
+        "variants": [
+          "Site Outdoor Air Drybulb Temperature"
+        ]
+      },
+      {
+        "tab": "sensors",
+        "title": "Site Direct Solar Radiation",
+        "where": [
+          "Environment"
+        ],
+        "role": "observation",
+        "variants": [
+          "Site Direct Solar Radiation Rate per Area"
+        ]
+      },
+      {
+        "tab": "meters",
+        "title": "Electricity",
+        "where": "default",
+        "role": "observation"
+      },
+      {
+        "tab": "meters",
+        "title": "DistrictHeating",
+        "where": "default",
+        "role": "observation"
+      },
+      {
+        "tab": "meters",
+        "title": "DistrictCooling",
+        "where": "default",
+        "role": "observation"
+      },
+      {
+        "tab": "actuators",
+        "title": "Heating Setpoint",
+        "where": "scope",
+        "type": "Zone Temperature Control",
+        "min": 10.0,
+        "max": 30.0
+      },
+      {
+        "tab": "actuators",
+        "title": "Cooling Setpoint",
+        "where": "scope",
+        "type": "Zone Temperature Control",
+        "min": 10.0,
+        "max": 30.0
+      }
+    ]
+  }
+]

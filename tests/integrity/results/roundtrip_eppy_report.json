@@ -1,0 +1,162 @@
+{
+ "E1_RES1.idf": {
+  "load_s": 68.8,
+  "objects_a": 1297,
+  "objects_b": 1297,
+  "class_count_diffs": [],
+  "field_diffs": [],
+  "order_only_classes": [],
+  "fields_compared": 16279,
+  "objects_compared": 1297
+ },
+ "lab_optimal_mutated.idf": {
+  "load_s": 10.3,
+  "objects_a": 529,
+  "objects_b": 529,
+  "class_count_diffs": [],
+  "field_diffs": [],
+  "order_only_classes": [],
+  "fields_compared": 6489,
+  "objects_compared": 529
+ },
+ "orig__lab_optimal.idf": {
+  "load_s": 10.1,
+  "objects_a": 519,
+  "objects_b": 519,
+  "class_count_diffs": [],
+  "field_diffs": [],
+  "order_only_classes": [],
+  "fields_compared": 6456,
+  "objects_compared": 519
+ },
+ "sim_t1__edited_Pa8_RES5.idf": {
+  "load_s": 32.4,
+  "objects_a": 990,
+  "objects_b": 990,
+  "class_count_diffs": [],
+  "field_diffs": [],
+  "order_only_classes": [],
+  "fields_compared": 14772,
+  "objects_compared": 990
+ },
+ "sim_t2__Pa3_RES4.idf": {
+  "load_s": 28.8,
+  "objects_a": 790,
+  "objects_b": 790,
+  "class_count_diffs": [],
+  "field_diffs": [],
+  "order_only_classes": [],
+  "fields_compared": 11779,
+  "objects_compared": 790
+ },
+ "sim_t3__lab_building.idf": {
+  "load_s": 47.9,
+  "objects_a": 541,
+  "objects_b": 541,
+  "class_count_diffs": [],
+  "field_diffs": [],
+  "order_only_classes": [],
+  "fields_compared": 6544,
+  "objects_compared": 541
+ },
+ "sim_t5__res_multifloor_IDF.idf": {
+  "load_s": 19.8,
+  "objects_a": 930,
+  "objects_b": 930,
+  "class_count_diffs": [],
+  "field_diffs": [],
+  "order_only_classes": [],
+  "fields_compared": 15580,
+  "objects_compared": 930
+ },
+ "sim_t6__Res_flat1.idf": {
+  "load_s": 17.8,
+  "objects_a": 426,
+  "objects_b": 426,
+  "class_count_diffs": [],
+  "field_diffs": [],
+  "order_only_classes": [],
+  "fields_compared": 6194,
+  "objects_compared": 426
+ },
+ "sim_t7__Office_IDF.idf": {
+  "load_s": 1417.3,
+  "objects_a": 522,
+  "objects_b": 522,
+  "class_count_diffs": [],
+  "field_diffs": [],
+  "order_only_classes": [],
+  "fields_compared": 7266,
+  "objects_compared": 522
+ },
+ "surr_t1__Office_IDF.idf": {
+  "load_s": 8.2,
+  "objects_a": 513,
+  "objects_b": 513,
+  "class_count_diffs": [],
+  "field_diffs": [],
+  "order_only_classes": [],
+  "fields_compared": 7246,
+  "objects_compared": 513
+ },
+ "surr_t2__Office_IDF_2_win.idf": {
+  "load_s": 17.2,
+  "objects_a": 574,
+  "objects_b": 574,
+  "class_count_diffs": [],
+  "field_diffs": [],
+  "order_only_classes": [],
+  "fields_compared": 7500,
+  "objects_compared": 574
+ },
+ "surr_t3__Res_flat1.idf": {
+  "load_s": 5.4,
+  "objects_a": 502,
+  "objects_b": 502,
+  "class_count_diffs": [],
+  "field_diffs": [],
+  "order_only_classes": [],
+  "fields_compared": 6420,
+  "objects_compared": 502
+ },
+ "surr_t4__Res-Flat2_IDF.idf": {
+  "load_s": 3.6,
+  "objects_a": 387,
+  "objects_b": 387,
+  "class_count_diffs": [],
+  "field_diffs": [],
+  "order_only_classes": [],
+  "fields_compared": 4595,
+  "objects_compared": 387
+ },
+ "surr_t5__res-multifloor_IDF.idf": {
+  "load_s": 27.1,
+  "objects_a": 1002,
+  "objects_b": 1002,
+  "class_count_diffs": [],
+  "field_diffs": [],
+  "order_only_classes": [],
+  "fields_compared": 15772,
+  "objects_compared": 1002
+ },
+ "surr_t6__lab_building.idf": {
+  "load_s": 17.6,
+  "objects_a": 517,
+  "objects_b": 517,
+  "class_count_diffs": [],
+  "field_diffs": [],
+  "order_only_classes": [],
+  "fields_compared": 6452,
+  "objects_compared": 517
+ },
+ "surr_t7__office.idf": {
+  "load_s": 248.1,
+  "objects_a": 459,
+  "objects_b": 459,
+  "class_count_diffs": [],
+  "field_diffs": [],
+  "order_only_classes": [],
+  "fields_compared": 6755,
+  "objects_compared": 459
+ }
+}

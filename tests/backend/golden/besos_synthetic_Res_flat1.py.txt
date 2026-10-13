@@ -1,0 +1,27 @@
+from besos import sampling
+from besos.parameters import FieldSelector, Parameter, RangeParameter, CategoryParameter
+from besos.problem import EPProblem
+
+# The blinds over the windows whose construction changes: given as a material,
+# they fit any window construction a sample picks
+for control, blind in [('11001', '20002'), ('11002', '20002'), ('11003', '20002'), ('21001', '20002'), ('31001', '20002'), ('41001', '20002'), ('51001', '20002'), ('61001', '20002'), ('71001', '20002')]:
+    wsc = building.getobject('WINDOWSHADINGCONTROL', control)
+    wsc.Shading_Device_Material_Name = blind
+    wsc.Construction_with_Shading_Name = ''
+
+parameters = []
+
+# Windows construction
+#   as numbers: 1 = Dbl LoE (e2=.1) Clr 6mm/13mm Arg - 1001, 2 = Sgl Clr 6mm - 1002, 3 = Trp LoE (e2=e5=.1) Clr 3mm/13mm Arg - 1003
+windows_construction = CategoryParameter(options=['Dbl LoE (e2=.1) Clr 6mm/13mm Arg - 1001', 'Sgl Clr 6mm - 1002', 'Trp LoE (e2=e5=.1) Clr 3mm/13mm Arg - 1003'])
+for obj in ['StairXnoHVAC:Zona1_Wall_2_1_0_0_0_0_Win', 'StairXnoHVAC:Zona1_Wall_3_0_0_0_0_0_Win', 'StairXnoHVAC:Zona1_Wall_4_3_0_0_0_0_Win', 'Blocco1:Zona3_Wall_5_0_0_0_0_0_Win', 'Blocco1:Zona3_Wall_6_0_0_0_0_0_Win', 'Blocco1:Zona6_Wall_7_0_0_0_0_0_Win', 'Blocco1:Zona7_Wall_3_0_0_0_0_0_Win', 'Blocco1:Zona1_Wall_4_0_0_0_0_0_Win', 'Blocco1:Zona2_Wall_3_0_0_0_0_0_Win', 'Blocco1:Zona2_Wall_4_0_0_0_0_0_Win', 'Blocco1:Zona4_Wall_3_0_0_0_0_0_Win']:
+    sel = FieldSelector(class_name='FenestrationSurface:Detailed', object_name=obj, field_name='Construction_Name')
+    parameters.append(Parameter(selector=sel, value_descriptors=windows_construction, name='Windows construction'))
+
+# Lights W per m2
+lights_w_per_m2_sel = FieldSelector(class_name='Lights', object_name='*', field_name='Watts_per_Zone_Floor_Area')
+parameters.append(Parameter(selector=lights_w_per_m2_sel, value_descriptors=RangeParameter(min_val=8, max_val=12), name='Lights W per m2'))
+
+objectives = ['Electricity:Facility', 'DistrictHeating:Facility', 'DistrictCooling:Facility']
+problem = EPProblem(parameters, objectives)
+samples = sampling.dist_sampler(sampling.lhs, problem, num_samples=20)

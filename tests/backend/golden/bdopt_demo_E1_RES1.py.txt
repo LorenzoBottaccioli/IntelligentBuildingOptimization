@@ -1,0 +1,135 @@
+# Define the problem: what to vary (parameters), what to improve (objectives), how EnergyPlus is run.
+# Written by the platform from the problem you defined; change it as you like.
+# It needs two names from the cell above: idf (the model, bdopt.load_idf) and epw_file (the weather file).
+# Every selector is checked against the model when the evaluator is created, with suggestions for a typo.
+from bdopt import (
+    CategoryParameter, EnergyPlusEvaluator, FieldSelector, MultiSelector, Parameter, Problem,
+    RangeParameter,
+)
+from bdopt.sampling import lhs
+
+# 4 parameters = 4 columns of `samples`, however many objects each one writes.
+parameters = []
+
+# External walls build-up
+#   writes 64 BuildingSurface:Detailed objects, field "Construction Name"
+#   The column holds the option itself; problem.json numbered the options:
+#     1 = external wall 45cm, 2 = external wall 70cm, 3 = external wall 30cm,
+#     4 = external wall 60cm, 5 = external wall 50cm, 6 = external wall 24cm
+external_walls_build_up_sel = MultiSelector.from_targets(
+    [
+        "Z04:Act100xx_Wall_2_0_0", "Z04:Act100xx_Wall_4_0_0", "Z00:Act100aa_Wall_4_1_0",
+        "Z00:Act100aa_Wall_5_1_0", "Z00:Act100aa_Wall_6_1_0", "Z00:Act100aa_Wall_7_1_0",
+        "Z00:Act100ab_Wall_5_0_0", "Z00:Act100ac_Wall_2_0_0", "Z00:Act100ac_Wall_6_0_0",
+        "Z01:Act106aa_Wall_4_1_0", "Z01:Act105aa_Wall_2_0_0", "Z01:Act105aa_Wall_3_1_0",
+        "Z01:Act105aa_Wall_3_1_1", "Z01:Act105aa_Wall_3_1_2", "Z01:Act105aa_Wall_3_1_3",
+        "Z01:Act105aa_Wall_3_1_4", "Z01:Act105aa_Wall_3_1_5", "Z01:Act105aa_Wall_3_1_6",
+        "Z01:Act105aa_Wall_3_1_7", "Z01:Act105aa_Wall_7_0_0", "Z01:Act102aa_Wall_5_0_0",
+        "Z01:Act104aa_Wall_4_1_0", "Z01:Act104aa_Wall_4_1_1", "Z01:Act104aa_Wall_4_1_2",
+        "Z01:Act104aa_Wall_4_1_3", "Z01:Act104aa_Wall_4_1_4", "Z01:Act104aa_Wall_4_1_5",
+        "Z01:Act104aa_Wall_4_1_6", "Z01:Act104aa_Wall_4_1_7", "Z01:Act104aa_Wall_4_1_8",
+        "Z01:Act104aa_Wall_4_1_9", "Z01:Act104aa_Wall_4_1_10", "Z01:Act104aa_Wall_4_1_11",
+        "Z01:Act104aa_Wall_5_0_0", "Z01:Act104aa_Wall_6_0_0", "Z01:Act104aa_Wall_7_0_0",
+        "Z01:Act104aa_Wall_7_0_1", "Z01:Act103aa_Wall_4_0_0", "Z01:Act103aa_Wall_5_0_0",
+        "Z02:Act107aa_Wall_3_0_0", "Z02:Act106ab_Wall_2_0_0", "Z03:Act103bb_Wall_1_0_0",
+        "Z03:Act103bb_Wall_1_0_1", "Z03:Act103bb_Wall_5_0_0", "Z03:Act103bb_Wall_6_0_0",
+        "Z03:Act102ba_Wall_4_0_0", "Z03:Act102ba_Wall_4_0_1", "Z03:Act102ba_Wall_4_0_2",
+        "Z03:Act102ba_Wall_4_0_3", "Z03:Act102ba_Wall_4_0_4", "Z03:Act102ba_Wall_4_0_5",
+        "Z03:Act102ba_Wall_4_0_6", "Z03:Act102ba_Wall_4_0_7", "Z03:Act106ba_Wall_1_0_0",
+        "Z03:Act106ba_Wall_7_0_0", "Z03:Act103ba_Wall_1_0_0", "Z03:Act103ba_Wall_2_0_0",
+        "Z03:Act103ba_Wall_3_0_0", "Z03:Act103ba_Wall_4_0_0", "Block2:Zone1_Wall_3_1_0",
+        "Block2:Zone1_Wall_5_0_0", "Block5:Zone1_Wall_1_0_0", "Block5:Zone1_Wall_3_1_0",
+        "Block5:Zone1_Wall_4_0_0",
+    ],
+    class_name="BuildingSurface:Detailed", field_name="Construction Name",
+)
+external_walls_build_up_options = CategoryParameter([
+    "external wall 45cm", "external wall 70cm", "external wall 30cm", "external wall 60cm",
+    "external wall 50cm", "external wall 24cm",
+])
+parameters.append(Parameter(
+    selector=external_walls_build_up_sel,
+    value_descriptor=external_walls_build_up_options,
+    name="External walls build-up",
+))
+
+# Windows construction
+#   writes 13 FenestrationSurface:Detailed objects, field "Construction Name"
+#   The column holds the option itself; problem.json numbered the options:
+#     1 = Project external glazing - 1001, 2 = Project roof glazing - 1002
+windows_construction_sel = MultiSelector.from_targets(
+    [
+        "Z00:Act100aa_Wall_5_1_0_0_0_0_Win", "Z00:Act100ab_Wall_5_0_0_0_0_1_Win",
+        "Z01:Act105aa_Wall_2_0_0_0_0_0_Win", "Z01:Act105aa_Wall_3_1_7_0_7_0_Win",
+        "Z01:Act105aa_Wall_7_0_0_0_0_0_Win", "Z01:Act102aa_Wall_5_0_0_0_0_0_Win",
+        "Z01:Act104aa_Wall_4_1_11_0_11_1_Win", "Z01:Act104aa_Wall_6_0_0_0_0_0_Win",
+        "Z01:Act103aa_Wall_5_0_0_0_0_0_Win", "Z02:Act107aa_Wall_3_0_0_0_0_0_Win",
+        "Z02:Act106ab_Wall_2_0_0_1_0_0_Win", "Z03:Act102ba_Wall_4_0_7_0_7_0_Win",
+        "Z03:Act106ba_Wall_1_0_0_0_0_0_Win",
+    ],
+    class_name="FenestrationSurface:Detailed", field_name="Construction Name",
+)
+windows_construction_options = CategoryParameter([
+    "Project external glazing - 1001", "Project roof glazing - 1002",
+])
+parameters.append(Parameter(
+    selector=windows_construction_sel,
+    value_descriptor=windows_construction_options,
+    name="Windows construction",
+))
+
+# Heating setpoint 1 Jan–15 Apr, every day, 00:00–24:00
+#   writes 10 Schedule:Compact objects, field "Field 4"
+#   Schedule:Compact fields are numbered, not named: field_index=5 is its "Field 4".
+heating_setpoint_1_jan_15_ap_sel = MultiSelector.from_targets(
+    [
+        "Z01:Act105aa Heating Setpoint Schedule", "Z01:Act102aa Heating Setpoint Schedule",
+        "Z01:Act104aa Heating Setpoint Schedule", "Z01:Act103aa Heating Setpoint Schedule",
+        "Z02:Act107aa Heating Setpoint Schedule", "Z02:Act106ab Heating Setpoint Schedule",
+        "Z03:Act103bb Heating Setpoint Schedule", "Z03:Act102ba Heating Setpoint Schedule",
+        "Z03:Act106ba Heating Setpoint Schedule", "Z03:Act103ba Heating Setpoint Schedule",
+    ],
+    class_name="Schedule:Compact", field_index=5,
+)
+parameters.append(Parameter(
+    selector=heating_setpoint_1_jan_15_ap_sel,
+    value_descriptor=RangeParameter(18, 22),
+    name="Heating setpoint 1 Jan–15 Apr, every day, 00:00–24:00",
+))
+
+# Lights Watts per Zone Floor Area
+#   writes every Lights object, field "Watts per Zone Floor Area"
+lights_watts_per_zone_floor_sel = FieldSelector(
+    class_name="Lights",
+    object_name="*",
+    field_name="Watts per Zone Floor Area",
+)
+parameters.append(Parameter(
+    selector=lights_watts_per_zone_floor_sel,
+    value_descriptor=RangeParameter(4, 10),
+    name="Lights Watts per Zone Floor Area",
+))
+
+# Objectives: meters, summed over the run period, in joules.
+# A plain name is minimised; MeterReader(name, direction="max") maximises.
+objectives = [
+    "Electricity:Facility",
+    "DistrictHeating:Facility",
+]
+problem = Problem(parameters, objectives)
+
+# EnergyPlus writes every Output:Variable the model asks for into its results database, and a detailed model
+# asks for hundreds. The objectives are meters, which the evaluator requests by itself, so none of those
+# variables is needed: they are removed from the copy that is simulated (idf itself is left as it is).
+# An objective that reads a variable, e.g. VariableReader, makes the evaluator request that variable itself.
+sim_idf = idf.copy()
+sim_idf.remove(sim_idf.by_class("Output:Variable"))
+evaluator = EnergyPlusEvaluator(
+    problem, sim_idf, epw_file,
+    out_dir="/tmp/bdopt_runs",  # run folders on the container's own disk: much faster than a shared folder
+    err_dir="outputdir",        # a run that fails is kept here, with EnergyPlus' error file
+    processes=2,                # EnergyPlus runs in parallel
+)
+
+samples = lhs(problem, 20)  # 20 Latin hypercube samples: a row per design, a column per parameter
+# lhs(problem, 20, seed=1) gives the same samples every time, and runs already done are not repeated (the cache lives in /tmp/bdopt_runs, so until the container is recreated).

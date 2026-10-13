@@ -1,0 +1,18 @@
+version: {'version': '2.21.1'}
+default kernel: python3 | kernelspecs: {'python3': 'Python 3 (ipykernel)', 'conda_environment': 'Python 3.10 (E+96, SB3)'}
+/tree: 200 | Content-Security-Policy: frame-ancestors *
+kernel conda_environment started: 87e3fdb6 starting
+  state after 6 s: starting
+  proc 10 /opt/conda/envs/conda_environment/bin/python /opt/conda/envs/conda_env | PATH = /usr/local/EnergyPlus-9-6-0:/opt/conda/envs/conda_environment/bin:/EnergyPlus-9.6.0-4b123cf80f-Linux-Ubuntu20.04-x86_64:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin | LD_LIBRARY_PATH = /opt/conda/envs/conda_environment/lib
+  proc 24 /opt/conda/envs/conda_environment/bin/python -m ipykernel_launcher -f  | PATH = /usr/local/EnergyPlus-9-6-0:/opt/conda/envs/conda_environment/bin:/EnergyPlus-9.6.0-4b123cf80f-Linux-Ubuntu20.04-x86_64:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin | LD_LIBRARY_PATH = /opt/conda/envs/conda_environment/lib
+kernel python3 started: 135ca2c5 starting
+  state after 6 s: starting
+  proc 10 /opt/conda/envs/conda_environment/bin/python /opt/conda/envs/conda_env | PATH = /usr/local/EnergyPlus-9-6-0:/opt/conda/envs/conda_environment/bin:/EnergyPlus-9.6.0-4b123cf80f-Linux-Ubuntu20.04-x86_64:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin | LD_LIBRARY_PATH = /opt/conda/envs/conda_environment/lib
+  proc 39 /opt/conda/envs/conda_environment/bin/python -m ipykernel_launcher -f  | PATH = /usr/local/EnergyPlus-9-6-0:/opt/conda/envs/conda_environment/bin:/EnergyPlus-9.6.0-4b123cf80f-Linux-Ubuntu20.04-x86_64:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin | LD_LIBRARY_PATH = /opt/conda/envs/conda_environment/lib
+--- jupyter.log tail
+[I 2026-10-10 12:58:24.340 ServerApp] Skipped non-installed server(s): basedpyright, bash-language-server, dockerfile-language-server-nodejs, javascript-typescript-langserver, jedi-language-server, julia-language-server, pyrefly, pyright, python-language-server, python-lsp-server, r-languageserver, sql-language-server, texlab, typescript-language-server, unified-language-server, vscode-css-languageserver-bin, vscode-html-languageserver-bin, vscode-json-languageserver-bin, yaml-language-server
+[I 2026-10-10 12:58:25.014 ServerApp] Kernel started: 87e3fdb6-0a12-49d5-9451-2562a7a132ab
+[I 2026-10-10 12:58:30.953 ServerApp] Kernel shutdown: 87e3fdb6-0a12-49d5-9451-2562a7a132ab
+[I 2026-10-10 12:58:31.186 ServerApp] Kernel started: 135ca2c5-ad0b-4060-bbcc-b0253b15ea11
+[I 2026-10-10 12:58:37.199 ServerApp] Kernel shutdown: 135ca2c5-ad0b-4060-bbcc-b0253b15ea11
+exit=0

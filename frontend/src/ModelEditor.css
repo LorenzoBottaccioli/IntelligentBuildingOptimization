@@ -1,0 +1,685 @@
+/* Model Editor: what a controller reads and writes. Platform tokens from theme.css. */
+
+.me {
+  font-family: var(--font-sans);
+  color: var(--color-text);
+}
+
+.me-empty {
+  color: var(--color-muted);
+  padding: var(--space-4) 0;
+}
+
+.me-muted {
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.me-error {
+  margin-bottom: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  border-left: 3px solid var(--color-danger);
+  background: #fdf1f0;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+}
+
+.me-warn {
+  margin: var(--space-2) 0 0;
+  padding: var(--space-2) var(--space-3);
+  border-left: 3px solid var(--color-brand);
+  background: #fff7f2;
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+}
+
+/* ---- summary: the FMU interface and the model's own EMS ---- */
+
+.me-summary {
+  display: grid;
+  /* Reads and writes carry a role switch or a range per row: give them room. */
+  grid-template-columns: minmax(24rem, 1.6fr) minmax(18rem, 1.2fr) minmax(14rem, 1fr);
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+.me-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-3) var(--space-4);
+  box-shadow: var(--shadow);
+}
+
+.me-card h3 {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-1);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.me-count {
+  display: inline-block;
+  min-width: 1.6rem;
+  padding: 0 var(--space-2);
+  border-radius: 999px;
+  background: var(--color-surface-alt);
+  color: var(--color-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.me-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  list-style: none;
+  padding: 0;
+  margin: var(--space-2) 0 0;
+}
+
+.me-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 1px 4px 1px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-surface-alt);
+  font-size: 0.8rem;
+}
+
+.me-chip code {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+
+.me .me-chip button {
+  border: none;
+  background: none;
+  padding: 0 4px;
+  color: var(--color-muted);
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.me .me-chip button:hover {
+  color: var(--color-danger);
+}
+
+.me-details {
+  margin-top: var(--space-2);
+  font-size: 0.85rem;
+}
+
+.me-details summary {
+  cursor: pointer;
+  color: var(--color-brand-dark);
+  font-weight: 600;
+}
+
+.me-plain {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-2) 0 0;
+  max-height: 14rem;
+  overflow-y: auto;
+}
+
+.me-plain li {
+  padding: 3px 0;
+  border-top: 1px solid var(--color-surface-alt);
+}
+
+.me-plain code {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+
+/* ---- tabs ---- */
+
+.me-tabs {
+  display: flex;
+  gap: var(--space-1);
+  border-bottom: 2px solid var(--color-border);
+}
+
+.me .me-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border: none;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  border-radius: var(--radius) var(--radius) 0 0;
+  background: none;
+  color: var(--color-muted);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.me .me-tab:hover {
+  color: var(--color-text);
+  background: var(--color-surface-alt);
+}
+
+.me .me-tab-on {
+  color: var(--color-text);
+  border-bottom-color: var(--color-brand);
+}
+
+.me-tab-hint {
+  margin: var(--space-2) 0 var(--space-3);
+}
+
+.me-search {
+  width: 100%;
+  margin-bottom: var(--space-4);
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font: inherit;
+  font-size: 0.95rem;
+}
+
+.me-search:focus {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 1px;
+}
+
+/* ---- groups and rows ---- */
+
+.me-group {
+  margin-bottom: var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+}
+
+.me-group > summary,
+.me-common > h4 {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  cursor: pointer;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.me-common {
+  border-color: var(--color-brand);
+}
+
+.me-common > h4 {
+  cursor: default;
+  font-weight: 600;
+}
+
+.me-group-title {
+  font-weight: 600;
+}
+
+.me-group-hint {
+  flex-basis: 100%;
+  font-weight: 400;
+}
+
+.me-list {
+  list-style: none;
+  padding: 0 var(--space-3) var(--space-2);
+  margin: 0;
+}
+
+.me-row {
+  border-top: 1px solid var(--color-surface-alt);
+}
+
+.me-row-open {
+  background: #fff7f2;
+  margin: 0 calc(-1 * var(--space-3));
+  padding: 0 var(--space-3);
+}
+
+.me-row-head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 6px 0;
+  min-height: 2.2rem;
+}
+
+.me-name {
+  font-size: 0.9rem;
+  overflow-wrap: anywhere;
+}
+
+.me-unit {
+  color: var(--color-muted);
+  font-size: 0.8rem;
+}
+
+.me-meta {
+  flex: 1;
+  color: var(--color-muted);
+  font-size: 0.78rem;
+  text-align: right;
+}
+
+.me-tag-warn {
+  padding: 0 8px;
+  border-radius: 999px;
+  background: #fff1e6;
+  color: var(--color-brand-dark);
+  font-size: 0.72rem;
+  white-space: nowrap;
+}
+
+.me .me-btn {
+  flex: none;
+  padding: 2px var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+
+.me .me-btn:hover:not(:disabled) {
+  border-color: var(--color-brand);
+  color: var(--color-brand-dark);
+}
+
+.me .me-btn-primary {
+  background: var(--color-brand);
+  border-color: var(--color-brand);
+  color: #fff;
+}
+
+.me .me-btn-primary:hover:not(:disabled) {
+  background: var(--color-brand-dark);
+  color: #fff;
+}
+
+.me-edit {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--space-3);
+  padding: var(--space-2) 0 var(--space-3);
+}
+
+.me-edit label,
+.me-edit .me-field,
+.ep-form .me-field {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 0.78rem;
+  color: var(--color-muted);
+}
+
+.me-edit input,
+.me-edit select {
+  min-width: 12rem;
+  max-width: 28rem;
+  padding: 4px var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font: inherit;
+  font-size: 0.85rem;
+  color: var(--color-text);
+}
+
+.me-field {
+  flex-direction: column;
+  gap: 2px;
+  font-size: 0.78rem;
+  color: var(--color-muted);
+}
+
+.me-edit input[type='number'] {
+  min-width: 6rem;
+  width: 7rem;
+}
+
+.me-edit .me-warn {
+  flex-basis: 100%;
+}
+
+/* ---- direct inputs, schedules ---- */
+
+.me-tag-on {
+  font-size: 0.75rem;
+  padding: 0 var(--space-2);
+  border-radius: 999px;
+  border: 1px solid var(--color-brand);
+  color: var(--color-brand);
+}
+
+.me-edit-note {
+  flex-basis: 100%;
+  margin: var(--space-1) 0 0;
+}
+
+.me-ems-note {
+  margin-top: var(--space-2);
+  font-style: italic;
+}
+
+/* ---- EMS programs ---- */
+
+.me-views {
+  margin-bottom: var(--space-4);
+}
+
+.me-note {
+  margin-bottom: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  border-left: 3px solid var(--color-brand);
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+}
+
+.me-tag-muted {
+  font-size: 0.75rem;
+  padding: 0 var(--space-2);
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  color: var(--color-muted);
+}
+
+.ep-section {
+  margin-bottom: var(--space-4);
+}
+
+.ep-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  align-items: flex-end;
+}
+
+.ep-form label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
+.ep-form input,
+.ep-form select {
+  padding: var(--space-1) var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font: inherit;
+  color: var(--color-text);
+  min-width: 12rem;
+}
+
+.ep-hint {
+  margin: var(--space-2) 0;
+}
+
+.ep-text,
+.ep-code {
+  width: 100%;
+  box-sizing: border-box;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-2) var(--space-3);
+  background: #fff;
+}
+
+.ep-code {
+  margin: var(--space-2) 0 0;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+.ep-msg {
+  margin: var(--space-1) 0;
+}
+
+.ep-actions {
+  display: flex;
+  gap: var(--space-2);
+  margin: var(--space-3) 0;
+}
+
+.ep-palette h4 {
+  margin: var(--space-3) 0 var(--space-1);
+  font-size: 0.9rem;
+}
+
+.ep-insert {
+  all: unset;
+  cursor: pointer;
+}
+
+.ep-sub {
+  margin: var(--space-4) 0 var(--space-2);
+  font-size: 0.9rem;
+}
+
+.ep-point,
+.ep-add {
+  padding: var(--space-1) var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font: inherit;
+  font-size: 0.85rem;
+  color: var(--color-text);
+  max-width: 24rem;
+}
+
+.ep-order {
+  margin: var(--space-2) 0;
+  padding-left: var(--space-5);
+}
+
+.ep-order li {
+  margin: var(--space-1) 0;
+}
+
+.ep-order-btns {
+  margin-left: var(--space-2);
+}
+
+.ep-order-btns button {
+  all: unset;
+  cursor: pointer;
+  padding: 0 var(--space-1);
+  color: var(--color-muted);
+}
+
+.ep-order-btns button:hover:not(:disabled) {
+  color: var(--color-brand);
+}
+
+.ep-order-btns button:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.ep-missing code {
+  text-decoration: line-through;
+}
+
+/* ---- EMS programs layout ---- */
+
+.ep-status .ep-rows {
+  margin: 0;
+}
+
+.ep-line {
+  display: grid;
+  grid-template-columns: 11rem 1fr auto;
+  gap: var(--space-3);
+  align-items: center;
+  padding: var(--space-2) 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.ep-line:first-child {
+  border-top: 0;
+}
+
+.ep-line dt {
+  font-weight: 600;
+}
+
+.ep-line dd {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.ep-switch {
+  all: unset;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 2px var(--space-3) 2px 2px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-muted);
+  font-size: 0.85rem;
+}
+
+.ep-switch-knob {
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%;
+  background: var(--color-muted);
+}
+
+.ep-switch-on {
+  border-color: var(--color-brand);
+  color: var(--color-brand);
+}
+
+.ep-switch-on .ep-switch-knob {
+  background: var(--color-brand);
+}
+
+.ep-switch:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.ep-point-block {
+  margin-top: var(--space-3);
+}
+
+.ep-point-block h4 {
+  margin: 0;
+  font-size: 0.9rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.ep-off {
+  opacity: 0.6;
+}
+
+.ep-grid {
+  display: grid;
+  grid-template-columns: minmax(16rem, 1fr) minmax(20rem, 1.5fr);
+  gap: var(--space-4);
+  align-items: start;
+}
+
+@media (max-width: 62rem) {
+  .ep-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ep-line {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ep-vars > summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.ep-vars > summary h3 {
+  display: inline-flex;
+  margin: 0;
+}
+
+.ep-vars-body {
+  margin-top: var(--space-3);
+}
+
+/* In the narrow columns a row wraps instead of squeezing the name. */
+.ep .me-row-head {
+  flex-wrap: wrap;
+}
+
+.ep .me-name {
+  flex: 1 1 10rem;
+  min-width: 8rem;
+  overflow-wrap: break-word;
+}
+
+.ep .me-meta {
+  flex: 1 1 100%;
+  order: 3;
+  text-align: left;
+}
+
+.ep .me-row-head .me-btn,
+.ep .me-row-head select {
+  order: 4;
+}
+
+/* ---- two columns: programs | calling managers ---- */
+
+.ep-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  min-width: 0;
+}
+
+.ep-col > .ep-section {
+  margin-bottom: 0;
+}
+
+.ep-all {
+  margin-left: var(--space-3);
+  font-weight: 400;
+}
+
+@media (max-width: 1250px) {
+  .me-summary {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .me-summary > .me-card:first-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 720px) {
+  .me-summary {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

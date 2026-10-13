@@ -1,0 +1,3 @@
+# openHAB writes its state here (users, tokens, backups); the pages and things of a project are part of its session
+*
+!.gitignore

@@ -1,0 +1,214 @@
+{
+ "a_cli": {
+  "Electricity:Facility": {
+   "Daily": [
+    7,
+    161457797.70003417
+   ],
+   "Hourly": [
+    168,
+    161457797.70003423
+   ],
+   "Monthly": [
+    1,
+    161457797.70003372
+   ],
+   "Run Period": [
+    1,
+    161457797.70003372
+   ],
+   "Zone Timestep": [
+    1008,
+    161457797.70003423
+   ]
+  },
+  "DistrictHeating:Facility": {
+   "Daily": [
+    7,
+    193329978.93315154
+   ],
+   "Hourly": [
+    168,
+    193329978.9331515
+   ],
+   "Monthly": [
+    1,
+    193329978.9331513
+   ],
+   "Run Period": [
+    1,
+    193329978.9331513
+   ],
+   "Zone Timestep": [
+    1008,
+    193329978.9331515
+   ]
+  },
+  "DistrictCooling:Facility": {
+   "Daily": [
+    7,
+    0.0
+   ],
+   "Hourly": [
+    168,
+    0.0
+   ],
+   "Monthly": [
+    1,
+    0.0
+   ],
+   "Run Period": [
+    1,
+    0.0
+   ],
+   "Zone Timestep": [
+    1008,
+    0.0
+   ]
+  }
+ },
+ "b_runperiod_dir": {
+  "Electricity:Facility": {
+   "Daily": [
+    7,
+    161457797.70003417
+   ],
+   "Hourly": [
+    168,
+    161457797.70003423
+   ],
+   "Monthly": [
+    1,
+    161457797.70003372
+   ],
+   "Run Period": [
+    1,
+    161457797.70003372
+   ],
+   "Zone Timestep": [
+    1008,
+    161457797.70003423
+   ]
+  },
+  "DistrictHeating:Facility": {
+   "Daily": [
+    7,
+    193329978.93315154
+   ],
+   "Hourly": [
+    168,
+    193329978.9331515
+   ],
+   "Monthly": [
+    1,
+    193329978.9331513
+   ],
+   "Run Period": [
+    1,
+    193329978.9331513
+   ],
+   "Zone Timestep": [
+    1008,
+    193329978.9331515
+   ]
+  },
+  "DistrictCooling:Facility": {
+   "Daily": [
+    7,
+    0.0
+   ],
+   "Hourly": [
+    168,
+    0.0
+   ],
+   "Monthly": [
+    1,
+    0.0
+   ],
+   "Run Period": [
+    1,
+    0.0
+   ],
+   "Zone Timestep": [
+    1008,
+    0.0
+   ]
+  }
+ },
+ "bdopt_result": {
+  "Electricity:Facility": 161457797.70003372,
+  "DistrictHeating:Facility": 193329978.9331513,
+  "DistrictCooling:Facility": 0.0
+ },
+ "param": [
+  "Urea Formaldehyde Foam_.1327",
+  "0.1327"
+ ],
+ "Electricity:Facility": {
+  "a_run_period": 161457797.70003372,
+  "a_finest_sum": 161457797.70003423,
+  "b_bdopt": 161457797.70003372,
+  "rel_diff": 0.0
+ },
+ "DistrictHeating:Facility": {
+  "a_run_period": 193329978.9331513,
+  "a_finest_sum": 193329978.9331515,
+  "b_bdopt": 193329978.9331513,
+  "rel_diff": 0.0
+ },
+ "DistrictCooling:Facility": {
+  "a_run_period": 0.0,
+  "a_finest_sum": 0.0,
+  "b_bdopt": 0.0,
+  "rel_diff": NaN
+ },
+ "removed": [
+  "output:variable ('Block1B:Kitchen', 'Zone Mean Air Temperature', 'timestep')",
+  "output:variable ('Block1B:Kitchen', 'Zone Mean Radiant Temperature', 'timestep')",
+  "output:variable ('Block1B:Kitchen', 'Zone Operative Temperature', 'timestep')",
+  "output:variable ('Block1B:Kitchen', 'Zone Air Relative Humidity', 'timestep')",
+  "output:variable ('Block1B:Bathroom1', 'Zone Mean Air Temperature', 'timestep')",
+  "output:variable ('Block1B:Bathroom1', 'Zone Mean Radiant Temperature', 'timestep')",
+  "output:variable ('Block1B:Bathroom1', 'Zone Operative Temperature', 'timestep')",
+  "output:variable ('Block1B:Bathroom1', 'Zone Air Relative Humidity', 'timestep')",
+  "output:variable ('Block1B:Room1', 'Zone Mean Air Temperature', 'timestep')",
+  "output:variable ('Block1B:Room1', 'Zone Mean Radiant Temperature', 'timestep')",
+  "output:variable ('Block1B:Room1', 'Zone Operative Temperature', 'timestep')",
+  "output:variable ('Block1B:Room1', 'Zone Air Relative Humidity', 'timestep')",
+  "output:variable ('Block1B:Corridor', 'Zone Mean Air Temperature', 'timestep')",
+  "output:variable ('Block1B:Corridor', 'Zone Mean Radiant Temperature', 'timestep')",
+  "output:variable ('Block1B:Corridor', 'Zone Operative Temperature', 'timestep')",
+  "output:variable ('Block1B:Corridor', 'Zone Air Relative Humidity', 'timestep')",
+  "output:variable ('Block1B:Bathroom', 'Zone Mean Air Temperature', 'timestep')",
+  "output:variable ('Block1B:Bathroom', 'Zone Mean Radiant Temperature', 'timestep')",
+  "output:variable ('Block1B:Bathroom', 'Zone Operative Temperature', 'timestep')",
+  "output:variable ('Block1B:Bathroom', 'Zone Air Relative Humidity', 'timestep')",
+  "output:variable ('Block1B:Livingroom', 'Zone Mean Air Temperature', 'timestep')",
+  "output:variable ('Block1B:Livingroom', 'Zone Mean Radiant Temperature', 'timestep')",
+  "output:variable ('Block1B:Livingroom', 'Zone Operative Temperature', 'timestep')",
+  "output:variable ('Block1B:Livingroom', 'Zone Air Relative Humidity', 'timestep')",
+  "output:variable ('Block1B:Room', 'Zone Mean Air Temperature', 'timestep')",
+  "output:variable ('Block1B:Room', 'Zone Mean Radiant Temperature', 'timestep')",
+  "output:variable ('Block1B:Room', 'Zone Operative Temperature', 'timestep')",
+  "output:variable ('Block1B:Room', 'Zone Air Relative Humidity', 'timestep')",
+  "output:variable ('*', 'Site Outdoor Air Drybulb Temperature', 'timestep')",
+  "output:variable ('*', 'Site Outdoor Air Dewpoint Temperature', 'timestep')",
+  "output:variable ('*', 'Site Wind Speed', 'timestep')",
+  "output:variable ('*', 'Site Wind Direction', 'timestep')",
+  "output:variable ('*', 'Site Direct Solar Radiation Rate per Area', 'timestep')",
+  "output:variable ('*', 'Site Diffuse Solar Radiation Rate per Area', 'timestep')",
+  "output:variable ('*', 'Site Solar Azimuth Angle', 'timestep')",
+  "output:variable ('*', 'Site Solar Altitude Angle', 'timestep')",
+  "output:variable ('*', 'Site Outdoor Air Barometric Pressure', 'timestep')",
+  "output:variable ('*', 'Erl Shading Control Status', 'Timestep')",
+  "output:variable ('BLOCK1B:LIVINGROOM', 'Zone Mean Air Temperature', 'Timestep')",
+  "output:variable ('EMS', 'Electricity_Facility', 'Timestep')",
+  "output:variable ('BLOCK1B:KITCHEN', 'Zone Mean Air Temperature', 'Timestep')"
+ ],
+ "added": [
+  "output:sqlite ('SimpleAndTabular',)",
+  "output:meter ('Electricity:Facility', 'RunPeriod')",
+  "output:meter ('DistrictHeating:Facility', 'RunPeriod')",
+  "output:meter ('DistrictCooling:Facility', 'RunPeriod')"
+ ]
+}

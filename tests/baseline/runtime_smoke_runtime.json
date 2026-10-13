@@ -1,0 +1,101 @@
+Reading input and weather file for preprocessor program.
+The IDF version of the input file ///tmp/JModelica.org/jm_tmpexnwnksy//resources//lab_optimal_baseline.idf starts with 9
+Successfully finish reading weather file.
+This is the Begin Month: 1
+Time (0) set is smaller than minimun allowed (1 day). Day will be set to 1.
+This is the Day of the Begin Month: 1
+This is the End Month: 1
+This is the Day of the End Month: 7
+Day of week was left blank in input file.
+This is the New Day of Week:  
+Running EPMacro...
+ExpandObjects Started.
+No expanded file generated.
+ExpandObjects Finished. Time:     0.051
+EnergyPlus Starting
+EnergyPlus, Version 9.6.0-4b123cf80f, YMD=2026.10.08 20:24
+Initializing Response Factors
+Calculating CTFs for "GROUNDFLOOR"
+Calculating CTFs for "ROOF"
+Calculating CTFs for "PARTITION"
+Calculating CTFs for "PARTITION_REV"
+Calculating CTFs for "INSIDEDOOR"
+Calculating CTFs for "EXTERNALWALLBO.287"
+Calculating CTFs for "EXTERNALWALLBO.287"
+Calculating CTFs for "EXTERNALWALLBO.287"
+Initializing Window Optical Properties
+Initializing Solar Calculations
+Allocate Solar Module Arrays
+Initializing Zone and Enclosure Report Variables
+Initializing Surface (Shading) Report Variables
+Computing Interior Solar Absorption Factors
+Determining Shadowing Combinations
+Computing Window Shade Absorption Factors
+Proceeding with Initializing Solar Calculations
+Initializing Surfaces
+Initializing Outdoor environment for Surfaces
+Setting up Surface Reporting Variables
+Initializing Temperature and Flux Histories
+Initializing Window Shading
+Computing Interior Absorption Factors
+Computing Interior Diffuse Solar Absorption Factors
+Initializing Solar Heat Gains
+Initializing Internal Heat Gains
+Initializing Interior Solar Distribution
+Initializing Interior Convection Coefficients
+Gathering Information for Predefined Reporting
+Completed Initializing Surface Heat Balance
+Calculate Outside Surface Heat Balance
+Calculate Inside Surface Heat Balance
+Calculate Air Heat Balance
+Initializing HVAC
+Warming up
+Calculating Detailed Daylighting Factors, Start Date=07/15
+Warming up
+Warming up
+Warming up
+Warming up
+Warming up
+Warming up
+Performing Zone Sizing Simulation
+...for Sizing Period: #1 SUMMER DESIGN DAY LUG
+Warming up
+Calculating Detailed Daylighting Factors, Start Date=01/15
+Warming up
+Warming up
+Warming up
+Warming up
+Warming up
+Performing Zone Sizing Simulation
+...for Sizing Period: #2 WINTER DESIGN DAY
+Adjusting Air System Sizing
+Adjusting Standard 62.1 Ventilation Sizing
+Initializing Simulation
+Reporting Surfaces
+Beginning Primary Simulation
+Initializing New Environment Parameters
+Warming up {1}
+Instantiating FunctionalMockupUnitExport interface
+ExternalInterface initializes.
+Number of outputs in ExternalInterface = 2
+Number of inputs  in ExternalInterface = 0
+Calculating Detailed Daylighting Factors, Start Date=01/01
+Warming up {2}
+Warming up {3}
+Warming up {4}
+Warming up {5}
+Warming up {6}
+Warming up {7}
+Warming up {8}
+Starting Simulation at 01/01/2017 for YEAR_SIMULATION
+ExternalInterface starts first data exchange.
+Writing tabular output file results using tab format.
+Writing tabular output file results using HTML format.
+ ReadVarsESO program starting.
+ ReadVars Run Time=00hr 00min  0.27sec
+ ReadVarsESO program completed successfully.
+ ReadVarsESO program starting.
+ ReadVars Run Time=00hr 00min  0.09sec
+ ReadVarsESO program completed successfully.
+EnergyPlus Run Time=00hr 00min 38.43sec
+{"first": {"Electricity_Facility": 0.0, "Zone_Mean_Air_Temperature_KITCHEN": 20.00000000014459}, "fmu": "lab_optimal_baseline.fmu", "inputs": [], "last": {"Electricity_Facility": 19575.92161265211, "Zone_Mean_Air_Temperature_KITCHEN": 20.0}, "last_ts": "2026-01-01T04:00:00", "outputs": ["Electricity_Facility", "Zone_Mean_Air_Temperature_KITCHEN"], "run": "baseline", "step_size": 600.0, "steps": 24}

@@ -1,0 +1,214 @@
+{
+ "a_cli": {
+  "Electricity:Facility": {
+   "Daily": [
+    7,
+    112601594.51082055
+   ],
+   "Hourly": [
+    168,
+    112601594.51082057
+   ],
+   "Monthly": [
+    1,
+    112601594.51081973
+   ],
+   "Run Period": [
+    1,
+    112601594.51081973
+   ],
+   "Zone Timestep": [
+    1008,
+    112601594.51082057
+   ]
+  },
+  "DistrictHeating:Facility": {
+   "Daily": [
+    7,
+    134380586.7940159
+   ],
+   "Hourly": [
+    168,
+    134380586.79401597
+   ],
+   "Monthly": [
+    1,
+    134380586.79401568
+   ],
+   "Run Period": [
+    1,
+    134380586.79401568
+   ],
+   "Zone Timestep": [
+    1008,
+    134380586.794016
+   ]
+  },
+  "DistrictCooling:Facility": {
+   "Daily": [
+    7,
+    923030389.4718993
+   ],
+   "Hourly": [
+    168,
+    923030389.4718995
+   ],
+   "Monthly": [
+    1,
+    923030389.4719003
+   ],
+   "Run Period": [
+    1,
+    923030389.4719003
+   ],
+   "Zone Timestep": [
+    1008,
+    923030389.4718995
+   ]
+  }
+ },
+ "b_runperiod_dir": {
+  "Electricity:Facility": {
+   "Daily": [
+    7,
+    112601594.51082055
+   ],
+   "Hourly": [
+    168,
+    112601594.51082057
+   ],
+   "Monthly": [
+    1,
+    112601594.51081973
+   ],
+   "Run Period": [
+    1,
+    112601594.51081973
+   ],
+   "Zone Timestep": [
+    1008,
+    112601594.51082057
+   ]
+  },
+  "DistrictHeating:Facility": {
+   "Daily": [
+    7,
+    134380586.7940159
+   ],
+   "Hourly": [
+    168,
+    134380586.79401597
+   ],
+   "Monthly": [
+    1,
+    134380586.79401568
+   ],
+   "Run Period": [
+    1,
+    134380586.79401568
+   ],
+   "Zone Timestep": [
+    1008,
+    134380586.794016
+   ]
+  },
+  "DistrictCooling:Facility": {
+   "Daily": [
+    7,
+    923030389.4718993
+   ],
+   "Hourly": [
+    168,
+    923030389.4718995
+   ],
+   "Monthly": [
+    1,
+    923030389.4719003
+   ],
+   "Run Period": [
+    1,
+    923030389.4719003
+   ],
+   "Zone Timestep": [
+    1008,
+    923030389.4718995
+   ]
+  }
+ },
+ "bdopt_result": {
+  "Electricity:Facility": 112601594.51081973,
+  "DistrictHeating:Facility": 134380586.79401568,
+  "DistrictCooling:Facility": 923030389.4719003
+ },
+ "param": [
+  "Urea Formaldehyde Foam_.1327",
+  "0.1327"
+ ],
+ "Electricity:Facility": {
+  "a_run_period": 112601594.51081973,
+  "a_finest_sum": 112601594.51082057,
+  "b_bdopt": 112601594.51081973,
+  "rel_diff": 0.0
+ },
+ "DistrictHeating:Facility": {
+  "a_run_period": 134380586.79401568,
+  "a_finest_sum": 134380586.794016,
+  "b_bdopt": 134380586.79401568,
+  "rel_diff": 0.0
+ },
+ "DistrictCooling:Facility": {
+  "a_run_period": 923030389.4719003,
+  "a_finest_sum": 923030389.4718995,
+  "b_bdopt": 923030389.4719003,
+  "rel_diff": 0.0
+ },
+ "removed": [
+  "output:variable ('Block1B:Kitchen', 'Zone Mean Air Temperature', 'timestep')",
+  "output:variable ('Block1B:Kitchen', 'Zone Mean Radiant Temperature', 'timestep')",
+  "output:variable ('Block1B:Kitchen', 'Zone Operative Temperature', 'timestep')",
+  "output:variable ('Block1B:Kitchen', 'Zone Air Relative Humidity', 'timestep')",
+  "output:variable ('Block1B:Bathroom1', 'Zone Mean Air Temperature', 'timestep')",
+  "output:variable ('Block1B:Bathroom1', 'Zone Mean Radiant Temperature', 'timestep')",
+  "output:variable ('Block1B:Bathroom1', 'Zone Operative Temperature', 'timestep')",
+  "output:variable ('Block1B:Bathroom1', 'Zone Air Relative Humidity', 'timestep')",
+  "output:variable ('Block1B:Room1', 'Zone Mean Air Temperature', 'timestep')",
+  "output:variable ('Block1B:Room1', 'Zone Mean Radiant Temperature', 'timestep')",
+  "output:variable ('Block1B:Room1', 'Zone Operative Temperature', 'timestep')",
+  "output:variable ('Block1B:Room1', 'Zone Air Relative Humidity', 'timestep')",
+  "output:variable ('Block1B:Corridor', 'Zone Mean Air Temperature', 'timestep')",
+  "output:variable ('Block1B:Corridor', 'Zone Mean Radiant Temperature', 'timestep')",
+  "output:variable ('Block1B:Corridor', 'Zone Operative Temperature', 'timestep')",
+  "output:variable ('Block1B:Corridor', 'Zone Air Relative Humidity', 'timestep')",
+  "output:variable ('Block1B:Bathroom', 'Zone Mean Air Temperature', 'timestep')",
+  "output:variable ('Block1B:Bathroom', 'Zone Mean Radiant Temperature', 'timestep')",
+  "output:variable ('Block1B:Bathroom', 'Zone Operative Temperature', 'timestep')",
+  "output:variable ('Block1B:Bathroom', 'Zone Air Relative Humidity', 'timestep')",
+  "output:variable ('Block1B:Livingroom', 'Zone Mean Air Temperature', 'timestep')",
+  "output:variable ('Block1B:Livingroom', 'Zone Mean Radiant Temperature', 'timestep')",
+  "output:variable ('Block1B:Livingroom', 'Zone Operative Temperature', 'timestep')",
+  "output:variable ('Block1B:Livingroom', 'Zone Air Relative Humidity', 'timestep')",
+  "output:variable ('Block1B:Room', 'Zone Mean Air Temperature', 'timestep')",
+  "output:variable ('Block1B:Room', 'Zone Mean Radiant Temperature', 'timestep')",
+  "output:variable ('Block1B:Room', 'Zone Operative Temperature', 'timestep')",
+  "output:variable ('Block1B:Room', 'Zone Air Relative Humidity', 'timestep')",
+  "output:variable ('*', 'Site Outdoor Air Drybulb Temperature', 'timestep')",
+  "output:variable ('*', 'Site Outdoor Air Dewpoint Temperature', 'timestep')",
+  "output:variable ('*', 'Site Wind Speed', 'timestep')",
+  "output:variable ('*', 'Site Wind Direction', 'timestep')",
+  "output:variable ('*', 'Site Direct Solar Radiation Rate per Area', 'timestep')",
+  "output:variable ('*', 'Site Diffuse Solar Radiation Rate per Area', 'timestep')",
+  "output:variable ('*', 'Site Solar Azimuth Angle', 'timestep')",
+  "output:variable ('*', 'Site Solar Altitude Angle', 'timestep')",
+  "output:variable ('*', 'Site Outdoor Air Barometric Pressure', 'timestep')",
+  "output:variable ('*', 'Erl Shading Control Status', 'Timestep')",
+  "output:variable ('BLOCK1B:LIVINGROOM', 'Zone Mean Air Temperature', 'Timestep')",
+  "output:variable ('EMS', 'Electricity_Facility', 'Timestep')",
+  "output:variable ('BLOCK1B:KITCHEN', 'Zone Mean Air Temperature', 'Timestep')"
+ ],
+ "added": [
+  "output:sqlite ('SimpleAndTabular',)",
+  "output:meter ('Electricity:Facility', 'RunPeriod')",
+  "output:meter ('DistrictHeating:Facility', 'RunPeriod')",
+  "output:meter ('DistrictCooling:Facility', 'RunPeriod')"
+ ]
+}

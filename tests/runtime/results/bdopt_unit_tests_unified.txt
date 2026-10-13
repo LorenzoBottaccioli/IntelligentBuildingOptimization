@@ -1,0 +1,123 @@
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+........................................................................ [ 42%]
+........................................................................ [ 84%]
+.......F...ss.............                                               [100%]
+=================================== FAILURES ===================================
+_______ test_new_sklearn_surrogates_learn_the_response[lasso_polynomial] _______
+
+data = (Problem(4 parameters, objectives=['f1', 'f2']),           p0        p1        p2        p3        f1        f2
+0   0....  0.920727  0.060178  0.388655
+299  0.254045  0.191806  0.514153  0.696730 -0.372425  0.720905
+
+[300 rows x 6 columns])
+kind = 'lasso_polynomial'
+
+    @pytest.mark.parametrize("kind", sorted(NEW_ACCURACY))
+    def test_new_sklearn_surrogates_learn_the_response(data, kind):
+        from bdopt.surrogate import make_surrogate
+    
+        pr, train, test = data
+>       m = make_surrogate(kind).fit(train, pr)
+
+tests/test_surrogate.py:148: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/opt/conda/envs/conda_environment/lib/python3.10/site-packages/bdopt/surrogate/base.py:46: in fit
+    return self.fit_unit(U, Y, problem)
+/opt/conda/envs/conda_environment/lib/python3.10/site-packages/bdopt/surrogate/base.py:62: in fit_unit
+    self._fit(U, (Y - self._y_mean) / self._y_std)
+/opt/conda/envs/conda_environment/lib/python3.10/site-packages/bdopt/surrogate/sklearn_models.py:554: in _fit
+    ElasticNetCV(l1_ratio=self.l1_ratio, cv=_cv(len(U), self.cv), max_iter=20000, alphas=60).fit(Fs, Z[:, j])
+/opt/conda/envs/conda_environment/lib/python3.10/site-packages/sklearn/linear_model/_coordinate_descent.py:2405: in fit
+    return super().fit(X, y, sample_weight=sample_weight, **params)
+/opt/conda/envs/conda_environment/lib/python3.10/site-packages/sklearn/base.py:1382: in wrapper
+    estimator._validate_params()
+/opt/conda/envs/conda_environment/lib/python3.10/site-packages/sklearn/base.py:436: in _validate_params
+    validate_parameter_constraints(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+parameter_constraints = {'eps': [<sklearn.utils._param_validation.Interval object at 0x7fe9c66b0cd0>], 'n_alphas': [<sklearn.utils._param_validation.Interval object at 0x7fe9c66b0d00>], 'alphas': ['array-like', None], 'fit_intercept': ['boolean'], ...}
+params = {'alphas': 60, 'copy_X': True, 'cv': 5, 'eps': 0.001, ...}
+caller_name = 'ElasticNetCV'
+
+    def validate_parameter_constraints(parameter_constraints, params, caller_name):
+        """Validate types and values of given parameters.
+    
+        Parameters
+        ----------
+        parameter_constraints : dict or {"no_validation"}
+            If "no_validation", validation is skipped for this parameter.
+    
+            If a dict, it must be a dictionary `param_name: list of constraints`.
+            A parameter is valid if it satisfies one of the constraints from the list.
+            Constraints can be:
+            - an Interval object, representing a continuous or discrete range of numbers
+            - the string "array-like"
+            - the string "sparse matrix"
+            - the string "random_state"
+            - callable
+            - None, meaning that None is a valid value for the parameter
+            - any type, meaning that any instance of this type is valid
+            - an Options object, representing a set of elements of a given type
+            - a StrOptions object, representing a set of strings
+            - the string "boolean"
+            - the string "verbose"
+            - the string "cv_object"
+            - the string "nan"
+            - a MissingValues object representing markers for missing values
+            - a HasMethods object, representing method(s) an object must have
+            - a Hidden object, representing a constraint not meant to be exposed to the user
+    
+        params : dict
+            A dictionary `param_name: param_value`. The parameters to validate against the
+            constraints.
+    
+        caller_name : str
+            The name of the estimator or function or method that called this function.
+        """
+        for param_name, param_val in params.items():
+            # We allow parameters to not have a constraint so that third party estimators
+            # can inherit from sklearn estimators without having to necessarily use the
+            # validation tools.
+            if param_name not in parameter_constraints:
+                continue
+    
+            constraints = parameter_constraints[param_name]
+    
+            if constraints == "no_validation":
+                continue
+    
+            constraints = [make_constraint(constraint) for constraint in constraints]
+    
+            for constraint in constraints:
+                if constraint.is_satisfied_by(param_val):
+                    # this constraint is satisfied, no need to check further.
+                    break
+            else:
+                # No constraint is satisfied, raise with an informative message.
+    
+                # Ignore constraints that we don't want to expose in the error message,
+                # i.e. options that are for internal purpose or not officially supported.
+                constraints = [
+                    constraint for constraint in constraints if not constraint.hidden
+                ]
+    
+                if len(constraints) == 1:
+                    constraints_str = f"{constraints[0]}"
+                else:
+                    constraints_str = (
+                        f"{', '.join([str(c) for c in constraints[:-1]])} or"
+                        f" {constraints[-1]}"
+                    )
+    
+>               raise InvalidParameterError(
+                    f"The {param_name!r} parameter of {caller_name} must be"
+                    f" {constraints_str}. Got {param_val!r} instead."
+                )
+E               sklearn.utils._param_validation.InvalidParameterError: The 'alphas' parameter of ElasticNetCV must be an array-like or None. Got 60 instead.
+
+/opt/conda/envs/conda_environment/lib/python3.10/site-packages/sklearn/utils/_param_validation.py:98: InvalidParameterError
+=========================== short test summary info ============================
+SKIPPED [1] tests/test_surrogate.py:155: could not import 'lightgbm': No module named 'lightgbm'
+SKIPPED [1] tests/test_surrogate.py:155: could not import 'xgboost': No module named 'xgboost'
+FAILED tests/test_surrogate.py::test_new_sklearn_surrogates_learn_the_response[lasso_polynomial]
+1 failed, 167 passed, 2 skipped, 19 deselected in 370.03s (0:06:10)

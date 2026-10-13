@@ -1,0 +1,53 @@
+# Image A (runtime) for bms_services and controller: pyfmi + assimulo, EnergyPlus 9.6, stable-baselines3 on CPU torch.
+#
+#   docker build -f conda-environment/Dockerfile.runtime -t jupyter:smartbuilding-runtime conda-environment
+#
+# Same contract as the image it replaces: base nrel/energyplus:9.6.0 (Ubuntu 20.04), the env at
+# /opt/conda/envs/conda_environment (kernel name conda_environment, Python 3.9), fmi_mlc inside site-packages,
+# Jupyter classic server on 8888 without token and with the frame-ancestors CSP.
+#
+# What is different: the env is solved in a builder stage with micromamba and only the finished env is copied
+# (no Miniconda base, no conda/pip caches, no compilers), torch is the CPU build, and TensorFlow, Harlow, BESOS, wxPython and
+# the CUDA wheels are gone.
+
+FROM nrel/energyplus:9.6.0 AS builder
+ENV DEBIAN_FRONTEND=noninteractive PIP_NO_CACHE_DIR=1
+RUN apt-get update && apt-get install -y --no-install-recommends curl ca-certificates bzip2 \
+ && rm -rf /var/lib/apt/lists/*
+RUN curl -fsSL https://micro.mamba.pm/api/micromamba/linux-64/latest | tar -xj -C /usr/local/bin --strip-components=1 bin/micromamba
+COPY environment.runtime.yml /tmp/environment.runtime.yml
+ENV MAMBA_ROOT_PREFIX=/opt/mamba
+RUN micromamba create -y -p /opt/conda/envs/conda_environment -f /tmp/environment.runtime.yml \
+ && micromamba clean -a -y \
+ && find /opt/conda/envs/conda_environment -name '__pycache__' -type d -prune -exec rm -rf {} + \
+ && find /opt/conda/envs/conda_environment -name '*.a' -delete
+COPY fmi_mlc /opt/conda/envs/conda_environment/lib/python3.9/site-packages/fmi_mlc
+# kernelspec inside the env prefix, so it travels with the copy
+RUN /opt/conda/envs/conda_environment/bin/python -m ipykernel install --sys-prefix --name conda_environment \
+      --display-name "Python 3.9 (E+96, SB3)"
+
+
+FROM nrel/energyplus:9.6.0 AS runtime
+COPY --from=builder /opt/conda/envs/conda_environment /opt/conda/envs/conda_environment
+
+# EnergyPlus paths the platform already relies on (same as the previous image)
+RUN ln -sf /EnergyPlus-9.6.0-4b123cf80f-Linux-Ubuntu20.04-x86_64 /usr/local/EnergyPlus-9-6-0
+ENV ENERGYPLUS_HOME=/usr/local/EnergyPlus-9-6-0 \
+    EPLUS_PATH=/usr/local/EnergyPlus-9-6-0/energyplus \
+    PATH=/usr/local/EnergyPlus-9-6-0:/opt/conda/envs/conda_environment/bin:${PATH}
+
+# The base image is Ubuntu 20.04, whose libstdc++ has no GLIBCXX_3.4.29. pyfmi (through scipy) and
+# stable_baselines3 need it: put the newer libstdc++ that the env ships first on the loader path.
+ENV LD_LIBRARY_PATH=/opt/conda/envs/conda_environment/lib
+
+RUN mkdir -p /home/jovyan/notebooks
+WORKDIR /home/jovyan/notebooks
+EXPOSE 8888
+
+ENTRYPOINT ["/bin/bash", "-lc", "\
+/opt/conda/envs/conda_environment/bin/jupyter notebook \
+ --ip=0.0.0.0 --port=8888 --no-browser --allow-root \
+ --NotebookApp.token='' --NotebookApp.password='' \
+ --NotebookApp.notebook_dir=/home/jovyan/notebooks \
+ --NotebookApp.tornado_settings=\"{'headers':{'Content-Security-Policy':'frame-ancestors *'}}\" \
+"]

@@ -1,0 +1,14 @@
+Test 1: Office_IDF.idf / Larnaca_Larnax_Airp_-hour.epw, 6 parameters
+  max relative difference to the platform's results: 7.73e-08
+Test 2: Office_IDF_2_win.idf / PARIS_FR-hour.epw, 6 parameters
+  max relative difference to the platform's results: 2.35e-08
+Test 3: Res_flat1.idf / Torino_IT-hour.epw, 6 parameters
+  max relative difference to the platform's results: 1.91e-04
+Test 4: Res-Flat2_IDF.idf / Larnaca_Larnax_Airp_-hour.epw, 6 parameters
+  max relative difference to the platform's results: 4.15e-05
+Test 5: res-multifloor_IDF.idf / PARIS_FR-hour.epw, 6 parameters
+  max relative difference to the platform's results: 6.11e-05
+Test 6: lab_building.idf / Torino_IT-hour.epw, 7 parameters
+  max relative difference to the platform's results: 1.07e-04
+Test 7: office.idf / Larnaca_Larnax_Airp_-hour.epw, 6 parameters
+  max relative difference to the platform's results: 2.79e-07

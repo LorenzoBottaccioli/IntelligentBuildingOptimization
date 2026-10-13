@@ -1,0 +1,17 @@
+version: {'version': '2.17.0'}
+default kernel: python3 | kernelspecs: {'conda_environment': 'Python (SmartBuilding RL)', 'python3': 'Python 3 (ipykernel)'}
+/tree: 200 | Content-Security-Policy: frame-ancestors *
+kernel conda_environment started: bc1428e5 starting
+  state after 6 s: starting
+  proc 11 /opt/conda/envs/conda_environment/bin/python /opt/conda/envs/conda_env | PATH = /usr/local/EnergyPlus-9-6-0:/opt/conda/bin:/EnergyPlus-9.6.0-4b123cf80f-Linux-Ubuntu20.04-x86_64:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin | LD_LIBRARY_PATH = /opt/conda/envs/conda_environment/lib
+  proc 33 /opt/conda/envs/conda_environment/bin/python -m ipykernel_launcher -f  | PATH = /usr/local/EnergyPlus-9-6-0:/opt/conda/bin:/EnergyPlus-9.6.0-4b123cf80f-Linux-Ubuntu20.04-x86_64:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin | LD_LIBRARY_PATH = /opt/conda/envs/conda_environment/lib
+kernel python3 started: 5c9346f9 starting
+  state after 6 s: starting
+  proc 11 /opt/conda/envs/conda_environment/bin/python /opt/conda/envs/conda_env | PATH = /usr/local/EnergyPlus-9-6-0:/opt/conda/bin:/EnergyPlus-9.6.0-4b123cf80f-Linux-Ubuntu20.04-x86_64:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin | LD_LIBRARY_PATH = /opt/conda/envs/conda_environment/lib
+  proc 48 /opt/conda/envs/conda_environment/bin/python -m ipykernel_launcher -f  | PATH = /usr/local/EnergyPlus-9-6-0:/opt/conda/bin:/EnergyPlus-9.6.0-4b123cf80f-Linux-Ubuntu20.04-x86_64:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin | LD_LIBRARY_PATH = /opt/conda/envs/conda_environment/lib
+--- jupyter.log tail
+[I 2026-10-08 22:56:00.217 ServerApp] Kernel started: bc1428e5-6d6a-4160-a3a4-24638448bdff
+[I 2026-10-08 22:56:06.246 ServerApp] Kernel shutdown: bc1428e5-6d6a-4160-a3a4-24638448bdff
+[I 2026-10-08 22:56:06.492 ServerApp] Kernel started: 5c9346f9-f518-425a-a63c-48ef2ec5b39d
+[I 2026-10-08 22:56:12.581 ServerApp] Kernel shutdown: 5c9346f9-f518-425a-a63c-48ef2ec5b39d
+exit=0

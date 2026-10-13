@@ -1,0 +1,31 @@
+Bridge mqtt:broker:demoBroker [ host="mosquitto", port=1883, secure=false, clientID="openhab-demo" ] {
+    Thing topic demoBuilding "Demo building" {
+        Channels:
+            Type number : temp_west_controlled "West temperature, controlled" [ stateTopic="demo/controlled/temperature_west", transformationPattern="JSONPATH:$.value" ]
+            Type number : temp_south_controlled "South temperature, controlled" [ stateTopic="demo/controlled/temperature_south", transformationPattern="JSONPATH:$.value" ]
+            Type number : temp_east_controlled "East temperature, controlled" [ stateTopic="demo/controlled/temperature_east", transformationPattern="JSONPATH:$.value" ]
+            Type number : temp_north_controlled "North temperature, controlled" [ stateTopic="demo/controlled/temperature_north", transformationPattern="JSONPATH:$.value" ]
+            Type number : electricity_kw_controlled "electricity_kw controlled" [ stateTopic="demo/controlled/electricity_kw", transformationPattern="JSONPATH:$.value" ]
+            Type number : heating_kw_controlled "heating_kw controlled" [ stateTopic="demo/controlled/heating_kw", transformationPattern="JSONPATH:$.value" ]
+            Type number : electricity_kwh_controlled "electricity_kwh controlled" [ stateTopic="demo/controlled/electricity_kwh", transformationPattern="JSONPATH:$.value" ]
+            Type number : heating_kwh_controlled "heating_kwh controlled" [ stateTopic="demo/controlled/heating_kwh", transformationPattern="JSONPATH:$.value" ]
+            Type number : temp_west_baseline "West temperature, baseline" [ stateTopic="demo/baseline/temperature_west", transformationPattern="JSONPATH:$.value" ]
+            Type number : temp_south_baseline "South temperature, baseline" [ stateTopic="demo/baseline/temperature_south", transformationPattern="JSONPATH:$.value" ]
+            Type number : temp_east_baseline "East temperature, baseline" [ stateTopic="demo/baseline/temperature_east", transformationPattern="JSONPATH:$.value" ]
+            Type number : temp_north_baseline "North temperature, baseline" [ stateTopic="demo/baseline/temperature_north", transformationPattern="JSONPATH:$.value" ]
+            Type number : electricity_kw_baseline "electricity_kw baseline" [ stateTopic="demo/baseline/electricity_kw", transformationPattern="JSONPATH:$.value" ]
+            Type number : heating_kw_baseline "heating_kw baseline" [ stateTopic="demo/baseline/heating_kw", transformationPattern="JSONPATH:$.value" ]
+            Type number : electricity_kwh_baseline "electricity_kwh baseline" [ stateTopic="demo/baseline/electricity_kwh", transformationPattern="JSONPATH:$.value" ]
+            Type number : heating_kwh_baseline "heating_kwh baseline" [ stateTopic="demo/baseline/heating_kwh", transformationPattern="JSONPATH:$.value" ]
+            Type number : sp_west "West setpoint" [ stateTopic="demo/controlled/setpoint/west", transformationPattern="JSONPATH:$.value", commandTopic="demo/controlled/cmd/west", formatBeforePublish="{\"value\": %s}" ]
+            Type number : sp_south "South setpoint" [ stateTopic="demo/controlled/setpoint/south", transformationPattern="JSONPATH:$.value", commandTopic="demo/controlled/cmd/south", formatBeforePublish="{\"value\": %s}" ]
+            Type number : sp_east "East setpoint" [ stateTopic="demo/controlled/setpoint/east", transformationPattern="JSONPATH:$.value", commandTopic="demo/controlled/cmd/east", formatBeforePublish="{\"value\": %s}" ]
+            Type number : sp_north "North setpoint" [ stateTopic="demo/controlled/setpoint/north", transformationPattern="JSONPATH:$.value", commandTopic="demo/controlled/cmd/north", formatBeforePublish="{\"value\": %s}" ]
+            Type number : outdoor_temperature "outdoor_temperature" [ stateTopic="demo/site/outdoor_temperature", transformationPattern="JSONPATH:$.value" ]
+            Type number : outdoor_humidity "outdoor_humidity" [ stateTopic="demo/site/outdoor_humidity", transformationPattern="JSONPATH:$.value" ]
+            Type number : wind_speed "wind_speed" [ stateTopic="demo/site/wind_speed", transformationPattern="JSONPATH:$.value" ]
+            Type number : solar_direct "solar_direct" [ stateTopic="demo/site/solar_direct", transformationPattern="JSONPATH:$.value" ]
+            Type string : clock "Simulated time" [ stateTopic="demo/site/clock", transformationPattern="JSONPATH:$.value" ]
+            Type string : run "Run in progress" [ stateTopic="demo/site/run", transformationPattern="JSONPATH:$.value" ]
+    }
+}

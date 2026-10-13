@@ -1,0 +1,2 @@
+2629	/root/.cache/pip
+7510	/opt/conda/envs/conda_environment

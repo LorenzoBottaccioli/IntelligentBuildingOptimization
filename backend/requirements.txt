@@ -1,0 +1,16 @@
+Flask
+Flask-SQLAlchemy
+Flask-Cors
+Flask-Session
+eppy==0.5.63  # as in the Jupyter env; 0.6.7 takes ~130 s to save E1_RES1 (per-field getunits)
+nbformat
+influxdb-client
+paho-mqtt
+influxdb        # si aún usas el cliente de InfluxDB 1.x en algún punto
+python-dotenv    # si tu código usa .env (aunque ya lo quitaste, queda por si acaso)
+Werkzeug
+SQLAlchemy
+requests      # en caso de que hagas peticiones HTTP (e.g. a openHAB)
+PyYAML        # platform emergency gateway reads field/points.yaml
+pyepw==0.1    # reads and writes EPW weather files (weather_epw.py)
+tzdata        # IANA time zones for the Open-Meteo weather files

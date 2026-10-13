@@ -1,0 +1,249 @@
+/* Model export tab: period, parameters.py, export. */
+
+.fx {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 960px;
+  padding: var(--space-4) var(--space-5) var(--space-6);
+}
+
+.fx-pad {
+  padding: var(--space-4) var(--space-5);
+}
+
+.fx-card {
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+}
+
+.fx-card h2 {
+  margin: 0 0 var(--space-3);
+  font-size: 1rem;
+}
+
+.fx-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.fx-field {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 0.8rem;
+  color: var(--color-muted);
+}
+
+.fx-field input,
+.fx-field select {
+  width: 8rem;
+  padding: 4px var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font: inherit;
+  font-size: 0.9rem;
+  color: var(--color-text);
+}
+
+.fx-field small {
+  font-size: 0.75rem;
+}
+
+.fx-timeline {
+  margin: var(--space-4) 0 0;
+  padding-left: 1.2rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.fx-timeline li + li {
+  margin-top: var(--space-2);
+}
+
+.fx-msg {
+  margin: var(--space-3) 0 0;
+}
+
+.fx-ok {
+  font-size: 0.85rem;
+  color: var(--color-success);
+}
+
+.fx-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-2);
+}
+
+.fx-head h2 {
+  margin: 0;
+  font-family: var(--font-mono);
+}
+
+.fx-head-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.fx-text {
+  width: 100%;
+  resize: vertical;
+  padding: var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface-alt);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  white-space: pre;
+  overflow: auto;
+}
+
+.fx-link {
+  border: none;
+  background: none;
+  padding: 0;
+  color: var(--color-brand-dark);
+  text-decoration: underline;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.8rem;
+}
+
+.fx-note {
+  margin: 0 0 var(--space-3);
+  font-size: 0.85rem;
+}
+
+.fx-row-center,
+.fx-actions .fx-row {
+  align-items: center;
+}
+
+.fx-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-4);
+}
+
+.fx-action {
+  border-top: 3px solid #003366;
+}
+
+.fx-file {
+  display: inline-flex;
+  align-items: center;
+  max-width: 240px;
+  margin: 0;
+  padding: var(--space-2) var(--space-3);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius);
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fx-file input {
+  display: none;
+}
+
+.fx-file:hover {
+  border-color: #003366;
+  color: #003366;
+}
+
+.fx-export {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-5);
+  border: 1px solid #003366;
+  border-radius: var(--radius);
+  background: #003366;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.fx-export:hover:not(:disabled) {
+  background: #00264d;
+}
+
+.fx-export.fx-export-alt {
+  background: #fff;
+  color: #003366;
+}
+
+.fx-export.fx-export-alt:hover:not(:disabled) {
+  background: #e8eef5;
+}
+
+.fx-export:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.fx-progress {
+  flex: 1;
+  min-width: 8rem;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--color-border);
+  overflow: hidden;
+}
+
+.fx-progress div {
+  height: 100%;
+  background: #003366;
+  transition: width 0.2s;
+}
+
+/* ---- role badges and ranges on the interface chips ---- */
+
+.me .me-chip .fx-badge {
+  padding: 0 8px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 0.72rem;
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+.me .me-chip .fx-badge:hover {
+  color: var(--color-brand-dark);
+  border-color: var(--color-brand);
+}
+
+.me .me-chip .fx-badge-warn {
+  background: #fff1e6;
+  border-color: var(--color-brand);
+  color: var(--color-brand-dark);
+}
+
+.fx-range-edit {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.fx-range-edit input {
+  width: 4.5rem;
+  padding: 1px 4px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font: inherit;
+  font-size: 0.75rem;
+}

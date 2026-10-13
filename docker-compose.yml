@@ -1,0 +1,302 @@
+version: '3.8'
+
+# One Jupyter image for everything the students run, built from this repo (see jupyter_image_builder):
+#   jupyter:smartbuilding-unified   Python 3.10, EnergyPlus 9.6, pyfmi + stable-baselines3 (runtime) and bdopt (surrogate)
+# used by jupyter_surrogate, controller and bms_services. The two images it replaces are still buildable:
+#   jupyter:smartbuilding-runtime    conda-environment/Dockerfile.runtime
+#   jupyter:smartbuilding-surrogate  conda-environment/surrogate/Dockerfile
+# Rollback: put those two tags back on the services below and the fmi_mlc mounts back on python3.9.
+
+services:
+  ### --------------------------
+  ### JUPYTER IMAGE (build-only)
+  ### --------------------------
+  # The profile keeps it out of `up`; naming it explicitly enables it:
+  #   docker compose build jupyter_image_builder
+  jupyter_image_builder:
+    profiles: ["build"]
+    build:
+      context: ./conda-environment
+      dockerfile: Dockerfile.unified
+    image: jupyter:smartbuilding-unified
+
+  ### --------------------
+  ### JUPYTER SURROGATE
+  ### --------------------
+  jupyter_surrogate:
+    restart: unless-stopped
+    image: jupyter:smartbuilding-unified
+    container_name: jupyter_surrogate
+    ports:
+      - "8889:8888"
+    # One BLAS thread per process: bdopt runs EnergyPlus in parallel and containers share the machine (a Gaussian-process
+    # fit was measured 40-100x slower with one thread per core on a busy host). Students can raise it before importing numpy.
+    environment:
+      - OMP_NUM_THREADS=1
+      - OPENBLAS_NUM_THREADS=1
+      - MKL_NUM_THREADS=1
+    volumes:
+      - ./backend/surrogate_notebooks:/home/jovyan/notebooks
+      - ./backend/uploads:/home/jovyan/uploads
+    depends_on:
+      - backend
+
+  # The supervisor of the students' code (gateway/supervisor.py): runs every *.py of
+  # Workspace/{devices,iot,ai} as a service on request from the Control room, and the
+  # building (the students' devices/gateway.py, or the emergency gateway when the
+  # teacher creates Workspace/.emergency). Nothing starts by itself.
+  bms_services:
+    restart: unless-stopped
+    container_name: bms_services
+    image: jupyter:smartbuilding-unified
+    entrypoint: ["/opt/conda/envs/conda_environment/bin/python", "/opt/gateway/supervisor.py"]
+    environment:
+      - LD_LIBRARY_PATH=/opt/conda/envs/conda_environment/lib
+      - PYTHONPATH=/opt/gateway
+      - MQTT_BROKER_URL=mosquitto
+      - MQTT_BROKER_PORT=1883
+      - INFLUX_URL=http://influxdb:8086
+      - INFLUX_USERNAME=${INFLUXDB_ADMIN_USER}
+      - INFLUX_PASSWORD=${INFLUXDB_ADMIN_PASSWORD}
+    volumes:
+      # The image has an old copy of fmi_mlc; mount the current one (with eplus_health).
+      - ./conda-environment/fmi_mlc:/opt/conda/envs/conda_environment/lib/python3.10/site-packages/fmi_mlc:ro
+      - ./gateway:/opt/gateway:ro
+      - ./Workspace:/home/jovyan/work
+      - ./Field:/home/jovyan/field:ro
+      # The FMU starts EnergyPlus as a child process.
+      - energyplus_data:/usr/local/EnergyPlus-9-6-0-4b123cf80f-Linux-Ubuntu20.04-x86_64:ro
+    depends_on:
+      - mosquitto
+      - influxdb
+      - energyplus
+
+  # The students' Jupyter: Workspace/ is its root (devices/, iot/, ai/). Every code
+  # page of the platform opens a file of it.
+  controller:
+    restart: unless-stopped
+    container_name: controller
+    image: jupyter:smartbuilding-unified
+    ports:
+      - "8892:8888"
+    environment:
+      - LD_LIBRARY_PATH=/opt/conda/envs/conda_environment/lib
+      - PYTHONPATH=/opt/gateway
+      - MQTT_BROKER_URL=mosquitto
+      - MQTT_BROKER_PORT=1883
+      - INFLUX_URL=http://influxdb:8086
+      - INFLUX_USERNAME=${INFLUXDB_ADMIN_USER}
+      - INFLUX_PASSWORD=${INFLUXDB_ADMIN_PASSWORD}
+    volumes:
+      # The image has an old copy of fmi_mlc; mount the current one (with eplus_health).
+      - ./conda-environment/fmi_mlc:/opt/conda/envs/conda_environment/lib/python3.10/site-packages/fmi_mlc:ro
+      - ./gateway:/opt/gateway:ro
+      - ./Workspace:/home/jovyan/notebooks
+      - ./Field:/home/jovyan/field:ro
+      - ./backend/uploads:/home/jovyan/uploads:ro
+      - energyplus_data:/usr/local/EnergyPlus-9-6-0-4b123cf80f-Linux-Ubuntu20.04-x86_64:ro
+    depends_on:
+      - mosquitto
+      - energyplus
+
+  mosquitto:
+    image: eclipse-mosquitto:2.0
+    container_name: mosquitto
+    restart: unless-stopped
+    ports:
+      - "1883:1883"
+    volumes:
+      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+      - ./mosquitto/data:/mosquitto/data
+      - ./mosquitto/log:/mosquitto/log
+
+  influxdb:
+    image: influxdb:1.11.8
+    container_name: influxdb
+    restart: unless-stopped
+    ports:
+      - "8086:8086"
+    volumes:
+      - ./influxdb1/data:/var/lib/influxdb
+      # Session snapshots: the backend runs `influxd backup/restore -portable` here
+      # (same files as /app/sessions in the backend), so each session keeps its data.
+      - ./backend/sessions:/sessions
+    environment:
+      - INFLUXDB_ADMIN_ENABLED=true
+      - INFLUXDB_ADMIN_USER=${INFLUXDB_ADMIN_USER}
+      - INFLUXDB_ADMIN_PASSWORD=${INFLUXDB_ADMIN_PASSWORD}
+    # $$ escapes the shell expansion so the container resolves these at runtime,
+    # unlike the ${...} above which Compose substitutes from .env.
+    command: >
+      sh -c '
+        influxd &
+        until curl --silent --fail http://localhost:8086/ping; do
+          echo "⏳ Esperando a InfluxDB…";
+          sleep 1;
+        done;
+        influx -host localhost -port 8086 \
+               -username $${INFLUXDB_ADMIN_USER} \
+               -password $${INFLUXDB_ADMIN_PASSWORD} \
+               -execute "CREATE DATABASE base_building";
+        wait
+      '
+
+  grafana:
+    image: grafana/grafana:12.0.0
+    container_name: grafana
+    restart: unless-stopped
+    depends_on:
+      - influxdb
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/provisioning/datasources/influxdb.yaml:/etc/grafana/provisioning/datasources/influxdb.yaml:ro
+    environment:
+      - GF_SECURITY_ADMIN_USER=${GRAFANA_ADMIN_USER}
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD}
+      # Substituted into provisioning/datasources/influxdb.yaml at startup.
+      - INFLUXDB_ADMIN_USER=${INFLUXDB_ADMIN_USER}
+      - INFLUXDB_ADMIN_PASSWORD=${INFLUXDB_ADMIN_PASSWORD}
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Viewer
+      - GF_SECURITY_ALLOW_EMBEDDING=true
+      # Regression analysis transformation, for the energy signature.
+      - GF_FEATURE_TOGGLES_ENABLE=regressionTransformation
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    image: backend:latest
+    container_name: backend
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend/flask_session:/app/flask_session
+      - ./backend/uploads:/app/uploads
+      # Pristine copy of each upload, so edits in uploads/ can always be reverted.
+      - ./backend/originals:/app/originals
+      - ./backend/simulation_outputs:/app/simulation_outputs
+      - ./backend/user_files:/app/user_files
+      # Saved sessions: named snapshots of the workspace directories below.
+      - ./backend/sessions:/app/sessions
+      - ./backend/simulation_notebooks:/app/simulation_notebooks
+      - ./backend/surrogate_notebooks:/app/surrogate_notebooks
+      - ./backend/notebook_templates:/app/notebook_templates:ro
+      - ./Workspace:/app/workspace
+      # FMUs, parameters.py and points.yaml written by the FMU export.
+      - ./Field:/app/field
+      # Same directory openHAB serves from, so generated Things/Items/Sitemap
+      # are picked up by its file watcher without a restart.
+      - ./openhab/conf:/app/openhab_conf
+      # The operator panels' own files (Main UI pages, Home Assistant entities and dashboards): part of a session.
+      - ./openhab/jsondb:/app/openhab_jsondb
+      - ./homeassistant/config:/app/homeassistant_config
+      # Used by methods.py run_energyplus_simulation() and run_conversion(), which
+      # drive the energyplus and eptofmu sidecars via `docker exec`.
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - INFLUX_URL=http://influxdb:8086
+      - INFLUX_USERNAME=${INFLUXDB_ADMIN_USER}
+      - INFLUX_PASSWORD=${INFLUXDB_ADMIN_PASSWORD}
+      - INFLUX_DATABASE=controlled_building
+      - MQTT_BROKER_URL=mosquitto
+      - MQTT_BROKER_PORT=1883
+      - OPENHAB_URL=http://openhab:8080
+      # Grafana HTTP API: a session saves and restores its dashboards.
+      - GRAFANA_URL=http://grafana:3000
+      - GRAFANA_ADMIN_USER=${GRAFANA_ADMIN_USER}
+      - GRAFANA_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD}
+      - IDD_PATH=/app/EnergyPlus-9-6-0/Energy+.idd
+      # Flavour of the generated surrogate notebook; must match what jupyter_surrogate has installed.
+      - SURROGATE_ENGINE=bdopt
+    depends_on:
+      - energyplus
+      - eptofmu
+      - influxdb
+      - mosquitto
+      - openhab
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    image: frontend:latest
+    container_name: frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+  # Sidecar, by design: it idles so the backend can `docker exec` the EnergyPlus
+  # binary inside it (methods.py run_energyplus_simulation) and so the other
+  # containers can mount its install through the energyplus_data volume.
+  energyplus:
+    image: nrel/energyplus:9.6.0
+    container_name: energyplus
+    restart: unless-stopped
+    command: tail -f /dev/null
+    volumes:
+      - ./backend/uploads:/workspace/uploads
+      - ./backend/simulation_outputs:/workspace/simulation_outputs
+      - energyplus_data:/EnergyPlus-9.6.0-4b123cf80f-Linux-Ubuntu20.04-x86_64
+
+  # Sidecar, same pattern as energyplus: idles until the backend runs the
+  # conversion inside it (methods.py run_conversion). It reads the IDF from
+  # /workspace/uploads and writes the FMU to /workspace/user_files.
+  eptofmu:
+    build:
+      context: ./eptofmu
+      dockerfile: Dockerfile
+    image: eptofmu:3.1.0
+    container_name: eptofmu
+    restart: unless-stopped
+    depends_on:
+      - energyplus
+    volumes:
+      - ./backend/uploads:/workspace/uploads
+      - ./backend/user_files:/workspace/user_files
+    command: tail -f /dev/null
+
+  openhab:
+    image: openhab/openhab:4.3.5
+    container_name: openhab
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+      - "8443:8443"
+    environment:
+      - CRYPTO_POLICY=unlimited
+    volumes:
+      - openhab_userdata:/openhab/userdata
+      - ./openhab/userdata/etc/jetty/jetty-web.xml:/openhab/userdata/etc/jetty/jetty-web.xml
+      - ./openhab/addons:/openhab/addons:rw
+      - ./openhab/conf:/openhab/conf:rw
+      - ./openhab/persistence:/openhab/persistence:rw
+      # The Main UI pages (jsondb): the demo page is in the repo, so it is there on a clean install too.
+      - ./openhab/jsondb:/openhab/userdata/jsondb:rw
+
+  # Second HMI next to openHAB: the same demo points, a Home Assistant dashboard (homeassistant/config).
+  homeassistant:
+    image: ghcr.io/home-assistant/home-assistant:2026.10.1
+    container_name: homeassistant
+    restart: unless-stopped
+    ports:
+      - "8123:8123"
+    environment:
+      - TZ=Europe/Rome
+    # First start: copy the seed (MQTT broker, onboarding done, local owner) into .storage if it is not there yet.
+    entrypoint: ["/bin/sh", "-c", "mkdir -p /config/.storage; [ -e /config/mqtt.yaml ] || echo '{}' > /config/mqtt.yaml; for f in auth onboarding core.config_entries http frontend.user_data_d3a10000000000000000000000000001; do [ -e /config/.storage/$$f ] || cp /seed/$$f /config/.storage/$$f; done; exec /init"]
+    volumes:
+      - ./homeassistant/config:/config
+      - ./homeassistant/seed:/seed:ro
+    depends_on:
+      - mosquitto
+
+volumes:
+  grafana_data:
+  openhab_userdata:
+  energyplus_data:

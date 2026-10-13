@@ -1,0 +1,47 @@
+apiVersion: 1
+
+# Credentials come from the environment (see .env), so this file cannot drift
+# away from what InfluxDB is actually started with.
+#
+# NOTE: the stack does not set INFLUXDB_HTTP_AUTH_ENABLED, so InfluxDB currently
+# accepts any credentials -- these values are not what makes the connection work.
+# If authentication is ever switched on, this file already points at the right
+# secrets instead of silently failing.
+
+datasources:
+  - name: InfluxDB Controlled
+    type: influxdb
+    access: proxy
+    url: http://influxdb:8086
+    database: controlled_building
+    user: $INFLUXDB_ADMIN_USER
+    secureJsonData:
+      password: $INFLUXDB_ADMIN_PASSWORD
+    isDefault: true
+    version: 1
+    editable: true
+
+  - name: InfluxDB Base
+    type: influxdb
+    access: proxy
+    url: http://influxdb:8086
+    database: base_building
+    user: $INFLUXDB_ADMIN_USER
+    secureJsonData:
+      password: $INFLUXDB_ADMIN_PASSWORD
+    isDefault: false
+    version: 1
+    editable: true
+
+  # Written by the platform's EnergyPlus-only run (Control room), not by the students' code.
+  - name: InfluxDB Direct
+    type: influxdb
+    access: proxy
+    url: http://influxdb:8086
+    database: direct_building
+    user: $INFLUXDB_ADMIN_USER
+    secureJsonData:
+      password: $INFLUXDB_ADMIN_PASSWORD
+    isDefault: false
+    version: 1
+    editable: true

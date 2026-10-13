@@ -1,0 +1,72 @@
+/* Credits & licences page. Prefix cr-; tokens from theme.css. */
+
+.cr {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 1040px;
+  padding: var(--space-4) var(--space-5) var(--space-6);
+  font-size: 14px;
+}
+
+.cr-bar h1 {
+  margin: 0 0 var(--space-1);
+  font-size: 20px;
+}
+
+.cr-bar p {
+  margin: 0;
+  max-width: 70ch;
+}
+
+.cr-card {
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+}
+
+.cr-card h2 {
+  margin: 0 0 var(--space-3);
+  font-size: 1rem;
+}
+
+.cr-card p {
+  margin: 0 0 var(--space-2);
+  max-width: 80ch;
+}
+
+.cr-note {
+  font-size: 13px;
+  color: var(--color-muted);
+}
+
+.cr-scroll {
+  overflow-x: auto;
+  margin-bottom: var(--space-2);
+}
+
+.cr-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.cr-table th,
+.cr-table td {
+  padding: var(--space-2);
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.cr-table th {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .cr {
+    padding: var(--space-3);
+  }
+}

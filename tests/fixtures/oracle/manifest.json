@@ -1,0 +1,930 @@
+{
+ "pandas": "1.4.3",
+ "read_csv_hint": "pd.read_csv(path, float_precision='round_trip')  # bit-exact; the default parser is not",
+ "tests": {
+  "test1": {
+   "idf": [
+    "Surrogate modeling examples/Test 1/Office_IDF.idf"
+   ],
+   "epw": [
+    "Surrogate modeling examples/Test 1/Larnaca_Larnax_Airp_-hour.epw"
+   ],
+   "tables": {
+    "adaptive_samples_example_1_60.pkl": {
+     "csv": "tests/fixtures/oracle/test1/adaptive_samples_example_1_60.csv",
+     "rows": 60,
+     "columns": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Lights Watts/Area",
+      "Ventilation ACH",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading",
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "objectives": [
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "inputs": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Lights Watts/Area",
+      "Ventilation ACH",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading"
+     ]
+    },
+    "simulation_initial_points_example_1_20.pkl": {
+     "csv": "tests/fixtures/oracle/test1/simulation_initial_points_example_1_20.csv",
+     "rows": 20,
+     "columns": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Ventilation ACH",
+      "Lights Watts/Area",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading",
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "objectives": [
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "inputs": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Ventilation ACH",
+      "Lights Watts/Area",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading"
+     ]
+    },
+    "simulation_samples_example_1_60.pkl": {
+     "csv": "tests/fixtures/oracle/test1/simulation_samples_example_1_60.csv",
+     "rows": 60,
+     "columns": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Ventilation ACH",
+      "Lights Watts/Area",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading",
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "objectives": [
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "inputs": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Ventilation ACH",
+      "Lights Watts/Area",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading"
+     ]
+    },
+    "simulation_test_points_example_1_5.pkl": {
+     "csv": "tests/fixtures/oracle/test1/simulation_test_points_example_1_5.csv",
+     "rows": 5,
+     "columns": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Ventilation ACH",
+      "Lights Watts/Area",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading",
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "objectives": [
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "inputs": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Ventilation ACH",
+      "Lights Watts/Area",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading"
+     ]
+    }
+   },
+   "skipped": []
+  },
+  "test2": {
+   "idf": [
+    "Surrogate modeling examples/Test 2/Office_IDF_2_win.idf"
+   ],
+   "epw": [
+    "Surrogate modeling examples/Test 2/PARIS_FR-hour.epw"
+   ],
+   "tables": {
+    "adaptive_samples_example_2_40.pkl": {
+     "csv": "tests/fixtures/oracle/test2/adaptive_samples_example_2_40.csv",
+     "rows": 40,
+     "columns": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Lights Watts/Area",
+      "Ventilation ACH",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading",
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "objectives": [
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "inputs": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Lights Watts/Area",
+      "Ventilation ACH",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading"
+     ]
+    },
+    "simulation_initial_points_example_1_20.pkl": {
+     "csv": "tests/fixtures/oracle/test2/simulation_initial_points_example_1_20.csv",
+     "rows": 20,
+     "columns": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Ventilation ACH",
+      "Lights Watts/Area",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading",
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "objectives": [
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "inputs": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Ventilation ACH",
+      "Lights Watts/Area",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading"
+     ]
+    },
+    "simulation_samples_example_2_40.pkl": {
+     "csv": "tests/fixtures/oracle/test2/simulation_samples_example_2_40.csv",
+     "rows": 40,
+     "columns": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Ventilation ACH",
+      "Lights Watts/Area",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading",
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "objectives": [
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "inputs": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Ventilation ACH",
+      "Lights Watts/Area",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading"
+     ]
+    },
+    "simulation_test_points_example_1_5.pkl": {
+     "csv": "tests/fixtures/oracle/test2/simulation_test_points_example_1_5.csv",
+     "rows": 5,
+     "columns": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Ventilation ACH",
+      "Lights Watts/Area",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading",
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "objectives": [
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "inputs": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Ventilation ACH",
+      "Lights Watts/Area",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading"
+     ]
+    }
+   },
+   "skipped": []
+  },
+  "test3": {
+   "idf": [
+    "Surrogate modeling examples/Test 3/Res_flat1.idf"
+   ],
+   "epw": [
+    "Surrogate modeling examples/Test 3/Torino_IT-hour.epw"
+   ],
+   "tables": {
+    "adaptive_samples_example_3_40.pkl": {
+     "csv": "tests/fixtures/oracle/test3/adaptive_samples_example_3_40.csv",
+     "rows": 40,
+     "columns": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Lights Watts/Area",
+      "Ventilation ACH",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading",
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "objectives": [
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "inputs": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Lights Watts/Area",
+      "Ventilation ACH",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading"
+     ]
+    },
+    "simulation_initial_points_example_3_20.pkl": {
+     "csv": "tests/fixtures/oracle/test3/simulation_initial_points_example_3_20.csv",
+     "rows": 20,
+     "columns": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Ventilation ACH",
+      "Lights Watts/Area",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading",
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "objectives": [
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "inputs": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Ventilation ACH",
+      "Lights Watts/Area",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading"
+     ]
+    },
+    "simulation_samples_example_3_60.pkl": {
+     "csv": "tests/fixtures/oracle/test3/simulation_samples_example_3_60.csv",
+     "rows": 60,
+     "columns": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Ventilation ACH",
+      "Lights Watts/Area",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading",
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "objectives": [
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "inputs": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Ventilation ACH",
+      "Lights Watts/Area",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading"
+     ]
+    },
+    "simulation_test_points_example_2_5.pkl": {
+     "csv": "tests/fixtures/oracle/test3/simulation_test_points_example_2_5.csv",
+     "rows": 5,
+     "columns": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Ventilation ACH",
+      "Lights Watts/Area",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading",
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "objectives": [
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "inputs": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Ventilation ACH",
+      "Lights Watts/Area",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading"
+     ]
+    }
+   },
+   "skipped": [
+    {
+     "file": "MH3dsDrGE5QfF8446h2csf_0_iters.pkl",
+     "reason": "ModuleNotFoundError: No module named 'harlow'"
+    }
+   ]
+  },
+  "test4": {
+   "idf": [
+    "Surrogate modeling examples/Test 4/Res-Flat2_IDF.idf"
+   ],
+   "epw": [
+    "Surrogate modeling examples/Test 4/Larnaca_Larnax_Airp_-hour.epw"
+   ],
+   "tables": {
+    "adaptive_samples_example_2_40.pkl": {
+     "csv": "tests/fixtures/oracle/test4/adaptive_samples_example_2_40.csv",
+     "rows": 30,
+     "columns": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Lights Watts/Area",
+      "Ventilation ACH",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading",
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "objectives": [
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "inputs": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Lights Watts/Area",
+      "Ventilation ACH",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading"
+     ]
+    },
+    "simulation_initial_points_example_2_20.pkl": {
+     "csv": "tests/fixtures/oracle/test4/simulation_initial_points_example_2_20.csv",
+     "rows": 10,
+     "columns": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Ventilation ACH",
+      "Lights Watts/Area",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading",
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "objectives": [
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "inputs": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Ventilation ACH",
+      "Lights Watts/Area",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading"
+     ]
+    },
+    "simulation_samples_example_4_60.pkl": {
+     "csv": "tests/fixtures/oracle/test4/simulation_samples_example_4_60.csv",
+     "rows": 60,
+     "columns": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Ventilation ACH",
+      "Lights Watts/Area",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading",
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "objectives": [
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "inputs": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Ventilation ACH",
+      "Lights Watts/Area",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading"
+     ]
+    },
+    "simulation_test_points_example_4_5.pkl": {
+     "csv": "tests/fixtures/oracle/test4/simulation_test_points_example_4_5.csv",
+     "rows": 5,
+     "columns": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Ventilation ACH",
+      "Lights Watts/Area",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading",
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "objectives": [
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "inputs": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Ventilation ACH",
+      "Lights Watts/Area",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading"
+     ]
+    }
+   },
+   "skipped": [
+    {
+     "file": "4DjpkbF2LNmp5cptCHpcHk_0_iters.pkl",
+     "reason": "ModuleNotFoundError: No module named 'harlow'"
+    }
+   ]
+  },
+  "test5": {
+   "idf": [
+    "Surrogate modeling examples/Test 5/res-multifloor_IDF.idf"
+   ],
+   "epw": [
+    "Surrogate modeling examples/Test 5/PARIS_FR-hour.epw"
+   ],
+   "tables": {
+    "adaptive_samples_example_2_40.pkl": {
+     "csv": "tests/fixtures/oracle/test5/adaptive_samples_example_2_40.csv",
+     "rows": 30,
+     "columns": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Lights Watts/Area",
+      "Ventilation ACH",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading",
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "objectives": [
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "inputs": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Lights Watts/Area",
+      "Ventilation ACH",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading"
+     ]
+    },
+    "simulation_initial_points_example_2_20.pkl": {
+     "csv": "tests/fixtures/oracle/test5/simulation_initial_points_example_2_20.csv",
+     "rows": 10,
+     "columns": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Ventilation ACH",
+      "Lights Watts/Area",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading",
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "objectives": [
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "inputs": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Ventilation ACH",
+      "Lights Watts/Area",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading"
+     ]
+    },
+    "simulation_samples_example_5_40.pkl": {
+     "csv": "tests/fixtures/oracle/test5/simulation_samples_example_5_40.csv",
+     "rows": 40,
+     "columns": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Ventilation ACH",
+      "Lights Watts/Area",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading",
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "objectives": [
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "inputs": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Ventilation ACH",
+      "Lights Watts/Area",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading"
+     ]
+    },
+    "simulation_test_points_example_2_5.pkl": {
+     "csv": "tests/fixtures/oracle/test5/simulation_test_points_example_2_5.csv",
+     "rows": 5,
+     "columns": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Ventilation ACH",
+      "Lights Watts/Area",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading",
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "objectives": [
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "inputs": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Ventilation ACH",
+      "Lights Watts/Area",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading"
+     ]
+    }
+   },
+   "skipped": [
+    {
+     "file": "ahoFNBZAgY8BJFfEe8Qzpc_0_iters.pkl",
+     "reason": "ModuleNotFoundError: No module named 'harlow'"
+    }
+   ]
+  },
+  "test6": {
+   "idf": [
+    "Surrogate modeling examples/Test 6/lab_building.idf"
+   ],
+   "epw": [
+    "Surrogate modeling examples/Test 6/Torino_IT-hour.epw"
+   ],
+   "tables": {
+    "adaptive_samples_example_6_40.pkl": {
+     "csv": "tests/fixtures/oracle/test6/adaptive_samples_example_6_40.csv",
+     "rows": 40,
+     "columns": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Windows types",
+      "Lights Watts/Area",
+      "Ventilation ACH",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading",
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "objectives": [
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "inputs": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Windows types",
+      "Lights Watts/Area",
+      "Ventilation ACH",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading"
+     ]
+    },
+    "simulation_initial_points_example_6_20.pkl": {
+     "csv": "tests/fixtures/oracle/test6/simulation_initial_points_example_6_20.csv",
+     "rows": 20,
+     "columns": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Windows types",
+      "Lights Watts/Area",
+      "Ventilation ACH",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading",
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "objectives": [
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "inputs": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Windows types",
+      "Lights Watts/Area",
+      "Ventilation ACH",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading"
+     ]
+    },
+    "simulation_samples_example_6_60.pkl": {
+     "csv": "tests/fixtures/oracle/test6/simulation_samples_example_6_60.csv",
+     "rows": 60,
+     "columns": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Windows types",
+      "Lights Watts/Area",
+      "Ventilation ACH",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading",
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "objectives": [
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "inputs": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Windows types",
+      "Lights Watts/Area",
+      "Ventilation ACH",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading"
+     ]
+    },
+    "simulation_test_points_example_2_5.pkl": {
+     "csv": "tests/fixtures/oracle/test6/simulation_test_points_example_2_5.csv",
+     "rows": 5,
+     "columns": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Windows types",
+      "Lights Watts/Area",
+      "Ventilation ACH",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading",
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "objectives": [
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "inputs": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Windows types",
+      "Lights Watts/Area",
+      "Ventilation ACH",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading"
+     ]
+    },
+    "simulation_test_points_example_6_5.pkl": {
+     "csv": "tests/fixtures/oracle/test6/simulation_test_points_example_6_5.csv",
+     "rows": 5,
+     "columns": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Windows types",
+      "Lights Watts/Area",
+      "Ventilation ACH",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading",
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "objectives": [
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "inputs": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Windows types",
+      "Lights Watts/Area",
+      "Ventilation ACH",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading"
+     ]
+    }
+   },
+   "skipped": [
+    {
+     "file": "eWJc8FrUSgz7aPzNLAfQqe_0_iters.pkl",
+     "reason": "ModuleNotFoundError: No module named 'harlow'"
+    }
+   ]
+  },
+  "test7": {
+   "idf": [
+    "Surrogate modeling examples/Test 7/office.idf"
+   ],
+   "epw": [
+    "Surrogate modeling examples/Test 7/Larnaca_Larnax_Airp_-hour.epw"
+   ],
+   "tables": {
+    "adaptive_samples_example_7_30.pkl": {
+     "csv": "tests/fixtures/oracle/test7/adaptive_samples_example_7_30.csv",
+     "rows": 30,
+     "columns": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Lights Watts/Area",
+      "Ventilation ACH",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading",
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "objectives": [
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "inputs": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Lights Watts/Area",
+      "Ventilation ACH",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading"
+     ]
+    },
+    "simulation_initial_points_example_7_20.pkl": {
+     "csv": "tests/fixtures/oracle/test7/simulation_initial_points_example_7_20.csv",
+     "rows": 20,
+     "columns": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Ventilation ACH",
+      "Lights Watts/Area",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading",
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "objectives": [
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "inputs": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Ventilation ACH",
+      "Lights Watts/Area",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading"
+     ]
+    },
+    "simulation_samples_example_7_60.pkl": {
+     "csv": "tests/fixtures/oracle/test7/simulation_samples_example_7_60.csv",
+     "rows": 60,
+     "columns": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Ventilation ACH",
+      "Lights Watts/Area",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading",
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "objectives": [
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "inputs": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Ventilation ACH",
+      "Lights Watts/Area",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading"
+     ]
+    },
+    "simulation_test_points_example_7_5.pkl": {
+     "csv": "tests/fixtures/oracle/test7/simulation_test_points_example_7_5.csv",
+     "rows": 5,
+     "columns": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Ventilation ACH",
+      "Lights Watts/Area",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading",
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "objectives": [
+      "Electricity:Facility",
+      "DistrictHeating:Facility",
+      "DistrictCooling:Facility"
+     ],
+     "inputs": [
+      "Wall Insulation",
+      "Roof Insulation",
+      "Ventilation ACH",
+      "Lights Watts/Area",
+      "Temp Setpoint shading",
+      "Rad Setpoint shading"
+     ]
+    }
+   },
+   "skipped": [
+    {
+     "file": "fsaJbWHDe8RCojcoYscB3j_0_iters.pkl",
+     "reason": "ModuleNotFoundError: No module named 'harlow'"
+    }
+   ]
+  }
+ }
+}

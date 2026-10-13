@@ -1,0 +1,58 @@
+from besos import sampling
+from besos.parameters import FieldSelector, Parameter, RangeParameter, CategoryParameter
+from besos.problem import EPProblem
+
+parameters = []
+
+# External walls thickness EPS Expanded Polystyrene (Heavyweight)_.1
+external_walls_thickness_eps_sel = FieldSelector(class_name='Material', object_name='EPS Expanded Polystyrene (Heavyweight)_.1', field_name='Thickness')
+parameters.append(Parameter(selector=external_walls_thickness_eps_sel, value_descriptors=RangeParameter(min_val=0.1, max_val=0.2), name='External walls thickness EPS Expanded Polystyrene (Heavyweight)_.1'))
+
+# Windows construction Block1B:Kitchen_Wall_5_0_0_0_0_0_Win
+#   as numbers: 1 = triple_glazing, 2 = double_glazing, 3 = single_glazing
+windows_construction_block1b_sel = FieldSelector(class_name='FenestrationSurface:Detailed', object_name='Block1B:Kitchen_Wall_5_0_0_0_0_0_Win', field_name='Construction_Name')
+parameters.append(Parameter(selector=windows_construction_block1b_sel, value_descriptors=CategoryParameter(options=['triple_glazing', 'double_glazing', 'single_glazing']), name='Windows construction Block1B:Kitchen_Wall_5_0_0_0_0_0_Win'))
+
+# Windows construction Block1B:Bathroom1_Wall_6_0_0_0_0_0_Win
+#   as numbers: 1 = triple_glazing, 2 = double_glazing, 3 = single_glazing
+windows_construction_block1b__sel = FieldSelector(class_name='FenestrationSurface:Detailed', object_name='Block1B:Bathroom1_Wall_6_0_0_0_0_0_Win', field_name='Construction_Name')
+parameters.append(Parameter(selector=windows_construction_block1b__sel, value_descriptors=CategoryParameter(options=['triple_glazing', 'double_glazing', 'single_glazing']), name='Windows construction Block1B:Bathroom1_Wall_6_0_0_0_0_0_Win'))
+
+# Windows construction Block1B:Room1_Wall_2_0_0_0_0_0_Win
+#   as numbers: 1 = triple_glazing, 2 = double_glazing, 3 = single_glazing
+windows_construction_block1b___sel = FieldSelector(class_name='FenestrationSurface:Detailed', object_name='Block1B:Room1_Wall_2_0_0_0_0_0_Win', field_name='Construction_Name')
+parameters.append(Parameter(selector=windows_construction_block1b___sel, value_descriptors=CategoryParameter(options=['triple_glazing', 'double_glazing', 'single_glazing']), name='Windows construction Block1B:Room1_Wall_2_0_0_0_0_0_Win'))
+
+# Windows construction Block1B:Room1_Wall_6_0_0_0_0_0_Win
+#   as numbers: 1 = triple_glazing, 2 = double_glazing, 3 = single_glazing
+windows_construction_block1b____sel = FieldSelector(class_name='FenestrationSurface:Detailed', object_name='Block1B:Room1_Wall_6_0_0_0_0_0_Win', field_name='Construction_Name')
+parameters.append(Parameter(selector=windows_construction_block1b____sel, value_descriptors=CategoryParameter(options=['triple_glazing', 'double_glazing', 'single_glazing']), name='Windows construction Block1B:Room1_Wall_6_0_0_0_0_0_Win'))
+
+# Windows construction Block1B:Bathroom_Wall_2_0_0_0_0_0_Win
+#   as numbers: 1 = triple_glazing, 2 = double_glazing, 3 = single_glazing
+windows_construction_block1b_____sel = FieldSelector(class_name='FenestrationSurface:Detailed', object_name='Block1B:Bathroom_Wall_2_0_0_0_0_0_Win', field_name='Construction_Name')
+parameters.append(Parameter(selector=windows_construction_block1b_____sel, value_descriptors=CategoryParameter(options=['triple_glazing', 'double_glazing', 'single_glazing']), name='Windows construction Block1B:Bathroom_Wall_2_0_0_0_0_0_Win'))
+
+# Windows construction Block1B:Livingroom_Wall_4_0_0_0_0_1_Win
+#   as numbers: 1 = triple_glazing, 2 = double_glazing, 3 = single_glazing
+windows_construction_block1b______sel = FieldSelector(class_name='FenestrationSurface:Detailed', object_name='Block1B:Livingroom_Wall_4_0_0_0_0_1_Win', field_name='Construction_Name')
+parameters.append(Parameter(selector=windows_construction_block1b______sel, value_descriptors=CategoryParameter(options=['triple_glazing', 'double_glazing', 'single_glazing']), name='Windows construction Block1B:Livingroom_Wall_4_0_0_0_0_1_Win'))
+
+# Windows construction Block1B:Livingroom_Wall_4_0_0_1_0_0_Win
+#   as numbers: 1 = triple_glazing, 2 = double_glazing, 3 = single_glazing
+windows_construction_block1b_______sel = FieldSelector(class_name='FenestrationSurface:Detailed', object_name='Block1B:Livingroom_Wall_4_0_0_1_0_0_Win', field_name='Construction_Name')
+parameters.append(Parameter(selector=windows_construction_block1b_______sel, value_descriptors=CategoryParameter(options=['triple_glazing', 'double_glazing', 'single_glazing']), name='Windows construction Block1B:Livingroom_Wall_4_0_0_1_0_0_Win'))
+
+# Windows construction Block1B:Room_Wall_2_0_0_0_0_0_Win
+#   as numbers: 1 = triple_glazing, 2 = double_glazing, 3 = single_glazing
+windows_construction_block1b________sel = FieldSelector(class_name='FenestrationSurface:Detailed', object_name='Block1B:Room_Wall_2_0_0_0_0_0_Win', field_name='Construction_Name')
+parameters.append(Parameter(selector=windows_construction_block1b________sel, value_descriptors=CategoryParameter(options=['triple_glazing', 'double_glazing', 'single_glazing']), name='Windows construction Block1B:Room_Wall_2_0_0_0_0_0_Win'))
+
+# Windows construction Block1B:Room_Wall_3_0_0_0_0_0_Win
+#   as numbers: 1 = triple_glazing, 2 = double_glazing, 3 = single_glazing
+windows_construction_block1b_________sel = FieldSelector(class_name='FenestrationSurface:Detailed', object_name='Block1B:Room_Wall_3_0_0_0_0_0_Win', field_name='Construction_Name')
+parameters.append(Parameter(selector=windows_construction_block1b_________sel, value_descriptors=CategoryParameter(options=['triple_glazing', 'double_glazing', 'single_glazing']), name='Windows construction Block1B:Room_Wall_3_0_0_0_0_0_Win'))
+
+objectives = ['Electricity:Facility']
+problem = EPProblem(parameters, objectives)
+samples = sampling.dist_sampler(sampling.lhs, problem, num_samples=20)

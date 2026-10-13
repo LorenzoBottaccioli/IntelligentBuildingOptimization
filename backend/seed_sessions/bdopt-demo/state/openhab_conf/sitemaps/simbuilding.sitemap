@@ -1,0 +1,26 @@
+sitemap simbuilding label="Demo building" {
+    Frame label="Site" {
+        Text item=Sim_Clock
+        Text item=Outdoor_Temperature
+    }
+    Frame label="West zone" {
+        Text item=Temp_West_Controlled valuecolor=[<18="blue", >24="orange", >=18="green"]
+        Text item=Temp_West_Baseline
+        Setpoint item=Setpoint_West minValue=10 maxValue=30 step=1
+    }
+    Frame label="South zone" {
+        Text item=Temp_South_Controlled valuecolor=[<18="blue", >24="orange", >=18="green"]
+        Text item=Temp_South_Baseline
+        Setpoint item=Setpoint_South minValue=10 maxValue=30 step=1
+    }
+    Frame label="East zone" {
+        Text item=Temp_East_Controlled valuecolor=[<18="blue", >24="orange", >=18="green"]
+        Text item=Temp_East_Baseline
+        Setpoint item=Setpoint_East minValue=10 maxValue=30 step=1
+    }
+    Frame label="North zone" {
+        Text item=Temp_North_Controlled valuecolor=[<18="blue", >24="orange", >=18="green"]
+        Text item=Temp_North_Baseline
+        Setpoint item=Setpoint_North minValue=10 maxValue=30 step=1
+    }
+}

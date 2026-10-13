@@ -1,0 +1,648 @@
+{
+  "model": "E1_RES1.idf",
+  "variables": [
+    {
+      "name": "Lights W per m2, all rooms",
+      "className": "Lights",
+      "field": "Watts_per_Zone_Floor_Area",
+      "targets": [
+        "*"
+      ],
+      "label": "Watts per Zone Floor Area",
+      "unit": "W/m2",
+      "source": {
+        "kind": "field",
+        "group": "Internal Gains"
+      },
+      "type": "range",
+      "min": 4.0,
+      "max": 10.0
+    },
+    {
+      "name": "Lights W per m2, two rooms",
+      "className": "Lights",
+      "field": "Watts_per_Zone_Floor_Area",
+      "targets": [
+        "Z04:Act100xx General lighting",
+        "Z00:Act100aa General lighting"
+      ],
+      "label": "Watts per Zone Floor Area",
+      "unit": "W/m2",
+      "source": {
+        "kind": "field",
+        "group": "Internal Gains"
+      },
+      "type": "range",
+      "min": 5.5,
+      "max": 9.25
+    },
+    {
+      "name": "Radiant temperature method",
+      "className": "People",
+      "field": "Mean_Radiant_Temperature_Calculation_Type",
+      "targets": [
+        "*"
+      ],
+      "label": "Mean Radiant Temperature Calculation Type",
+      "unit": "",
+      "source": {
+        "kind": "field",
+        "group": "Internal Gains"
+      },
+      "type": "category",
+      "options": [
+        "ZoneAveraged",
+        "SurfaceWeighted"
+      ],
+      "encoding": {
+        "ZoneAveraged": 1,
+        "SurfaceWeighted": 2
+      }
+    },
+    {
+      "name": "Roof thickness MW Glass Wool (rolls)_.08",
+      "className": "Material",
+      "field": "Thickness",
+      "targets": [
+        "MW Glass Wool (rolls)_.08"
+      ],
+      "label": "Thickness",
+      "unit": "m",
+      "source": {
+        "kind": "layer",
+        "element": "roof",
+        "elementLabel": "Roof",
+        "layer": "MW Glass Wool (rolls)_.08"
+      },
+      "type": "range",
+      "min": 0.05,
+      "max": 0.3
+    },
+    {
+      "name": "External walls build-up",
+      "type": "category",
+      "options": [
+        "external wall 45cm",
+        "external wall 70cm",
+        "external wall 30cm"
+      ],
+      "className": "BuildingSurface:Detailed",
+      "field": "Construction_Name",
+      "targets": [
+        {
+          "object": "Z04:Act100xx_Wall_2_0_0",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z04:Act100xx_Wall_4_0_0",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z00:Act100aa_Wall_4_1_0",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z00:Act100aa_Wall_5_1_0",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z00:Act100aa_Wall_6_1_0",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z00:Act100aa_Wall_7_1_0",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z00:Act100ab_Wall_5_0_0",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z00:Act100ac_Wall_2_0_0",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z00:Act100ac_Wall_6_0_0",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z01:Act106aa_Wall_4_1_0",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z01:Act105aa_Wall_2_0_0",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z01:Act105aa_Wall_3_1_0",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z01:Act105aa_Wall_3_1_1",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z01:Act105aa_Wall_3_1_2",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z01:Act105aa_Wall_3_1_3",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z01:Act105aa_Wall_3_1_4",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z01:Act105aa_Wall_3_1_5",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z01:Act105aa_Wall_3_1_6",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z01:Act105aa_Wall_3_1_7",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z01:Act105aa_Wall_7_0_0",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z01:Act102aa_Wall_5_0_0",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z01:Act104aa_Wall_4_1_0",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z01:Act104aa_Wall_4_1_1",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z01:Act104aa_Wall_4_1_2",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z01:Act104aa_Wall_4_1_3",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z01:Act104aa_Wall_4_1_4",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z01:Act104aa_Wall_4_1_5",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z01:Act104aa_Wall_4_1_6",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z01:Act104aa_Wall_4_1_7",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z01:Act104aa_Wall_4_1_8",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z01:Act104aa_Wall_4_1_9",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z01:Act104aa_Wall_4_1_10",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z01:Act104aa_Wall_4_1_11",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z01:Act104aa_Wall_5_0_0",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z01:Act104aa_Wall_6_0_0",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z01:Act104aa_Wall_7_0_0",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z01:Act104aa_Wall_7_0_1",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z01:Act103aa_Wall_4_0_0",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z01:Act103aa_Wall_5_0_0",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z02:Act107aa_Wall_3_0_0",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z02:Act106ab_Wall_2_0_0",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z03:Act103bb_Wall_1_0_0",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z03:Act103bb_Wall_1_0_1",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z03:Act103bb_Wall_5_0_0",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z03:Act103bb_Wall_6_0_0",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z03:Act102ba_Wall_4_0_0",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z03:Act102ba_Wall_4_0_1",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z03:Act102ba_Wall_4_0_2",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z03:Act102ba_Wall_4_0_3",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z03:Act102ba_Wall_4_0_4",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z03:Act102ba_Wall_4_0_5",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z03:Act102ba_Wall_4_0_6",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z03:Act102ba_Wall_4_0_7",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z03:Act106ba_Wall_1_0_0",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z03:Act106ba_Wall_7_0_0",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z03:Act103ba_Wall_1_0_0",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z03:Act103ba_Wall_2_0_0",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z03:Act103ba_Wall_3_0_0",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Z03:Act103ba_Wall_4_0_0",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Block2:Zone1_Wall_3_1_0",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Block2:Zone1_Wall_5_0_0",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Block5:Zone1_Wall_1_0_0",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Block5:Zone1_Wall_3_1_0",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        },
+        {
+          "object": "Block5:Zone1_Wall_4_0_0",
+          "field": "Construction_Name",
+          "className": "BuildingSurface:Detailed"
+        }
+      ],
+      "label": null,
+      "unit": "",
+      "source": {
+        "kind": "construction",
+        "element": "external_wall",
+        "elementLabel": "External walls"
+      },
+      "encoding": {
+        "external wall 45cm": 1,
+        "external wall 70cm": 2,
+        "external wall 30cm": 3
+      }
+    },
+    {
+      "name": "Windows construction Z00:Act100aa_Wall_5_1_0_0_0_0_Win",
+      "type": "category",
+      "options": [
+        "Project external glazing - 1001",
+        "Project roof glazing - 1002"
+      ],
+      "className": "FenestrationSurface:Detailed",
+      "field": "Construction_Name",
+      "targets": [
+        {
+          "object": "Z00:Act100aa_Wall_5_1_0_0_0_0_Win",
+          "field": "Construction_Name",
+          "className": "FenestrationSurface:Detailed"
+        }
+      ],
+      "label": null,
+      "unit": "",
+      "source": {
+        "kind": "construction",
+        "element": "window",
+        "elementLabel": "Windows",
+        "perWindow": true,
+        "baseName": "Windows construction"
+      },
+      "encoding": {
+        "Project external glazing - 1001": 1,
+        "Project roof glazing - 1002": 2
+      }
+    },
+    {
+      "name": "Windows construction, two windows",
+      "type": "category",
+      "options": [
+        "Project external glazing - 1001",
+        "Project roof glazing - 1002"
+      ],
+      "className": "FenestrationSurface:Detailed",
+      "field": "Construction_Name",
+      "targets": [
+        {
+          "object": "Z00:Act100ab_Wall_5_0_0_0_0_1_Win",
+          "field": "Construction_Name",
+          "className": "FenestrationSurface:Detailed"
+        },
+        {
+          "object": "Z01:Act105aa_Wall_2_0_0_0_0_0_Win",
+          "field": "Construction_Name",
+          "className": "FenestrationSurface:Detailed"
+        }
+      ],
+      "label": null,
+      "unit": "",
+      "source": {
+        "kind": "construction",
+        "element": "window",
+        "elementLabel": "Windows"
+      },
+      "encoding": {
+        "Project external glazing - 1001": 1,
+        "Project roof glazing - 1002": 2
+      }
+    },
+    {
+      "name": "heating_all_days_0_24_z01",
+      "type": "range",
+      "min": 18.0,
+      "max": 22.0,
+      "className": null,
+      "field": null,
+      "targets": [
+        {
+          "object": "Z01:Act105aa Heating Setpoint Schedule",
+          "field": "Field_4",
+          "className": "Schedule:Compact"
+        },
+        {
+          "object": "Z01:Act102aa Heating Setpoint Schedule",
+          "field": "Field_4",
+          "className": "Schedule:Compact"
+        }
+      ],
+      "label": null,
+      "unit": "°C",
+      "source": {
+        "kind": "setpoint",
+        "setpoint": "heating",
+        "current": null
+      }
+    },
+    {
+      "name": "Bedroom occupancy 07:00-08:00",
+      "type": "range",
+      "min": 0.3,
+      "max": 0.7,
+      "className": null,
+      "field": null,
+      "targets": [
+        {
+          "object": "Dwell_DomBed_Occ",
+          "field": "Field_6",
+          "className": "Schedule:Compact"
+        }
+      ],
+      "label": null,
+      "unit": "",
+      "source": {
+        "kind": "schedule_value",
+        "role": "occupancy",
+        "when": "weekdays",
+        "zones": [
+          "Dwell_DomBed"
+        ],
+        "current": "0.5"
+      }
+    },
+    {
+      "name": "Bedroom occupancy 07:00-09:00",
+      "type": "range",
+      "min": 0.2,
+      "max": 0.8,
+      "className": null,
+      "field": null,
+      "targets": [
+        {
+          "object": "Dwell_DomBed_Occ",
+          "field": "Field_6",
+          "className": "Schedule:Compact"
+        },
+        {
+          "object": "Dwell_DomBed_Occ",
+          "field": "Field_8",
+          "className": "Schedule:Compact"
+        }
+      ],
+      "label": null,
+      "unit": "",
+      "source": {
+        "kind": "schedule_value",
+        "role": "occupancy",
+        "when": "weekdays",
+        "zones": [
+          "Dwell_DomBed"
+        ],
+        "current": "0.5 and 0.25"
+      }
+    },
+    {
+      "name": "Bedroom occupancy first change",
+      "type": "category",
+      "options": [
+        "Until: 07:30",
+        "Until: 08:00",
+        "Until: 08:30"
+      ],
+      "className": null,
+      "field": null,
+      "targets": [
+        {
+          "object": "Dwell_DomBed_Occ",
+          "field": "Field_5",
+          "className": "Schedule:Compact"
+        }
+      ],
+      "label": null,
+      "unit": "",
+      "source": {
+        "kind": "schedule_time",
+        "role": "occupancy",
+        "when": "weekdays",
+        "zones": [
+          "Dwell_DomBed"
+        ],
+        "current": "Until: 08:00"
+      },
+      "encoding": {
+        "Until: 07:30": 1,
+        "Until: 08:00": 2,
+        "Until: 08:30": 3
+      }
+    },
+    {
+      "name": "Mixed classes, one value in two schedules",
+      "type": "range",
+      "min": 0.1,
+      "max": 0.9,
+      "className": null,
+      "field": null,
+      "targets": [
+        {
+          "object": "Dwell_DomBed_Occ",
+          "field": "Field_6",
+          "className": "Schedule:Compact"
+        },
+        {
+          "object": "1",
+          "field": "Value_1",
+          "className": "Schedule:Day:List"
+        }
+      ],
+      "label": null,
+      "unit": "",
+      "source": {
+        "kind": "schedule_value",
+        "role": "other",
+        "when": "always",
+        "zones": [],
+        "current": "0.5"
+      }
+    }
+  ],
+  "objectives": [
+    {
+      "name": "Electricity:Facility",
+      "direction": "minimize"
+    },
+    {
+      "name": "DistrictHeating:Facility",
+      "direction": "maximize"
+    }
+  ],
+  "notes": ""
+}

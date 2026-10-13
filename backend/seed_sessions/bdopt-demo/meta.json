@@ -1,0 +1,9 @@
+{
+  "id": "bdopt-demo",
+  "name": "Demo - bdopt tutorial",
+  "created": "2026-10-10T00:23:07+00:00",
+  "saved": "2026-10-12T12:38:04+00:00",
+  "idf": "test.idf",
+  "epw": "ITA_Torino.160590_IWEC.epw",
+  "description": "A small house (test.idf, Turin weather), working from end to end: its design problem and the four tutorial notebooks, and the whole chain of a smart building. The gateway, subscriber and controller are written; openHAB, Home Assistant and Grafana are set up with its plan and dashboards, and a recorded run is stored. Press Play in the Control room to run it."
+}

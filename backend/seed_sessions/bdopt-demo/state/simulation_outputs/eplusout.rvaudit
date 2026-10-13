@@ -1,0 +1,16 @@
+ ReadVarsESO
+ processing:/workspace/simulation_outputs/ems_test.rvi
+ input file:/workspace/simulation_outputs/eplusout.eso
+ output file:/workspace/simulation_outputs/eplusout.csv
+ getting all vars from:/workspace/simulation_outputs/eplusout.eso
+  number variables requested for output=         367
+ ReadVars Run Time=00hr 00min  0.07sec
+ ReadVarsESO program completed successfully.
+ ReadVarsESO
+ processing:/workspace/simulation_outputs/ems_test.mvi
+ input file:/workspace/simulation_outputs/eplusout.mtr
+ output file:/workspace/simulation_outputs/eplusmtr.csv
+ getting all vars from:/workspace/simulation_outputs/eplusout.mtr
+  number variables requested for output=          26
+ ReadVars Run Time=00hr 00min  0.01sec
+ ReadVarsESO program completed successfully.

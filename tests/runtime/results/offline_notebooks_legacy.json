@@ -1,0 +1,24 @@
+{
+ "ai/forecasting.ipynb": {
+  "code_cells_run": 9,
+  "expected_todo": 0,
+  "unexpected": [],
+  "injected_cell_output": "INJECTED OK {'ridge': (0.0, 0.0), 'gbr': (1867.885, 2789.254)} pandas 2.3.2",
+  "first_stream_output": "     name\n0  points\nINJECTED OK {'ridge': (0.0, 0.0), 'gbr': (1867.885, 2789.254)} pandas 2.3.2\n"
+ },
+ "iot/energy_signature.ipynb": {
+  "code_cells_run": 8,
+  "expected_todo": 4,
+  "unexpected": [],
+  "injected_cell_output": "INJECTED OK a=99.8 b=-3.01 r2=0.995",
+  "first_stream_output": "optional: not implemented\nINJECTED OK a=99.8 b=-3.01 r2=0.995\n"
+ },
+ "iot/data_access.ipynb": {
+  "code_cells_run": 8,
+  "expected_todo": 4,
+  "unexpected": [],
+  "injected_cell_output": "INJECTED OK (14,) 6.67 kWh on day 1",
+  "first_stream_output": "====================================================================== \n base_building\n\n-- measurement: points\ntag keys  : ['point', 'run']\nfield keys: [['value', 'float']]\n====================================================================== \n controlled_building\n\n-- measurement: points\ntag keys  "
+ }
+}
+exit=0

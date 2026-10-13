@@ -1,0 +1,74 @@
+from besos import sampling
+from besos.parameters import FieldSelector, Parameter, RangeParameter, CategoryParameter
+from besos.problem import EPProblem
+
+parameters = []
+
+# Lights W per m2, all rooms
+lights_w_per_m2_all_rooms_sel = FieldSelector(class_name='Lights', object_name='*', field_name='Watts_per_Zone_Floor_Area')
+parameters.append(Parameter(selector=lights_w_per_m2_all_rooms_sel, value_descriptors=RangeParameter(min_val=4, max_val=10), name='Lights W per m2, all rooms'))
+
+# Lights W per m2, two rooms
+lights_w_per_m2_two_rooms = RangeParameter(min_val=5.5, max_val=9.25)
+for obj in ['Z04:Act100xx General lighting', 'Z00:Act100aa General lighting']:
+    sel = FieldSelector(class_name='Lights', object_name=obj, field_name='Watts_per_Zone_Floor_Area')
+    parameters.append(Parameter(selector=sel, value_descriptors=lights_w_per_m2_two_rooms, name='Lights W per m2, two rooms'))
+
+# Radiant temperature method
+#   as numbers: 1 = ZoneAveraged, 2 = SurfaceWeighted
+radiant_temperature_method_sel = FieldSelector(class_name='People', object_name='*', field_name='Mean_Radiant_Temperature_Calculation_Type')
+parameters.append(Parameter(selector=radiant_temperature_method_sel, value_descriptors=CategoryParameter(options=['ZoneAveraged', 'SurfaceWeighted']), name='Radiant temperature method'))
+
+# Roof thickness MW Glass Wool (rolls)_.08
+roof_thickness_mw_glass_wool_sel = FieldSelector(class_name='Material', object_name='MW Glass Wool (rolls)_.08', field_name='Thickness')
+parameters.append(Parameter(selector=roof_thickness_mw_glass_wool_sel, value_descriptors=RangeParameter(min_val=0.05, max_val=0.3), name='Roof thickness MW Glass Wool (rolls)_.08'))
+
+# External walls build-up
+#   as numbers: 1 = external wall 45cm, 2 = external wall 70cm, 3 = external wall 30cm
+external_walls_build_up = CategoryParameter(options=['external wall 45cm', 'external wall 70cm', 'external wall 30cm'])
+for obj in ['Z04:Act100xx_Wall_2_0_0', 'Z04:Act100xx_Wall_4_0_0', 'Z00:Act100aa_Wall_4_1_0', 'Z00:Act100aa_Wall_5_1_0', 'Z00:Act100aa_Wall_6_1_0', 'Z00:Act100aa_Wall_7_1_0', 'Z00:Act100ab_Wall_5_0_0', 'Z00:Act100ac_Wall_2_0_0', 'Z00:Act100ac_Wall_6_0_0', 'Z01:Act106aa_Wall_4_1_0', 'Z01:Act105aa_Wall_2_0_0', 'Z01:Act105aa_Wall_3_1_0', 'Z01:Act105aa_Wall_3_1_1', 'Z01:Act105aa_Wall_3_1_2', 'Z01:Act105aa_Wall_3_1_3', 'Z01:Act105aa_Wall_3_1_4', 'Z01:Act105aa_Wall_3_1_5', 'Z01:Act105aa_Wall_3_1_6', 'Z01:Act105aa_Wall_3_1_7', 'Z01:Act105aa_Wall_7_0_0', 'Z01:Act102aa_Wall_5_0_0', 'Z01:Act104aa_Wall_4_1_0', 'Z01:Act104aa_Wall_4_1_1', 'Z01:Act104aa_Wall_4_1_2', 'Z01:Act104aa_Wall_4_1_3', 'Z01:Act104aa_Wall_4_1_4', 'Z01:Act104aa_Wall_4_1_5', 'Z01:Act104aa_Wall_4_1_6', 'Z01:Act104aa_Wall_4_1_7', 'Z01:Act104aa_Wall_4_1_8', 'Z01:Act104aa_Wall_4_1_9', 'Z01:Act104aa_Wall_4_1_10', 'Z01:Act104aa_Wall_4_1_11', 'Z01:Act104aa_Wall_5_0_0', 'Z01:Act104aa_Wall_6_0_0', 'Z01:Act104aa_Wall_7_0_0', 'Z01:Act104aa_Wall_7_0_1', 'Z01:Act103aa_Wall_4_0_0', 'Z01:Act103aa_Wall_5_0_0', 'Z02:Act107aa_Wall_3_0_0', 'Z02:Act106ab_Wall_2_0_0', 'Z03:Act103bb_Wall_1_0_0', 'Z03:Act103bb_Wall_1_0_1', 'Z03:Act103bb_Wall_5_0_0', 'Z03:Act103bb_Wall_6_0_0', 'Z03:Act102ba_Wall_4_0_0', 'Z03:Act102ba_Wall_4_0_1', 'Z03:Act102ba_Wall_4_0_2', 'Z03:Act102ba_Wall_4_0_3', 'Z03:Act102ba_Wall_4_0_4', 'Z03:Act102ba_Wall_4_0_5', 'Z03:Act102ba_Wall_4_0_6', 'Z03:Act102ba_Wall_4_0_7', 'Z03:Act106ba_Wall_1_0_0', 'Z03:Act106ba_Wall_7_0_0', 'Z03:Act103ba_Wall_1_0_0', 'Z03:Act103ba_Wall_2_0_0', 'Z03:Act103ba_Wall_3_0_0', 'Z03:Act103ba_Wall_4_0_0', 'Block2:Zone1_Wall_3_1_0', 'Block2:Zone1_Wall_5_0_0', 'Block5:Zone1_Wall_1_0_0', 'Block5:Zone1_Wall_3_1_0', 'Block5:Zone1_Wall_4_0_0']:
+    sel = FieldSelector(class_name='BuildingSurface:Detailed', object_name=obj, field_name='Construction_Name')
+    parameters.append(Parameter(selector=sel, value_descriptors=external_walls_build_up, name='External walls build-up'))
+
+# Windows construction Z00:Act100aa_Wall_5_1_0_0_0_0_Win
+#   as numbers: 1 = Project external glazing - 1001, 2 = Project roof glazing - 1002
+windows_construction_z00_act_sel = FieldSelector(class_name='FenestrationSurface:Detailed', object_name='Z00:Act100aa_Wall_5_1_0_0_0_0_Win', field_name='Construction_Name')
+parameters.append(Parameter(selector=windows_construction_z00_act_sel, value_descriptors=CategoryParameter(options=['Project external glazing - 1001', 'Project roof glazing - 1002']), name='Windows construction Z00:Act100aa_Wall_5_1_0_0_0_0_Win'))
+
+# Windows construction, two windows
+#   as numbers: 1 = Project external glazing - 1001, 2 = Project roof glazing - 1002
+windows_construction_two_win = CategoryParameter(options=['Project external glazing - 1001', 'Project roof glazing - 1002'])
+for obj in ['Z00:Act100ab_Wall_5_0_0_0_0_1_Win', 'Z01:Act105aa_Wall_2_0_0_0_0_0_Win']:
+    sel = FieldSelector(class_name='FenestrationSurface:Detailed', object_name=obj, field_name='Construction_Name')
+    parameters.append(Parameter(selector=sel, value_descriptors=windows_construction_two_win, name='Windows construction, two windows'))
+
+# heating_all_days_0_24_z01
+heating_all_days_0_24_z01 = RangeParameter(min_val=18, max_val=22)
+for obj in ['Z01:Act105aa Heating Setpoint Schedule', 'Z01:Act102aa Heating Setpoint Schedule']:
+    sel = FieldSelector(class_name='Schedule:Compact', object_name=obj, field_name='Field_4')
+    parameters.append(Parameter(selector=sel, value_descriptors=heating_all_days_0_24_z01, name='heating_all_days_0_24_z01'))
+
+# Bedroom occupancy 07:00-08:00
+bedroom_occupancy_07_00_08_0_sel = FieldSelector(class_name='Schedule:Compact', object_name='Dwell_DomBed_Occ', field_name='Field_6')
+parameters.append(Parameter(selector=bedroom_occupancy_07_00_08_0_sel, value_descriptors=RangeParameter(min_val=0.3, max_val=0.7), name='Bedroom occupancy 07:00-08:00'))
+
+# Bedroom occupancy 07:00-09:00
+bedroom_occupancy_07_00_09_0 = RangeParameter(min_val=0.2, max_val=0.8)
+for cls, obj, field in [('Schedule:Compact', 'Dwell_DomBed_Occ', 'Field_6'), ('Schedule:Compact', 'Dwell_DomBed_Occ', 'Field_8')]:
+    sel = FieldSelector(class_name=cls, object_name=obj, field_name=field)
+    parameters.append(Parameter(selector=sel, value_descriptors=bedroom_occupancy_07_00_09_0, name='Bedroom occupancy 07:00-09:00'))
+
+# Bedroom occupancy first change
+#   as numbers: 1 = Until: 07:30, 2 = Until: 08:00, 3 = Until: 08:30
+bedroom_occupancy_first_chan_sel = FieldSelector(class_name='Schedule:Compact', object_name='Dwell_DomBed_Occ', field_name='Field_5')
+parameters.append(Parameter(selector=bedroom_occupancy_first_chan_sel, value_descriptors=CategoryParameter(options=['Until: 07:30', 'Until: 08:00', 'Until: 08:30']), name='Bedroom occupancy first change'))
+
+# Mixed classes, one value in two schedules
+mixed_classes_one_value_in_t = RangeParameter(min_val=0.1, max_val=0.9)
+for cls, obj, field in [('Schedule:Compact', 'Dwell_DomBed_Occ', 'Field_6'), ('Schedule:Day:List', '1', 'Value_1')]:
+    sel = FieldSelector(class_name=cls, object_name=obj, field_name=field)
+    parameters.append(Parameter(selector=sel, value_descriptors=mixed_classes_one_value_in_t, name='Mixed classes, one value in two schedules'))
+
+objectives = ['Electricity:Facility', 'DistrictHeating:Facility']
+problem = EPProblem(parameters, objectives)
+samples = sampling.dist_sampler(sampling.lhs, problem, num_samples=20)

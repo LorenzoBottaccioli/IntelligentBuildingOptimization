@@ -1,0 +1,1273 @@
+{
+  "meta": {
+    "fileName": "20261012T120206Z.meta",
+    "size": 6127
+  },
+  "limited": false,
+  "files": [
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 448,
+      "fileName": "20261012T120206Z.s448.tar.gz",
+      "size": 26624,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 449,
+      "fileName": "20261012T120206Z.s449.tar.gz",
+      "size": 63488,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 450,
+      "fileName": "20261012T120206Z.s450.tar.gz",
+      "size": 67072,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 451,
+      "fileName": "20261012T120206Z.s451.tar.gz",
+      "size": 66560,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 452,
+      "fileName": "20261012T120206Z.s452.tar.gz",
+      "size": 66048,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 453,
+      "fileName": "20261012T120206Z.s453.tar.gz",
+      "size": 61952,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 454,
+      "fileName": "20261012T120206Z.s454.tar.gz",
+      "size": 64512,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 455,
+      "fileName": "20261012T120206Z.s455.tar.gz",
+      "size": 66048,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 456,
+      "fileName": "20261012T120206Z.s456.tar.gz",
+      "size": 62976,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 457,
+      "fileName": "20261012T120206Z.s457.tar.gz",
+      "size": 64000,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 458,
+      "fileName": "20261012T120206Z.s458.tar.gz",
+      "size": 63488,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 459,
+      "fileName": "20261012T120206Z.s459.tar.gz",
+      "size": 65536,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 460,
+      "fileName": "20261012T120206Z.s460.tar.gz",
+      "size": 64000,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 461,
+      "fileName": "20261012T120206Z.s461.tar.gz",
+      "size": 64000,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 462,
+      "fileName": "20261012T120206Z.s462.tar.gz",
+      "size": 66048,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 463,
+      "fileName": "20261012T120206Z.s463.tar.gz",
+      "size": 63488,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 464,
+      "fileName": "20261012T120206Z.s464.tar.gz",
+      "size": 66048,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 465,
+      "fileName": "20261012T120206Z.s465.tar.gz",
+      "size": 63488,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 466,
+      "fileName": "20261012T120206Z.s466.tar.gz",
+      "size": 65536,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 467,
+      "fileName": "20261012T120206Z.s467.tar.gz",
+      "size": 64512,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 468,
+      "fileName": "20261012T120206Z.s468.tar.gz",
+      "size": 66048,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 469,
+      "fileName": "20261012T120206Z.s469.tar.gz",
+      "size": 64000,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 470,
+      "fileName": "20261012T120206Z.s470.tar.gz",
+      "size": 61440,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 471,
+      "fileName": "20261012T120206Z.s471.tar.gz",
+      "size": 61440,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 472,
+      "fileName": "20261012T120206Z.s472.tar.gz",
+      "size": 61440,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 473,
+      "fileName": "20261012T120206Z.s473.tar.gz",
+      "size": 62464,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 474,
+      "fileName": "20261012T120206Z.s474.tar.gz",
+      "size": 60928,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 475,
+      "fileName": "20261012T120206Z.s475.tar.gz",
+      "size": 60416,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 476,
+      "fileName": "20261012T120206Z.s476.tar.gz",
+      "size": 62976,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 477,
+      "fileName": "20261012T120206Z.s477.tar.gz",
+      "size": 60928,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 478,
+      "fileName": "20261012T120206Z.s478.tar.gz",
+      "size": 61952,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 479,
+      "fileName": "20261012T120206Z.s479.tar.gz",
+      "size": 62464,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 480,
+      "fileName": "20261012T120206Z.s480.tar.gz",
+      "size": 60416,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 481,
+      "fileName": "20261012T120206Z.s481.tar.gz",
+      "size": 60416,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 482,
+      "fileName": "20261012T120206Z.s482.tar.gz",
+      "size": 61952,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 483,
+      "fileName": "20261012T120206Z.s483.tar.gz",
+      "size": 61440,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 484,
+      "fileName": "20261012T120206Z.s484.tar.gz",
+      "size": 60928,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 485,
+      "fileName": "20261012T120206Z.s485.tar.gz",
+      "size": 60416,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 486,
+      "fileName": "20261012T120206Z.s486.tar.gz",
+      "size": 61952,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 487,
+      "fileName": "20261012T120206Z.s487.tar.gz",
+      "size": 62464,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 488,
+      "fileName": "20261012T120206Z.s488.tar.gz",
+      "size": 63488,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 489,
+      "fileName": "20261012T120206Z.s489.tar.gz",
+      "size": 64000,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 490,
+      "fileName": "20261012T120206Z.s490.tar.gz",
+      "size": 62976,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 491,
+      "fileName": "20261012T120206Z.s491.tar.gz",
+      "size": 61440,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 492,
+      "fileName": "20261012T120206Z.s492.tar.gz",
+      "size": 64000,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 493,
+      "fileName": "20261012T120206Z.s493.tar.gz",
+      "size": 62976,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 494,
+      "fileName": "20261012T120206Z.s494.tar.gz",
+      "size": 60416,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 495,
+      "fileName": "20261012T120206Z.s495.tar.gz",
+      "size": 62976,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 496,
+      "fileName": "20261012T120206Z.s496.tar.gz",
+      "size": 67072,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 497,
+      "fileName": "20261012T120206Z.s497.tar.gz",
+      "size": 65536,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 498,
+      "fileName": "20261012T120206Z.s498.tar.gz",
+      "size": 67072,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 499,
+      "fileName": "20261012T120206Z.s499.tar.gz",
+      "size": 64512,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 395,
+      "fileName": "20261012T120206Z.s395.tar.gz",
+      "size": 64000,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 396,
+      "fileName": "20261012T120206Z.s396.tar.gz",
+      "size": 64512,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 397,
+      "fileName": "20261012T120206Z.s397.tar.gz",
+      "size": 67072,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 398,
+      "fileName": "20261012T120206Z.s398.tar.gz",
+      "size": 67584,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 399,
+      "fileName": "20261012T120206Z.s399.tar.gz",
+      "size": 67072,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 400,
+      "fileName": "20261012T120206Z.s400.tar.gz",
+      "size": 65536,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 401,
+      "fileName": "20261012T120206Z.s401.tar.gz",
+      "size": 66560,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 402,
+      "fileName": "20261012T120206Z.s402.tar.gz",
+      "size": 65536,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 403,
+      "fileName": "20261012T120206Z.s403.tar.gz",
+      "size": 65536,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 404,
+      "fileName": "20261012T120206Z.s404.tar.gz",
+      "size": 63488,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 405,
+      "fileName": "20261012T120206Z.s405.tar.gz",
+      "size": 64512,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 406,
+      "fileName": "20261012T120206Z.s406.tar.gz",
+      "size": 64512,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 407,
+      "fileName": "20261012T120206Z.s407.tar.gz",
+      "size": 65536,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 408,
+      "fileName": "20261012T120206Z.s408.tar.gz",
+      "size": 64512,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 409,
+      "fileName": "20261012T120206Z.s409.tar.gz",
+      "size": 66560,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 410,
+      "fileName": "20261012T120206Z.s410.tar.gz",
+      "size": 64000,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 411,
+      "fileName": "20261012T120206Z.s411.tar.gz",
+      "size": 64512,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 412,
+      "fileName": "20261012T120206Z.s412.tar.gz",
+      "size": 64000,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 413,
+      "fileName": "20261012T120206Z.s413.tar.gz",
+      "size": 63488,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 414,
+      "fileName": "20261012T120206Z.s414.tar.gz",
+      "size": 62464,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 415,
+      "fileName": "20261012T120206Z.s415.tar.gz",
+      "size": 60928,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 416,
+      "fileName": "20261012T120206Z.s416.tar.gz",
+      "size": 62464,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 417,
+      "fileName": "20261012T120206Z.s417.tar.gz",
+      "size": 62976,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 418,
+      "fileName": "20261012T120206Z.s418.tar.gz",
+      "size": 60928,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 419,
+      "fileName": "20261012T120206Z.s419.tar.gz",
+      "size": 61440,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 420,
+      "fileName": "20261012T120206Z.s420.tar.gz",
+      "size": 61440,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 421,
+      "fileName": "20261012T120206Z.s421.tar.gz",
+      "size": 60416,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 422,
+      "fileName": "20261012T120206Z.s422.tar.gz",
+      "size": 59904,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 423,
+      "fileName": "20261012T120206Z.s423.tar.gz",
+      "size": 61440,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 424,
+      "fileName": "20261012T120206Z.s424.tar.gz",
+      "size": 60928,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 425,
+      "fileName": "20261012T120206Z.s425.tar.gz",
+      "size": 62464,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 426,
+      "fileName": "20261012T120206Z.s426.tar.gz",
+      "size": 62464,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 427,
+      "fileName": "20261012T120206Z.s427.tar.gz",
+      "size": 60416,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 428,
+      "fileName": "20261012T120206Z.s428.tar.gz",
+      "size": 61440,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 429,
+      "fileName": "20261012T120206Z.s429.tar.gz",
+      "size": 60928,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 430,
+      "fileName": "20261012T120206Z.s430.tar.gz",
+      "size": 58880,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 431,
+      "fileName": "20261012T120206Z.s431.tar.gz",
+      "size": 60416,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 432,
+      "fileName": "20261012T120206Z.s432.tar.gz",
+      "size": 62976,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 433,
+      "fileName": "20261012T120206Z.s433.tar.gz",
+      "size": 62464,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 434,
+      "fileName": "20261012T120206Z.s434.tar.gz",
+      "size": 63488,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 435,
+      "fileName": "20261012T120206Z.s435.tar.gz",
+      "size": 62464,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 436,
+      "fileName": "20261012T120206Z.s436.tar.gz",
+      "size": 63488,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 437,
+      "fileName": "20261012T120206Z.s437.tar.gz",
+      "size": 61440,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 438,
+      "fileName": "20261012T120206Z.s438.tar.gz",
+      "size": 61952,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 439,
+      "fileName": "20261012T120206Z.s439.tar.gz",
+      "size": 63488,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 440,
+      "fileName": "20261012T120206Z.s440.tar.gz",
+      "size": 61440,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 441,
+      "fileName": "20261012T120206Z.s441.tar.gz",
+      "size": 64000,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 442,
+      "fileName": "20261012T120206Z.s442.tar.gz",
+      "size": 65536,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 443,
+      "fileName": "20261012T120206Z.s443.tar.gz",
+      "size": 61952,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 444,
+      "fileName": "20261012T120206Z.s444.tar.gz",
+      "size": 64512,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 445,
+      "fileName": "20261012T120206Z.s445.tar.gz",
+      "size": 65536,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 446,
+      "fileName": "20261012T120206Z.s446.tar.gz",
+      "size": 65024,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 447,
+      "fileName": "20261012T120206Z.s447.tar.gz",
+      "size": 53248,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 341,
+      "fileName": "20261012T120206Z.s341.tar.gz",
+      "size": 6144,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 342,
+      "fileName": "20261012T120206Z.s342.tar.gz",
+      "size": 9728,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 343,
+      "fileName": "20261012T120206Z.s343.tar.gz",
+      "size": 10752,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 344,
+      "fileName": "20261012T120206Z.s344.tar.gz",
+      "size": 10752,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 345,
+      "fileName": "20261012T120206Z.s345.tar.gz",
+      "size": 10240,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 346,
+      "fileName": "20261012T120206Z.s346.tar.gz",
+      "size": 11264,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 347,
+      "fileName": "20261012T120206Z.s347.tar.gz",
+      "size": 10240,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 348,
+      "fileName": "20261012T120206Z.s348.tar.gz",
+      "size": 10240,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 349,
+      "fileName": "20261012T120206Z.s349.tar.gz",
+      "size": 10240,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 350,
+      "fileName": "20261012T120206Z.s350.tar.gz",
+      "size": 10240,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 351,
+      "fileName": "20261012T120206Z.s351.tar.gz",
+      "size": 10752,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 352,
+      "fileName": "20261012T120206Z.s352.tar.gz",
+      "size": 10240,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 353,
+      "fileName": "20261012T120206Z.s353.tar.gz",
+      "size": 10752,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 354,
+      "fileName": "20261012T120206Z.s354.tar.gz",
+      "size": 10752,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 355,
+      "fileName": "20261012T120206Z.s355.tar.gz",
+      "size": 10752,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 356,
+      "fileName": "20261012T120206Z.s356.tar.gz",
+      "size": 10240,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 357,
+      "fileName": "20261012T120206Z.s357.tar.gz",
+      "size": 10752,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 358,
+      "fileName": "20261012T120206Z.s358.tar.gz",
+      "size": 10752,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 359,
+      "fileName": "20261012T120206Z.s359.tar.gz",
+      "size": 10240,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 360,
+      "fileName": "20261012T120206Z.s360.tar.gz",
+      "size": 10752,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 361,
+      "fileName": "20261012T120206Z.s361.tar.gz",
+      "size": 10240,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 362,
+      "fileName": "20261012T120206Z.s362.tar.gz",
+      "size": 10752,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 363,
+      "fileName": "20261012T120206Z.s363.tar.gz",
+      "size": 10752,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 364,
+      "fileName": "20261012T120206Z.s364.tar.gz",
+      "size": 10240,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 365,
+      "fileName": "20261012T120206Z.s365.tar.gz",
+      "size": 10240,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 366,
+      "fileName": "20261012T120206Z.s366.tar.gz",
+      "size": 10240,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 367,
+      "fileName": "20261012T120206Z.s367.tar.gz",
+      "size": 10240,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 368,
+      "fileName": "20261012T120206Z.s368.tar.gz",
+      "size": 10240,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 369,
+      "fileName": "20261012T120206Z.s369.tar.gz",
+      "size": 9728,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 370,
+      "fileName": "20261012T120206Z.s370.tar.gz",
+      "size": 9728,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 371,
+      "fileName": "20261012T120206Z.s371.tar.gz",
+      "size": 9728,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 372,
+      "fileName": "20261012T120206Z.s372.tar.gz",
+      "size": 10240,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 373,
+      "fileName": "20261012T120206Z.s373.tar.gz",
+      "size": 10240,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 374,
+      "fileName": "20261012T120206Z.s374.tar.gz",
+      "size": 9728,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 375,
+      "fileName": "20261012T120206Z.s375.tar.gz",
+      "size": 10752,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 376,
+      "fileName": "20261012T120206Z.s376.tar.gz",
+      "size": 10240,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 377,
+      "fileName": "20261012T120206Z.s377.tar.gz",
+      "size": 10752,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 378,
+      "fileName": "20261012T120206Z.s378.tar.gz",
+      "size": 10752,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 379,
+      "fileName": "20261012T120206Z.s379.tar.gz",
+      "size": 10240,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 380,
+      "fileName": "20261012T120206Z.s380.tar.gz",
+      "size": 10752,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 381,
+      "fileName": "20261012T120206Z.s381.tar.gz",
+      "size": 10240,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 382,
+      "fileName": "20261012T120206Z.s382.tar.gz",
+      "size": 10240,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 383,
+      "fileName": "20261012T120206Z.s383.tar.gz",
+      "size": 11264,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 384,
+      "fileName": "20261012T120206Z.s384.tar.gz",
+      "size": 10752,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 385,
+      "fileName": "20261012T120206Z.s385.tar.gz",
+      "size": 10240,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 386,
+      "fileName": "20261012T120206Z.s386.tar.gz",
+      "size": 9728,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 387,
+      "fileName": "20261012T120206Z.s387.tar.gz",
+      "size": 10240,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 388,
+      "fileName": "20261012T120206Z.s388.tar.gz",
+      "size": 10240,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 389,
+      "fileName": "20261012T120206Z.s389.tar.gz",
+      "size": 9728,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 390,
+      "fileName": "20261012T120206Z.s390.tar.gz",
+      "size": 9216,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 391,
+      "fileName": "20261012T120206Z.s391.tar.gz",
+      "size": 9728,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 392,
+      "fileName": "20261012T120206Z.s392.tar.gz",
+      "size": 10240,
+      "lastModified": 0
+    },
+    {
+      "database": "direct_building",
+      "policy": "autogen",
+      "shardID": 393,
+      "fileName": "20261012T120206Z.s393.tar.gz",
+      "size": 6144,
+      "lastModified": 0
+    }
+  ]
+}

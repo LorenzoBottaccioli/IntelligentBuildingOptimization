@@ -1,0 +1,48 @@
+{
+  "DistrictHeating_Facility": {
+    "role": "observation"
+  },
+  "Electricity_Facility": {
+    "role": "observation"
+  },
+  "Zone_Air_Temperature_ZONEWEST": {
+    "role": "observation"
+  },
+  "Zone_Air_Temperature_ZONESOUTH": {
+    "role": "observation"
+  },
+  "Zone_Air_Temperature_ZONEEAST": {
+    "role": "observation"
+  },
+  "Zone_Air_Temperature_ZONENORTH": {
+    "role": "observation"
+  },
+  "ZONEWEST_Heating_Setpoint_FMU": {
+    "min": 10,
+    "max": 30
+  },
+  "ZONESOUTH_Heating_Setpoint_FMU": {
+    "min": 10,
+    "max": 30
+  },
+  "ZONEEAST_Heating_Setpoint_FMU": {
+    "min": 10,
+    "max": 30
+  },
+  "ZONENORTH_Heating_Setpoint_FMU": {
+    "min": 10,
+    "max": 30
+  },
+  "Site_Outdoor_Air_Drybulb_Temperature_Environment": {
+    "role": "observation"
+  },
+  "Site_Outdoor_Air_Relative_Humidity_Environment": {
+    "role": "observation"
+  },
+  "Site_Wind_Speed_Environment": {
+    "role": "observation"
+  },
+  "Site_Direct_Solar_Radiation_Rate_per_Area_Environment": {
+    "role": "observation"
+  }
+}

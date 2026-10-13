@@ -1,0 +1,246 @@
+# Define the problem: what to vary (parameters), what to improve (objectives), how EnergyPlus is run.
+# Written by the platform from the problem you defined; change it as you like.
+# It needs two names from the cell above: idf (the model, bdopt.load_idf) and epw_file (the weather file).
+# Every selector is checked against the model when the evaluator is created, with suggestions for a typo.
+from bdopt import (
+    CategoryParameter, EnergyPlusEvaluator, FieldSelector, MeterReader, MultiSelector, Parameter,
+    Problem, RangeParameter,
+)
+from bdopt.sampling import lhs
+
+# 12 parameters = 12 columns of `samples`, however many objects each one writes.
+parameters = []
+
+# Lights W per m2, all rooms
+#   writes every Lights object, field "Watts per Zone Floor Area"
+lights_w_per_m2_all_rooms_sel = FieldSelector(
+    class_name="Lights",
+    object_name="*",
+    field_name="Watts per Zone Floor Area",
+)
+parameters.append(Parameter(
+    selector=lights_w_per_m2_all_rooms_sel,
+    value_descriptor=RangeParameter(4, 10),
+    name="Lights W per m2, all rooms",
+))
+
+# Lights W per m2, two rooms
+#   writes 2 Lights objects, field "Watts per Zone Floor Area"
+lights_w_per_m2_two_rooms_sel = MultiSelector.from_targets(
+    [
+        "Z04:Act100xx General lighting", "Z00:Act100aa General lighting",
+    ],
+    class_name="Lights", field_name="Watts per Zone Floor Area",
+)
+parameters.append(Parameter(
+    selector=lights_w_per_m2_two_rooms_sel,
+    value_descriptor=RangeParameter(5.5, 9.25),
+    name="Lights W per m2, two rooms",
+))
+
+# Radiant temperature method
+#   writes every People object, field "Mean Radiant Temperature Calculation Type"
+#   The column holds the option itself; problem.json numbered the options:
+#     1 = ZoneAveraged, 2 = SurfaceWeighted
+radiant_temperature_method_sel = FieldSelector(
+    class_name="People",
+    object_name="*",
+    field_name="Mean Radiant Temperature Calculation Type",
+)
+radiant_temperature_method_options = CategoryParameter([
+    "ZoneAveraged", "SurfaceWeighted",
+])
+parameters.append(Parameter(
+    selector=radiant_temperature_method_sel,
+    value_descriptor=radiant_temperature_method_options,
+    name="Radiant temperature method",
+))
+
+# Roof thickness MW Glass Wool (rolls)_.08
+#   writes 1 Material object, field "Thickness"
+roof_thickness_mw_glass_wool_sel = FieldSelector(
+    class_name="Material",
+    object_name="MW Glass Wool (rolls)_.08",
+    field_name="Thickness",
+)
+parameters.append(Parameter(
+    selector=roof_thickness_mw_glass_wool_sel,
+    value_descriptor=RangeParameter(0.05, 0.3),
+    name="Roof thickness MW Glass Wool (rolls)_.08",
+))
+
+# External walls build-up
+#   writes 64 BuildingSurface:Detailed objects, field "Construction Name"
+#   The column holds the option itself; problem.json numbered the options:
+#     1 = external wall 45cm, 2 = external wall 70cm, 3 = external wall 30cm
+external_walls_build_up_sel = MultiSelector.from_targets(
+    [
+        "Z04:Act100xx_Wall_2_0_0", "Z04:Act100xx_Wall_4_0_0", "Z00:Act100aa_Wall_4_1_0",
+        "Z00:Act100aa_Wall_5_1_0", "Z00:Act100aa_Wall_6_1_0", "Z00:Act100aa_Wall_7_1_0",
+        "Z00:Act100ab_Wall_5_0_0", "Z00:Act100ac_Wall_2_0_0", "Z00:Act100ac_Wall_6_0_0",
+        "Z01:Act106aa_Wall_4_1_0", "Z01:Act105aa_Wall_2_0_0", "Z01:Act105aa_Wall_3_1_0",
+        "Z01:Act105aa_Wall_3_1_1", "Z01:Act105aa_Wall_3_1_2", "Z01:Act105aa_Wall_3_1_3",
+        "Z01:Act105aa_Wall_3_1_4", "Z01:Act105aa_Wall_3_1_5", "Z01:Act105aa_Wall_3_1_6",
+        "Z01:Act105aa_Wall_3_1_7", "Z01:Act105aa_Wall_7_0_0", "Z01:Act102aa_Wall_5_0_0",
+        "Z01:Act104aa_Wall_4_1_0", "Z01:Act104aa_Wall_4_1_1", "Z01:Act104aa_Wall_4_1_2",
+        "Z01:Act104aa_Wall_4_1_3", "Z01:Act104aa_Wall_4_1_4", "Z01:Act104aa_Wall_4_1_5",
+        "Z01:Act104aa_Wall_4_1_6", "Z01:Act104aa_Wall_4_1_7", "Z01:Act104aa_Wall_4_1_8",
+        "Z01:Act104aa_Wall_4_1_9", "Z01:Act104aa_Wall_4_1_10", "Z01:Act104aa_Wall_4_1_11",
+        "Z01:Act104aa_Wall_5_0_0", "Z01:Act104aa_Wall_6_0_0", "Z01:Act104aa_Wall_7_0_0",
+        "Z01:Act104aa_Wall_7_0_1", "Z01:Act103aa_Wall_4_0_0", "Z01:Act103aa_Wall_5_0_0",
+        "Z02:Act107aa_Wall_3_0_0", "Z02:Act106ab_Wall_2_0_0", "Z03:Act103bb_Wall_1_0_0",
+        "Z03:Act103bb_Wall_1_0_1", "Z03:Act103bb_Wall_5_0_0", "Z03:Act103bb_Wall_6_0_0",
+        "Z03:Act102ba_Wall_4_0_0", "Z03:Act102ba_Wall_4_0_1", "Z03:Act102ba_Wall_4_0_2",
+        "Z03:Act102ba_Wall_4_0_3", "Z03:Act102ba_Wall_4_0_4", "Z03:Act102ba_Wall_4_0_5",
+        "Z03:Act102ba_Wall_4_0_6", "Z03:Act102ba_Wall_4_0_7", "Z03:Act106ba_Wall_1_0_0",
+        "Z03:Act106ba_Wall_7_0_0", "Z03:Act103ba_Wall_1_0_0", "Z03:Act103ba_Wall_2_0_0",
+        "Z03:Act103ba_Wall_3_0_0", "Z03:Act103ba_Wall_4_0_0", "Block2:Zone1_Wall_3_1_0",
+        "Block2:Zone1_Wall_5_0_0", "Block5:Zone1_Wall_1_0_0", "Block5:Zone1_Wall_3_1_0",
+        "Block5:Zone1_Wall_4_0_0",
+    ],
+    class_name="BuildingSurface:Detailed", field_name="Construction Name",
+)
+external_walls_build_up_options = CategoryParameter([
+    "external wall 45cm", "external wall 70cm", "external wall 30cm",
+])
+parameters.append(Parameter(
+    selector=external_walls_build_up_sel,
+    value_descriptor=external_walls_build_up_options,
+    name="External walls build-up",
+))
+
+# Windows construction Z00:Act100aa_Wall_5_1_0_0_0_0_Win
+#   writes 1 FenestrationSurface:Detailed object, field "Construction Name"
+#   The column holds the option itself; problem.json numbered the options:
+#     1 = Project external glazing - 1001, 2 = Project roof glazing - 1002
+windows_construction_z00_act_sel = FieldSelector(
+    class_name="FenestrationSurface:Detailed",
+    object_name="Z00:Act100aa_Wall_5_1_0_0_0_0_Win",
+    field_name="Construction Name",
+)
+windows_construction_z00_act_options = CategoryParameter([
+    "Project external glazing - 1001", "Project roof glazing - 1002",
+])
+parameters.append(Parameter(
+    selector=windows_construction_z00_act_sel,
+    value_descriptor=windows_construction_z00_act_options,
+    name="Windows construction Z00:Act100aa_Wall_5_1_0_0_0_0_Win",
+))
+
+# Windows construction, two windows
+#   writes 2 FenestrationSurface:Detailed objects, field "Construction Name"
+#   The column holds the option itself; problem.json numbered the options:
+#     1 = Project external glazing - 1001, 2 = Project roof glazing - 1002
+windows_construction_two_win_sel = MultiSelector.from_targets(
+    [
+        "Z00:Act100ab_Wall_5_0_0_0_0_1_Win", "Z01:Act105aa_Wall_2_0_0_0_0_0_Win",
+    ],
+    class_name="FenestrationSurface:Detailed", field_name="Construction Name",
+)
+windows_construction_two_win_options = CategoryParameter([
+    "Project external glazing - 1001", "Project roof glazing - 1002",
+])
+parameters.append(Parameter(
+    selector=windows_construction_two_win_sel,
+    value_descriptor=windows_construction_two_win_options,
+    name="Windows construction, two windows",
+))
+
+# heating_all_days_0_24_z01
+#   writes 2 Schedule:Compact objects, field "Field 4"
+#   Schedule:Compact fields are numbered, not named: field_index=5 is its "Field 4".
+heating_all_days_0_24_z01_sel = MultiSelector.from_targets(
+    [
+        "Z01:Act105aa Heating Setpoint Schedule", "Z01:Act102aa Heating Setpoint Schedule",
+    ],
+    class_name="Schedule:Compact", field_index=5,
+)
+parameters.append(Parameter(
+    selector=heating_all_days_0_24_z01_sel,
+    value_descriptor=RangeParameter(18, 22),
+    name="heating_all_days_0_24_z01",
+))
+
+# Bedroom occupancy 07:00-08:00
+#   writes 1 Schedule:Compact object, field "Field 6"
+#   Schedule:Compact fields are numbered, not named: field_index=7 is its "Field 6".
+bedroom_occupancy_07_00_08_0_sel = FieldSelector(
+    class_name="Schedule:Compact",
+    object_name="Dwell_DomBed_Occ",
+    field_index=7,
+)
+parameters.append(Parameter(
+    selector=bedroom_occupancy_07_00_08_0_sel,
+    value_descriptor=RangeParameter(0.3, 0.7),
+    name="Bedroom occupancy 07:00-08:00",
+))
+
+# Bedroom occupancy 07:00-09:00
+#   writes 2 Schedule:Compact objects, fields "Field 6" / "Field 8"
+#   Schedule:Compact fields are numbered, not named: field_index=7 is its "Field 6".
+#   Schedule:Compact fields are numbered, not named: field_index=9 is its "Field 8".
+bedroom_occupancy_07_00_09_0_sel = MultiSelector.from_targets([
+    {"class": "Schedule:Compact", "object": "Dwell_DomBed_Occ", "field_index": 7},
+    {"class": "Schedule:Compact", "object": "Dwell_DomBed_Occ", "field_index": 9},
+])
+parameters.append(Parameter(
+    selector=bedroom_occupancy_07_00_09_0_sel,
+    value_descriptor=RangeParameter(0.2, 0.8),
+    name="Bedroom occupancy 07:00-09:00",
+))
+
+# Bedroom occupancy first change
+#   writes 1 Schedule:Compact object, field "Field 5"
+#   Schedule:Compact fields are numbered, not named: field_index=6 is its "Field 5".
+#   The column holds the option itself; problem.json numbered the options:
+#     1 = Until: 07:30, 2 = Until: 08:00, 3 = Until: 08:30
+bedroom_occupancy_first_chan_sel = FieldSelector(
+    class_name="Schedule:Compact",
+    object_name="Dwell_DomBed_Occ",
+    field_index=6,
+)
+bedroom_occupancy_first_chan_options = CategoryParameter([
+    "Until: 07:30", "Until: 08:00", "Until: 08:30",
+])
+parameters.append(Parameter(
+    selector=bedroom_occupancy_first_chan_sel,
+    value_descriptor=bedroom_occupancy_first_chan_options,
+    name="Bedroom occupancy first change",
+))
+
+# Mixed classes, one value in two schedules
+#   writes 2 Schedule:Compact / Schedule:Day:List objects, fields "Field 6" / "Value 1"
+#   Schedule:Compact fields are numbered, not named: field_index=7 is its "Field 6".
+mixed_classes_one_value_in_t_sel = MultiSelector.from_targets([
+    {"class": "Schedule:Compact", "object": "Dwell_DomBed_Occ", "field_index": 7},
+    {"class": "Schedule:Day:List", "object": "1", "field": "Value 1"},
+])
+parameters.append(Parameter(
+    selector=mixed_classes_one_value_in_t_sel,
+    value_descriptor=RangeParameter(0.1, 0.9),
+    name="Mixed classes, one value in two schedules",
+))
+
+# Objectives: meters, summed over the run period, in joules.
+# A plain name is minimised; MeterReader(name, direction="max") maximises.
+objectives = [
+    "Electricity:Facility",
+    MeterReader("DistrictHeating:Facility", direction="max"),
+]
+problem = Problem(parameters, objectives)
+
+# EnergyPlus writes every Output:Variable the model asks for into its results database, and a detailed model
+# asks for hundreds. The objectives are meters, which the evaluator requests by itself, so none of those
+# variables is needed: they are removed from the copy that is simulated (idf itself is left as it is).
+# An objective that reads a variable, e.g. VariableReader, makes the evaluator request that variable itself.
+sim_idf = idf.copy()
+sim_idf.remove(sim_idf.by_class("Output:Variable"))
+evaluator = EnergyPlusEvaluator(
+    problem, sim_idf, epw_file,
+    out_dir="/tmp/bdopt_runs",  # run folders on the container's own disk: much faster than a shared folder
+    err_dir="outputdir",        # a run that fails is kept here, with EnergyPlus' error file
+    processes=2,                # EnergyPlus runs in parallel
+)
+
+samples = lhs(problem, 20)  # 20 Latin hypercube samples: a row per design, a column per parameter
+# lhs(problem, 20, seed=1) gives the same samples every time, and runs already done are not repeated (the cache lives in /tmp/bdopt_runs, so until the container is recreated).

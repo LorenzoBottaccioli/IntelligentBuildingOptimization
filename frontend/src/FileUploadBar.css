@@ -1,0 +1,187 @@
+/* The model strip under the navigation: which model, load, start over. */
+
+.modelbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2) var(--space-3);
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-surface-alt);
+    border-bottom: 1px solid var(--color-border);
+    font-size: 13px;
+    flex-shrink: 0;
+}
+
+.modelbar__form {
+    display: contents;
+}
+
+.modelbar__label {
+    color: var(--color-muted);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.modelbar__file {
+    padding: 2px var(--space-2);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: #fff;
+    font-family: var(--font-mono);
+    font-size: 12px;
+}
+
+.modelbar__spacer {
+    flex: 1;
+}
+
+.modelbar__pick {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin: 0;
+    font-weight: 600;
+}
+
+.modelbar__pick input {
+    font-size: 12px;
+    max-width: 230px;
+}
+
+.modelbar__btn {
+    padding: 3px var(--space-3);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: #fff;
+    color: var(--color-text);
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.modelbar__btn:hover:not(:disabled) {
+    border-color: #003366;
+    color: #003366;
+}
+
+.modelbar__btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.modelbar__btn--primary {
+    background: #003366;
+    border-color: #003366;
+    color: #fff;
+}
+
+.modelbar__btn--primary:hover:not(:disabled) {
+    color: #fff;
+    background: #00264d;
+}
+
+.modelbar__btn--danger:hover:not(:disabled) {
+    border-color: var(--color-danger);
+    color: var(--color-danger);
+}
+
+.modelbar__progress {
+    flex-basis: 100%;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--color-border);
+    overflow: hidden;
+}
+
+.modelbar__progress div {
+    height: 100%;
+    background: #003366;
+    transition: width 0.3s;
+}
+
+.modelbar__error {
+    color: var(--color-danger);
+}
+
+/* The model block in the blue sidebar (the .modelbar__btn classes above are still
+   used by the session panel). */
+.sidemodel {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: var(--space-3);
+}
+
+.sidemodel__file {
+    padding: 3px var(--space-2);
+    border-radius: var(--radius);
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.sidemodel__form {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.sidemodel__pick {
+    margin: 0;
+    padding: 5px var(--space-2);
+    border: 1px dashed rgba(255, 255, 255, 0.45);
+    border-radius: var(--radius);
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 12.5px;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.sidemodel__pick:hover {
+    border-color: #fff;
+    color: #fff;
+}
+
+.sidemodel__pick input {
+    display: none;
+}
+
+.sidemodel__upload {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: 5px var(--space-3);
+    border: none;
+    border-radius: var(--radius);
+    background: #fff;
+    color: #003366;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.sidemodel__upload:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.sidemodel__progress {
+    height: 5px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.2);
+    overflow: hidden;
+}
+
+.sidemodel__progress div {
+    height: 100%;
+    background: #fff;
+    transition: width 0.3s;
+}

@@ -1,0 +1,43 @@
+# UNIFIED candidate (A + B): image A's stack on Python 3.10, bdopt installed on top by the Dockerfile.
+# Only change vs environment.runtime.yml: python 3.9 -> 3.10 (bdopt needs >=3.10; pyfmi 2.18, assimulo 3.7.1 and torch 1.13.1 have 3.10 builds).
+# Image A (runtime): what bms_services and controller really import.
+#
+# Found by scanning Workspace/, gateway/, conda-environment/fmi_mlc, reference/ and 'Simulation examples/'
+# (tests/baseline/phase3_import_census.txt): numpy, pandas, matplotlib, paho, pyfmi, gym, gymnasium,
+# stable_baselines3, sklearn, yaml. Versions are the ones the legacy image runs today
+# (tests/baseline/legacy_pip_freeze.txt, legacy_conda_explicit.txt), so the FMU and RL stack behaves the same.
+#
+# NOT here on purpose: tensorflow, keras, harlow, besos, geomeppy, eppy, dask, pyomo, shapely, wxpython, lxml,
+# CUDA wheels (the legacy image carries ~1.4 GB of them and uses no GPU) and torch's default CUDA build.
+name: conda_environment
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  # numpy is pinned in conda (not left to pip): SB3 2.4.1 needs numpy < 2, and the compiled pyfmi / assimulo /
+  # scipy builds must be solved against the same numpy that runs.
+  - numpy=1.26.4
+  - pandas=2.3.*
+  - scipy=1.13.1
+  - scikit-learn=1.7.2
+  - matplotlib-base=3.9.4
+  - pyfmi=2.18.0
+  - assimulo=3.7.1
+  - paho-mqtt=2.1.0          # the platform code uses the 2.x callback API
+  - pyyaml=6.0.2             # gateway/emergency_gateway.py
+  - requests=2.32.5          # Workspace/iot/subscriber.py tells students it is installed
+  - influxdb-client=1.49.0
+  - cloudpickle
+  - tqdm
+  - rich
+  - ipykernel=6.30.1
+  - pip:
+      # CPU-only torch (SB3 needs it for the RL track). Same version as the legacy image, without CUDA.
+      - --extra-index-url https://download.pytorch.org/whl/cpu
+      - torch==1.13.1+cpu
+      - gymnasium==1.0.0
+      - gym==0.26.2              # conda-environment/fmi_mlc/fmi_gym.py and 6 course notebooks import gym
+      - shimmy==2.0.0
+      - stable_baselines3==2.4.1
+      - notebook==7.4.5

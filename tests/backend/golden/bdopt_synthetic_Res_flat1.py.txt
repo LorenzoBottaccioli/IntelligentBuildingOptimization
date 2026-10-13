@@ -1,0 +1,89 @@
+# Define the problem: what to vary (parameters), what to improve (objectives), how EnergyPlus is run.
+# Written by the platform from the problem you defined; change it as you like.
+# It needs two names from the cell above: idf (the model, bdopt.load_idf) and epw_file (the weather file).
+# Every selector is checked against the model when the evaluator is created, with suggestions for a typo.
+from bdopt import (
+    CategoryParameter, EnergyPlusEvaluator, FieldSelector, MultiSelector, Parameter, Problem,
+    RangeParameter,
+)
+from bdopt.sampling import lhs
+
+# The blinds over the windows whose construction changes. A blind given as a shaded construction only fits
+# the glazing it was built with; given as a material it fits whichever glazing a sample picks.
+# WindowShadingControl, by position in the IDD (the name is field 0):
+#   field 4 is "Construction with Shading Name", field 10 is "Shading Device Material Name".
+for control, blind in [
+    ("11001", "20002"), ("11002", "20002"), ("11003", "20002"), ("21001", "20002"),
+    ("31001", "20002"), ("41001", "20002"), ("51001", "20002"), ("61001", "20002"),
+    ("71001", "20002"),
+]:
+    shading = idf.find("WindowShadingControl", control)[0]
+    shading.set(10, blind)
+    shading.set(4, "")
+
+# 2 parameters = 2 columns of `samples`, however many objects each one writes.
+parameters = []
+
+# Windows construction
+#   writes 11 FenestrationSurface:Detailed objects, field "Construction Name"
+#   The column holds the option itself; problem.json numbered the options:
+#     1 = Dbl LoE (e2=.1) Clr 6mm/13mm Arg - 1001, 2 = Sgl Clr 6mm - 1002,
+#     3 = Trp LoE (e2=e5=.1) Clr 3mm/13mm Arg - 1003
+windows_construction_sel = MultiSelector.from_targets(
+    [
+        "StairXnoHVAC:Zona1_Wall_2_1_0_0_0_0_Win", "StairXnoHVAC:Zona1_Wall_3_0_0_0_0_0_Win",
+        "StairXnoHVAC:Zona1_Wall_4_3_0_0_0_0_Win", "Blocco1:Zona3_Wall_5_0_0_0_0_0_Win",
+        "Blocco1:Zona3_Wall_6_0_0_0_0_0_Win", "Blocco1:Zona6_Wall_7_0_0_0_0_0_Win",
+        "Blocco1:Zona7_Wall_3_0_0_0_0_0_Win", "Blocco1:Zona1_Wall_4_0_0_0_0_0_Win",
+        "Blocco1:Zona2_Wall_3_0_0_0_0_0_Win", "Blocco1:Zona2_Wall_4_0_0_0_0_0_Win",
+        "Blocco1:Zona4_Wall_3_0_0_0_0_0_Win",
+    ],
+    class_name="FenestrationSurface:Detailed", field_name="Construction Name",
+)
+windows_construction_options = CategoryParameter([
+    "Dbl LoE (e2=.1) Clr 6mm/13mm Arg - 1001", "Sgl Clr 6mm - 1002",
+    "Trp LoE (e2=e5=.1) Clr 3mm/13mm Arg - 1003",
+])
+parameters.append(Parameter(
+    selector=windows_construction_sel,
+    value_descriptor=windows_construction_options,
+    name="Windows construction",
+))
+
+# Lights W per m2
+#   writes every Lights object, field "Watts per Zone Floor Area"
+lights_w_per_m2_sel = FieldSelector(
+    class_name="Lights",
+    object_name="*",
+    field_name="Watts per Zone Floor Area",
+)
+parameters.append(Parameter(
+    selector=lights_w_per_m2_sel,
+    value_descriptor=RangeParameter(8, 12),
+    name="Lights W per m2",
+))
+
+# Objectives: meters, summed over the run period, in joules.
+# A plain name is minimised; MeterReader(name, direction="max") maximises.
+objectives = [
+    "Electricity:Facility",
+    "DistrictHeating:Facility",
+    "DistrictCooling:Facility",
+]
+problem = Problem(parameters, objectives)
+
+# EnergyPlus writes every Output:Variable the model asks for into its results database, and a detailed model
+# asks for hundreds. The objectives are meters, which the evaluator requests by itself, so none of those
+# variables is needed: they are removed from the copy that is simulated (idf itself is left as it is).
+# An objective that reads a variable, e.g. VariableReader, makes the evaluator request that variable itself.
+sim_idf = idf.copy()
+sim_idf.remove(sim_idf.by_class("Output:Variable"))
+evaluator = EnergyPlusEvaluator(
+    problem, sim_idf, epw_file,
+    out_dir="/tmp/bdopt_runs",  # run folders on the container's own disk: much faster than a shared folder
+    err_dir="outputdir",        # a run that fails is kept here, with EnergyPlus' error file
+    processes=2,                # EnergyPlus runs in parallel
+)
+
+samples = lhs(problem, 20)  # 20 Latin hypercube samples: a row per design, a column per parameter
+# lhs(problem, 20, seed=1) gives the same samples every time, and runs already done are not repeated (the cache lives in /tmp/bdopt_runs, so until the container is recreated).

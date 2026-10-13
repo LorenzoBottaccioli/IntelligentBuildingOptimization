@@ -1,0 +1,232 @@
+{
+  "model": "E1_RES1.idf",
+  "variables": [
+    {
+      "name": "External walls build-up",
+      "className": "BuildingSurface:Detailed",
+      "field": "Construction_Name",
+      "targets": [
+        "Z04:Act100xx_Wall_2_0_0",
+        "Z04:Act100xx_Wall_4_0_0",
+        "Z00:Act100aa_Wall_4_1_0",
+        "Z00:Act100aa_Wall_5_1_0",
+        "Z00:Act100aa_Wall_6_1_0",
+        "Z00:Act100aa_Wall_7_1_0",
+        "Z00:Act100ab_Wall_5_0_0",
+        "Z00:Act100ac_Wall_2_0_0",
+        "Z00:Act100ac_Wall_6_0_0",
+        "Z01:Act106aa_Wall_4_1_0",
+        "Z01:Act105aa_Wall_2_0_0",
+        "Z01:Act105aa_Wall_3_1_0",
+        "Z01:Act105aa_Wall_3_1_1",
+        "Z01:Act105aa_Wall_3_1_2",
+        "Z01:Act105aa_Wall_3_1_3",
+        "Z01:Act105aa_Wall_3_1_4",
+        "Z01:Act105aa_Wall_3_1_5",
+        "Z01:Act105aa_Wall_3_1_6",
+        "Z01:Act105aa_Wall_3_1_7",
+        "Z01:Act105aa_Wall_7_0_0",
+        "Z01:Act102aa_Wall_5_0_0",
+        "Z01:Act104aa_Wall_4_1_0",
+        "Z01:Act104aa_Wall_4_1_1",
+        "Z01:Act104aa_Wall_4_1_2",
+        "Z01:Act104aa_Wall_4_1_3",
+        "Z01:Act104aa_Wall_4_1_4",
+        "Z01:Act104aa_Wall_4_1_5",
+        "Z01:Act104aa_Wall_4_1_6",
+        "Z01:Act104aa_Wall_4_1_7",
+        "Z01:Act104aa_Wall_4_1_8",
+        "Z01:Act104aa_Wall_4_1_9",
+        "Z01:Act104aa_Wall_4_1_10",
+        "Z01:Act104aa_Wall_4_1_11",
+        "Z01:Act104aa_Wall_5_0_0",
+        "Z01:Act104aa_Wall_6_0_0",
+        "Z01:Act104aa_Wall_7_0_0",
+        "Z01:Act104aa_Wall_7_0_1",
+        "Z01:Act103aa_Wall_4_0_0",
+        "Z01:Act103aa_Wall_5_0_0",
+        "Z02:Act107aa_Wall_3_0_0",
+        "Z02:Act106ab_Wall_2_0_0",
+        "Z03:Act103bb_Wall_1_0_0",
+        "Z03:Act103bb_Wall_1_0_1",
+        "Z03:Act103bb_Wall_5_0_0",
+        "Z03:Act103bb_Wall_6_0_0",
+        "Z03:Act102ba_Wall_4_0_0",
+        "Z03:Act102ba_Wall_4_0_1",
+        "Z03:Act102ba_Wall_4_0_2",
+        "Z03:Act102ba_Wall_4_0_3",
+        "Z03:Act102ba_Wall_4_0_4",
+        "Z03:Act102ba_Wall_4_0_5",
+        "Z03:Act102ba_Wall_4_0_6",
+        "Z03:Act102ba_Wall_4_0_7",
+        "Z03:Act106ba_Wall_1_0_0",
+        "Z03:Act106ba_Wall_7_0_0",
+        "Z03:Act103ba_Wall_1_0_0",
+        "Z03:Act103ba_Wall_2_0_0",
+        "Z03:Act103ba_Wall_3_0_0",
+        "Z03:Act103ba_Wall_4_0_0",
+        "Block2:Zone1_Wall_3_1_0",
+        "Block2:Zone1_Wall_5_0_0",
+        "Block5:Zone1_Wall_1_0_0",
+        "Block5:Zone1_Wall_3_1_0",
+        "Block5:Zone1_Wall_4_0_0"
+      ],
+      "label": "External walls \u00b7 whole build-up",
+      "unit": "",
+      "source": {
+        "kind": "construction",
+        "element": "external_wall",
+        "elementLabel": "External walls"
+      },
+      "type": "category",
+      "options": [
+        "external wall 45cm",
+        "external wall 70cm",
+        "external wall 30cm",
+        "external wall 60cm",
+        "external wall 50cm",
+        "external wall 24cm"
+      ]
+    },
+    {
+      "name": "Windows construction",
+      "className": "FenestrationSurface:Detailed",
+      "field": "Construction_Name",
+      "targets": [
+        "Z00:Act100aa_Wall_5_1_0_0_0_0_Win",
+        "Z00:Act100ab_Wall_5_0_0_0_0_1_Win",
+        "Z01:Act105aa_Wall_2_0_0_0_0_0_Win",
+        "Z01:Act105aa_Wall_3_1_7_0_7_0_Win",
+        "Z01:Act105aa_Wall_7_0_0_0_0_0_Win",
+        "Z01:Act102aa_Wall_5_0_0_0_0_0_Win",
+        "Z01:Act104aa_Wall_4_1_11_0_11_1_Win",
+        "Z01:Act104aa_Wall_6_0_0_0_0_0_Win",
+        "Z01:Act103aa_Wall_5_0_0_0_0_0_Win",
+        "Z02:Act107aa_Wall_3_0_0_0_0_0_Win",
+        "Z02:Act106ab_Wall_2_0_0_1_0_0_Win",
+        "Z03:Act102ba_Wall_4_0_7_0_7_0_Win",
+        "Z03:Act106ba_Wall_1_0_0_0_0_0_Win"
+      ],
+      "label": "Windows \u00b7 window construction",
+      "unit": "",
+      "source": {
+        "kind": "construction",
+        "element": "window",
+        "elementLabel": "Windows"
+      },
+      "type": "category",
+      "options": [
+        "Project external glazing - 1001",
+        "Project roof glazing - 1002"
+      ]
+    },
+    {
+      "name": "Heating setpoint 1 Jan\u201315 Apr, every day, 00:00\u201324:00",
+      "type": "range",
+      "min": 18.0,
+      "max": 22.0,
+      "className": null,
+      "field": null,
+      "targets": [
+        {
+          "object": "Z01:Act105aa Heating Setpoint Schedule",
+          "field": "Field_4",
+          "className": "Schedule:Compact"
+        },
+        {
+          "object": "Z01:Act102aa Heating Setpoint Schedule",
+          "field": "Field_4",
+          "className": "Schedule:Compact"
+        },
+        {
+          "object": "Z01:Act104aa Heating Setpoint Schedule",
+          "field": "Field_4",
+          "className": "Schedule:Compact"
+        },
+        {
+          "object": "Z01:Act103aa Heating Setpoint Schedule",
+          "field": "Field_4",
+          "className": "Schedule:Compact"
+        },
+        {
+          "object": "Z02:Act107aa Heating Setpoint Schedule",
+          "field": "Field_4",
+          "className": "Schedule:Compact"
+        },
+        {
+          "object": "Z02:Act106ab Heating Setpoint Schedule",
+          "field": "Field_4",
+          "className": "Schedule:Compact"
+        },
+        {
+          "object": "Z03:Act103bb Heating Setpoint Schedule",
+          "field": "Field_4",
+          "className": "Schedule:Compact"
+        },
+        {
+          "object": "Z03:Act102ba Heating Setpoint Schedule",
+          "field": "Field_4",
+          "className": "Schedule:Compact"
+        },
+        {
+          "object": "Z03:Act106ba Heating Setpoint Schedule",
+          "field": "Field_4",
+          "className": "Schedule:Compact"
+        },
+        {
+          "object": "Z03:Act103ba Heating Setpoint Schedule",
+          "field": "Field_4",
+          "className": "Schedule:Compact"
+        }
+      ],
+      "label": "heating setpoint, 1 Jan\u201315 Apr, every day, 00:00\u201324:00",
+      "unit": "\u00b0C",
+      "source": {
+        "kind": "schedule_value",
+        "role": "heating",
+        "when": "1 Jan\u201315 Apr, every day",
+        "zones": [
+          "Z01:Act105aa",
+          "Z01:Act102aa",
+          "Z01:Act104aa",
+          "Z01:Act103aa",
+          "Z02:Act107aa",
+          "Z02:Act106ab",
+          "Z03:Act103bb",
+          "Z03:Act102ba",
+          "Z03:Act106ba",
+          "Z03:Act103ba"
+        ],
+        "current": "10 \u00b0C (2), 20 \u00b0C (10)"
+      }
+    },
+    {
+      "name": "Lights Watts per Zone Floor Area",
+      "className": "Lights",
+      "field": "Watts_per_Zone_Floor_Area",
+      "targets": [
+        "*"
+      ],
+      "label": "Lights \u00b7 Watts per Zone Floor Area",
+      "unit": "W/m2",
+      "source": {
+        "kind": "field",
+        "group": "Internal Gains"
+      },
+      "type": "range",
+      "min": 4.0,
+      "max": 10.0
+    }
+  ],
+  "objectives": [
+    {
+      "name": "Electricity:Facility",
+      "direction": "minimize"
+    },
+    {
+      "name": "DistrictHeating:Facility",
+      "direction": "minimize"
+    }
+  ],
+  "notes": ""
+}

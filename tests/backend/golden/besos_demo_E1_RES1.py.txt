@@ -1,0 +1,33 @@
+from besos import sampling
+from besos.parameters import FieldSelector, Parameter, RangeParameter, CategoryParameter
+from besos.problem import EPProblem
+
+parameters = []
+
+# External walls build-up
+#   as numbers: 1 = external wall 45cm, 2 = external wall 70cm, 3 = external wall 30cm, 4 = external wall 60cm, 5 = external wall 50cm, 6 = external wall 24cm
+external_walls_build_up = CategoryParameter(options=['external wall 45cm', 'external wall 70cm', 'external wall 30cm', 'external wall 60cm', 'external wall 50cm', 'external wall 24cm'])
+for obj in ['Z04:Act100xx_Wall_2_0_0', 'Z04:Act100xx_Wall_4_0_0', 'Z00:Act100aa_Wall_4_1_0', 'Z00:Act100aa_Wall_5_1_0', 'Z00:Act100aa_Wall_6_1_0', 'Z00:Act100aa_Wall_7_1_0', 'Z00:Act100ab_Wall_5_0_0', 'Z00:Act100ac_Wall_2_0_0', 'Z00:Act100ac_Wall_6_0_0', 'Z01:Act106aa_Wall_4_1_0', 'Z01:Act105aa_Wall_2_0_0', 'Z01:Act105aa_Wall_3_1_0', 'Z01:Act105aa_Wall_3_1_1', 'Z01:Act105aa_Wall_3_1_2', 'Z01:Act105aa_Wall_3_1_3', 'Z01:Act105aa_Wall_3_1_4', 'Z01:Act105aa_Wall_3_1_5', 'Z01:Act105aa_Wall_3_1_6', 'Z01:Act105aa_Wall_3_1_7', 'Z01:Act105aa_Wall_7_0_0', 'Z01:Act102aa_Wall_5_0_0', 'Z01:Act104aa_Wall_4_1_0', 'Z01:Act104aa_Wall_4_1_1', 'Z01:Act104aa_Wall_4_1_2', 'Z01:Act104aa_Wall_4_1_3', 'Z01:Act104aa_Wall_4_1_4', 'Z01:Act104aa_Wall_4_1_5', 'Z01:Act104aa_Wall_4_1_6', 'Z01:Act104aa_Wall_4_1_7', 'Z01:Act104aa_Wall_4_1_8', 'Z01:Act104aa_Wall_4_1_9', 'Z01:Act104aa_Wall_4_1_10', 'Z01:Act104aa_Wall_4_1_11', 'Z01:Act104aa_Wall_5_0_0', 'Z01:Act104aa_Wall_6_0_0', 'Z01:Act104aa_Wall_7_0_0', 'Z01:Act104aa_Wall_7_0_1', 'Z01:Act103aa_Wall_4_0_0', 'Z01:Act103aa_Wall_5_0_0', 'Z02:Act107aa_Wall_3_0_0', 'Z02:Act106ab_Wall_2_0_0', 'Z03:Act103bb_Wall_1_0_0', 'Z03:Act103bb_Wall_1_0_1', 'Z03:Act103bb_Wall_5_0_0', 'Z03:Act103bb_Wall_6_0_0', 'Z03:Act102ba_Wall_4_0_0', 'Z03:Act102ba_Wall_4_0_1', 'Z03:Act102ba_Wall_4_0_2', 'Z03:Act102ba_Wall_4_0_3', 'Z03:Act102ba_Wall_4_0_4', 'Z03:Act102ba_Wall_4_0_5', 'Z03:Act102ba_Wall_4_0_6', 'Z03:Act102ba_Wall_4_0_7', 'Z03:Act106ba_Wall_1_0_0', 'Z03:Act106ba_Wall_7_0_0', 'Z03:Act103ba_Wall_1_0_0', 'Z03:Act103ba_Wall_2_0_0', 'Z03:Act103ba_Wall_3_0_0', 'Z03:Act103ba_Wall_4_0_0', 'Block2:Zone1_Wall_3_1_0', 'Block2:Zone1_Wall_5_0_0', 'Block5:Zone1_Wall_1_0_0', 'Block5:Zone1_Wall_3_1_0', 'Block5:Zone1_Wall_4_0_0']:
+    sel = FieldSelector(class_name='BuildingSurface:Detailed', object_name=obj, field_name='Construction_Name')
+    parameters.append(Parameter(selector=sel, value_descriptors=external_walls_build_up, name='External walls build-up'))
+
+# Windows construction
+#   as numbers: 1 = Project external glazing - 1001, 2 = Project roof glazing - 1002
+windows_construction = CategoryParameter(options=['Project external glazing - 1001', 'Project roof glazing - 1002'])
+for obj in ['Z00:Act100aa_Wall_5_1_0_0_0_0_Win', 'Z00:Act100ab_Wall_5_0_0_0_0_1_Win', 'Z01:Act105aa_Wall_2_0_0_0_0_0_Win', 'Z01:Act105aa_Wall_3_1_7_0_7_0_Win', 'Z01:Act105aa_Wall_7_0_0_0_0_0_Win', 'Z01:Act102aa_Wall_5_0_0_0_0_0_Win', 'Z01:Act104aa_Wall_4_1_11_0_11_1_Win', 'Z01:Act104aa_Wall_6_0_0_0_0_0_Win', 'Z01:Act103aa_Wall_5_0_0_0_0_0_Win', 'Z02:Act107aa_Wall_3_0_0_0_0_0_Win', 'Z02:Act106ab_Wall_2_0_0_1_0_0_Win', 'Z03:Act102ba_Wall_4_0_7_0_7_0_Win', 'Z03:Act106ba_Wall_1_0_0_0_0_0_Win']:
+    sel = FieldSelector(class_name='FenestrationSurface:Detailed', object_name=obj, field_name='Construction_Name')
+    parameters.append(Parameter(selector=sel, value_descriptors=windows_construction, name='Windows construction'))
+
+# Heating setpoint 1 Jan–15 Apr, every day, 00:00–24:00
+heating_setpoint_1_jan_15_ap = RangeParameter(min_val=18, max_val=22)
+for obj in ['Z01:Act105aa Heating Setpoint Schedule', 'Z01:Act102aa Heating Setpoint Schedule', 'Z01:Act104aa Heating Setpoint Schedule', 'Z01:Act103aa Heating Setpoint Schedule', 'Z02:Act107aa Heating Setpoint Schedule', 'Z02:Act106ab Heating Setpoint Schedule', 'Z03:Act103bb Heating Setpoint Schedule', 'Z03:Act102ba Heating Setpoint Schedule', 'Z03:Act106ba Heating Setpoint Schedule', 'Z03:Act103ba Heating Setpoint Schedule']:
+    sel = FieldSelector(class_name='Schedule:Compact', object_name=obj, field_name='Field_4')
+    parameters.append(Parameter(selector=sel, value_descriptors=heating_setpoint_1_jan_15_ap, name='Heating setpoint 1 Jan–15 Apr, every day, 00:00–24:00'))
+
+# Lights Watts per Zone Floor Area
+lights_watts_per_zone_floor__sel = FieldSelector(class_name='Lights', object_name='*', field_name='Watts_per_Zone_Floor_Area')
+parameters.append(Parameter(selector=lights_watts_per_zone_floor__sel, value_descriptors=RangeParameter(min_val=4, max_val=10), name='Lights Watts per Zone Floor Area'))
+
+objectives = ['Electricity:Facility', 'DistrictHeating:Facility']
+problem = EPProblem(parameters, objectives)
+samples = sampling.dist_sampler(sampling.lhs, problem, num_samples=20)

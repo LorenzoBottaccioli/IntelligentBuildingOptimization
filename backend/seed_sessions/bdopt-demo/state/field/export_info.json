@@ -1,0 +1,112 @@
+{
+  "exported_at": "2026-10-12T11:24:11",
+  "model": "test",
+  "timestep": 6,
+  "fmu": "test.fmu",
+  "baseline_fmu": "test_baseline.fmu",
+  "baseline_inputs_kept": [],
+  "baseline_warning": null,
+  "interface": {
+    "timestep": 6,
+    "entries": {
+      "DistrictHeating_Facility": {
+        "kind": "output",
+        "what": "DistrictHeating_Facility at EMS",
+        "role": "observation",
+        "min": null,
+        "max": null
+      },
+      "Electricity_Facility": {
+        "kind": "output",
+        "what": "Electricity_Facility at EMS",
+        "role": "observation",
+        "min": null,
+        "max": null
+      },
+      "Zone_Air_Temperature_ZONEWEST": {
+        "kind": "output",
+        "what": "Zone Air Temperature at BLOCK1:ZONEWEST",
+        "role": "observation",
+        "min": null,
+        "max": null
+      },
+      "Zone_Air_Temperature_ZONESOUTH": {
+        "kind": "output",
+        "what": "Zone Air Temperature at BLOCK1:ZONESOUTH",
+        "role": "observation",
+        "min": null,
+        "max": null
+      },
+      "Zone_Air_Temperature_ZONEEAST": {
+        "kind": "output",
+        "what": "Zone Air Temperature at BLOCK1:ZONEEAST",
+        "role": "observation",
+        "min": null,
+        "max": null
+      },
+      "Zone_Air_Temperature_ZONENORTH": {
+        "kind": "output",
+        "what": "Zone Air Temperature at BLOCK1:ZONENORTH",
+        "role": "observation",
+        "min": null,
+        "max": null
+      },
+      "Site_Outdoor_Air_Drybulb_Temperature_Environment": {
+        "kind": "output",
+        "what": "Site Outdoor Air Drybulb Temperature at Environment",
+        "role": "observation",
+        "min": null,
+        "max": null
+      },
+      "Site_Outdoor_Air_Relative_Humidity_Environment": {
+        "kind": "output",
+        "what": "Site Outdoor Air Relative Humidity at Environment",
+        "role": "observation",
+        "min": null,
+        "max": null
+      },
+      "Site_Wind_Speed_Environment": {
+        "kind": "output",
+        "what": "Site Wind Speed at Environment",
+        "role": "observation",
+        "min": null,
+        "max": null
+      },
+      "Site_Direct_Solar_Radiation_Rate_per_Area_Environment": {
+        "kind": "output",
+        "what": "Site Direct Solar Radiation Rate per Area at Environment",
+        "role": "observation",
+        "min": null,
+        "max": null
+      },
+      "ZONEWEST_Heating_Setpoint_FMU": {
+        "kind": "input",
+        "what": "Heating Setpoint of BLOCK1:ZONEWEST",
+        "role": null,
+        "min": 10,
+        "max": 30
+      },
+      "ZONESOUTH_Heating_Setpoint_FMU": {
+        "kind": "input",
+        "what": "Heating Setpoint of BLOCK1:ZONESOUTH",
+        "role": null,
+        "min": 10,
+        "max": 30
+      },
+      "ZONEEAST_Heating_Setpoint_FMU": {
+        "kind": "input",
+        "what": "Heating Setpoint of BLOCK1:ZONEEAST",
+        "role": null,
+        "min": 10,
+        "max": 30
+      },
+      "ZONENORTH_Heating_Setpoint_FMU": {
+        "kind": "input",
+        "what": "Heating Setpoint of BLOCK1:ZONENORTH",
+        "role": null,
+        "min": 10,
+        "max": 30
+      }
+    }
+  }
+}

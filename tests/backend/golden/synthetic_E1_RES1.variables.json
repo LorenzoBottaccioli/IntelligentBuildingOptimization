@@ -1,0 +1,218 @@
+{
+  "model": "E1_RES1.idf",
+  "variables": [
+    {
+      "kind": "field",
+      "group": "Internal Gains",
+      "type": "range",
+      "className": "Lights",
+      "field": "Watts_per_Zone_Floor_Area",
+      "name": "Lights W per m2, all rooms",
+      "min": 4,
+      "max": 10
+    },
+    {
+      "kind": "field",
+      "group": "Internal Gains",
+      "type": "range",
+      "className": "Lights",
+      "field": "Watts_per_Zone_Floor_Area",
+      "objects": [
+        "Z04:Act100xx General lighting",
+        "Z00:Act100aa General lighting"
+      ],
+      "name": "Lights W per m2, two rooms",
+      "min": 5.5,
+      "max": 9.25
+    },
+    {
+      "kind": "field",
+      "group": "Internal Gains",
+      "type": "category",
+      "className": "People",
+      "field": "Mean_Radiant_Temperature_Calculation_Type",
+      "options": [
+        "ZoneAveraged",
+        "SurfaceWeighted"
+      ],
+      "name": "Radiant temperature method"
+    },
+    {
+      "kind": "layer",
+      "type": "range",
+      "element": "roof",
+      "elementLabel": "Roof",
+      "layer": "MW Glass Wool (rolls)_.08",
+      "className": "Material",
+      "field": "Thickness",
+      "objects": [
+        "MW Glass Wool (rolls)_.08"
+      ],
+      "name": "Roof thickness MW Glass Wool (rolls)_.08",
+      "min": 0.05,
+      "max": 0.3
+    },
+    {
+      "kind": "construction",
+      "type": "category",
+      "element": "external_wall",
+      "elementLabel": "External walls",
+      "name": "External walls build-up",
+      "options": [
+        "external wall 45cm",
+        "external wall 70cm",
+        "external wall 30cm"
+      ]
+    },
+    {
+      "kind": "construction",
+      "type": "category",
+      "element": "window",
+      "elementLabel": "Windows",
+      "perWindow": true,
+      "baseName": "Windows construction",
+      "objects": [
+        "Z00:Act100aa_Wall_5_1_0_0_0_0_Win"
+      ],
+      "name": "Windows construction Z00:Act100aa_Wall_5_1_0_0_0_0_Win",
+      "options": [
+        "Project external glazing - 1001",
+        "Project roof glazing - 1002"
+      ]
+    },
+    {
+      "kind": "construction",
+      "type": "category",
+      "element": "window",
+      "elementLabel": "Windows",
+      "objects": [
+        "Z00:Act100ab_Wall_5_0_0_0_0_1_Win",
+        "Z01:Act105aa_Wall_2_0_0_0_0_0_Win"
+      ],
+      "name": "Windows construction, two windows",
+      "options": [
+        "Project external glazing - 1001",
+        "Project roof glazing - 1002"
+      ]
+    },
+    {
+      "kind": "setpoint",
+      "type": "range",
+      "setpoint": "heating",
+      "name": "heating_all_days_0_24_z01",
+      "min": 18,
+      "max": 22,
+      "targets": [
+        {
+          "object": "Z01:Act105aa Heating Setpoint Schedule",
+          "field": "Field_4"
+        },
+        {
+          "object": "Z01:Act102aa Heating Setpoint Schedule",
+          "field": "Field_4"
+        }
+      ]
+    },
+    {
+      "kind": "schedule_value",
+      "type": "range",
+      "name": "Bedroom occupancy 07:00-08:00",
+      "min": 0.3,
+      "max": 0.7,
+      "role": "occupancy",
+      "when": "weekdays",
+      "zones": [
+        "Dwell_DomBed"
+      ],
+      "current": "0.5",
+      "targets": [
+        {
+          "className": "Schedule:Compact",
+          "object": "Dwell_DomBed_Occ",
+          "field": "Field_6"
+        }
+      ]
+    },
+    {
+      "kind": "schedule_value",
+      "type": "range",
+      "name": "Bedroom occupancy 07:00-09:00",
+      "min": 0.2,
+      "max": 0.8,
+      "role": "occupancy",
+      "when": "weekdays",
+      "zones": [
+        "Dwell_DomBed"
+      ],
+      "current": "0.5 and 0.25",
+      "targets": [
+        {
+          "className": "Schedule:Compact",
+          "object": "Dwell_DomBed_Occ",
+          "field": "Field_6"
+        },
+        {
+          "className": "Schedule:Compact",
+          "object": "Dwell_DomBed_Occ",
+          "field": "Field_8"
+        }
+      ]
+    },
+    {
+      "kind": "schedule_time",
+      "type": "category",
+      "name": "Bedroom occupancy first change",
+      "options": [
+        "Until: 07:30",
+        "Until: 08:00",
+        "Until: 08:30"
+      ],
+      "role": "occupancy",
+      "when": "weekdays",
+      "zones": [
+        "Dwell_DomBed"
+      ],
+      "current": "Until: 08:00",
+      "targets": [
+        {
+          "className": "Schedule:Compact",
+          "object": "Dwell_DomBed_Occ",
+          "field": "Field_5"
+        }
+      ]
+    },
+    {
+      "kind": "schedule_value",
+      "type": "range",
+      "name": "Mixed classes, one value in two schedules",
+      "min": 0.1,
+      "max": 0.9,
+      "role": "other",
+      "when": "always",
+      "zones": [],
+      "current": "0.5",
+      "targets": [
+        {
+          "className": "Schedule:Compact",
+          "object": "Dwell_DomBed_Occ",
+          "field": "Field_6"
+        },
+        {
+          "className": "Schedule:Day:List",
+          "object": "1",
+          "field": "Value_1"
+        }
+      ]
+    }
+  ],
+  "objectives": [
+    {
+      "name": "Electricity:Facility",
+      "direction": "minimize"
+    },
+    {
+      "name": "DistrictHeating:Facility",
+      "direction": "maximize"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+config                    13 files   e.g. Simulation examples/Test 1 Summer Cooling Data exchange/Test1.ipynb
+dotenv                     1 files   e.g. subscriber/subscriber.py
+gym                        6 files   e.g. Simulation examples/Test 5 Winter Heating PMV/Training SAC Test 1.ipynb
+gymnasium                  2 files   e.g. Workspace/ai/.ipynb_checkpoints/AgentTraining-checkpoint.ipynb
+influxdb                   1 files   e.g. subscriber/subscriber.py
+matplotlib                 8 files   e.g. Simulation examples/Test 5 Winter Heating PMV/Training SAC Test 1.ipynb
+numpy                     29 files   e.g. Simulation examples/Test 1 Summer Cooling Data exchange/config.py
+paho                      19 files   e.g. Simulation examples/Test 3 Winter Heating Openhab/Test7.ipynb
+pandas                     9 files   e.g. Workspace/ai/.ipynb_checkpoints/forecasting-checkpoint.ipynb
+pyfmi                      2 files   e.g. conda-environment/fmi_mlc/fmi_gym.py
+sklearn                    1 files   e.g. reference/notebooks/ai/forecasting.ipynb
+stable_baselines3          8 files   e.g. Simulation examples/Test 5 Winter Heating PMV/Controller Test 1.ipynb
+yaml                       2 files   e.g. gateway/emergency_gateway.py
