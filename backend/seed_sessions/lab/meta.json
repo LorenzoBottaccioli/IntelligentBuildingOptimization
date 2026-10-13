@@ -5,5 +5,5 @@
   "saved": "2026-10-12T11:59:19+00:00",
   "idf": "",
   "epw": "",
-  "description": "The surrogate-modelling laboratory: its text is in the Surrogate modelling notebook, with empty cells to write your code in. Upload the building IDF and the EPW weather file yourself, from the bar at the top."
+  "description": "The surrogate-modelling laboratory: its text is in the Surrogate modelling notebook, with empty cells to write your code in. Upload the building IDF yourself, from the bar at the top."
 }

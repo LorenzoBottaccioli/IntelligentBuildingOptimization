@@ -118,7 +118,7 @@ building (the demo was made with *controlled* and *scaled*). The controller of t
 show the system, not to save energy.
 
 **The Lab** (*Lab*) is a second shipped session. It has no model: the student uploads
-`lab_building.idf` and the EPW file from the bar at the top, which is part of what the Lab teaches. Its surrogate notebook
+`lab_building.idf` from the bar at the top, which is part of what the Lab teaches. Its surrogate notebook
 holds the text of the laboratory (the course's `Laboratory.ipynb`, written for bdopt) with empty cells to write the code in.
 It is listed in the Sessions menu and **never opens by itself**: a new instance always starts on the demo. Every other
 session starts from nothing.
