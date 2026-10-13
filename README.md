@@ -1,36 +1,43 @@
 # Smart Building Educational Platform
 
-A virtual lab where EnergyPlus stands in for a real building. Students optimise a
-design, choose the sensors and actuators of the model, and then build the digital
-chain of a smart building themselves (device gateway, MQTT/database integration,
-data analysis and, optionally, a controller or an RL agent), running it from a
-BMS control room and comparing it with a baseline run driven by EnergyPlus' own
-native control.
+A virtual lab where EnergyPlus stands in for a real building. You optimise a design, choose the sensors and actuators of the
+model, and then build the digital chain of a smart building yourself (device gateway, MQTT/database integration, data analysis
+and, optionally, a controller or an RL agent), running it from a BMS control room and comparing it with a baseline run driven
+by EnergyPlus' own native control.
 
-## Getting started
+## Quick start
 
-**You need**
-
-- Docker Desktop with Compose v2 (tested with Compose 2.30 on Windows 10, with 7.6 GB of memory given to Docker; the minimum was not measured).
-- About 11 GB of disk for the images, and internet during the first build (Docker Hub, `ghcr.io`, GitHub, the micromamba and PyTorch-CPU
-  package servers, and `registry.npmmirror.com` for the frontend).
-- Python 3 (standard library only) to download one weather file.
-- These ports free on the host: 80, 1883, 3000, 5000, 8080, 8086, 8123, 8443, 8889 and 8892.
+Install [Docker Desktop](https://www.docker.com/products/docker-desktop/), [Git](https://git-scm.com/) and
+[Python 3](https://www.python.org/downloads/), then run in a terminal:
 
 ```bash
-cp .env.example .env                        # required: Compose reads the InfluxDB and Grafana credentials from here (edit them)
-python tests/tutorials/fetch_iwec.py        # the Turin weather file of the demo and the tutorials: not in git, see NOTICE.md
-docker compose build jupyter_image_builder  # the students' Jupyter image: `up` never builds it (it has no registry, only this tag)
+git clone https://github.com/LorenzoBottaccioli/IntelligentBuildingOptimization.git
+cd IntelligentBuildingOptimization
+cp .env.example .env
+python tests/tutorials/fetch_iwec.py
+docker compose build jupyter_image_builder
 docker compose up --build -d
 ```
 
-Then open <http://localhost>. The first time, the platform opens the **Demo** session by itself (see below).
-Skip the third command and `up` stops with `pull access denied for jupyter`.
+Wait about two minutes, then open <http://localhost>. The first time, the platform opens the **Demo** session by itself.
 
-Measured on a clean copy of the repository (12 CPUs, build cache not used, base images already pulled): the four images build in
-about 9 minutes at most (Jupyter 4, backend 2, eptofmu 2, frontend 1; two of them overlapped with another build, so these are upper bounds); the 12 containers are up in 10 seconds, the backend answers after about
-a minute, and openHAB is healthy after about five minutes on its first start. The first pull of the base images (Home Assistant alone is 3.5 GB) is
-not in these figures. In that test the demo's Play ran 7 simulated days in 31 seconds (*scaled*, 0.02 s per step) and wrote 7,349 points to InfluxDB.
+What the steps do:
+
+- `cp .env.example .env` creates the file Compose reads the InfluxDB and Grafana passwords from. Without it those two do not start.
+- `fetch_iwec.py` downloads the Turin weather file of the Demo and the tutorials. It is not in git (ASHRAE licence, see `NOTICE.md`).
+  Without it the Demo has no weather and the tutorials cannot simulate.
+- `docker compose build jupyter_image_builder` builds the Jupyter image you work in. `up` never builds it, and without it `up`
+  stops with `pull access denied for jupyter`.
+- `docker compose up --build -d` builds the other images and starts the 12 containers.
+
+You need about 11 GB of disk, an internet connection for the first build, Docker given at least about 8 GB of memory (tested with
+7.6 GB; the minimum was not measured), and these ports free: 80, 1883, 3000, 5000, 8080, 8086, 8123, 8443, 8889 and 8892.
+
+Measured on a clean clone (12 CPUs, no build cache, base images already pulled): the Jupyter, backend, eptofmu and frontend images
+build in 3 min 48 s together; the containers start in 13 s and the backend answers after about a minute. openHAB can take about
+five minutes to report healthy on its first start. Pulling the base images the first time is extra (Home Assistant alone is 3.5 GB).
+
+## Services
 
 | Service | URL | Purpose |
 | --- | --- | --- |
