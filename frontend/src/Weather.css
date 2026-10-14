@@ -710,3 +710,13 @@
   font-size: 0.85rem;
   line-height: 1.8;
 }
+
+.wx-table--files tr.is-selected td {
+  background: var(--color-surface-alt, rgba(0, 51, 102, 0.06));
+}
+
+/* a heading between cards (the cards carry their own, smaller one) */
+.wx > .wx-head h2 {
+  font-size: 1.15rem;
+  color: #003366;
+}

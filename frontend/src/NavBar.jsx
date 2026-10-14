@@ -34,8 +34,8 @@ export const SECTIONS = [
     label: 'Weather',
     Icon: CloudSun,
     pages: [
-      { to: '/weather_editor', text: 'Edit weather file' },
-      { to: '/weather_library', text: 'Files from Open-Meteo' },
+      { to: '/weather_explore', text: 'Explore weather' },
+      { to: '/weather_edit', text: 'Create & edit weather' },
     ],
   },
   {

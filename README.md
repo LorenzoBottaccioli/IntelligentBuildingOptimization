@@ -80,12 +80,13 @@ BMS > Control room; nothing starts by itself.
    *EMS programs*, and *Gateway*: the students write `devices/gateway.py` with
    `building.py`, choosing the MQTT topics and payloads (the prefix `platform/` is
    reserved).
-3. **Weather** — *Edit weather file* (inside an EPW: statistics, daily curves; change the place or 
-   the temperature, humidity, wind, radiation or pressure, for the year or some months; an edit is saved as a 
-   new file) and *Files from Open-Meteo* (one place, chosen once, and four ways to get a file: an annual EPW for each year
-   the student chooses from the Open-Meteo archive; a typical year from the EnergyPlus weather list (3000+ stations,
-   search by name or nearest to the place); a typical year from PVGIS; links and an uploader for anything else; all kept
-   in a weather library, any file can become the session weather).
+3. **Weather** — two pages. *Explore weather* looks inside an EPW file without changing it (the place, annual
+   figures, curves of the year, month by month, every hour with zoom). *Create & edit weather* holds the weather
+   library (any file can become the session weather), the ways to make a file (one place, chosen once, and four
+   sources: an annual EPW for each year the student chooses from the Open-Meteo archive; a typical year from the
+   EnergyPlus weather list, 3000+ stations, searched by name or nearest to the place; a typical year from PVGIS;
+   links and an uploader for anything else) and the editor of a file (the place, or the temperature, humidity, wind,
+   radiation or pressure, for the year or some months, with a preview; an edit is saved as a new file).
 4. **IoT & data** — *Subscriber* (`iot/subscriber.py`: subscribe to their topics and
    store in InfluxDB) and *Data notebooks* (`data_access.ipynb`, `energy_signature.ipynb`).
 5. **AI (optional)** — *Controller* (`ai/controller.py`, from IF-THEN rules to RL),

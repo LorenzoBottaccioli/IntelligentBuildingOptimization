@@ -1,14 +1,14 @@
 // Weather.jsx
-// The two pages of the Weather section of the blue sidebar:
-//   WeatherEditorPage   look inside an EPW file (header, statistics, daily curves) and change it
-//   WeatherLibraryPage  build annual EPW files from Open-Meteo for the years the student chooses,
-//                       and keep them in a library that both pages share
+// The two pages of the Weather section:
+//   WeatherExplorePage  look inside an EPW file (header, statistics, curves, every hour), read only
+//   WeatherEditPage     the weather library, the ways to make a file (Open-Meteo real years, EnergyPlus stations,
+//                       PVGIS, upload) and the editor of a file (place, variables, preview, save as a new file)
 // The files themselves are read and written by the backend (pyepw); a file is named by its `source`:
 // 'session' (the EPW the model runs with) or 'lib:<name>' (the library).
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { Download, Pencil, Plus, Search, Trash2, Upload, X } from 'lucide-react';
+import { Download, Eye, Pencil, Plus, Search, Trash2, Upload, X } from 'lucide-react';
 import { api } from './api';
 import { AppContext } from './AppContext';
 import './Weather.css';
@@ -528,56 +528,187 @@ function AdjustmentRow({ adj, variables, onChange, onRemove }) {
   );
 }
 
-export function WeatherEditorPage() {
+// ---------------------------------------------------------------------------- reading a file
+/** The file chosen on a page: arrives from another page in the router state, otherwise the first one of the library. */
+function useChosenSource(path, lib) {
   const { pathname, state, key } = useLocation();
-  const { updateWeatherFile } = useContext(AppContext);
-  const lib = useLibrary();
-  const [config, setConfig] = useState(null);
   const [source, setSource] = useState('');
-  const [data, setData] = useState(null);           // {base, edited, done}
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [loc, setLoc] = useState({});
-  const [adjs, setAdjs] = useState([]);
-  const [name, setName] = useState('');
-  const [busy, setBusy] = useState(null);           // 'preview' | 'save'
-  const [msg, flash] = useFlash();
-
-  useEffect(() => {
-    axios.get(api('/weather/config')).then(({ data: c }) => setConfig(c)).catch(() => {});
-  }, []);
-  useEffect(() => { if (pathname === '/weather_editor') lib.reload(); }, [pathname]); // eslint-disable-line
-
-  // Arrived from the library with a file to open.
-  useEffect(() => {
-    if (pathname === '/weather_editor' && state?.source) setSource(state.source);
-  }, [key]); // eslint-disable-line
-
-  // Without a choice, the session file; without that, the first library file.
+  useEffect(() => { if (pathname === path) lib.reload(); }, [pathname]); // eslint-disable-line
+  useEffect(() => { if (pathname === path && state?.source) setSource(state.source); }, [key]); // eslint-disable-line
   useEffect(() => {
     if (!lib.files.length) { if (source) setSource(''); return; }
     if (!lib.files.some((f) => f.id === source)) setSource(lib.files[0].id);
   }, [lib.files, source]);
+  return [source, setSource];
+}
 
-  const file = lib.files.find((f) => f.id === source);
-
+/** What is inside the file `source` ({base, edited, done}); `onLoad` gets the base statistics once they arrive. */
+function useInspect(source, onLoad) {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const loaded = useRef(onLoad);
+  loaded.current = onLoad;
   useEffect(() => {
     if (!source) { setData(null); return undefined; }
     let alive = true;
     setLoading(true);
     setError(null);
-    setAdjs([]);
     axios.get(api('/weather/inspect'), { params: { source } })
-      .then(({ data: d }) => {
-        if (!alive) return;
-        setData(d);
-        setLoc(Object.fromEntries(LOCATION_LABELS.map(([k]) => [k, d.base.location[k] ?? ''])));
-        setName(`${d.name.replace(/\.epw$/i, '')}_edited`);
-      })
+      .then(({ data: d }) => { if (alive) { setData(d); loaded.current?.(d); } })
       .catch((err) => { if (alive) { setData(null); setError(errText(err, 'The file could not be read.')); } })
       .finally(() => { if (alive) setLoading(false); });
     return () => { alive = false; };
   }, [source]);
+  return { data, setData, loading, error };
+}
+
+/** Header, annual figures and curves of a file; with `edited`, the values of the preview over the file's. */
+function FileSummary({ base, edited, title }) {
+  const years = base.period.years || [];
+  return (
+    <section className="wx-card">
+      <h2>{title}</h2>
+      <p className="wx-meta">
+        {base.location.city}{base.location.country ? `, ${base.location.country}` : ''} ·{' '}
+        {num(base.location.latitude, 2)}°N {num(base.location.longitude, 2)}°E, {num(base.location.elevation, 0)} m ·{' '}
+        UTC{base.location.timezone >= 0 ? '+' : ''}{base.location.timezone} · source: {base.location.source} ·{' '}
+        {base.period.rows} hours, {years.length === 1 ? `year ${years[0]}` : `${years.length} different years (a typical-year file)`}
+      </p>
+      {Object.keys(base.missing).length > 0 && (
+        <p className="wx-warn">
+          Missing values (hours): {Object.entries(base.missing).map(([k, v]) => `${k.replace(/_/g, ' ')} ${v}`).join(', ')}.
+        </p>
+      )}
+      <Tiles base={base} edited={edited} />
+      <Charts base={base} edited={edited} />
+      <details className="wx-details">
+        <summary>Month by month{edited ? ' (the file’s value in grey after the edited one)' : ''}</summary>
+        <MonthTable base={base} edited={edited} />
+      </details>
+      {base.comments.some(Boolean) && (
+        <details className="wx-details">
+          <summary>Comments in the file</summary>
+          {base.comments.filter(Boolean).map((c) => <p key={c} className="wx-comment">{c}</p>)}
+        </details>
+      )}
+    </section>
+  );
+}
+
+function FileSelect({ lib, source, setSource }) {
+  return (
+    <label className="wx-field wx-field--wide">File
+      <select value={source} onChange={(e) => setSource(e.target.value)} disabled={!lib.files.length}>
+        {!lib.files.length && <option value="">No weather file yet</option>}
+        {lib.files.map((f) => (
+          <option key={f.id} value={f.id}>
+            {f.kind === 'session' ? `Session weather: ${f.name}` : f.name}
+          </option>
+        ))}
+      </select>
+    </label>
+  );
+}
+
+// ---------------------------------------------------------------------------- Explore (read only)
+export function WeatherExplorePage() {
+  const navigate = useNavigate();
+  const { updateWeatherFile } = useContext(AppContext);
+  const lib = useLibrary();
+  const [source, setSource] = useChosenSource('/weather_explore', lib);
+  const { data, loading, error } = useInspect(source);
+  const [msg, flash] = useFlash();
+  const file = lib.files.find((f) => f.id === source);
+
+  const use = async () => {
+    try {
+      const text = await adoptAsSessionWeather(source, file.name, updateWeatherFile);
+      if (text) flash(text);
+    } catch (err) {
+      flash(errText(err, 'The weather could not be changed.'), true);
+    }
+  };
+
+  return (
+    <div className="wx wx--wide">
+      <header className="wx-bar">
+        <h1>Explore weather</h1>
+        <p className="muted">
+          Look inside an EPW file without changing it: the place, the annual figures, the curves of the year, month by
+          month, and every hour with zoom. Choose the weather of the session or any file of the weather library.
+        </p>
+      </header>
+
+      <section className="wx-card">
+        <div className="wx-row">
+          <FileSelect lib={lib} source={source} setSource={setSource} />
+          {file && (
+            <div className="wx-actions">
+              <a className="wx-btn" href={sourceUrl('download', source)}><Download size={15} /> Download</a>
+              {file.kind === 'library' && <button type="button" className="wx-btn" onClick={use}>Use in session</button>}
+              <button type="button" className="wx-btn" onClick={() => navigate('/weather_edit', { state: { source } })}>
+                <Pencil size={15} /> Edit this file
+              </button>
+            </div>
+          )}
+        </div>
+        {lib.error && <p className="wx-error" role="alert">{lib.error}</p>}
+        {!lib.files.length && !lib.error && (
+          <p className="muted">
+            There is no weather file in this session. Upload a model and its EPW from the sidebar, or make files in{' '}
+            <Link to="/weather_edit">Create &amp; edit weather</Link>.
+          </p>
+        )}
+        {loading && <p className="muted">Reading the file…</p>}
+        {error && <p className="wx-error" role="alert">{error}</p>}
+      </section>
+
+      {data && (
+        <div className="wx-split">
+          <div className="wx-main">
+            <FileSummary base={data.base} edited={null} title="What the file contains" />
+          </div>
+          <aside className="wx-side">
+            <section className="wx-card">
+              <h2>Hour by hour</h2>
+              <HourlyView source={source} edits={null} />
+            </section>
+          </aside>
+        </div>
+      )}
+      {msg && <p className={msg.error ? 'wx-error wx-toast' : 'wx-ok wx-toast'} role="status">{msg.text}</p>}
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------- Create & edit
+export function WeatherEditPage() {
+  const navigate = useNavigate();
+  const { updateWeatherFile } = useContext(AppContext);
+  const lib = useLibrary();
+  const [source, setSource] = useChosenSource('/weather_edit', lib);
+  const [config, setConfig] = useState(null);
+  const [loc, setLoc] = useState({});
+  const [adjs, setAdjs] = useState([]);
+  const [name, setName] = useState('');
+  const [busy, setBusy] = useState(null);           // 'preview' | 'save'
+  const [msg, flash] = useFlash();
+  const editor = useRef(null);
+  const fileRef = useRef(null);
+
+  const { data, setData, loading, error } = useInspect(source, (d) => {
+    setAdjs([]);
+    setLoc(Object.fromEntries(LOCATION_LABELS.map(([k]) => [k, d.base.location[k] ?? ''])));
+    setName(`${d.name.replace(/\.epw$/i, '')}_edited`);
+  });
+
+  useEffect(() => {
+    axios.get(api('/weather/config')).then(({ data: c }) => setConfig(c)).catch(() => {});
+  }, []);
+
+  const file = lib.files.find((f) => f.id === source);
+  const base = data?.base;
 
   const edits = useMemo(() => {
     if (!data) return { location: {}, adjustments: [] };
@@ -593,6 +724,13 @@ export function WeatherEditorPage() {
 
   // Any change invalidates the preview shown.
   useEffect(() => { setData((d) => (d?.edited ? { ...d, edited: null, done: null } : d)); }, [loc, adjs]); // eslint-disable-line
+
+  /** Choose the file to edit (from the library or just made) and bring the editor into view. */
+  const pick = async (f) => {
+    if (!lib.files.some((x) => x.id === f.id)) await lib.reload();
+    setSource(f.id);
+    setTimeout(() => editor.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+  };
 
   const preview = async () => {
     setBusy('preview');
@@ -615,6 +753,7 @@ export function WeatherEditorPage() {
       if (use) updateWeatherFile(r.used.epw);
       flash(`${r.file.name} saved in the weather library.${use ? ' It is now the session weather.' : ''}`
         + `${use && r.used.fmus ? ` ${r.used.fmus} exported FMU(s) updated.` : ''}`);
+      await lib.reload();                           // the new file must be in the list before it is chosen
       setSource(r.file.id);
     } catch (err) {
       flash(errText(err, 'Saving failed.'), true);
@@ -623,97 +762,95 @@ export function WeatherEditorPage() {
     }
   };
 
-  const use = async () => {
+  const use = async (f) => {
     try {
-      const text = await adoptAsSessionWeather(source, file.name, updateWeatherFile);
+      const text = await adoptAsSessionWeather(f.id, f.name, updateWeatherFile);
       if (text) flash(text);
     } catch (err) {
       flash(errText(err, 'The weather could not be changed.'), true);
     }
   };
+  const remove = async (f) => {
+    if (!window.confirm(`Delete ${f.name} from the weather library?`)) return;
+    try {
+      await axios.delete(api(`/weather/files/${encodeURIComponent(f.name)}`));
+      notifyLibrary();
+    } catch (err) {
+      flash(errText(err, 'Deleting failed.'), true);
+    }
+  };
+  const upload = async (picked) => {
+    if (!picked) return;
+    const body = new FormData();
+    body.append('epw', picked);
+    try {
+      await axios.post(api('/weather/upload'), body);
+      notifyLibrary();
+      flash(`${picked.name} added to the library.`);
+    } catch (err) {
+      flash(errText(err, 'Upload failed.'), true);
+    } finally {
+      if (fileRef.current) fileRef.current.value = '';
+    }
+  };
 
-  const base = data?.base;
-  const years = base?.period.years || [];
   return (
-    <div className="wx wx--wide">
+    <div className="wx">
       <header className="wx-bar">
-        <div>
-          <h1>Edit weather file</h1>
-          <p className="muted">
-            Look inside an EPW file and change it: the place, and the temperature, humidity, wind, solar radiation
-            or pressure, for the whole year or for some months. The file you open is never overwritten: an edit is
-            saved as a new file in the weather library.
-          </p>
-        </div>
+        <h1>Create &amp; edit weather</h1>
+        <p className="muted">
+          Make a weather file, keep it in the library, change it, and use it as the weather of the session. To look
+          inside a file without changing it, use <Link to="/weather_explore">Explore weather</Link>.
+        </p>
       </header>
 
       <section className="wx-card">
+        <div className="wx-head">
+          <h2>Weather library</h2>
+          <div className="wx-actions">
+            <input ref={fileRef} type="file" accept=".epw" hidden onChange={(e) => upload(e.target.files[0])} />
+            <button type="button" className="wx-btn" onClick={() => fileRef.current?.click()}>
+              <Upload size={15} /> Add an EPW
+            </button>
+          </div>
+        </div>
+        {lib.error && <p className="wx-error" role="alert">{lib.error}</p>}
+        <LibraryTable files={lib.files} selected={source} onEdit={pick} onUse={use} onDelete={remove}
+          onExplore={(f) => navigate('/weather_explore', { state: { source: f.id } })} />
+        <p className="muted wx-note">
+          The library belongs to the session: it is saved with it and emptied by Reset session.
+        </p>
+      </section>
+
+      <div className="wx-head"><h2>Make a weather file</h2></div>
+      <SourcesPanel onEdit={pick} />
+
+      <section className="wx-card" ref={editor}>
+        <h2>Edit a file</h2>
+        <p className="muted wx-note">
+          Change the place, and the temperature, humidity, wind, solar radiation or pressure, for the whole year or
+          for some months. The file you open is never overwritten: an edit is saved as a new file in the library.
+        </p>
         <div className="wx-row">
-          <label className="wx-field wx-field--wide">File
-            <select value={source} onChange={(e) => setSource(e.target.value)} disabled={!lib.files.length}>
-              {!lib.files.length && <option value="">No weather file yet</option>}
-              {lib.files.map((f) => (
-                <option key={f.id} value={f.id}>
-                  {f.kind === 'session' ? `Session weather: ${f.name}` : f.name}
-                </option>
-              ))}
-            </select>
-          </label>
+          <FileSelect lib={lib} source={source} setSource={setSource} />
           {file && (
             <div className="wx-actions">
               <a className="wx-btn" href={sourceUrl('download', source)}><Download size={15} /> Download</a>
-              {file.kind === 'library' && <button type="button" className="wx-btn" onClick={use}>Use in session</button>}
+              <button type="button" className="wx-btn"
+                onClick={() => navigate('/weather_explore', { state: { source } })}>Explore it</button>
             </div>
           )}
         </div>
-        {lib.error && <p className="wx-error" role="alert">{lib.error}</p>}
         {!lib.files.length && !lib.error && (
           <p className="muted">
-            There is no weather file in this session. Upload a model and its EPW from the sidebar, or build annual
-            files from Open-Meteo in <strong>Weather files from Open-Meteo</strong>.
+            There is no weather file in this session. Make one above, or add an EPW to the library.
           </p>
         )}
         {loading && <p className="muted">Reading the file…</p>}
         {error && <p className="wx-error" role="alert">{error}</p>}
-      </section>
 
-      <details className="wx-card wx-builder">
-        <summary>Find or build a weather file (Open-Meteo real years, EnergyPlus stations, PVGIS)</summary>
-        <SourcesPanel onEdit={(f) => setSource(f.id)} />
-      </details>
-
-      {base && (
-        <div className="wx-split">
-          <div className="wx-main">
-          <section className="wx-card">
-            <h2>What the file contains</h2>
-            <p className="wx-meta">
-              {base.location.city}{base.location.country ? `, ${base.location.country}` : ''} ·{' '}
-              {num(base.location.latitude, 2)}°N {num(base.location.longitude, 2)}°E, {num(base.location.elevation, 0)} m ·{' '}
-              UTC{base.location.timezone >= 0 ? '+' : ''}{base.location.timezone} · source: {base.location.source} ·{' '}
-              {base.period.rows} hours, {years.length === 1 ? `year ${years[0]}` : `${years.length} different years (a typical-year file)`}
-            </p>
-            {Object.keys(base.missing).length > 0 && (
-              <p className="wx-warn">
-                Missing values (hours): {Object.entries(base.missing).map(([k, v]) => `${k.replace(/_/g, ' ')} ${v}`).join(', ')}.
-              </p>
-            )}
-            <Tiles base={base} edited={data.edited} />
-            <Charts base={base} edited={data.edited} />
-            <details className="wx-details">
-              <summary>Month by month{data.edited ? ' (the file’s value in grey after the edited one)' : ''}</summary>
-              <MonthTable base={base} edited={data.edited} />
-            </details>
-            {base.comments.some(Boolean) && (
-              <details className="wx-details">
-                <summary>Comments in the file</summary>
-                {base.comments.filter(Boolean).map((c) => <p key={c} className="wx-comment">{c}</p>)}
-              </details>
-            )}
-          </section>
-
-          <section className="wx-card">
-            <h2>Edit</h2>
+        {base && (
+          <>
             <h3>Place</h3>
             <div className="wx-row wx-loc">
               {LOCATION_LABELS.map(([k, label]) => (
@@ -765,16 +902,18 @@ export function WeatherEditorPage() {
             {data.done?.length > 0 && (
               <ul className="wx-done">{data.done.map((d) => <li key={d}>{d}</li>)}</ul>
             )}
+          </>
+        )}
+      </section>
+
+      {data?.edited && (
+        <>
+          <FileSummary base={base} edited={data.edited} title="Preview of the changes" />
+          <section className="wx-card">
+            <h2>Hour by hour</h2>
+            <HourlyView source={source} edits={{ location: edits.location, adjustments: edits.adjustments }} />
           </section>
-          </div>
-          <aside className="wx-side">
-            <section className="wx-card">
-              <h2>Hour by hour</h2>
-              <HourlyView source={source}
-                edits={data.edited ? { location: edits.location, adjustments: edits.adjustments } : null} />
-            </section>
-          </aside>
-        </div>
+        </>
       )}
       {msg && <p className={msg.error ? 'wx-error wx-toast' : 'wx-ok wx-toast'} role="status">{msg.text}</p>}
     </div>
@@ -810,7 +949,7 @@ function yearProblem(year, model, config) {
 const STORE = 'weather.openmeteo.form';
 const emptyForm = { latitude: '', longitude: '', elevation: '', city: '', state: '', country: '', timezone: '' };
 
-function LibraryTable({ files, onEdit, onUse, onDelete }) {
+function LibraryTable({ files, selected, onExplore, onEdit, onUse, onDelete }) {
   if (!files.length) return <p className="muted">The library is empty.</p>;
   return (
     <div className="wx-scroll">
@@ -820,7 +959,7 @@ function LibraryTable({ files, onEdit, onUse, onDelete }) {
         </thead>
         <tbody>
           {files.map((f) => (
-            <tr key={f.id}>
+            <tr key={f.id} className={f.id === selected ? 'is-selected' : ''}>
               <td>
                 {f.name}{f.kind === 'session' && <span className="wx-badge">session weather</span>}
               </td>
@@ -828,7 +967,9 @@ function LibraryTable({ files, onEdit, onUse, onDelete }) {
               <td>{num(f.size / 1048576, 1)} MB</td>
               <td>{f.modified.replace('T', ' ')}</td>
               <td className="wx-rowactions">
-                <button type="button" className="wx-icon" title="Open in the editor" aria-label={`Edit ${f.name}`}
+                <button type="button" className="wx-icon" title="Explore: look inside" aria-label={`Explore ${f.name}`}
+                  onClick={() => onExplore(f)}><Eye size={15} /></button>
+                <button type="button" className="wx-icon" title="Edit this file" aria-label={`Edit ${f.name}`}
                   onClick={() => onEdit(f)}><Pencil size={15} /></button>
                 {f.kind === 'library' && (
                   <button type="button" className="wx-btn wx-btn--small" onClick={() => onUse(f)}>Use in session</button>
@@ -1014,7 +1155,7 @@ function StationFinder({ form, onEdit }) {
                     <td className="wx-rowactions">
                       {result.got?.[s.id] && (
                         <button type="button" className="wx-icon" onClick={() => onEdit(result.got[s.id])}
-                          aria-label={`Open ${s.id} in the editor`} title="Open in the editor"><Pencil size={15} /></button>
+                          aria-label={`Edit ${s.id}`} title="Edit this file"><Pencil size={15} /></button>
                       )}
                       <button type="button" className="wx-btn wx-btn--small" disabled={getting != null}
                         onClick={() => get(s)}>
@@ -1075,7 +1216,7 @@ function PvgisPanel({ form, onEdit }) {
           {busy ? 'Asking PVGIS…' : 'Build the typical year'}
         </button>
         {done && (
-          <button type="button" className="wx-btn" onClick={() => onEdit(done.file)}><Pencil size={15} /> Open in the editor</button>
+          <button type="button" className="wx-btn" onClick={() => onEdit(done.file)}><Pencil size={15} /> Edit this file</button>
         )}
       </div>
       {!ok && <p className="muted wx-note">Choose a place first.</p>}
@@ -1104,7 +1245,7 @@ function OtherSources() {
       <h2>Other sources</h2>
       <p className="muted wx-note">
         If a place is missing, download an EPW from one of these sites and add it to the library with “Add an EPW”
-        at the bottom of the Files from Open-Meteo page. Each site has its own terms: Climate.OneBuilding.org asks to cite
+        in the weather library above. Each site has its own terms: Climate.OneBuilding.org asks to cite
         “Lawrie, Linda K, Drury B Crawley. 2026. Development of Global Typical Meteorological Years (TMYx).
         https://climate.onebuilding.org” and states no licence for redistributing the files.
       </p>
@@ -1284,8 +1425,8 @@ function OpenMeteoBuilder({ form, onEdit }) {
                     <td>{r.annual ? num(r.annual.hdd18, 0) : ''}</td>
                     <td>{r.annual ? num(r.annual.rain_mm, 0) : ''}</td>
                     <td>{r.file && (
-                      <button type="button" className="wx-icon" onClick={() => onEdit(r.file)} aria-label={`Open ${r.file.name} in the editor`}
-                        title="Open in the editor"><Pencil size={15} /></button>
+                      <button type="button" className="wx-icon" onClick={() => onEdit(r.file)} aria-label={`Edit ${r.file.name}`}
+                        title="Edit this file"><Pencil size={15} /></button>
                     )}</td>
                   </tr>
                 ))}
@@ -1303,84 +1444,5 @@ function OpenMeteoBuilder({ form, onEdit }) {
         </p>
       </section>
     </>
-  );
-}
-
-export function WeatherLibraryPage() {
-  const { pathname } = useLocation();
-  const navigate = useNavigate();
-  const { updateWeatherFile } = useContext(AppContext);
-  const lib = useLibrary();
-  const fileRef = useRef(null);
-  const [msg, flash] = useFlash();
-
-  useEffect(() => { if (pathname === '/weather_library') lib.reload(); }, [pathname]); // eslint-disable-line
-
-  const edit = (f) => navigate('/weather_editor', { state: { source: f.id } });
-  const use = async (f) => {
-    try {
-      const text = await adoptAsSessionWeather(f.id, f.name, updateWeatherFile);
-      if (text) flash(text);
-    } catch (err) {
-      flash(errText(err, 'The weather could not be changed.'), true);
-    }
-  };
-  const remove = async (f) => {
-    if (!window.confirm(`Delete ${f.name} from the weather library?`)) return;
-    try {
-      await axios.delete(api(`/weather/files/${encodeURIComponent(f.name)}`));
-      notifyLibrary();
-    } catch (err) {
-      flash(errText(err, 'Deleting failed.'), true);
-    }
-  };
-  const upload = async (file) => {
-    if (!file) return;
-    const body = new FormData();
-    body.append('epw', file);
-    try {
-      await axios.post(api('/weather/upload'), body);
-      notifyLibrary();
-      flash(`${file.name} added to the library.`);
-    } catch (err) {
-      flash(errText(err, 'Upload failed.'), true);
-    } finally {
-      if (fileRef.current) fileRef.current.value = '';
-    }
-  };
-
-  return (
-    <div className="wx">
-      <header className="wx-bar">
-        <div>
-          <h1>Weather files from Open-Meteo</h1>
-          <p className="muted">
-            Find a weather file for any place: real years built from the Open-Meteo archive, typical years from the EnergyPlus
-            stations or from PVGIS. The files go to the weather library below; open one in the editor, or use it as the
-            weather of the session to simulate that real year.
-          </p>
-        </div>
-      </header>
-
-      <SourcesPanel onEdit={edit} />
-
-      <section className="wx-card">
-        <div className="wx-head">
-          <h2>Weather library</h2>
-          <div className="wx-actions">
-            <input ref={fileRef} type="file" accept=".epw" hidden onChange={(e) => upload(e.target.files[0])} />
-            <button type="button" className="wx-btn" onClick={() => fileRef.current?.click()}>
-              <Upload size={15} /> Add an EPW
-            </button>
-          </div>
-        </div>
-        {lib.error && <p className="wx-error" role="alert">{lib.error}</p>}
-        <LibraryTable files={lib.files} onEdit={edit} onUse={use} onDelete={remove} />
-        <p className="muted wx-note">
-          The library belongs to the session: it is saved with it and emptied by Reset session.
-        </p>
-      </section>
-      {msg && <p className={msg.error ? 'wx-error wx-toast' : 'wx-ok wx-toast'} role="status">{msg.text}</p>}
-    </div>
   );
 }

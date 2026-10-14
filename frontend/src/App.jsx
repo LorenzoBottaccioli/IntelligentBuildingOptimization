@@ -13,7 +13,7 @@ import Grafana from './Grafana';
 import OperatorPanel from './OperatorPanel';
 import ControlRoom from './ControlRoom';
 import { DevicesCode, SubscriberCode, DataNotebooks, ControllerCode, Forecasting } from './WorkspacePages';
-import { WeatherEditorPage, WeatherLibraryPage } from './Weather';
+import { WeatherExplorePage, WeatherEditPage } from './Weather';
 import Credits from './Credits';
 import { AppProvider } from './AppContext';
 
@@ -30,8 +30,8 @@ const PAGES = [
   { path: '/idf_editor', Component: IdfEditor, scroll: true },
   { path: '/sensors_actuators', Component: SensorsActuators, scroll: true },
   { path: '/ems_programs', Component: EmsProgramsPage, scroll: true },
-  { path: '/weather_editor', Component: WeatherEditorPage, scroll: true },
-  { path: '/weather_library', Component: WeatherLibraryPage, scroll: true },
+  { path: '/weather_explore', Component: WeatherExplorePage, scroll: true },
+  { path: '/weather_edit', Component: WeatherEditPage, scroll: true },
   { path: '/devices_code', Component: DevicesCode },
   { path: '/subscriber_code', Component: SubscriberCode },
   { path: '/data_notebooks', Component: DataNotebooks },
@@ -54,6 +54,7 @@ function AppContent() {
     if (pathname === '/model_converter' || pathname === '/fmu_export') navigate('/control_room', { replace: true });
     if (pathname === '/simulator') navigate('/agent_training', { replace: true });
     if (pathname === '/base_simulation' || pathname === '/controlled_simulation') navigate('/control_room', { replace: true });
+    if (pathname === '/weather_editor' || pathname === '/weather_library') navigate('/weather_edit', { replace: true });
     if (pathname === '/controller') navigate('/controller_code', { replace: true });
     if (pathname === '/openhab') navigate('/operator_panel?tool=openhab', { replace: true });
     if (pathname === '/homeassistant') navigate('/operator_panel?tool=homeassistant', { replace: true });

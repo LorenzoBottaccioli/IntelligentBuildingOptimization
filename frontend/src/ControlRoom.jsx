@@ -178,7 +178,7 @@ function WeatherCard({ weather, stampYear, stampFrom, files, reloadFiles, locked
       )}
       <h3 className="gw-h3">In the library</h3>
       {library.length === 0 ? (
-        <p className="muted">Nothing else yet. Make files from real years, stations or PVGIS in <Link to="/weather_library">Weather</Link>; they wait here.</p>
+        <p className="muted">Nothing else yet. Make files from real years, stations or PVGIS in <Link to="/weather_edit">Weather</Link>; they wait here.</p>
       ) : (
         <table className="gw-table">
           <thead><tr><th>File</th><th>Place</th><th>Data</th><th /></tr></thead>
@@ -202,7 +202,7 @@ function WeatherCard({ weather, stampYear, stampFrom, files, reloadFiles, locked
       )}
       {locked && <p className="gw-note">Locked while the building or the annual run is running.</p>}
       {message && <p className={message.kind === 'error' ? 'gw-alert gw-alert--error' : 'gw-msg'}>{message.text}</p>}
-      <p className="gw-note"><Link to="/weather_library">Make more files</Link> · <Link to="/weather_editor">Edit the one in use</Link></p>
+      <p className="gw-note"><Link to="/weather_edit">Make more files</Link> · <Link to="/weather_edit" state={{ source: 'session' }}>Edit the one in use</Link></p>
     </section>
   );
 }
@@ -298,7 +298,7 @@ function DirectCard({ direct, period, saved, files, buildingRunning, busy, error
         ))}
       </ul>
       {options.length < 2 && (
-        <p className="gw-note">For more years, make them in <Link to="/weather_library">Weather</Link> (Open-Meteo real years): they appear here.</p>
+        <p className="gw-note">For more years, make them in <Link to="/weather_edit">Weather</Link> (Open-Meteo real years): they appear here.</p>
       )}
       <label className="gw-check">
         <input type="checkbox" checked={keep} onChange={(e) => setKeep(e.target.checked)} disabled={busy || active} />
