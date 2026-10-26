@@ -51,6 +51,9 @@ ENV ENERGYPLUS_HOME=/usr/local/EnergyPlus-9-6-0 \
 # stable_baselines3 need it: put the newer libstdc++ that the env ships first on the loader path.
 ENV LD_LIBRARY_PATH=/opt/conda/envs/conda_environment/lib
 
+# Under amd64 emulation on Apple Silicon the kernel deadlocks while starting debugpy: this hides it there (and only there).
+COPY sitecustomize.py /opt/conda/envs/conda_environment/lib/python3.10/site-packages/sitecustomize.py
+
 RUN mkdir -p /home/jovyan/notebooks
 WORKDIR /home/jovyan/notebooks
 EXPOSE 8888

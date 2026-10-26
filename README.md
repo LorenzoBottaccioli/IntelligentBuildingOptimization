@@ -15,9 +15,13 @@ git clone https://github.com/LorenzoBottaccioli/IntelligentBuildingOptimization.
 cd IntelligentBuildingOptimization
 cp .env.example .env
 python tests/tutorials/fetch_iwec.py
+python scripts/check_setup.py
 docker compose build jupyter_image_builder
 docker compose up --build -d
 ```
+
+On macOS and Linux write `python3` instead of `python`. On a **Mac** read [`docs/macos.md`](docs/macos.md) first: two settings
+(the project outside iCloud, Rosetta off in Docker Desktop) decide whether the notebooks run, and the first build is slow.
 
 Wait about two minutes, then open <http://localhost>. The first time, the platform opens the **Demo** session by itself.
 
@@ -26,12 +30,15 @@ What the steps do:
 - `cp .env.example .env` creates the file Compose reads the InfluxDB and Grafana passwords from. Without it those two do not start.
 - `fetch_iwec.py` downloads the Turin weather file of the Demo and the tutorials. It is not in git (ASHRAE licence, see `NOTICE.md`).
   Without it the Demo has no weather and the tutorials cannot simulate.
+- `check_setup.py` only reads: it checks Docker, its memory, the free ports and the two files above, and on a Mac the two settings
+  of `docs/macos.md`. Run it again if something does not start.
 - `docker compose build jupyter_image_builder` builds the Jupyter image you work in. `up` never builds it, and without it `up`
   stops with `pull access denied for jupyter`.
 - `docker compose up --build -d` builds the other images and starts the 12 containers.
 
 You need about 11 GB of disk, an internet connection for the first build, Docker given at least about 8 GB of memory (tested with
-7.6 GB; the minimum was not measured), and these ports free: 80, 1883, 3000, 5000, 8080, 8086, 8123, 8443, 8889 and 8892.
+7.6 GB; the minimum was not measured), and these ports free: 80, 1883, 3000, 5001, 8080, 8086, 8123, 8443, 8889 and 8892. Keep the project in a folder that is not synced
+(iCloud Drive, and for the same reason OneDrive): offloaded files cannot be read by the containers.
 
 Measured on a clean clone (12 CPUs, no build cache, base images already pulled): the Jupyter, backend, eptofmu and frontend images
 build in 3 min 48 s together; the containers start in 13 s and the backend answers after about a minute. openHAB can take about
@@ -42,7 +49,7 @@ five minutes to report healthy on its first start. Pulling the base images the f
 | Service | URL | Purpose |
 | --- | --- | --- |
 | Frontend | <http://localhost> | The platform UI |
-| Backend API | <http://localhost:5000> | Flask: IDF editing, FMU export, `/bms` (Control room) |
+| Backend API | <http://localhost:5001> | Flask: IDF editing, FMU export, `/bms` (Control room). 5001 and not 5000, which macOS keeps for AirPlay |
 | Surrogate notebook (`jupyter_surrogate`) | <http://localhost:8889> | Design-space exploration |
 | Workspace notebook (`controller`) | <http://localhost:8892> | The students' Jupyter, root = `Workspace/` |
 | `bms_services` | (no port) | Supervisor that runs the students' scripts and the building, only on request from the Control room |

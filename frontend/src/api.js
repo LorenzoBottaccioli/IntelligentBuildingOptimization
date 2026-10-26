@@ -1,6 +1,7 @@
 // Single place where the backend lives, so the host is not hardcoded in every component.
+// 5001 is the host port of docker-compose.yml (macOS keeps 5000 for the AirPlay Receiver).
 export const API_BASE =
-  import.meta.env.VITE_API_BASE ?? `http://${window.location.hostname}:5000`;
+  import.meta.env.VITE_API_BASE ?? `http://${window.location.hostname}:5001`;
 
 export const SERVICES = {
   // Jupyter of the surrogate stage (root of backend/surrogate_notebooks: the problem notebook and tutorials/).

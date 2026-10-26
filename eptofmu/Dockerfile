@@ -20,7 +20,7 @@ COPY --from=energyplus_stage /EnergyPlus-9.6.0-*/Energy+.idd "${IDD_PATH}"
 # 5) Instalamos dependencias básicas + build-essential (g++, make, etc.)
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-      build-essential \
+      build-essential libxml2-dev libxslt-dev python3-dev \
       python3 python3-venv python3-pip git wget unzip && \
     rm -rf /var/lib/apt/lists/*
 

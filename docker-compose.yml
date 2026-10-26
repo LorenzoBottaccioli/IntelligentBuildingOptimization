@@ -6,6 +6,9 @@ version: '3.8'
 #   jupyter:smartbuilding-runtime    conda-environment/Dockerfile.runtime
 #   jupyter:smartbuilding-surrogate  conda-environment/surrogate/Dockerfile
 # Rollback: put those two tags back on the services below and the fmi_mlc mounts back on python3.9.
+#
+# `platform: linux/amd64` on the services that need EnergyPlus (x86_64 only) or build FMUs for it: it changes nothing on an x86
+# host, and on Apple Silicon it makes Docker emulate them instead of building eptofmu for arm64 (pyfmi could not load that FMU).
 
 services:
   ### --------------------------
@@ -15,6 +18,7 @@ services:
   #   docker compose build jupyter_image_builder
   jupyter_image_builder:
     profiles: ["build"]
+    platform: linux/amd64
     build:
       context: ./conda-environment
       dockerfile: Dockerfile.unified
@@ -25,6 +29,7 @@ services:
   ### --------------------
   jupyter_surrogate:
     restart: unless-stopped
+    platform: linux/amd64
     image: jupyter:smartbuilding-unified
     container_name: jupyter_surrogate
     ports:
@@ -47,6 +52,7 @@ services:
   # teacher creates Workspace/.emergency). Nothing starts by itself.
   bms_services:
     restart: unless-stopped
+    platform: linux/amd64
     container_name: bms_services
     image: jupyter:smartbuilding-unified
     entrypoint: ["/opt/conda/envs/conda_environment/bin/python", "/opt/gateway/supervisor.py"]
@@ -75,6 +81,7 @@ services:
   # page of the platform opens a file of it.
   controller:
     restart: unless-stopped
+    platform: linux/amd64
     container_name: controller
     image: jupyter:smartbuilding-unified
     ports:
@@ -172,7 +179,8 @@ services:
     container_name: backend
     restart: unless-stopped
     ports:
-      - "5000:5000"
+      # Host port 5001: on macOS the AirPlay Receiver listens on 5000. Containers still reach it as backend:5000.
+      - "5001:5000"
     volumes:
       - ./backend/flask_session:/app/flask_session
       - ./backend/uploads:/app/uploads
@@ -236,6 +244,7 @@ services:
   # containers can mount its install through the energyplus_data volume.
   energyplus:
     image: nrel/energyplus:9.6.0
+    platform: linux/amd64
     container_name: energyplus
     restart: unless-stopped
     command: tail -f /dev/null
@@ -248,6 +257,7 @@ services:
   # conversion inside it (methods.py run_conversion). It reads the IDF from
   # /workspace/uploads and writes the FMU to /workspace/user_files.
   eptofmu:
+    platform: linux/amd64
     build:
       context: ./eptofmu
       dockerfile: Dockerfile
