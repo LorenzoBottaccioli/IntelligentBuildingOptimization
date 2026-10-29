@@ -1,4 +1,4 @@
-# UNIFIED candidate = image A on Python 3.10 + bdopt (replaces A and B if the tests pass).
+# UNIFIED candidate = image A on Python 3.10 + bdopt + a separate d3rlpy venv (replaces A and B if the tests pass).
 #   docker build -f conda-environment/Dockerfile.unified -t jupyter:smartbuilding-unified conda-environment
 #
 # Image A (runtime) for bms_services and controller: pyfmi + assimulo, EnergyPlus 9.6, stable-baselines3 on CPU torch.
@@ -36,9 +36,20 @@ COPY fmi_mlc /opt/conda/envs/conda_environment/lib/python3.10/site-packages/fmi_
 RUN /opt/conda/envs/conda_environment/bin/python -m ipykernel install --sys-prefix --name conda_environment \
       --display-name "Python 3.10 (E+96, SB3)"
 
+# d3rlpy (offline and online RL: BC, DQN, CQL, ...) needs torch >= 2.5, while the env above is pinned to torch 1.13.1 for SB3/pyfmi.
+# It goes in a separate venv that sees the env's packages (pyfmi, fmi_mlc, gym, numpy 1.26.4, ...) but carries its own CPU torch,
+# so nothing the other notebooks use changes. Pick the kernel "Python 3.10 (E+96, d3rlpy)" to use it.
+RUN /opt/conda/envs/conda_environment/bin/python -m venv --system-site-packages /opt/venv_d3rlpy \
+ && /opt/venv_d3rlpy/bin/pip install --no-cache-dir "torch>=2.5,<3" --index-url https://download.pytorch.org/whl/cpu \
+ && /opt/venv_d3rlpy/bin/pip install --no-cache-dir "d3rlpy==2.8.1" \
+ && /opt/venv_d3rlpy/bin/python -m ipykernel install --prefix /opt/conda/envs/conda_environment --name d3rlpy \
+      --display-name "Python 3.10 (E+96, d3rlpy)" \
+ && find /opt/venv_d3rlpy -name '__pycache__' -type d -prune -exec rm -rf {} +
+
 
 FROM nrel/energyplus:9.6.0 AS runtime
 COPY --from=builder /opt/conda/envs/conda_environment /opt/conda/envs/conda_environment
+COPY --from=builder /opt/venv_d3rlpy /opt/venv_d3rlpy
 
 # EnergyPlus paths the platform already relies on (same as the previous image)
 RUN ln -sf /EnergyPlus-9.6.0-4b123cf80f-Linux-Ubuntu20.04-x86_64 /usr/local/EnergyPlus-9-6-0
