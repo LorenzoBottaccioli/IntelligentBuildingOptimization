@@ -332,7 +332,7 @@
               "type": "influxdb",
               "uid": "P3C427C6903D4C228"
             },
-            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'temperature_west' AND $timeFilter GROUP BY time($__interval) fill(previous)",
+            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'temperature_west' AND $timeFilter GROUP BY time($__interval) fill(null)",
             "rawQuery": true,
             "refId": "A",
             "resultFormat": "time_series"
@@ -343,7 +343,7 @@
               "type": "influxdb",
               "uid": "P3C427C6903D4C228"
             },
-            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'temperature_south' AND $timeFilter GROUP BY time($__interval) fill(previous)",
+            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'temperature_south' AND $timeFilter GROUP BY time($__interval) fill(null)",
             "rawQuery": true,
             "refId": "B",
             "resultFormat": "time_series"
@@ -354,7 +354,7 @@
               "type": "influxdb",
               "uid": "P3C427C6903D4C228"
             },
-            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'temperature_east' AND $timeFilter GROUP BY time($__interval) fill(previous)",
+            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'temperature_east' AND $timeFilter GROUP BY time($__interval) fill(null)",
             "rawQuery": true,
             "refId": "C",
             "resultFormat": "time_series"
@@ -365,7 +365,7 @@
               "type": "influxdb",
               "uid": "P3C427C6903D4C228"
             },
-            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'temperature_north' AND $timeFilter GROUP BY time($__interval) fill(previous)",
+            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'temperature_north' AND $timeFilter GROUP BY time($__interval) fill(null)",
             "rawQuery": true,
             "refId": "D",
             "resultFormat": "time_series"
@@ -376,7 +376,7 @@
               "type": "influxdb",
               "uid": "P3C427C6903D4C228"
             },
-            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'outdoor_temperature' AND $timeFilter GROUP BY time($__interval) fill(previous)",
+            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'outdoor_temperature' AND $timeFilter GROUP BY time($__interval) fill(null)",
             "rawQuery": true,
             "refId": "E",
             "resultFormat": "time_series"
@@ -482,7 +482,7 @@
               "type": "influxdb",
               "uid": "P3C427C6903D4C228"
             },
-            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'temperature_west' AND $timeFilter GROUP BY time($__interval) fill(previous)",
+            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'temperature_west' AND $timeFilter GROUP BY time($__interval) fill(null)",
             "rawQuery": true,
             "refId": "A",
             "resultFormat": "time_series"
@@ -493,7 +493,7 @@
               "type": "influxdb",
               "uid": "PEA767B3DDC7793D7"
             },
-            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'temperature_west' AND $timeFilter GROUP BY time($__interval) fill(previous)",
+            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'temperature_west' AND $timeFilter GROUP BY time($__interval) fill(null)",
             "rawQuery": true,
             "refId": "B",
             "resultFormat": "time_series"
@@ -504,7 +504,7 @@
               "type": "influxdb",
               "uid": "P3C427C6903D4C228"
             },
-            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'outdoor_temperature' AND $timeFilter GROUP BY time($__interval) fill(previous)",
+            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'outdoor_temperature' AND $timeFilter GROUP BY time($__interval) fill(null)",
             "rawQuery": true,
             "refId": "C",
             "resultFormat": "time_series"
@@ -617,7 +617,7 @@
               "type": "influxdb",
               "uid": "P3C427C6903D4C228"
             },
-            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'setpoint_west' AND $timeFilter GROUP BY time($__interval) fill(previous)",
+            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'setpoint_west' AND $timeFilter GROUP BY time($__interval) fill(null)",
             "rawQuery": true,
             "refId": "A",
             "resultFormat": "time_series"
@@ -628,7 +628,7 @@
               "type": "influxdb",
               "uid": "P3C427C6903D4C228"
             },
-            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'setpoint_south' AND $timeFilter GROUP BY time($__interval) fill(previous)",
+            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'setpoint_south' AND $timeFilter GROUP BY time($__interval) fill(null)",
             "rawQuery": true,
             "refId": "B",
             "resultFormat": "time_series"
@@ -639,7 +639,7 @@
               "type": "influxdb",
               "uid": "P3C427C6903D4C228"
             },
-            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'setpoint_east' AND $timeFilter GROUP BY time($__interval) fill(previous)",
+            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'setpoint_east' AND $timeFilter GROUP BY time($__interval) fill(null)",
             "rawQuery": true,
             "refId": "C",
             "resultFormat": "time_series"
@@ -650,7 +650,7 @@
               "type": "influxdb",
               "uid": "P3C427C6903D4C228"
             },
-            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'setpoint_north' AND $timeFilter GROUP BY time($__interval) fill(previous)",
+            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'setpoint_north' AND $timeFilter GROUP BY time($__interval) fill(null)",
             "rawQuery": true,
             "refId": "D",
             "resultFormat": "time_series"
@@ -731,7 +731,7 @@
               "type": "influxdb",
               "uid": "P3C427C6903D4C228"
             },
-            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'heating_kw' AND $timeFilter GROUP BY time($__interval) fill(previous)",
+            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'heating_kw' AND $timeFilter GROUP BY time($__interval) fill(null)",
             "rawQuery": true,
             "refId": "A",
             "resultFormat": "time_series"
@@ -742,7 +742,7 @@
               "type": "influxdb",
               "uid": "PEA767B3DDC7793D7"
             },
-            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'heating_kw' AND $timeFilter GROUP BY time($__interval) fill(previous)",
+            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'heating_kw' AND $timeFilter GROUP BY time($__interval) fill(null)",
             "rawQuery": true,
             "refId": "B",
             "resultFormat": "time_series"
@@ -823,7 +823,7 @@
               "type": "influxdb",
               "uid": "P3C427C6903D4C228"
             },
-            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'electricity_kw' AND $timeFilter GROUP BY time($__interval) fill(previous)",
+            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'electricity_kw' AND $timeFilter GROUP BY time($__interval) fill(null)",
             "rawQuery": true,
             "refId": "A",
             "resultFormat": "time_series"
@@ -834,7 +834,7 @@
               "type": "influxdb",
               "uid": "PEA767B3DDC7793D7"
             },
-            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'electricity_kw' AND $timeFilter GROUP BY time($__interval) fill(previous)",
+            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'electricity_kw' AND $timeFilter GROUP BY time($__interval) fill(null)",
             "rawQuery": true,
             "refId": "B",
             "resultFormat": "time_series"
@@ -946,7 +946,7 @@
               "type": "influxdb",
               "uid": "P3C427C6903D4C228"
             },
-            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'outdoor_temperature' AND $timeFilter GROUP BY time($__interval) fill(previous)",
+            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'outdoor_temperature' AND $timeFilter GROUP BY time($__interval) fill(null)",
             "rawQuery": true,
             "refId": "A",
             "resultFormat": "time_series"
@@ -957,7 +957,7 @@
               "type": "influxdb",
               "uid": "P3C427C6903D4C228"
             },
-            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'solar_direct' AND $timeFilter GROUP BY time($__interval) fill(previous)",
+            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'solar_direct' AND $timeFilter GROUP BY time($__interval) fill(null)",
             "rawQuery": true,
             "refId": "B",
             "resultFormat": "time_series"
@@ -968,7 +968,7 @@
               "type": "influxdb",
               "uid": "P3C427C6903D4C228"
             },
-            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'wind_speed' AND $timeFilter GROUP BY time($__interval) fill(previous)",
+            "query": "SELECT mean(\"value\") FROM \"points\" WHERE \"point\" = 'wind_speed' AND $timeFilter GROUP BY time($__interval) fill(null)",
             "rawQuery": true,
             "refId": "C",
             "resultFormat": "time_series"
