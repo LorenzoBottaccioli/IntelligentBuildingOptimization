@@ -11,7 +11,7 @@ parameter['fmu_step_size'] = 600  # s, = 3600 / 6 timesteps per hour of the mode
 parameter['fmu_path'] = 'test.fmu'
 parameter['fmu_start_time'] = 0 * 60 * 60 * 24  # day 0, 1 Jan 00:00
 parameter['fmu_warmup_time'] = None  # no fmi_gym warm-up: the controller acts from the start
-parameter['fmu_final_time'] = 365 * 60 * 60 * 24  # day 365, 1 Jan 00:00
+parameter['fmu_final_time'] = 7 * 60 * 60 * 24  # day 7, 8 Jan 00:00
 
 # data exchange parameter
 parameter['action_names'] = ["ZONEWEST_Heating_Setpoint_FMU","ZONESOUTH_Heating_Setpoint_FMU","ZONEEAST_Heating_Setpoint_FMU","ZONENORTH_Heating_Setpoint_FMU"]
