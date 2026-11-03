@@ -351,7 +351,10 @@ function DirectCard({ direct, period, saved, files, buildingRunning, busy, error
 function BuildingCard({ building, busy, error, blocked, onStart, onStop }) {
   const proc = building?.process || {};
   const status = building?.status || {};
-  const state = status.state || proc.state || 'idle';
+  // The progress is retained on the broker: a run stopped half way leaves it saying "running" for ever, and with it the Start
+  // button disabled. The process says whether a run is alive, so when the two disagree the process wins.
+  const stale = Boolean(proc.state) && proc.state !== 'running' && BUSY.includes(status.state);
+  const state = stale ? proc.state : (status.state || proc.state || 'idle');
   const running = BUSY.includes(state) || proc.state === 'running';
 
   const [run, setRun] = useState('baseline');
